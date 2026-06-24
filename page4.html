@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charlotte's Web - Presentation Slides</title>
+    <style>
+        /* ---------- Global Reset & Font ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            gap: 40px;
+        }
+
+        /* ---------- Slide Container ---------- */
+        .slide {
+            width: 1280px;
+            max-width: 100%;
+            aspect-ratio: 16 / 9;
+            /* 16:9 widescreen ratio */
+            background-color: #1a1a2e;
+            /* deep dark blue for contrast */
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 80px;
+            text-align: center;
+            color: #ffffff;
+            position: relative;
+            overflow: hidden;
+            background-image: radial-gradient(circle at 30% 40%, #2d2d44 0%, #1a1a2e 70%);
+            /* subtle radial glow */
+        }
+
+        /* ---------- Typography ---------- */
+        .slide h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            color: #ffb347;
+            /* warm gold accent */
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .slide .subtitle {
+            font-size: 2.2rem;
+            font-weight: 400;
+            color: #e0e0e0;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+
+        .slide .keyword {
+            font-size: 6rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            margin: 20px 0;
+            background: linear-gradient(135deg, #ffb347, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .slide .author-name {
+            font-size: 1.6rem;
+            color: #aaaaaa;
+            margin-top: 30px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        /* ---------- Image Placeholder ---------- */
+        .slide .image-placeholder {
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            background-color: #2d2d44;
+            border: 4px dashed #ffb347;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+            font-size: 1rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background-size: cover;
+            background-position: center;
+            /* You can replace this with an actual image URL */
+        }
+
+        /* ---------- Slide 2 Specifics ---------- */
+        .slide-2 .content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+            width: 100%;
+        }
+
+        .slide-2 .image-container {
+            flex: 0 0 300px;
+        }
+
+        .slide-2 .image-container img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            /* Simulate the illustration of Fern holding Wilbur */
+        }
+
+        .slide-2 .text-block {
+            flex: 1;
+            text-align: left;
+        }
+
+        .slide-2 .big-word {
+            font-size: 8rem;
+            font-weight: 900;
+            color: #ff6b6b;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            line-height: 1;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(255, 107, 107, 0.3);
+        }
+
+        .slide-2 .question-hint {
+            font-size: 2rem;
+            color: #cccccc;
+            font-style: italic;
+            margin-top: 10px;
+        }
+
+        /* ---------- Utility ---------- */
+        .label {
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-size: 0.9rem;
+            color: #666;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .note {
+            font-size: 1.1rem;
+            color: #888;
+            margin-top: 20px;
+            max-width: 600px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== SLIDE 1: TITLE ==================== -->
+    <div class="slide" id="slide1">
+        <span class="label">Slide 1 — Title</span>
+
+        <!-- Book Cover Image Placeholder -->
+        <!-- Replace the background-color with your own image URL in the style attribute or just use an <img> tag -->
+        <div class="image-placeholder" style="background-image: url('https://upload.wikimedia.org/wikipedia/en/thumb/1/1d/CharlotteWeb.png/220px-CharlotteWeb.png'); background-size: contain; background-repeat: no-repeat; background-color: #f8f8f8;">
+            <!-- Placeholder image of Charlotte's Web cover -->
+        </div>
+
+        <!-- Theme Keywords -->
+        <div style="display: flex; gap: 80px; margin: 30px 0;">
+            <span class="keyword" style="font-size: 5rem;">COMPASSION</span>
+            <span class="keyword" style="font-size: 5rem;">JUSTICE</span>
+        </div>
+
+        <!-- Student Name -->
+        <div class="author-name">Kenneth — Grade 5 "D"</div>
+
+        <!-- Small instruction note (you can delete this later) -->
+        <div class="note" style="position: absolute; bottom: 30px;">
+            📖 <em>Charlotte’s Web</em> by E.B. White
+        </div>
+    </div>
+
+    <!-- ==================== SLIDE 2: THE UNFAIR BEGINNING ==================== -->
+    <div class="slide slide-2" id="slide2">
+        <span class="label">Slide 2 — The Unfair Beginning</span>
+
+        <div class="content">
+            <!-- Left: Image of Fern holding Wilbur -->
+            <div class="image-container">
+                <!-- Replace with an actual illustration from the book or a drawing -->
+                <div style="width: 100%; height: 300px; background-color: #3a3a5a; border-radius: 20px; display: flex; align-items: center; justify-content: center; color: #aaa; font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; background-image: url('https://i.pinimg.com/736x/2a/5e/3e/2a5e3e9e0b0b1b1b1b1b1b1b1b1b1b1.jpg'); background-size: cover; background-position: center;">
+                        <!-- Placeholder: Fern holding Wilbur -->
+                    </div>
+                <div style="color: #aaa; font-size: 0.8rem; margin-top: 8px; text-align: center;">Fern &amp; Wilbur — The Runt</div>
+            </div>
+
+            <!-- Right: Big emotional word -->
+            <div class="text-block">
+                <div class="big-word">UNFAIR?</div>
+                <div class="question-hint">“Would you have killed me?”</div>
+                <div style="margin-top: 40px; font-size: 1.4rem; color: #aaa; line-height: 1.6; max-width: 500px;">
+                    One small question about justice<br>changes everything.
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
