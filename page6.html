@@ -23,7 +23,7 @@
         .container {
             background: #fff;
             border-radius: 18px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
             width: 100%;
             max-width: 900px;
             overflow: hidden;
@@ -35,8 +35,14 @@
             padding: 26px 28px;
             text-align: center;
         }
-        h1 { font-size: 30px; margin-bottom: 8px; font-weight: 700; }
-        header p { opacity: 0.95; }
+        h1 {
+            font-size: 30px;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        header p {
+            opacity: 0.95;
+        }
         .instructions {
             background: #f8faff;
             padding: 18px 22px;
@@ -209,10 +215,19 @@
             min-width: 140px;
             color: white;
         }
-        .controls button:hover { transform: translateY(-1px); opacity: 0.95; }
-        #hint-btn { background: #f39c12; }
-        #reset-btn { background: #e74c3c; }
-        #solution-btn { background: #2ecc71; }
+        .controls button:hover {
+            transform: translateY(-1px);
+            opacity: 0.95;
+        }
+        #hint-btn {
+            background: #f39c12;
+        }
+        #reset-btn {
+            background: #e74c3c;
+        }
+        #solution-btn {
+            background: #2ecc71;
+        }
         footer {
             text-align: center;
             padding: 16px;
@@ -221,8 +236,13 @@
             border-top: 1px solid #f1f2f6;
         }
         @media (max-width: 640px) {
-            h1 { font-size: 22px; }
-            .story-text { font-size: 16px; max-height: 35vh; }
+            h1 {
+                font-size: 22px;
+            }
+            .story-text {
+                font-size: 16px;
+                max-height: 35vh;
+            }
             .input-area {
                 flex-direction: column;
                 position: fixed;
@@ -230,19 +250,29 @@
                 left: 0;
                 right: 0;
                 padding: 10px 15px;
-                box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+                box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
                 margin-bottom: 0;
             }
-            #submit-btn { width: 100%; }
+            #submit-btn {
+                width: 100%;
+            }
             .controls {
                 flex-direction: column;
                 margin-bottom: 80px;
             }
-            .controls button { width: 100%; }
+            .controls button {
+                width: 100%;
+            }
         }
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         :focus-visible {
             outline: 3px solid rgba(17, 153, 142, 0.55);
@@ -257,22 +287,22 @@
             <h1>Banking Vocabulary</h1>
             <p>Fill in the missing words from the word bank</p>
         </header>
-        
+
         <div class="instructions">
-            <p>Type the correct word and press Enter. Words can appear more than once.</p>
+            <p>Type the correct word and press Enter.</p>
         </div>
-        
+
         <div class="word-bank">
             <strong>Word bank:</strong>
             <span>deposit</span><span>balance</span><span>ATM</span>
             <span>transfer</span><span>loan</span><span>interest</span>
             <span>fee</span><span>debit card</span>
         </div>
-        
+
         <div class="story-container">
             <div class="message success" id="success-message">Correct! Well done.</div>
             <div class="message error" id="error-message">Incorrect. Try again.</div>
-            
+
             <div class="story-text" id="story-text">
                 <p>1. I checked my account <span class="gap" data-word="balance">_______</span> online yesterday.</p>
                 <p>2. She used the <span class="gap" data-word="ATM">___</span> to withdraw cash.</p>
@@ -282,25 +312,13 @@
                 <p>6. The bank charges a monthly <span class="gap" data-word="fee">___</span>.</p>
                 <p>7. The savings account pays 3% <span class="gap" data-word="interest">________</span>.</p>
                 <p>8. I made a <span class="gap" data-word="transfer">________</span> to my university account.</p>
-                
-                <p><strong>Dialogue 1:</strong><br>
-                Bank clerk: How can I help you?<br>
-                Student: I'd like to open a <span class="gap" data-word="deposit">_______</span> account.<br>
-                Bank clerk: Would you also like a <span class="gap" data-word="debit">_____</span> card?<br>
-                Student: Yes, please.</p>
-                
-                <p><strong>Dialogue 2:</strong><br>
-                Student: What's my current <span class="gap" data-word="balance">_______</span>?<br>
-                Bank clerk: You have AED 2,350 in your account.<br>
-                Student: Can I make a <span class="gap" data-word="transfer">________</span> to another bank?<br>
-                Bank clerk: Certainly.</p>
             </div>
-            
+
             <div class="progress-container">
                 <div class="progress-bar"><div class="progress" id="progress-bar"></div></div>
-                <div class="progress-text"><span id="progress-text">0</span>/12 words completed</div>
+                <div class="progress-text"><span id="progress-text">0</span>/8 words completed</div>
             </div>
-            
+
             <div class="input-area">
                 <div class="field">
                     <label for="word-input">Enter word</label>
@@ -308,14 +326,14 @@
                 </div>
                 <button id="submit-btn">Submit</button>
             </div>
-            
+
             <div class="controls">
                 <button id="hint-btn">Hint</button>
                 <button id="reset-btn">Reset</button>
                 <button id="solution-btn">Show Solution</button>
             </div>
         </div>
-        
+
         <footer>Banking vocabulary exercise</footer>
     </div>
 
@@ -331,12 +349,11 @@
             const progressText = document.getElementById('progress-text');
             const successMsg = document.getElementById('success-message');
             const errorMsg = document.getElementById('error-message');
-            
+
             let currentGapIndex = 0;
             let completedGaps = 0;
             const totalGaps = gaps.length;
-            
-            // Initialize
+
             function init() {
                 updateProgress();
                 gaps.forEach((g, i) => {
@@ -352,20 +369,20 @@
                 });
                 wordInput.focus();
             }
-            
+
             function updateProgress() {
                 const percent = (completedGaps / totalGaps) * 100;
                 progressBar.style.width = `${percent}%`;
                 progressText.textContent = completedGaps;
             }
-            
+
             function checkWord() {
                 const entered = wordInput.value.trim().toLowerCase();
                 if (!entered) return;
-                
+
                 let found = false;
                 const matchedIndices = [];
-                
+
                 gaps.forEach((gap, idx) => {
                     const correct = gap.getAttribute('data-word').toLowerCase();
                     if (entered === correct && !gap.classList.contains('filled')) {
@@ -373,7 +390,7 @@
                         matchedIndices.push(idx);
                     }
                 });
-                
+
                 if (found) {
                     matchedIndices.forEach(idx => {
                         const gap = gaps[idx];
@@ -382,17 +399,16 @@
                         gap.classList.remove('active');
                         completedGaps++;
                     });
-                    
+
                     updateProgress();
                     successMsg.style.display = 'block';
                     errorMsg.style.display = 'none';
-                    
+
                     if (completedGaps >= totalGaps) {
                         wordInput.disabled = true;
                         submitBtn.disabled = true;
                         successMsg.textContent = '🎉 All gaps filled! Well done.';
                     } else {
-                        // Activate next unfilled gap
                         let next = -1;
                         for (let i = 0; i < gaps.length; i++) {
                             if (!gaps[i].classList.contains('filled')) {
@@ -409,7 +425,6 @@
                     wordInput.value = '';
                     wordInput.focus();
                 } else {
-                    // Check if word is correct but already filled
                     const alreadyFilled = Array.from(gaps).some(gap => {
                         return entered === gap.getAttribute('data-word').toLowerCase() && gap.classList.contains('filled');
                     });
@@ -419,7 +434,7 @@
                     wordInput.select();
                 }
             }
-            
+
             function showHint() {
                 if (currentGapIndex < gaps.length && !gaps[currentGapIndex].classList.contains('filled')) {
                     const word = gaps[currentGapIndex].getAttribute('data-word');
@@ -428,7 +443,7 @@
                     wordInput.select();
                 }
             }
-            
+
             function showSolution() {
                 gaps.forEach(gap => {
                     gap.textContent = gap.getAttribute('data-word');
@@ -443,11 +458,10 @@
                 successMsg.style.display = 'block';
                 errorMsg.style.display = 'none';
             }
-            
+
             function resetExercise() {
                 gaps.forEach(gap => {
                     const word = gap.getAttribute('data-word');
-                    // dynamic placeholder based on word length
                     const len = word.length;
                     gap.textContent = '_'.repeat(len <= 3 ? 3 : len);
                     gap.classList.remove('filled', 'active');
@@ -463,13 +477,15 @@
                 errorMsg.style.display = 'none';
                 wordInput.focus();
             }
-            
+
             submitBtn.addEventListener('click', checkWord);
-            wordInput.addEventListener('keypress', e => { if (e.key === 'Enter') checkWord(); });
+            wordInput.addEventListener('keypress', e => {
+                if (e.key === 'Enter') checkWord();
+            });
             hintBtn.addEventListener('click', showHint);
             solutionBtn.addEventListener('click', showSolution);
             resetBtn.addEventListener('click', resetExercise);
-            
+
             init();
         });
     </script>
