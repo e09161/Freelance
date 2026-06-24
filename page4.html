@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Charlotte's Web - Presentation Slides</title>
+    <title>Charlotte's Web – Compassion & Justice (Anti-Bullying Connection)</title>
     <style>
-        /* ---------- Global Reset & Font ---------- */
         * {
             margin: 0;
             padding: 0;
@@ -14,210 +13,394 @@
 
         body {
             font-family: 'Segoe UI', 'Arial', sans-serif;
-            background-color: #f0f0f0;
+            background-color: #0f0f1a;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            padding: 40px 20px;
-            gap: 40px;
+            height: 100vh;
+            overflow: hidden;
+            color: #fff;
         }
 
-        /* ---------- Slide Container ---------- */
-        .slide {
-            width: 1280px;
-            max-width: 100%;
+        /* ---------- Slideshow Container ---------- */
+        .slideshow {
+            width: 95vw;
+            max-width: 1200px;
             aspect-ratio: 16 / 9;
-            /* 16:9 widescreen ratio */
-            background-color: #1a1a2e;
-            /* deep dark blue for contrast */
-            border-radius: 12px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+            border-radius: 15px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+            overflow: hidden;
+            background: #1a1a2e;
+        }
+
+        .slides {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            padding: 4% 6%;
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
-            padding: 60px 80px;
+            align-items: center;
             text-align: center;
-            color: #ffffff;
             position: relative;
-            overflow: hidden;
-            background-image: radial-gradient(circle at 30% 40%, #2d2d44 0%, #1a1a2e 70%);
-            /* subtle radial glow */
+            background: radial-gradient(circle at 20% 30%, #2d2d44 0%, #1a1a2e 90%);
+        }
+
+        /* Individual slide variations */
+        .slide-title {
+            background: radial-gradient(circle at 5% 20%, #3a3a5a 0%, #141428 80%);
+        }
+
+        .slide-quote {
+            background: radial-gradient(circle at 50% 50%, #1e1e32 0%, #0f0f1a 100%);
+        }
+
+        .slide-dark {
+            background: #0a0a14;
         }
 
         /* ---------- Typography ---------- */
-        .slide h1 {
-            font-size: 4.5rem;
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
             font-weight: 800;
             letter-spacing: 2px;
-            margin-bottom: 20px;
+            margin-bottom: 1rem;
             color: #ffb347;
-            /* warm gold accent */
-            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            text-shadow: 0 4px 10px rgba(0,0,0,0.6);
         }
 
-        .slide .subtitle {
-            font-size: 2.2rem;
-            font-weight: 400;
-            color: #e0e0e0;
-            margin-bottom: 40px;
+        .subtitle {
+            font-size: clamp(1.2rem, 2.5vw, 2rem);
+            color: #cccccc;
+            margin-bottom: 2rem;
             font-style: italic;
         }
 
-        .slide .keyword {
-            font-size: 6rem;
+        .keyword-large {
+            font-size: clamp(4rem, 8vw, 7rem);
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 6px;
-            margin: 20px 0;
+            margin: 1rem 0;
             background: linear-gradient(135deg, #ffb347, #ff6b6b);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        .slide .author-name {
-            font-size: 1.6rem;
-            color: #aaaaaa;
-            margin-top: 30px;
-            font-weight: 300;
-            letter-spacing: 1px;
-        }
-
-        /* ---------- Image Placeholder ---------- */
-        .slide .image-placeholder {
-            width: 240px;
-            height: 240px;
-            border-radius: 50%;
-            background-color: #2d2d44;
-            border: 4px dashed #ffb347;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 20px 0;
-            font-size: 1rem;
-            color: #888;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            background-size: cover;
-            background-position: center;
-            /* You can replace this with an actual image URL */
-        }
-
-        /* ---------- Slide 2 Specifics ---------- */
-        .slide-2 .content {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 60px;
-            width: 100%;
-        }
-
-        .slide-2 .image-container {
-            flex: 0 0 300px;
-        }
-
-        .slide-2 .image-container img {
-            width: 100%;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-            /* Simulate the illustration of Fern holding Wilbur */
-        }
-
-        .slide-2 .text-block {
-            flex: 1;
-            text-align: left;
-        }
-
-        .slide-2 .big-word {
-            font-size: 8rem;
-            font-weight: 900;
-            color: #ff6b6b;
-            text-transform: uppercase;
-            letter-spacing: 8px;
-            line-height: 1;
-            margin-bottom: 10px;
-            text-shadow: 0 0 20px rgba(255, 107, 107, 0.3);
-        }
-
-        .slide-2 .question-hint {
-            font-size: 2rem;
-            color: #cccccc;
+        .quote-text {
+            font-size: clamp(1.8rem, 3.5vw, 3rem);
+            font-weight: 600;
+            line-height: 1.4;
+            margin: 2rem 0;
+            max-width: 85%;
+            color: #f0e6d3;
             font-style: italic;
-            margin-top: 10px;
+            quotes: "“" "”" "‘" "’";
+            position: relative;
         }
 
-        /* ---------- Utility ---------- */
-        .label {
+        .quote-text::before {
+            content: open-quote;
+            font-size: 5rem;
+            color: #ffb347;
             position: absolute;
-            top: 20px;
-            left: 30px;
-            font-size: 0.9rem;
-            color: #666;
-            letter-spacing: 1px;
-            text-transform: uppercase;
+            left: -40px;
+            top: -20px;
         }
 
-        .note {
-            font-size: 1.1rem;
-            color: #888;
-            margin-top: 20px;
-            max-width: 600px;
-            line-height: 1.5;
+        .quote-text::after {
+            content: close-quote;
+            font-size: 5rem;
+            color: #ffb347;
+            position: absolute;
+            right: -40px;
+            bottom: -40px;
+        }
+
+        .caption {
+            font-size: 1.3rem;
+            color: #aaa;
+            margin-top: 1rem;
+        }
+
+        .info-text {
+            font-size: 1.2rem;
+            color: #ccc;
+            max-width: 80%;
+            line-height: 1.6;
+            margin: 1rem auto;
+        }
+
+        /* ---------- Images & Graphics ---------- */
+        .book-cover {
+            width: 150px;
+            height: 220px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            background: url('https://upload.wikimedia.org/wikipedia/en/thumb/1/1d/CharlotteWeb.png/220px-CharlotteWeb.png') center/contain no-repeat, #fff;
+            background-size: contain;
+            margin: 1rem 0;
+        }
+
+        .illustration {
+            max-width: 250px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            margin: 0.5rem;
+        }
+
+        .dual-img {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .dual-img img {
+            max-width: 40%;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+
+        .logos {
+            display: flex;
+            gap: 3rem;
+            justify-content: center;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            background-color: #fff;
+            border-radius: 20px;
+            padding: 10px;
+            object-fit: contain;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .big-question {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            color: #ff6b6b;
+            font-weight: 700;
+            margin-top: 1rem;
+            text-shadow: 0 0 20px rgba(255,107,107,0.3);
+        }
+
+        /* ---------- Navigation ---------- */
+        .nav-buttons {
+            position: absolute;
+            bottom: 20px;
+            right: 25px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-btn {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            backdrop-filter: blur(5px);
+        }
+
+        .nav-btn:hover {
+            background: rgba(255,255,255,0.25);
+            border-color: #ffb347;
+            transform: scale(1.1);
+        }
+
+        .slide-counter {
+            position: absolute;
+            bottom: 25px;
+            left: 30px;
+            color: #aaa;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        /* ---------- Responsive ---------- */
+        @media (max-width: 700px) {
+            .slide {
+                padding: 2rem;
+            }
+            .quote-text::before, .quote-text::after {
+                font-size: 3rem;
+                top: -10px;
+                left: -20px;
+            }
         }
     </style>
 </head>
 <body>
-
-    <!-- ==================== SLIDE 1: TITLE ==================== -->
-    <div class="slide" id="slide1">
-        <span class="label">Slide 1 — Title</span>
-
-        <!-- Book Cover Image Placeholder -->
-        <!-- Replace the background-color with your own image URL in the style attribute or just use an <img> tag -->
-        <div class="image-placeholder" style="background-image: url('https://upload.wikimedia.org/wikipedia/en/thumb/1/1d/CharlotteWeb.png/220px-CharlotteWeb.png'); background-size: contain; background-repeat: no-repeat; background-color: #f8f8f8;">
-            <!-- Placeholder image of Charlotte's Web cover -->
-        </div>
-
-        <!-- Theme Keywords -->
-        <div style="display: flex; gap: 80px; margin: 30px 0;">
-            <span class="keyword" style="font-size: 5rem;">COMPASSION</span>
-            <span class="keyword" style="font-size: 5rem;">JUSTICE</span>
-        </div>
-
-        <!-- Student Name -->
-        <div class="author-name">Kenneth — Grade 5 "D"</div>
-
-        <!-- Small instruction note (you can delete this later) -->
-        <div class="note" style="position: absolute; bottom: 30px;">
-            📖 <em>Charlotte’s Web</em> by E.B. White
-        </div>
-    </div>
-
-    <!-- ==================== SLIDE 2: THE UNFAIR BEGINNING ==================== -->
-    <div class="slide slide-2" id="slide2">
-        <span class="label">Slide 2 — The Unfair Beginning</span>
-
-        <div class="content">
-            <!-- Left: Image of Fern holding Wilbur -->
-            <div class="image-container">
-                <!-- Replace with an actual illustration from the book or a drawing -->
-                <div style="width: 100%; height: 300px; background-color: #3a3a5a; border-radius: 20px; display: flex; align-items: center; justify-content: center; color: #aaa; font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; background-image: url('https://i.pinimg.com/736x/2a/5e/3e/2a5e3e9e0b0b1b1b1b1b1b1b1b1b1b1.jpg'); background-size: cover; background-position: center;">
-                        <!-- Placeholder: Fern holding Wilbur -->
-                    </div>
-                <div style="color: #aaa; font-size: 0.8rem; margin-top: 8px; text-align: center;">Fern &amp; Wilbur — The Runt</div>
+    <div class="slideshow">
+        <div class="slides" id="slidesContainer">
+            <!-- ========== SLIDE 1: TITLE ========== -->
+            <div class="slide slide-title">
+                <div class="book-cover"></div>
+                <div style="display: flex; gap: 3rem; margin: 1.5rem 0; flex-wrap: wrap; justify-content: center;">
+                    <span class="keyword-large" style="font-size: clamp(3rem,5vw,4rem);">COMPASSION</span>
+                    <span class="keyword-large" style="font-size: clamp(3rem,5vw,4rem);">JUSTICE</span>
+                </div>
+                <div class="subtitle" style="margin-bottom: 0.5rem;">Charlotte’s Web by E.B. White</div>
+                <div class="caption">Kenneth – Grade 5 “D”</div>
             </div>
 
-            <!-- Right: Big emotional word -->
-            <div class="text-block">
-                <div class="big-word">UNFAIR?</div>
-                <div class="question-hint">“Would you have killed me?”</div>
-                <div style="margin-top: 40px; font-size: 1.4rem; color: #aaa; line-height: 1.6; max-width: 500px;">
-                    One small question about justice<br>changes everything.
+            <!-- ========== SLIDE 2: THE UNFAIR BEGINNING ========== -->
+            <div class="slide">
+                <div style="display: flex; align-items: center; gap: 2rem; width: 100%; flex-wrap: wrap; justify-content: center;">
+                    <img class="illustration" src="https://via.placeholder.com/250x300/3a3a5a/ffffff?text=Fern+%26+Wilbur" alt="Fern holding Wilbur">
+                    <div style="text-align: left;">
+                        <div class="keyword-large" style="font-size: clamp(5rem,10vw,8rem); color: #ff6b6b; -webkit-text-fill-color: #ff6b6b;">UNFAIR?</div>
+                        <div class="subtitle" style="margin-top: 0.5rem;">"Would you have killed me?"</div>
+                        <p class="info-text" style="max-width: 400px; margin-left: 0;">One small question about justice changes everything.</p>
+                    </div>
                 </div>
             </div>
+
+            <!-- ========== SLIDE 3: FERN'S JUSTICE QUOTE ========== -->
+            <div class="slide slide-quote">
+                <div class="quote-text">
+                    "The pig couldn't help being born small, could it? If I had been very small at birth, would you have killed me?"
+                </div>
+                <div class="keyword-large" style="font-size: 3rem; -webkit-text-fill-color: #ffb347;">FAIRNESS</div>
+                <p class="caption">Fern speaks for the voiceless – the heart of justice.</p>
+            </div>
+
+            <!-- ========== SLIDE 4: CHARLOTTE'S COMPASSION QUOTE ========== -->
+            <div class="slide slide-dark">
+                <img class="illustration" src="https://via.placeholder.com/200x200/2d2d44/ffb347?text=Charlotte+Web" alt="Charlotte's web" style="border-radius: 50%; margin-bottom: 1rem;">
+                <div class="quote-text" style="max-width: 90%;">
+                    "You have been my friend. That in itself is a tremendous thing."
+                </div>
+                <div class="keyword-large" style="font-size: 3rem; -webkit-text-fill-color: #ffb347;">FRIENDSHIP</div>
+                <p class="caption">Charlotte sees Wilbur not as a runt, but as Some Pig.</p>
+            </div>
+
+            <!-- ========== SLIDE 5: REAL-WORLD MIRROR – BULLYING ========== -->
+            <div class="slide">
+                <h2 style="color: #ffb347; margin-bottom: 1.5rem;">The Real‑World Mirror</h2>
+                <div class="dual-img">
+                    <img src="https://via.placeholder.com/280x280/2d2d44/ccc?text=Wilbur+Alone" alt="Wilbur alone" class="illustration">
+                    <img src="https://via.placeholder.com/280x280/2d2d44/ccc?text=Child+Sitting+Alone" alt="Child alone at school" class="illustration">
+                </div>
+                <div class="keyword-large" style="font-size: 3.5rem; margin: 1rem 0;">MARGINALISED?</div>
+                <p class="info-text">Children everywhere are picked on for being different – just like Wilbur was for being small.</p>
+            </div>
+
+            <!-- ========== SLIDE 6: GLOBAL RESPONSE – UPSTANDERS ========== -->
+            <div class="slide slide-dark">
+                <div class="keyword-large" style="font-size: 3.5rem; margin-bottom: 1rem;">UPSTANDER</div>
+                <div class="logos">
+                    <div style="text-align: center;">
+                        <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/UNESCO_logo.svg/1280px-UNESCO_logo.svg.png" alt="UNESCO" style="background: #fff;">
+                        <p style="margin-top: 0.5rem; font-size: 0.8rem; color: #ccc;">Intl. Day against<br>Bullying</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="width:80px; height:80px; background: #4b9cd3; color: white; font-weight: 900; font-size: 2rem; display: flex; align-items: center; justify-content: center; border-radius: 20px;">KiVa</div>
+                        <p style="margin-top: 0.5rem; font-size: 0.8rem; color: #ccc;">Finland<br>Defenders</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="width:80px; height:80px; background: #ffb347; color: #1a1a2e; font-weight: bold; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; border-radius: 20px; flex-direction: column;">#<br>Choose<br>Kindness</div>
+                    </div>
+                </div>
+                <p class="info-text" style="margin-top: 1.5rem;">From UNESCO campaigns to KiVa defenders, the world is learning that standing up for others is a tremendous thing.</p>
+            </div>
+
+            <!-- ========== SLIDE 7: BACK TO THE BARNYARD – CONNECTION ========== -->
+            <div class="slide">
+                <div class="dual-img">
+                    <img src="https://via.placeholder.com/200x200/3a3a5a/ffb347?text=Fern+Protects" alt="Fern protects Wilbur" class="illustration">
+                    <img src="https://via.placeholder.com/200x200/3a3a5a/ffb347?text=Kids+United" alt="Kids united against bullying" class="illustration">
+                </div>
+                <div style="font-size: 1.5rem; color: #ccc; margin: 1rem 0; font-style: italic;">“That in itself is a tremendous thing.”</div>
+                <div class="keyword-large" style="font-size: 3rem;">CONNECTION</div>
+                <p class="info-text">Fern’s hand on Wilbur is the same as a classmate’s hand on someone left out. Charlotte’s web is the same as words that make someone feel they belong.</p>
+            </div>
+
+            <!-- ========== SLIDE 8: CONCLUSION & INVITATION ========== -->
+            <div class="slide slide-dark">
+                <img src="https://via.placeholder.com/150x150/ffb347/1a1a2e?text=Egg+Sac" alt="Charlotte's egg sac" class="illustration" style="border-radius: 50%; margin-bottom: 1rem;">
+                <div class="keyword-large">TREMENDOUS</div>
+                <div class="big-question">WHO COULD YOU BE A FERN OR A CHARLOTTE FOR?</div>
+                <p class="info-text">When you choose kindness, you write a web that can save a life. Thank you.</p>
+            </div>
         </div>
+
+        <!-- Navigation controls -->
+        <div class="nav-buttons">
+            <button class="nav-btn" id="prevBtn" title="Previous slide">&larr;</button>
+            <button class="nav-btn" id="nextBtn" title="Next slide">&rarr;</button>
+        </div>
+        <div class="slide-counter" id="slideCounter">1 / 8</div>
     </div>
 
+    <script>
+        const slidesContainer = document.getElementById('slidesContainer');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const counter = document.getElementById('slideCounter');
+        const totalSlides = document.querySelectorAll('.slide').length;
+        let currentIndex = 0;
+
+        function updateSlide() {
+            slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+            counter.textContent = `${currentIndex + 1} / ${totalSlides}`;
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateSlide();
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            updateSlide();
+        }
+
+        // Event listeners
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+        });
+
+        // Touch swipe (basic)
+        let touchStartX = 0;
+        slidesContainer.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+        slidesContainer.addEventListener('touchend', (e) => {
+            let touchEndX = e.changedTouches[0].screenX;
+            if (touchStartX - touchEndX > 50) nextSlide();
+            if (touchEndX - touchStartX > 50) prevSlide();
+        });
+
+        // Initialize
+        updateSlide();
+    </script>
 </body>
 </html>
