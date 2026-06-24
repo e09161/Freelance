@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banking Dialogue – Fill the Gap</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', 'Segoe UI', Tahoma, sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #2d3436;
+        }
+        .container {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            width: 100%;
+            max-width: 900px;
+            overflow: hidden;
+            animation: fadeIn 0.5s ease;
+        }
+        header {
+            background: linear-gradient(90deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            padding: 26px 28px;
+            text-align: center;
+        }
+        h1 { font-size: 30px; margin-bottom: 8px; font-weight: 700; }
+        header p { opacity: 0.95; }
+        .instructions {
+            background: #f8faff;
+            padding: 18px 22px;
+            border-bottom: 1px solid #e0e6f1;
+            font-size: 16px;
+            color: #555;
+        }
+        .word-bank {
+            padding: 15px 22px;
+            background: #f0fdf4;
+            border-bottom: 1px solid #d1fae5;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+        }
+        .word-bank span {
+            background: #fff;
+            border: 1px solid #a7f3d0;
+            border-radius: 20px;
+            padding: 4px 14px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #047857;
+        }
+        .story-container {
+            padding: 28px;
+            position: relative;
+        }
+        .story-text {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 24px;
+            color: #333;
+            max-height: 55vh;
+            overflow-y: auto;
+            padding-bottom: 20px;
+        }
+        .gap {
+            padding: 2px 6px;
+            border-bottom: 2px dashed #11998e;
+            background: rgba(17, 153, 142, 0.12);
+            border-radius: 4px;
+            transition: all 0.25s;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+        .gap.active {
+            background: rgba(17, 153, 142, 0.2);
+            border-bottom-color: #0b7b6b;
+            outline: 2px solid transparent;
+        }
+        .gap.filled {
+            background: transparent;
+            border-bottom: none;
+            color: #2ecc71;
+            font-weight: 600;
+            cursor: default;
+        }
+        .progress-container {
+            margin: 18px 0 20px;
+        }
+        .progress-bar {
+            height: 12px;
+            background: #f1f2f6;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .progress {
+            height: 100%;
+            background: linear-gradient(90deg, #11998e 0%, #38ef7d 100%);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            color: #666;
+            margin-top: 8px;
+        }
+        .message {
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+        }
+        .success { background: #e8f9f1; color: #1f9e56; border: 1px solid #b8eacb; }
+        .error { background: #fdecea; color: #d6453d; border: 1px solid #f5b7b1; }
+        .input-area {
+            display: flex;
+            gap: 10px;
+            align-items: stretch;
+            margin-bottom: 8px;
+            position: sticky;
+            bottom: 0;
+            background: white;
+            padding: 15px 0;
+            border-top: 1px solid #e2e8f0;
+            z-index: 10;
+        }
+        .field { position: relative; flex: 1; display: flex; align-items: center; }
+        .field label {
+            position: absolute; left: 12px; top: -10px; background: #fff;
+            padding: 0 6px; font-size: 12px; color: #6b7280;
+        }
+        #word-input {
+            width: 100%; padding: 14px; border: 2px solid #e2e8f0;
+            border-radius: 10px; font-size: 16px;
+            transition: border-color 0.25s, box-shadow 0.25s;
+        }
+        #word-input:focus {
+            outline: none; border-color: #11998e;
+            box-shadow: 0 0 0 3px rgba(17, 153, 142, 0.2);
+        }
+        #submit-btn {
+            background: linear-gradient(90deg, #11998e 0%, #38ef7d 100%);
+            color: white; border: none; padding: 0 20px; border-radius: 10px;
+            cursor: pointer; font-weight: 700; transition: transform 0.15s, opacity 0.25s;
+            min-width: 120px;
+        }
+        #submit-btn:hover { transform: translateY(-1px); opacity: 0.92; }
+        .controls { display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+        .controls button {
+            flex: 1; padding: 12px 16px; border: none; border-radius: 10px;
+            cursor: pointer; font-weight: 700; transition: transform 0.15s;
+            min-width: 140px; color: white;
+        }
+        .controls button:hover { transform: translateY(-1px); opacity: 0.95; }
+        #hint-btn { background: #f39c12; }
+        #reset-btn { background: #e74c3c; }
+        #solution-btn { background: #2ecc71; }
+        footer { text-align: center; padding: 16px; color: #888; font-size: 14px; border-top: 1px solid #f1f2f6; }
+        @media (max-width: 640px) {
+            h1 { font-size: 22px; }
+            .story-text { font-size: 16px; max-height: 35vh; }
+            .input-area {
+                flex-direction: column; position: fixed; bottom: 0; left: 0; right: 0;
+                padding: 10px 15px; box-shadow: 0 -2px 10px rgba(0,0,0,0.1); margin-bottom: 0;
+            }
+            #submit-btn { width: 100%; }
+            .controls { flex-direction: column; margin-bottom: 80px; }
+            .controls button { width: 100%; }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        :focus-visible {
+            outline: 3px solid rgba(17, 153, 142, 0.55);
+            outline-offset: 2px; border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Banking Dialogue</h1>
+            <p>Complete the two short conversations</p>
+        </header>
+        <div class="instructions">
+            <p>Type the correct word and press Enter.</p>
+        </div>
+        <div class="word-bank">
+            <strong>Word bank:</strong>
+            <span>deposit</span><span>balance</span><span>debit</span><span>transfer</span>
+        </div>
+        <div class="story-container">
+            <div class="message success" id="success-message">Correct!</div>
+            <div class="message error" id="error-message">Incorrect. Try again.</div>
+
+            <div class="story-text" id="story-text">
+                <p><strong>Dialogue 1:</strong><br>
+                Bank clerk: How can I help you?<br>
+                Student: I'd like to open a <span class="gap" data-word="deposit">_______</span> account.<br>
+                Bank clerk: Would you also like a <span class="gap" data-word="debit">_____</span> card?<br>
+                Student: Yes, please.</p>
+
+                <p><strong>Dialogue 2:</strong><br>
+                Student: What's my current <span class="gap" data-word="balance">_______</span>?<br>
+                Bank clerk: You have AED 2,350 in your account.<br>
+                Student: Can I make a <span class="gap" data-word="transfer">________</span> to another bank?<br>
+                Bank clerk: Certainly.</p>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar"><div class="progress" id="progress-bar"></div></div>
+                <div class="progress-text"><span id="progress-text">0</span>/4 words completed</div>
+            </div>
+
+            <div class="input-area">
+                <div class="field">
+                    <label for="word-input">Enter word</label>
+                    <input type="text" id="word-input" placeholder="Type a word and press Enter">
+                </div>
+                <button id="submit-btn">Submit</button>
+            </div>
+
+            <div class="controls">
+                <button id="hint-btn">Hint</button>
+                <button id="reset-btn">Reset</button>
+                <button id="solution-btn">Show Solution</button>
+            </div>
+        </div>
+        <footer>Banking dialogue exercise</footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const gaps = document.querySelectorAll('.gap');
+            const wordInput = document.getElementById('word-input');
+            const submitBtn = document.getElementById('submit-btn');
+            const resetBtn = document.getElementById('reset-btn');
+            const hintBtn = document.getElementById('hint-btn');
+            const solutionBtn = document.getElementById('solution-btn');
+            const progressBar = document.getElementById('progress-bar');
+            const progressText = document.getElementById('progress-text');
+            const successMsg = document.getElementById('success-message');
+            const errorMsg = document.getElementById('error-message');
+
+            let currentGapIndex = 0;
+            let completedGaps = 0;
+            const totalGaps = gaps.length;
+
+            function init() {
+                updateProgress();
+                gaps.forEach((gap, i) => {
+                    if (i === 0) gap.classList.add('active');
+                    gap.addEventListener('click', () => {
+                        if (!gap.classList.contains('filled')) {
+                            gaps.forEach(g => g.classList.remove('active'));
+                            gap.classList.add('active');
+                            currentGapIndex = Array.from(gaps).indexOf(gap);
+                            wordInput.focus();
+                        }
+                    });
+                });
+                wordInput.focus();
+            }
+
+            function updateProgress() {
+                const percent = (completedGaps / totalGaps) * 100;
+                progressBar.style.width = `${percent}%`;
+                progressText.textContent = completedGaps;
+            }
+
+            function checkWord() {
+                const entered = wordInput.value.trim().toLowerCase();
+                if (!entered) return;
+                let found = false;
+                const matchedIndices = [];
+
+                gaps.forEach((gap, idx) => {
+                    const correct = gap.getAttribute('data-word').toLowerCase();
+                    if (entered === correct && !gap.classList.contains('filled')) {
+                        found = true;
+                        matchedIndices.push(idx);
+                    }
+                });
+
+                if (found) {
+                    matchedIndices.forEach(idx => {
+                        const gap = gaps[idx];
+                        gap.textContent = entered;
+                        gap.classList.add('filled');
+                        gap.classList.remove('active');
+                        completedGaps++;
+                    });
+
+                    updateProgress();
+                    successMsg.style.display = 'block';
+                    errorMsg.style.display = 'none';
+
+                    if (completedGaps >= totalGaps) {
+                        wordInput.disabled = true;
+                        submitBtn.disabled = true;
+                        successMsg.textContent = '🎉 Both dialogues complete!';
+                    } else {
+                        let next = -1;
+                        for (let i = 0; i < gaps.length; i++) {
+                            if (!gaps[i].classList.contains('filled')) {
+                                next = i; break;
+                            }
+                        }
+                        if (next !== -1) {
+                            gaps.forEach(g => g.classList.remove('active'));
+                            gaps[next].classList.add('active');
+                            currentGapIndex = next;
+                        }
+                    }
+                    wordInput.value = '';
+                    wordInput.focus();
+                } else {
+                    const alreadyFilled = Array.from(gaps).some(gap => {
+                        return entered === gap.getAttribute('data-word').toLowerCase() && gap.classList.contains('filled');
+                    });
+                    errorMsg.textContent = alreadyFilled ? 'This word is already filled in.' : 'Incorrect. Try again.';
+                    errorMsg.style.display = 'block';
+                    successMsg.style.display = 'none';
+                    wordInput.select();
+                }
+            }
+
+            function showHint() {
+                if (currentGapIndex < gaps.length && !gaps[currentGapIndex].classList.contains('filled')) {
+                    const word = gaps[currentGapIndex].getAttribute('data-word');
+                    wordInput.value = word.substring(0, 1);
+                    wordInput.focus();
+                    wordInput.select();
+                }
+            }
+
+            function showSolution() {
+                gaps.forEach(gap => {
+                    gap.textContent = gap.getAttribute('data-word');
+                    gap.classList.add('filled');
+                    gap.classList.remove('active');
+                });
+                completedGaps = totalGaps;
+                updateProgress();
+                wordInput.disabled = true;
+                submitBtn.disabled = true;
+                successMsg.textContent = 'Solution displayed.';
+                successMsg.style.display = 'block';
+                errorMsg.style.display = 'none';
+            }
+
+            function resetExercise() {
+                gaps.forEach(gap => {
+                    const word = gap.getAttribute('data-word');
+                    gap.textContent = '_'.repeat(Math.max(word.length, 3));
+                    gap.classList.remove('filled', 'active');
+                });
+                gaps[0].classList.add('active');
+                currentGapIndex = 0;
+                completedGaps = 0;
+                updateProgress();
+                wordInput.value = '';
+                wordInput.disabled = false;
+                submitBtn.disabled = false;
+                successMsg.style.display = 'none';
+                errorMsg.style.display = 'none';
+                wordInput.focus();
+            }
+
+            submitBtn.addEventListener('click', checkWord);
+            wordInput.addEventListener('keypress', e => { if (e.key === 'Enter') checkWord(); });
+            hintBtn.addEventListener('click', showHint);
+            solutionBtn.addEventListener('click', showSolution);
+            resetBtn.addEventListener('click', resetExercise);
+
+            init();
+        });
+    </script>
+</body>
+</html>
