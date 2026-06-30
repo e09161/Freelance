@@ -6,161 +6,95 @@
     <title>Charlotte's Web – Themes &amp; Global Issues</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
-            background-color: #0f0f1a;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-            color: #fff;
+            background: #0f0f1a;
+            display: flex; justify-content: center; align-items: center;
+            height: 100vh; overflow: hidden; color: #fff;
         }
-
         .slideshow {
-            width: 95vw;
-            max-width: 1200px;
-            aspect-ratio: 16 / 9;
-            position: relative;
-            border-radius: 15px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.7);
-            overflow: hidden;
+            width: 95vw; max-width: 1200px; aspect-ratio: 16/9;
+            position: relative; border-radius: 15px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.7); overflow: hidden;
             background: #1a1a2e;
         }
-
         .slides {
-            display: flex;
-            width: 100%;
-            height: 100%;
+            display: flex; width: 100%; height: 100%;
             transition: transform 0.5s ease-in-out;
         }
-
         .slide {
-            min-width: 100%;
-            height: 100%;
-            padding: 4% 5%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
+            min-width: 100%; height: 100%;
+            padding: 4% 5%; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
             position: relative;
             background: radial-gradient(circle at 20% 30%, #2d2d44 0%, #1a1a2e 90%);
         }
-
         .slide-title { background: radial-gradient(circle at 5% 20%, #3a3a5a 0%, #141428 80%); }
         .slide-dark { background: #0a0a14; }
 
         h1 {
-            font-size: clamp(2rem, 4.5vw, 4rem);
-            font-weight: 800;
-            letter-spacing: 2px;
-            margin-bottom: 1rem;
-            color: #ffb347;
+            font-size: clamp(2rem, 4.5vw, 4rem); font-weight: 800;
+            letter-spacing: 2px; margin-bottom: 1rem; color: #ffb347;
             text-shadow: 0 4px 10px rgba(0,0,0,0.6);
         }
-        h2 {
-            font-size: clamp(1.8rem, 3vw, 2.8rem);
-            color: #ffb347;
-            margin-bottom: 1.5rem;
-        }
-        .subtitle {
-            font-size: clamp(1.2rem, 2.5vw, 2rem);
-            color: #ccc;
-            margin-bottom: 2rem;
-            font-style: italic;
-        }
+        h2 { font-size: clamp(1.8rem, 3vw, 2.8rem); color: #ffb347; margin-bottom: 1.5rem; }
+        .subtitle { font-size: clamp(1.2rem, 2.5vw, 2rem); color: #ccc; margin-bottom: 2rem; font-style: italic; }
         .keyword-large {
-            font-size: clamp(3rem, 6vw, 5rem);
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            margin: 1rem 0;
+            font-size: clamp(3rem, 6vw, 5rem); font-weight: 900;
+            text-transform: uppercase; letter-spacing: 4px; margin: 1rem 0;
             background: linear-gradient(135deg, #ffb347, #ff6b6b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             background-clip: text;
         }
         .quote-text {
-            font-size: clamp(1.5rem, 3vw, 2.5rem);
-            font-weight: 600;
-            line-height: 1.4;
-            margin: 1.5rem 0;
-            max-width: 80%;
-            color: #f0e6d3;
-            font-style: italic;
-            position: relative;
+            font-size: clamp(1.5rem, 3vw, 2.5rem); font-weight: 600;
+            line-height: 1.4; margin: 1.5rem 0; max-width: 80%;
+            color: #f0e6d3; font-style: italic; position: relative;
         }
         .quote-text::before { content: open-quote; font-size: 4rem; color: #ffb347; position: absolute; left: -35px; top: -15px; }
-        .quote-text::after { content: close-quote; font-size: 4rem; color: #ffb347; position: absolute; right: -35px; bottom: -35px; }
-        .caption {
-            font-size: 1.2rem; color: #aaa; margin-top: 0.5rem;
-        }
-        .info-text {
-            font-size: 1.2rem; color: #ccc; max-width: 80%; line-height: 1.6; margin: 0.8rem auto;
-        }
+        .quote-text::after  { content: close-quote; font-size: 4rem; color: #ffb347; position: absolute; right: -35px; bottom: -35px; }
+        .caption { font-size: 1.2rem; color: #aaa; margin-top: 0.5rem; }
+        .info-text { font-size: 1.2rem; color: #ccc; max-width: 80%; line-height: 1.6; margin: 0.8rem auto; }
 
         .book-cover {
-            width: 150px; height: 220px;
-            border-radius: 10px; box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            width: 150px; height: 220px; border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
             background: url('https://upload.wikimedia.org/wikipedia/en/thumb/1/1d/CharlotteWeb.png/220px-CharlotteWeb.png') center/contain no-repeat, #fff;
             margin: 1rem 0;
         }
 
         .evidence-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            width: 100%;
-            max-width: 900px;
-            margin-top: 1.5rem;
+            display: grid; grid-template-columns: repeat(3,1fr);
+            gap: 1.5rem; width: 100%; max-width: 900px; margin-top: 1.5rem;
         }
         .evidence-card {
-            background: rgba(255,255,255,0.06);
-            border-radius: 12px;
-            padding: 1rem;
-            text-align: center;
+            background: rgba(255,255,255,0.06); border-radius: 12px;
+            padding: 1rem; text-align: center;
             border: 1px solid rgba(255,255,255,0.1);
         }
         .evidence-card i { font-size: 2rem; color: #ffb347; margin-bottom: 0.5rem; }
         .evidence-card h3 { color: #ffb347; margin-bottom: 0.5rem; font-size: 1.4rem; }
         .evidence-card p { color: #ccc; font-size: 1rem; line-height: 1.4; }
 
-        .real-life-list {
-            text-align: left;
-            max-width: 700px;
-            margin: 1rem auto;
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: #ccc;
-        }
+        .real-life-list { text-align: left; max-width: 700px; margin: 1rem auto; font-size: 1.2rem; line-height: 1.8; color: #ccc; }
         .real-life-list li { margin-bottom: 0.6rem; }
         .real-life-list strong { color: #ffb347; }
 
-        .sources-list {
-            text-align: left;
-            font-size: 0.95rem;
-            color: #aaa;
-            line-height: 1.8;
-            max-width: 700px;
-        }
+        .sources-list { text-align: left; font-size: 0.95rem; color: #aaa; line-height: 1.8; max-width: 700px; }
         .sources-list li { margin-bottom: 0.4rem; }
 
         .big-question {
-            font-size: clamp(2rem, 4vw, 3.5rem);
-            color: #ff6b6b;
-            font-weight: 700;
-            margin: 1rem 0;
-            text-shadow: 0 0 20px rgba(255,107,107,0.3);
+            font-size: clamp(2rem, 4vw, 3.5rem); color: #ff6b6b; font-weight: 700;
+            margin: 1rem 0; text-shadow: 0 0 20px rgba(255,107,107,0.3);
         }
 
+        /* Navigation */
         .nav-buttons {
-            position: absolute; bottom: 20px; right: 25px; display: flex; gap: 15px; z-index: 10;
+            position: absolute; bottom: 20px; right: 25px;
+            display: flex; gap: 15px; z-index: 10;
         }
         .nav-btn {
-            background: rgba(255,255,255,0.15);
-            border: 1px solid rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
             color: white; font-size: 1.5rem; width: 45px; height: 45px;
             border-radius: 50%; cursor: pointer; transition: 0.3s;
             display: flex; align-items: center; justify-content: center;
@@ -168,17 +102,21 @@
         .nav-btn:hover { background: rgba(255,255,255,0.25); border-color: #ffb347; transform: scale(1.1); }
         .slide-counter { position: absolute; bottom: 25px; left: 30px; color: #aaa; font-size: 0.9rem; z-index: 10; }
 
-        /* Script overlay */
-        .script-btn {
+        /* Top buttons */
+        .top-buttons {
             position: absolute; top: 15px; right: 20px;
+            display: flex; gap: 10px; z-index: 12;
+        }
+        .top-btn {
             background: rgba(255,179,71,0.25); border: 1px solid #ffb347;
             color: #ffb347; font-size: 1.5rem; width: 44px; height: 44px;
-            border-radius: 12px; cursor: pointer; z-index: 12;
+            border-radius: 12px; cursor: pointer; transition: 0.3s;
             display: flex; align-items: center; justify-content: center;
-            transition: 0.3s;
         }
-        .script-btn:hover { background: rgba(255,179,71,0.5); }
+        .top-btn:hover { background: rgba(255,179,71,0.5); }
+        .top-btn.playing { background: #ffb347; color: #1a1a2e; }
 
+        /* Script overlay */
         .script-overlay {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(10,10,20,0.92); backdrop-filter: blur(6px);
@@ -208,303 +146,264 @@
         .together-line { border-left-color: #ffb347; color: #ffe0b2; font-style: italic; }
         .script-label { font-weight: bold; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 4px; }
         .script-slide-title { text-align: center; font-size: 1.5rem; color: #ffb347; margin-bottom: 1.5rem; }
-
-        @media (max-width: 700px) {
-            .evidence-grid { grid-template-columns: 1fr; }
-        }
     </style>
 </head>
 <body>
-    <div class="slideshow">
-        <div class="slides" id="slidesContainer">
-            <!-- ====== SLIDE 1: TITLE ====== -->
-            <div class="slide slide-title" data-slide="1">
-                <div class="book-cover"></div>
-                <h1>THEMES &amp;<br>GLOBAL ISSUES</h1>
-                <div class="subtitle">Charlotte's Web</div>
-                <div class="caption">Kenneth &amp; Alex – Grade 5 “D”</div>
-            </div>
-
-            <!-- ====== SLIDE 2: THEME – DEFINITION ====== -->
-            <div class="slide" data-slide="2">
-                <h2>1. Theme – Definition</h2>
-                <div style="display: flex; gap: 2rem; margin: 1rem 0;">
-                    <span class="keyword-large" style="font-size: clamp(2.5rem,4vw,3.5rem);">COMPASSION</span>
-                    <span class="keyword-large" style="font-size: clamp(2.5rem,4vw,3.5rem);">JUSTICE</span>
-                </div>
-                <p class="info-text">
-                    <strong>Compassion</strong>: deep care and the will to help, even when it costs you.<br>
-                    <strong>Justice</strong>: fairness, standing up for what is right, protecting the vulnerable.
-                </p>
-                <p class="info-text">
-                    Together they drive the whole story – Fern’s bold stand and Charlotte’s selfless friendship.
-                </p>
-            </div>
-
-            <!-- ====== SLIDE 3: THEME – QUOTES ====== -->
-            <div class="slide slide-dark" data-slide="3">
-                <h2>2. Theme – Quotes</h2>
-                <div style="display: flex; gap: 2rem; align-items: center; margin: 1rem 0;">
-                    <div style="flex:1; text-align: center;">
-                        <div class="quote-text" style="max-width: 90%;">
-                            "The pig couldn't help being born small, could it? If I had been very small at birth, would you have killed me?"
-                        </div>
-                        <div class="caption">– Fern (Justice)</div>
-                    </div>
-                    <div style="flex:1; text-align: center;">
-                        <div class="quote-text" style="max-width: 90%;">
-                            "You have been my friend. That in itself is a tremendous thing."
-                        </div>
-                        <div class="caption">– Charlotte (Compassion)</div>
-                    </div>
-                </div>
-                <p class="info-text">Two voices, one message: every life has value.</p>
-            </div>
-
-            <!-- ====== SLIDE 4: THEME – TEXTUAL EVIDENCE ====== -->
-            <div class="slide" data-slide="4">
-                <h2>3. Theme – Textual Evidence</h2>
-                <div class="evidence-grid">
-                    <div class="evidence-card">
-                        <i>⚖️</i>
-                        <h3>Fern’s protest</h3>
-                        <p>She confronts her father and saves Wilbur’s life (Chapter 1).</p>
-                    </div>
-                    <div class="evidence-card">
-                        <i>🕸️</i>
-                        <h3>Charlotte’s web</h3>
-                        <p>She writes “SOME PIG” to change how others see him (Chapter 11).</p>
-                    </div>
-                    <div class="evidence-card">
-                        <i>🥚</i>
-                        <h3>Wilbur’s turn</h3>
-                        <p>He protects Charlotte’s egg sac – paying compassion forward (Chapter 21).</p>
-                    </div>
-                </div>
-                <p class="info-text" style="margin-top:1.5rem;">Every step proves the theme: justice saves Wilbur, compassion keeps him alive, and gratitude passes it on.</p>
-            </div>
-
-            <!-- ====== SLIDE 5: GLOBAL ISSUE – DEFINITION & IMPACT ====== -->
-            <div class="slide slide-dark" data-slide="5">
-                <h2>4. Global Issue – Definition &amp; Impact</h2>
-                <span class="keyword-large" style="font-size: 2.5rem; -webkit-text-fill-color: #ffb347;">BULLYING</span>
-                <p class="info-text">
-                    <strong>Bullying</strong> is repeated, unfair treatment of someone seen as weaker or different.<br>
-                    It marginalises children – they feel alone, worthless, and afraid – just like Wilbur before Fern and Charlotte stood up for him.
-                </p>
-                <p class="info-text">
-                    Impact: lower self‑esteem, fear of going to school, and lasting emotional scars.<br>
-                    But just as in the book, <em>upstanders</em> can change everything.
-                </p>
-            </div>
-
-            <!-- ====== SLIDE 6: GLOBAL ISSUE – REAL LIFE ====== -->
-            <div class="slide" data-slide="6">
-                <h2>5. Global Issue – Real life</h2>
-                <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center; margin: 1rem 0;">
-                    <div style="text-align: center;">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/UNESCO_logo.svg/1280px-UNESCO_logo.svg.png" width="70" style="background:white; border-radius: 10px; padding: 5px;">
-                        <p style="font-size:0.8rem; color:#ccc;">UNESCO – International Day<br>against Bullying (190+ countries)</p>
-                    </div>
-                    <div style="text-align: center;">
-                        <div style="width:70px; height:70px; background:#4b9cd3; color:white; font-weight:900; font-size:2rem; display:flex; align-items:center; justify-content:center; border-radius:20px; margin:0 auto;">KiVa</div>
-                        <p style="font-size:0.8rem; color:#ccc;">Finland's defender<br>programme</p>
-                    </div>
-                    <div style="text-align: center;">
-                        <div style="width:70px; height:70px; background:#ffb347; color:#1a1a2e; font-weight:bold; font-size:1.2rem; display:flex; align-items:center; justify-content:center; border-radius:20px; margin:0 auto;">#Kindness</div>
-                        <p style="font-size:0.8rem; color:#ccc;">Words can be webs</p>
-                    </div>
-                </div>
-                <p class="info-text" style="margin-top:1rem;">
-                    Upstanders everywhere – like Fern and Charlotte – use fairness and kindness to protect the vulnerable.
-                </p>
-            </div>
-
-            <!-- ====== SLIDE 7: REFLECTIONS ====== -->
-            <div class="slide slide-dark" data-slide="7">
-                <h2>6. Reflections</h2>
-                <div class="big-question">WHO COULD YOU BE A FERN<br>OR A CHARLOTTE FOR?</div>
-                <p class="info-text" style="margin-top:1rem;">
-                    This story taught us that standing up for what’s right (justice) and showing deep care (compassion) aren’t just for books.<br>
-                    They are choices we make every day – in our classroom, on the playground, and online.
-                </p>
-                <p class="info-text">
-                    When we defend someone, we are Fern.<br>
-                    When we use kind words to lift someone up, we are Charlotte.
-                </p>
-            </div>
-
-            <!-- ====== SLIDE 8: SOURCES ====== -->
-            <div class="slide" data-slide="8">
-                <h2>Sources</h2>
-                <ul class="sources-list">
-                    <li><strong>Book:</strong> White, E. B. (1952). <em>Charlotte's Web</em>. Harper &amp; Brothers.</li>
-                    <li><strong>UNESCO:</strong> International Day against Violence and Bullying at School. <em>https://www.unesco.org/en/days/against-school-violence-and-bullying</em></li>
-                    <li><strong>KiVa programme:</strong> University of Turku, Finland. <em>https://www.kivaprogram.net</em></li>
-                    <li><strong>Anti‑bullying resources:</strong> Cartoon Network “Stop Bullying: Speak Up” campaign.</li>
-                    <li><strong>Images:</strong> Book cover from Wikimedia Commons. Illustrations are placeholder and should be replaced with original artwork.</li>
-                </ul>
-                <p class="info-text" style="margin-top:1rem; font-size:0.9rem;">
-                    All content is for educational purposes only.
-                </p>
-            </div>
-
-            <!-- ====== SLIDE 9: THANK YOU ====== -->
-            <div class="slide slide-title" data-slide="9">
-                <h1 style="font-size: clamp(3rem,6vw,6rem);">THANK YOU</h1>
-                <div class="subtitle">Compassion and Justice<br>can change the world – one web at a time.</div>
-                <div class="caption">Kenneth &amp; Alex</div>
-            </div>
+<div class="slideshow">
+    <div class="slides" id="slidesContainer">
+        <!-- ====== SLIDE 1: TITLE ====== -->
+        <div class="slide slide-title" data-slide="1">
+            <div class="book-cover"></div>
+            <h1>THEMES &amp;<br>GLOBAL ISSUES</h1>
+            <div class="subtitle">Charlotte's Web</div>
+            <div class="caption">Kenneth &amp; Alex – Grade 5 “D”</div>
         </div>
-
-        <!-- Navigation -->
-        <div class="nav-buttons">
-            <button class="nav-btn" id="prevBtn">←</button>
-            <button class="nav-btn" id="nextBtn">→</button>
+        <!-- ====== SLIDE 2: THEME – DEFINITION ====== -->
+        <div class="slide" data-slide="2">
+            <h2>1. Theme – Definition</h2>
+            <div style="display: flex; gap: 2rem; margin: 1rem 0;">
+                <span class="keyword-large" style="font-size: clamp(2.5rem,4vw,3.5rem);">COMPASSION</span>
+                <span class="keyword-large" style="font-size: clamp(2.5rem,4vw,3.5rem);">JUSTICE</span>
+            </div>
+            <p class="info-text">
+                <strong>Compassion</strong>: deep care and the will to help, even when it costs you.<br>
+                <strong>Justice</strong>: fairness, standing up for what is right, protecting the vulnerable.
+            </p>
+            <p class="info-text">Together they drive the whole story – Fern’s bold stand and Charlotte’s selfless friendship.</p>
         </div>
-        <div class="slide-counter" id="slideCounter">1 / 9</div>
-
-        <!-- Script overlay -->
-        <div class="script-overlay" id="scriptOverlay">
-            <button class="script-close" id="closeScript">×</button>
-            <div class="script-box" id="scriptContent"></div>
+        <!-- ====== SLIDE 3: THEME – QUOTES ====== -->
+        <div class="slide slide-dark" data-slide="3">
+            <h2>2. Theme – Quotes</h2>
+            <div style="display: flex; gap: 2rem; align-items: center; margin: 1rem 0;">
+                <div style="flex:1;">
+                    <div class="quote-text" style="max-width:90%;">"The pig couldn't help being born small, could it? If I had been very small at birth, would you have killed me?"</div>
+                    <div class="caption">– Fern (Justice)</div>
+                </div>
+                <div style="flex:1;">
+                    <div class="quote-text" style="max-width:90%;">"You have been my friend. That in itself is a tremendous thing."</div>
+                    <div class="caption">– Charlotte (Compassion)</div>
+                </div>
+            </div>
+            <p class="info-text">Two voices, one message: every life has value.</p>
+        </div>
+        <!-- ====== SLIDE 4: TEXTUAL EVIDENCE ====== -->
+        <div class="slide" data-slide="4">
+            <h2>3. Theme – Textual Evidence</h2>
+            <div class="evidence-grid">
+                <div class="evidence-card"><i>⚖️</i><h3>Fern’s protest</h3><p>She confronts her father and saves Wilbur’s life (Chapter 1).</p></div>
+                <div class="evidence-card"><i>🕸️</i><h3>Charlotte’s web</h3><p>She writes “SOME PIG” to change how others see him (Chapter 11).</p></div>
+                <div class="evidence-card"><i>🥚</i><h3>Wilbur’s turn</h3><p>He protects Charlotte’s egg sac – paying compassion forward (Chapter 21).</p></div>
+            </div>
+            <p class="info-text" style="margin-top:1.5rem;">Every step proves the theme: justice saves Wilbur, compassion keeps him alive, and gratitude passes it on.</p>
+        </div>
+        <!-- ====== SLIDE 5: GLOBAL ISSUE – DEFINITION & IMPACT ====== -->
+        <div class="slide slide-dark" data-slide="5">
+            <h2>4. Global Issue – Definition &amp; Impact</h2>
+            <span class="keyword-large" style="font-size:2.5rem; -webkit-text-fill-color:#ffb347;">BULLYING</span>
+            <p class="info-text"><strong>Bullying</strong> is repeated, unfair treatment of someone seen as weaker or different.<br>It marginalises children – just like Wilbur before Fern and Charlotte stood up for him.</p>
+            <p class="info-text">Impact: lower self‑esteem, fear, loneliness. But upstanders can change everything.</p>
+        </div>
+        <!-- ====== SLIDE 6: REAL LIFE ====== -->
+        <div class="slide" data-slide="6">
+            <h2>5. Global Issue – Real life</h2>
+            <div style="display:flex; gap:1.5rem; flex-wrap:wrap; justify-content:center; margin:1rem 0;">
+                <div style="text-align:center;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/UNESCO_logo.svg/1280px-UNESCO_logo.svg.png" width="70" style="background:white; border-radius:10px; padding:5px;"><p style="font-size:0.8rem;color:#ccc;">UNESCO</p></div>
+                <div style="text-align:center;"><div style="width:70px;height:70px;background:#4b9cd3;color:white;font-weight:900;font-size:2rem;display:flex;align-items:center;justify-content:center;border-radius:20px;">KiVa</div><p style="font-size:0.8rem;color:#ccc;">Defenders</p></div>
+                <div style="text-align:center;"><div style="width:70px;height:70px;background:#ffb347;color:#1a1a2e;font-weight:bold;font-size:1.2rem;display:flex;align-items:center;justify-content:center;border-radius:20px;">#Kindness</div><p style="font-size:0.8rem;color:#ccc;">Webs</p></div>
+            </div>
+            <p class="info-text">Upstanders everywhere – like Fern and Charlotte – use fairness and kindness to protect the vulnerable.</p>
+        </div>
+        <!-- ====== SLIDE 7: REFLECTIONS ====== -->
+        <div class="slide slide-dark" data-slide="7">
+            <h2>6. Reflections</h2>
+            <div class="big-question">WHO COULD YOU BE A FERN<br>OR A CHARLOTTE FOR?</div>
+            <p class="info-text">This story taught us that justice and compassion aren’t just for books – they’re choices we make every day.</p>
+            <p class="info-text">When we defend someone, we are Fern. When we use kind words to lift someone up, we are Charlotte.</p>
+        </div>
+        <!-- ====== SLIDE 8: SOURCES ====== -->
+        <div class="slide" data-slide="8">
+            <h2>Sources</h2>
+            <ul class="sources-list">
+                <li><strong>Book:</strong> White, E. B. (1952). <em>Charlotte's Web</em>.</li>
+                <li><strong>UNESCO:</strong> International Day against Violence and Bullying.</li>
+                <li><strong>KiVa:</strong> University of Turku, Finland.</li>
+                <li><strong>Anti‑bullying:</strong> Stop Bullying: Speak Up.</li>
+            </ul>
+        </div>
+        <!-- ====== SLIDE 9: THANK YOU ====== -->
+        <div class="slide slide-title" data-slide="9">
+            <h1 style="font-size: clamp(3rem,6vw,6rem);">THANK YOU</h1>
+            <div class="subtitle">Compassion and Justice<br>can change the world – one web at a time.</div>
+            <div class="caption">Kenneth &amp; Alex</div>
         </div>
     </div>
 
-    <script>
-        const slidesContainer = document.getElementById('slidesContainer');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        const counter = document.getElementById('slideCounter');
-        const overlay = document.getElementById('scriptOverlay');
-        const scriptContent = document.getElementById('scriptContent');
-        const closeScriptBtn = document.getElementById('closeScript');
+    <div class="nav-buttons">
+        <button class="nav-btn" id="prevBtn">←</button>
+        <button class="nav-btn" id="nextBtn">→</button>
+    </div>
+    <div class="slide-counter" id="slideCounter">1 / 9</div>
 
-        const totalSlides = document.querySelectorAll('.slide').length;
-        let currentIndex = 0;
+    <div class="script-overlay" id="scriptOverlay">
+        <button class="script-close" id="closeScript">×</button>
+        <div class="script-box" id="scriptContent"></div>
+    </div>
 
-        function updateSlide() {
-            slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
-            counter.textContent = `${currentIndex + 1} / ${totalSlides}`;
+    <audio id="slideAudio" preload="none"></audio>
+</div>
+
+<script>
+    const slidesContainer = document.getElementById('slidesContainer');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const counter = document.getElementById('slideCounter');
+    const audioEl = document.getElementById('slideAudio');
+    const totalSlides = 9;
+    let currentIndex = 0;
+
+    function updateSlide() {
+        slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+        counter.textContent = `${currentIndex + 1} / ${totalSlides}`;
+        document.querySelectorAll('.audio-btn').forEach(b => b.classList.remove('playing'));
+        const activeBtn = document.querySelector(`.audio-btn[data-slide="${currentIndex + 1}"]`);
+        if (activeBtn && !audioEl.paused && audioEl.getAttribute('data-current-slide') === `${currentIndex + 1}`) {
+            activeBtn.classList.add('playing');
         }
-        function nextSlide() { currentIndex = (currentIndex + 1) % totalSlides; updateSlide(); }
-        function prevSlide() { currentIndex = (currentIndex - 1 + totalSlides) % totalSlides; updateSlide(); }
+    }
 
-        nextBtn.addEventListener('click', nextSlide);
-        prevBtn.addEventListener('click', prevSlide);
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight') nextSlide();
-            if (e.key === 'ArrowLeft') prevSlide();
-            if (e.key === 'Escape') overlay.classList.remove('active');
-        });
+    function nextSlide() { currentIndex = (currentIndex + 1) % totalSlides; updateSlide(); }
+    function prevSlide() { currentIndex = (currentIndex - 1 + totalSlides) % totalSlides; updateSlide(); }
 
-        let touchStartX = 0;
-        slidesContainer.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; });
-        slidesContainer.addEventListener('touchend', (e) => {
-            let diff = touchStartX - e.changedTouches[0].screenX;
-            if (Math.abs(diff) > 50) diff > 0 ? nextSlide() : prevSlide();
-        });
+    nextBtn.addEventListener('click', nextSlide);
+    prevBtn.addEventListener('click', prevSlide);
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') nextSlide();
+        if (e.key === 'ArrowLeft') prevSlide();
+        if (e.key === 'Escape') document.getElementById('scriptOverlay').classList.remove('active');
+    });
 
-        // Scripts for each slide
-        const scripts = {
-            1: {
-                title: "Title Slide",
-                lines: [
-                    { speaker: "Kenneth", text: "Good morning, everyone. Welcome to our presentation on Themes and Global Issues in Charlotte’s Web." },
-                    { speaker: "Alex", text: "We’ll be exploring compassion and justice, and connecting them to a real‑world issue: protecting children from bullying." }
-                ]
-            },
-            2: {
-                title: "Theme – Definition",
-                lines: [
-                    { speaker: "Kenneth", text: "Compassion means deep care and the will to help, even when it costs you. Justice means fairness – standing up for what is right." },
-                    { speaker: "Alex", text: "Together they drive the whole story. Fern’s bold stand is justice. Charlotte’s selfless friendship is compassion." }
-                ]
-            },
-            3: {
-                title: "Theme – Quotes",
-                lines: [
-                    { speaker: "Alex", text: "Fern asked: 'The pig couldn’t help being born small, could it? If I had been very small at birth, would you have killed me?' That’s justice." },
-                    { speaker: "Kenneth", text: "And Charlotte said: 'You have been my friend. That in itself is a tremendous thing.' That’s compassion. Two voices, one message: every life has value." }
-                ]
-            },
-            4: {
-                title: "Theme – Textual Evidence",
-                lines: [
-                    { speaker: "Kenneth", text: "We see the theme in three key moments. First, Fern stops her father from killing the runt pig – that’s justice." },
-                    { speaker: "Alex", text: "Second, Charlotte weaves words like SOME PIG to change how others see Wilbur – that’s compassion in action." },
-                    { speaker: "Kenneth", text: "Third, Wilbur protects Charlotte’s egg sac after she dies – he passes compassion forward." }
-                ]
-            },
-            5: {
-                title: "Global Issue – Definition & Impact",
-                lines: [
-                    { speaker: "Alex", text: "Our global issue is bullying. It’s repeated, unfair treatment of someone seen as weaker or different." },
-                    { speaker: "Kenneth", text: "Just like Wilbur was marginalised for being small, many children are left out, teased, or hurt." },
-                    { speaker: "Alex", text: "The impact is serious – lower self‑esteem, fear, loneliness. But upstanders can change everything, just like Fern and Charlotte did." }
-                ]
-            },
-            6: {
-                title: "Global Issue – Real life",
-                lines: [
-                    { speaker: "Kenneth", text: "UNESCO holds an International Day against Bullying in over 190 countries. Finland’s KiVa programme teaches kids to be defenders." },
-                    { speaker: "Alex", text: "Campaigns like Choose Kindness show that kind words are like webs – they lift people up." },
-                    { speaker: "Kenneth", text: "An upstander is like Fern: someone who speaks out. An upstander is like Charlotte: someone who makes others feel seen and valued." }
-                ]
-            },
-            7: {
-                title: "Reflections",
-                lines: [
-                    { speaker: "Alex", text: "So we ask you: Who could you be a Fern or a Charlotte for?" },
-                    { speaker: "Kenneth", text: "This story taught us that justice and compassion aren’t just for books – they’re choices we make every day." },
-                    { speaker: "Alex", text: "When we defend someone, we are Fern. When we use kind words to lift someone up, we are Charlotte." }
-                ]
-            },
-            8: {
-                title: "Sources",
-                lines: [
-                    { speaker: "Kenneth", text: "Our main source is the book Charlotte’s Web by E. B. White." },
-                    { speaker: "Alex", text: "We also used information from UNESCO’s anti‑bullying campaign and the KiVa programme from Finland." },
-                    { speaker: "Kenneth", text: "All other sources are listed on the slide for you to review." }
-                ]
-            },
-            9: {
-                title: "Thank You",
-                lines: [
-                    { speaker: "Both", text: "Thank you for listening! Remember: When you choose kindness, you write a web that can save a life." }
-                ]
-            }
-        };
+    let touchStart = 0;
+    slidesContainer.addEventListener('touchstart', e => touchStart = e.changedTouches[0].screenX);
+    slidesContainer.addEventListener('touchend', e => {
+        const diff = touchStart - e.changedTouches[0].screenX;
+        if (Math.abs(diff) > 50) diff > 0 ? nextSlide() : prevSlide();
+    });
 
-        // Create script buttons
-        document.querySelectorAll('.slide').forEach(slide => {
-            const btn = document.createElement('button');
-            btn.className = 'script-btn';
-            btn.innerHTML = '📝';
-            btn.title = 'View script';
-            slide.appendChild(btn);
-            btn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const num = parseInt(slide.dataset.slide);
-                if (scripts[num]) showScript(num);
-            });
-        });
+    // Setup audio and script buttons
+    document.querySelectorAll('.slide').forEach(slide => {
+        const slideNum = parseInt(slide.dataset.slide);
+        if (isNaN(slideNum)) return;
 
-        function showScript(num) {
-            const data = scripts[num];
-            let html = `<div class="script-slide-title">${data.title} – Script</div>`;
-            data.lines.forEach(line => {
-                const cls = line.speaker === 'Kenneth' ? 'kenneth-line' : (line.speaker === 'Alex' ? 'alex-line' : 'together-line');
-                html += `<div class="script-line ${cls}"><span class="script-label">${line.speaker}</span>${line.text}</div>`;
-            });
-            scriptContent.innerHTML = html;
-            overlay.classList.add('active');
+        let topBtns = slide.querySelector('.top-buttons');
+        if (!topBtns) {
+            topBtns = document.createElement('div');
+            topBtns.className = 'top-buttons';
+            slide.appendChild(topBtns);
         }
 
-        closeScriptBtn.addEventListener('click', () => overlay.classList.remove('active'));
-        overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.classList.remove('active'); });
+        const scriptBtn = document.createElement('button');
+        scriptBtn.className = 'top-btn script-btn';
+        scriptBtn.innerHTML = '📝';
+        scriptBtn.title = 'View script';
+        scriptBtn.addEventListener('click', e => { e.stopPropagation(); showScript(slideNum); });
+        topBtns.appendChild(scriptBtn);
 
-        updateSlide();
-    </script>
+        const audioBtn = document.createElement('button');
+        audioBtn.className = 'top-btn audio-btn';
+        audioBtn.setAttribute('data-slide', slideNum);
+        audioBtn.innerHTML = '🔊';
+        audioBtn.title = 'Play script audio';
+        audioBtn.addEventListener('click', e => { e.stopPropagation(); toggleAudio(slideNum, audioBtn); });
+        topBtns.appendChild(audioBtn);
+    });
+
+    function toggleAudio(slideNum, btn) {
+        // Direct file in the same folder as HTML
+        const src = `slide${String(slideNum).padStart(2,'0')}.mp3`;
+
+        if (audioEl.getAttribute('data-current-slide') === `${slideNum}` && !audioEl.paused) {
+            audioEl.pause();
+            btn.classList.remove('playing');
+            return;
+        }
+
+        audioEl.src = src;
+        audioEl.setAttribute('data-current-slide', slideNum);
+        audioEl.play().then(() => {
+            document.querySelectorAll('.audio-btn').forEach(b => b.classList.remove('playing'));
+            btn.classList.add('playing');
+        }).catch(() => {
+            alert(`Couldn't play ${src}. Make sure it's in the same directory as this HTML.`);
+            btn.classList.remove('playing');
+        });
+
+        audioEl.onended = () => btn.classList.remove('playing');
+    }
+
+    const scripts = {
+        1: { title:"Title", lines:[
+            {speaker:"Kenneth", text:"Good morning, everyone. Welcome to our presentation on Themes and Global Issues in Charlotte’s Web."},
+            {speaker:"Alex", text:"We’ll be exploring compassion and justice, and connecting them to a real‑world issue: protecting children from bullying."}
+        ]},
+        2: { title:"Theme – Definition", lines:[
+            {speaker:"Kenneth", text:"Compassion means deep care and the will to help, even when it costs you. Justice means fairness – standing up for what is right."},
+            {speaker:"Alex", text:"Together they drive the whole story. Fern’s bold stand is justice. Charlotte’s selfless friendship is compassion."}
+        ]},
+        3: { title:"Theme – Quotes", lines:[
+            {speaker:"Alex", text:"Fern asked: The pig couldn’t help being born small, could it? If I had been very small at birth, would you have killed me? That’s justice."},
+            {speaker:"Kenneth", text:"And Charlotte said: You have been my friend. That in itself is a tremendous thing. That’s compassion. Two voices, one message: every life has value."}
+        ]},
+        4: { title:"Textual Evidence", lines:[
+            {speaker:"Kenneth", text:"We see the theme in three key moments. First, Fern stops her father from killing the runt pig – that’s justice."},
+            {speaker:"Alex", text:"Second, Charlotte weaves words like SOME PIG to change how others see Wilbur – that’s compassion in action."},
+            {speaker:"Kenneth", text:"Third, Wilbur protects Charlotte’s egg sac after she dies – he passes compassion forward."}
+        ]},
+        5: { title:"Global Issue – Definition & Impact", lines:[
+            {speaker:"Alex", text:"Our global issue is bullying. It’s repeated, unfair treatment of someone seen as weaker or different."},
+            {speaker:"Kenneth", text:"Just like Wilbur was marginalised for being small, many children are left out, teased, or hurt."},
+            {speaker:"Alex", text:"The impact is serious – lower self‑esteem, fear, loneliness. But upstanders can change everything, just like Fern and Charlotte did."}
+        ]},
+        6: { title:"Real life", lines:[
+            {speaker:"Kenneth", text:"UNESCO holds an International Day against Bullying in over 190 countries. Finland’s KiVa programme teaches kids to be defenders."},
+            {speaker:"Alex", text:"Campaigns like Choose Kindness show that kind words are like webs – they lift people up."},
+            {speaker:"Kenneth", text:"An upstander is like Fern: someone who speaks out. An upstander is like Charlotte: someone who makes others feel seen and valued."}
+        ]},
+        7: { title:"Reflections", lines:[
+            {speaker:"Alex", text:"So we ask you: Who could you be a Fern or a Charlotte for?"},
+            {speaker:"Kenneth", text:"This story taught us that justice and compassion aren’t just for books – they’re choices we make every day."},
+            {speaker:"Alex", text:"When we defend someone, we are Fern. When we use kind words to lift someone up, we are Charlotte."}
+        ]},
+        8: { title:"Sources", lines:[
+            {speaker:"Kenneth", text:"Our main source is the book Charlotte’s Web by E. B. White."},
+            {speaker:"Alex", text:"We also used information from UNESCO’s anti‑bullying campaign and the KiVa programme from Finland."},
+            {speaker:"Kenneth", text:"All other sources are listed on the slide for you to review."}
+        ]},
+        9: { title:"Thank You", lines:[
+            {speaker:"Both", text:"Thank you for listening! Remember: When you choose kindness, you write a web that can save a life."}
+        ]}
+    };
+
+    const overlay = document.getElementById('scriptOverlay');
+    const scriptContent = document.getElementById('scriptContent');
+    const closeScriptBtn = document.getElementById('closeScript');
+
+    function showScript(num) {
+        const data = scripts[num];
+        if (!data) return;
+        let html = `<div class="script-slide-title">${data.title} – Script</div>`;
+        data.lines.forEach(line => {
+            const cls = line.speaker === 'Kenneth' ? 'kenneth-line' :
+                       (line.speaker === 'Alex' ? 'alex-line' : 'together-line');
+            html += `<div class="script-line ${cls}"><span class="script-label">${line.speaker}</span>${line.text}</div>`;
+        });
+        scriptContent.innerHTML = html;
+        overlay.classList.add('active');
+    }
+
+    closeScriptBtn.addEventListener('click', () => overlay.classList.remove('active'));
+    overlay.addEventListener('click', e => { if (e.target === overlay) overlay.classList.remove('active'); });
+
+    updateSlide();
+</script>
 </body>
 </html>
