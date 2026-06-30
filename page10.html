@@ -3,25 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cambridge C1 Advanced (CAE) – Complete Exam Manual</title>
+    <title>Gold C1 Advanced – Active Teach Exam Manual | Cambridge C1</title>
     <style>
         :root {
-            --primary: #1a3c5e;
-            --secondary: #c8a951;
-            --accent: #2e7d6f;
-            --bg: #f9f7f3;
-            --card-bg: #ffffff;
-            --text: #2c2c2c;
-            --text-light: #555;
-            --border: #e0dcd0;
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
-            --highlight: #fdf6e3;
-            --danger: #b5343a;
-            --success: #3a7d44;
-            --tag-bg: #eef4f9;
-            --tag-text: #1a3c5e;
+            --pearson-blue: #003057;
+            --gold: #F2A900;
+            --light-gold: #FFF3D6;
+            --bg: #F9F9FB;
+            --card: #FFFFFF;
+            --text: #1E1E1E;
+            --text-secondary: #505050;
+            --border: #DCE1E8;
+            --shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
             --radius: 10px;
-            --transition: 0.3s ease;
+            --transition: 0.25s ease;
+            --tag-bg: #E6F0FA;
+            --tag-text: #003057;
+            --success: #2E7D32;
+            --warning: #D84315;
         }
 
         * {
@@ -31,35 +30,41 @@
         }
 
         body {
-            font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+            font-family: 'Inter', 'Segoe UI', Roboto, system-ui, sans-serif;
             background: var(--bg);
             color: var(--text);
             line-height: 1.7;
-            scroll-behavior: smooth;
         }
 
-        /* ── Navigation ────────────────────── */
+        /* ── TOP NAVIGATION ──────────────── */
         .top-nav {
             position: sticky;
             top: 0;
-            z-index: 100;
-            background: var(--primary);
+            z-index: 999;
+            background: var(--pearson-blue);
             padding: 0 2rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
-        .top-nav .logo {
+        .logo {
             font-weight: 800;
-            font-size: 1.15rem;
+            font-size: 1.2rem;
             color: #fff;
             letter-spacing: 0.5px;
-            padding: 0.9rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.85rem 0;
         }
-        .top-nav .logo span {
-            color: var(--secondary);
+        .logo .gold-circle {
+            background: var(--gold);
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
         }
         .nav-links {
             display: flex;
@@ -68,163 +73,147 @@
             flex-wrap: wrap;
         }
         .nav-links a {
-            color: #dde4ed;
+            color: #D6E4F0;
             text-decoration: none;
             padding: 0.7rem 1rem;
             border-radius: 6px;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             font-weight: 500;
             transition: var(--transition);
             white-space: nowrap;
         }
-        .nav-links a:hover {
-            background: rgba(255, 255, 255, 0.1);
-            color: #fff;
-        }
+        .nav-links a:hover,
         .nav-links a.active {
-            color: var(--secondary);
-            font-weight: 700;
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+            font-weight: 600;
         }
 
-        /* ── Container ────────────────────── */
+        /* ── CONTAINER ──────────────────── */
         .container {
             max-width: 1100px;
             margin: 0 auto;
             padding: 2rem 1.5rem 4rem;
         }
 
-        /* ── Hero ─────────────────────────── */
+        /* ── HERO ────────────────────────── */
         .hero {
-            text-align: center;
-            padding: 3rem 2rem 2rem;
-            background: linear-gradient(160deg, #ffffff 0%, #f4f1e8 100%);
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFF8E7 100%);
             border-radius: var(--radius);
+            padding: 2.8rem 2rem;
             margin-bottom: 2.5rem;
             box-shadow: var(--shadow);
             border: 1px solid var(--border);
+            text-align: center;
         }
         .hero .badge {
-            display: inline-block;
-            background: var(--secondary);
-            color: #fff;
-            font-weight: 700;
-            font-size: 0.8rem;
+            background: var(--gold);
+            color: #003057;
+            font-weight: 800;
+            font-size: 0.75rem;
             letter-spacing: 2px;
             text-transform: uppercase;
-            padding: 0.4rem 1.2rem;
+            padding: 0.4rem 1.4rem;
             border-radius: 30px;
+            display: inline-block;
             margin-bottom: 1rem;
         }
         .hero h1 {
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             font-weight: 800;
-            color: var(--primary);
-            letter-spacing: -0.5px;
-            margin-bottom: 0.6rem;
+            color: var(--pearson-blue);
+            margin-bottom: 0.5rem;
         }
         .hero .subtitle {
-            font-size: 1.15rem;
-            color: var(--text-light);
-            max-width: 650px;
-            margin: 0 auto 1.5rem;
+            font-size: 1.1rem;
+            color: #3D4F5F;
+            max-width: 700px;
+            margin: 0 auto 1.2rem;
         }
-        .hero .level-badge {
+        .hero .course-ref {
             display: inline-block;
-            background: var(--accent);
-            color: #fff;
-            font-weight: 700;
-            font-size: 1rem;
-            padding: 0.5rem 1.8rem;
-            border-radius: 30px;
-            letter-spacing: 0.5px;
+            color: var(--pearson-blue);
+            font-weight: 600;
+            background: rgba(0,48,87,0.05);
+            padding: 0.5rem 1.5rem;
+            border-radius: 6px;
+            font-size: 0.95rem;
         }
 
-        /* ── Section Headings ─────────────── */
+        /* ── SECTION TITLES ─────────────── */
         .section-title {
-            font-size: 1.9rem;
+            font-size: 1.8rem;
             font-weight: 700;
-            color: var(--primary);
-            margin: 2.8rem 0 0.4rem;
+            color: var(--pearson-blue);
+            margin: 2.5rem 0 0.3rem;
             padding-bottom: 0.5rem;
-            border-bottom: 3px solid var(--secondary);
+            border-bottom: 3px solid var(--gold);
             display: inline-block;
         }
         .section-subtitle {
-            color: var(--text-light);
-            font-size: 1rem;
+            color: var(--text-secondary);
             margin-bottom: 1.5rem;
+            font-size: 1rem;
         }
 
-        /* ── Cards ────────────────────────── */
+        /* ── CARDS ──────────────────────── */
         .card {
-            background: var(--card-bg);
+            background: var(--card);
             border-radius: var(--radius);
-            padding: 1.6rem 1.8rem;
-            margin-bottom: 1.5rem;
+            padding: 1.5rem 1.8rem;
+            margin-bottom: 1.3rem;
             box-shadow: var(--shadow);
             border: 1px solid var(--border);
             transition: var(--transition);
         }
         .card:hover {
-            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
             transform: translateY(-2px);
         }
         .card h3 {
-            font-size: 1.25rem;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+            color: var(--pearson-blue);
             display: flex;
             align-items: center;
             gap: 0.5rem;
-        }
-        .card h3 .icon {
-            font-size: 1.4rem;
-        }
-        .card p {
-            color: var(--text-light);
             margin-bottom: 0.5rem;
         }
 
-        /* ── Info Grid ────────────────────── */
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.2rem;
-            margin: 1.5rem 0;
+        .tip-box {
+            background: #EEF7EE;
+            border-left: 5px solid var(--success);
+            padding: 1rem 1.4rem;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            margin: 1.2rem 0;
+            font-size: 0.95rem;
         }
-        .info-card {
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            padding: 1.4rem;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-            text-align: center;
+        .tip-box strong {
+            color: #1B5E20;
         }
-        .info-card .big-number {
-            font-size: 2.8rem;
-            font-weight: 800;
-            color: var(--primary);
+        .warning-box {
+            background: #FFF3E0;
+            border-left: 5px solid var(--warning);
+            padding: 1rem 1.4rem;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            margin: 1.2rem 0;
+            font-size: 0.95rem;
         }
-        .info-card .label {
-            font-weight: 600;
-            color: var(--text-light);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.8rem;
+        .warning-box strong {
+            color: #BF360C;
         }
 
-        /* ── Tables ───────────────────────── */
+        /* ── TABLES ─────────────────────── */
         table {
             width: 100%;
             border-collapse: collapse;
             margin: 1rem 0;
-            font-size: 0.95rem;
+            font-size: 0.93rem;
             border-radius: var(--radius);
             overflow: hidden;
             box-shadow: var(--shadow);
         }
         thead {
-            background: var(--primary);
+            background: var(--pearson-blue);
             color: #fff;
         }
         th {
@@ -242,584 +231,524 @@
             border-bottom: none;
         }
         tbody tr:hover td {
-            background: #fdfcf8;
+            background: #FDFBF5;
         }
         .highlight-cell {
-            background: var(--highlight) !important;
+            background: #FFF9E6 !important;
             font-weight: 600;
         }
 
-        /* ── Tip Box ──────────────────────── */
-        .tip-box {
-            background: #eef7f0;
-            border-left: 5px solid var(--success);
-            padding: 1rem 1.4rem;
-            border-radius: 0 var(--radius) var(--radius) 0;
-            margin: 1.2rem 0;
-            font-size: 0.95rem;
-        }
-        .tip-box strong {
-            color: var(--success);
-        }
-        .warning-box {
-            background: #fef5f5;
-            border-left: 5px solid var(--danger);
-            padding: 1rem 1.4rem;
-            border-radius: 0 var(--radius) var(--radius) 0;
-            margin: 1.2rem 0;
-            font-size: 0.95rem;
-        }
-        .warning-box strong {
-            color: var(--danger);
-        }
-
-        /* ── Tags ─────────────────────────── */
-        .tag {
-            display: inline-block;
-            background: var(--tag-bg);
-            color: var(--tag-text);
-            font-weight: 600;
-            font-size: 0.78rem;
-            padding: 0.25rem 0.7rem;
-            border-radius: 20px;
-            margin: 0.15rem 0.2rem;
-        }
-        .tag.gold {
-            background: #fdf3d0;
-            color: #8a6d20;
-        }
-        .tag.green {
-            background: #dff0e3;
-            color: #2e5d3a;
-        }
-
-        /* ── Accordion ────────────────────── */
+        /* ── ACCORDION (Unit Guide) ─────── */
         .accordion {
             margin: 1rem 0;
         }
         .accordion-header {
-            background: #f4f1e8;
+            background: #F3F5F9;
             padding: 0.9rem 1.4rem;
             border-radius: var(--radius);
             cursor: pointer;
             font-weight: 700;
-            color: var(--primary);
+            color: var(--pearson-blue);
             display: flex;
             justify-content: space-between;
             align-items: center;
             transition: var(--transition);
             border: 1px solid var(--border);
+            font-size: 1rem;
         }
         .accordion-header:hover {
-            background: #ebe6d8;
+            background: #E6EEF5;
         }
         .accordion-content {
-            padding: 1rem 1.4rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease;
             background: #fff;
             border-radius: 0 0 var(--radius) var(--radius);
             border: 1px solid var(--border);
             border-top: none;
-            display: none;
+            padding: 0 1.4rem;
         }
         .accordion-content.open {
-            display: block;
+            max-height: 800px; /* large enough for content */
+            padding: 1.2rem 1.4rem;
         }
         .accordion-header .arrow {
             transition: var(--transition);
             font-size: 1.2rem;
         }
-        .accordion-header.open-arrow .arrow {
+        .accordion-header.active .arrow {
             transform: rotate(180deg);
+            color: var(--gold);
         }
 
-        /* ── Phrase List ──────────────────── */
-        .phrase-list {
-            columns: 2;
-            column-gap: 2rem;
-            list-style: none;
-            padding: 0;
+        .unit-badge {
+            background: var(--gold);
+            color: #003057;
+            font-weight: 800;
+            font-size: 0.75rem;
+            padding: 0.15rem 0.7rem;
+            border-radius: 20px;
+            margin-right: 0.5rem;
         }
-        @media (max-width: 600px) {
-            .phrase-list {
-                columns: 1;
+
+        .tag {
+            display: inline-block;
+            background: var(--tag-bg);
+            color: var(--tag-text);
+            font-weight: 600;
+            font-size: 0.75rem;
+            padding: 0.2rem 0.7rem;
+            border-radius: 20px;
+            margin: 0.2rem 0.3rem;
+        }
+        .tag.gold {
+            background: var(--light-gold);
+            color: #5C3D00;
+        }
+
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin: 1rem 0;
+        }
+        @media (max-width: 700px) {
+            .grid-2col {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 1.9rem;
             }
         }
-        .phrase-list li {
-            padding: 0.35rem 0;
-            border-bottom: 1px dotted #e8e4d8;
-            font-size: 0.9rem;
-            break-inside: avoid;
-        }
-        .phrase-list li::before {
-            content: "✦ ";
-            color: var(--secondary);
-            font-weight: bold;
-        }
 
-        /* ── Footer ───────────────────────── */
+        /* ── FOOTER ──────────────────────── */
         footer {
             text-align: center;
             padding: 2rem;
-            color: #888;
+            color: #606060;
             font-size: 0.85rem;
             border-top: 1px solid var(--border);
             margin-top: 3rem;
         }
         footer a {
-            color: var(--primary);
+            color: var(--pearson-blue);
             text-decoration: none;
             font-weight: 600;
         }
 
-        /* ── Responsive ───────────────────── */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-            .top-nav {
-                padding: 0 1rem;
-            }
-            .nav-links a {
-                padding: 0.5rem 0.6rem;
-                font-size: 0.78rem;
-            }
-            .container {
-                padding: 1rem;
-            }
+        /* Smooth scroll offset */
+        .anchor-offset {
+            scroll-margin-top: 90px;
         }
 
-        /* ── Print styles ─────────────────── */
+        /* Print friendly */
         @media print {
             .top-nav {
                 position: static;
             }
-            .card,
-            .info-card {
-                break-inside: avoid;
-                box-shadow: none;
-                border: 1px solid #ccc;
+            .accordion-content {
+                max-height: none !important;
+                display: block !important;
             }
             body {
                 background: #fff;
-                color: #000;
             }
-        }
-
-        /* Smooth anchor offset */
-        .anchor-offset {
-            scroll-margin-top: 80px;
         }
     </style>
 </head>
 <body>
 
-    <!-- ═══════════════ NAVIGATION ═══════════════ -->
-    <nav class="top-nav" aria-label="Main navigation">
-        <div class="logo">Cambridge <span>C1</span> Manual</div>
+    <!-- ═══════════ NAVIGATION ═══════════ -->
+    <nav class="top-nav">
+        <div class="logo"><span class="gold-circle"></span> Gold C1 Advanced – Active Teach</div>
         <ul class="nav-links">
             <li><a href="#overview" class="active">Overview</a></li>
-            <li><a href="#reading">Reading &amp; Use of English</a></li>
-            <li><a href="#writing">Writing</a></li>
-            <li><a href="#listening">Listening</a></li>
-            <li><a href="#speaking">Speaking</a></li>
+            <li><a href="#unit-guide">Unit Guide</a></li>
             <li><a href="#grammar">Grammar</a></li>
             <li><a href="#vocabulary">Vocabulary</a></li>
-            <li><a href="#tips">Exam Tips</a></li>
+            <li><a href="#exam-skills">Exam Skills</a></li>
+            <li><a href="#tips">Tips</a></li>
         </ul>
     </nav>
 
-    <!-- ═══════════════ CONTAINER ═══════════════ -->
+    <!-- ═══════════ MAIN CONTENT ═══════════ -->
     <div class="container">
 
-        <!-- ── HERO ────────────────────────────── -->
-        <header class="hero" id="overview">
-            <div class="badge">CEFR Level C1</div>
-            <h1>Cambridge C1 Advanced<br>(CAE) Exam Manual</h1>
-            <p class="subtitle">Your comprehensive guide to mastering all four papers: Reading &amp; Use of English, Writing, Listening, and Speaking. Includes essential grammar, vocabulary, and examiner tips.</p>
-            <span class="level-badge">Score: 180–210 | Grade A, B, or C</span>
+        <!-- ═══ HERO ═══ -->
+        <header class="hero anchor-offset" id="overview">
+            <div class="badge">Pearson · Gold C1 Advanced</div>
+            <h1>Active Teach Exam Manual</h1>
+            <p class="subtitle">Your complete companion to mastering Cambridge C1 Advanced using the <strong>Gold C1 Advanced</strong> course with digital Active Teach resources.</p>
+            <span class="course-ref">📘 Student’s Book · 📗 Exam Maximiser · 🖥️ Active Teach</span>
         </header>
 
-        <!-- ── EXAM OVERVIEW ───────────────────── -->
-        <section class="anchor-offset" id="overview-detail">
-            <h2 class="section-title">📋 Exam at a Glance</h2>
-            <p class="section-subtitle">The C1 Advanced exam lasts approximately <strong>4 hours</strong> and consists of four papers.</p>
-            <div class="info-grid">
-                <div class="info-card">
-                    <div class="big-number">1</div>
-                    <div class="label">Reading &amp; Use of English</div>
-                    <p>1 hour 30 min · 8 parts · 56 questions · <strong>40%</strong> of total</p>
-                </div>
-                <div class="info-card">
-                    <div class="big-number">2</div>
-                    <div class="label">Writing</div>
-                    <p>1 hour 30 min · 2 tasks · <strong>20%</strong> of total</p>
-                </div>
-                <div class="info-card">
-                    <div class="big-number">3</div>
-                    <div class="label">Listening</div>
-                    <p>~40 minutes · 4 parts · 30 questions · <strong>20%</strong> of total</p>
-                </div>
-                <div class="info-card">
-                    <div class="big-number">4</div>
-                    <div class="label">Speaking</div>
-                    <p>~15 minutes · 4 parts · paired/candidate trio · <strong>20%</strong> of total</p>
-                </div>
-            </div>
+        <!-- ═══ QUICK OVERVIEW TABLE ═══ -->
+        <section>
+            <h2 class="section-title">📋 Cambridge C1 Advanced at a glance</h2>
+            <p class="section-subtitle">The Gold C1 Advanced course systematically prepares you for all four papers.</p>
             <table>
                 <thead>
-                    <tr><th>Paper</th><th>Timing</th><th>Parts</th><th>Questions</th><th>Weight</th></tr>
+                    <tr><th>Paper</th><th>Time</th><th>Parts</th><th>Questions</th><th>Weight</th><th>Key Gold Units</th></tr>
                 </thead>
                 <tbody>
-                    <tr><td>Reading &amp; Use of English</td><td>1h 30min</td><td>8</td><td>56</td><td>40%</td></tr>
-                    <tr><td>Writing</td><td>1h 30min</td><td>2</td><td>2 tasks</td><td>20%</td></tr>
-                    <tr><td>Listening</td><td>~40min</td><td>4</td><td>30</td><td>20%</td></tr>
-                    <tr><td>Speaking</td><td>~15min</td><td>4</td><td>—</td><td>20%</td></tr>
+                    <tr><td>Reading &amp; Use of English</td><td>1h 30m</td><td>8</td><td>56</td><td>40%</td><td>1–12 (all units)</td></tr>
+                    <tr><td>Writing</td><td>1h 30m</td><td>2 tasks</td><td>2</td><td>20%</td><td>Units 1,3,5,7,9,11</td></tr>
+                    <tr><td>Listening</td><td>~40m</td><td>4</td><td>30</td><td>20%</td><td>Units 2,4,6,8,10,12</td></tr>
+                    <tr><td>Speaking</td><td>~15m</td><td>4</td><td>—</td><td>20%</td><td>Every unit</td></tr>
                 </tbody>
             </table>
-        </section>
-
-        <!-- ═══════════ READING & USE OF ENGLISH ═══════════ -->
-        <section class="anchor-offset" id="reading">
-            <h2 class="section-title">📖 Reading &amp; Use of English</h2>
-            <p class="section-subtitle">8 parts · 56 questions · Tests grammar, vocabulary, and reading comprehension at C1 level.</p>
-
-            <div class="card">
-                <h3><span class="icon">📝</span> Part 1 – Multiple-choice cloze</h3>
-                <p><strong>8 questions · 1 mark each.</strong> A text with 8 gaps; choose the correct word (A, B, C, or D) for each gap. Tests vocabulary: collocations, phrasal verbs, fixed phrases, linking words.</p>
-                <span class="tag">Vocabulary</span><span class="tag">Collocations</span><span class="tag gold">Key skill: precision</span>
-            </div>
-
-            <div class="card">
-                <h3><span class="icon">🔤</span> Part 2 – Open cloze</h3>
-                <p><strong>8 questions · 1 mark each.</strong> A text with 8 gaps; fill each with <em>one word only</em>. Tests grammar: articles, prepositions, pronouns, auxiliary verbs, linking words.</p>
-                <span class="tag">Grammar</span><span class="tag">Function words</span><span class="tag gold">Key skill: accuracy</span>
-            </div>
-
-            <div class="card">
-                <h3><span class="icon">🔁</span> Part 3 – Word formation</h3>
-                <p><strong>8 questions · 1 mark each.</strong> A text with 8 gaps; use the given base word to form a new word (prefix/suffix). Tests morphology: nouns, adjectives, adverbs, verbs, negative forms.</p>
-                <span class="tag">Morphology</span><span class="tag">Prefixes &amp; Suffixes</span><span class="tag gold">Key skill: word families</span>
-            </div>
-
-            <div class="card">
-                <h3><span class="icon">🔄</span> Part 4 – Key word transformations</h3>
-                <p><strong>6 questions · up to 2 marks each.</strong> Complete the second sentence so it has a similar meaning to the first, using the given key word (3–6 words). Tests grammar and vocabulary rephrasing.</p>
-                <span class="tag">Paraphrasing</span><span class="tag">Structures</span><span class="tag gold">Key skill: reformulation</span>
-            </div>
-
-            <div class="card">
-                <h3><span class="icon">📚</span> Part 5 – Multiple-choice (long text)</h3>
-                <p><strong>6 questions · 2 marks each.</strong> Read a long text and answer multiple-choice questions. Tests global understanding, detail, inference, tone, attitude, and text organisation.</p>
-                <span class="tag">Reading comprehension</span><span class="tag green">2 marks each</span>
-            </div>
-
-            <div class="card">
-                <h3><span class="icon">📋</span> Part 6 – Cross-text multiple matching</h3>
-                <p><strong>4 questions · 2 marks each.</strong> Read 4 short related texts; match prompts to the correct text(s). Tests comparison, synthesis of opinions, and critical reading.</p>
-                <span class="tag">Critical reading</span><span class="tag green">2 marks each</span>
-            </div>
-
-            <div class="card">
-                <h3><span class="icon">📰</span> Part 7 – Gapped text</h3>
-                <p><strong>6 questions · 2 marks each.</strong> A text with 6 removed paragraphs; insert them in the correct gaps. Tests text structure, coherence, and cohesion.</p>
-                <span class="tag">Coherence</span><span class="tag">Discourse</span><span class="tag green">2 marks each</span>
-            </div>
-
-            <div class="card">
-                <h3><span class="icon">🔗</span> Part 8 – Multiple matching</h3>
-                <p><strong>10 questions · 1 mark each.</strong> Read one or several texts; match each question to the correct section. Tests scanning for specific information and detail.</p>
-                <span class="tag">Scanning</span><span class="tag">Detail</span>
-            </div>
-
             <div class="tip-box">
-                <strong>💡 Top Tip:</strong> For Part 4 (key word transformations), never change the key word. Use <strong>exactly</strong> 3–6 words including the key word. Contractions count as two words (e.g., <em>don't</em> = 2 words). Practise with <em>reported speech, passive voice, conditionals, and wish/if only</em> structures.
+                <strong>📌 Active Teach advantage:</strong> The digital platform includes interactive whiteboard tools, audio & video scripts, answer keys, and extra practice. Use the <em>Gold Exam Maximiser</em> for additional exam‑style tasks.
             </div>
         </section>
 
-        <!-- ═══════════ WRITING ═══════════ -->
-        <section class="anchor-offset" id="writing">
-            <h2 class="section-title">✍️ Writing</h2>
-            <p class="section-subtitle">2 tasks · 220–260 words each · Equal marks (20 each)</p>
+        <!-- ═══ UNIT‑BY‑UNIT GUIDE ═══ -->
+        <section class="anchor-offset" id="unit-guide">
+            <h2 class="section-title">📚 Unit‑by‑Unit Content Map</h2>
+            <p class="section-subtitle">Gold C1 Advanced contains 12 thematic units. Expand each to see grammar, vocabulary, and exam focus.</p>
 
-            <div class="card">
-                <h3><span class="icon">📝</span> Part 1 – Compulsory Essay</h3>
-                <p>Write an <strong>essay</strong> discussing two of three given bullet points, stating which is more important and giving reasons. <strong>220–260 words.</strong> Must be discursive and well-structured.</p>
-                <span class="tag">Discursive essay</span><span class="tag">Formal register</span>
+            <!-- Unit 1 -->
+            <div class="accordion">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span><span class="unit-badge">U1</span> Getting to know you – Identity & relationships</span>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p><strong>Theme:</strong> Personality, first impressions, social networks</p>
+                    <p>📘 <strong>Grammar:</strong> Review of present tenses (simple/continuous), stative verbs, dynamic vs. state</p>
+                    <p>📗 <strong>Vocabulary:</strong> Adjective + preposition, phrases for introducing opinions, collocations with <em>make/do</em></p>
+                    <p>🎯 <strong>Exam spotlight:</strong> Reading Part 5 (multiple choice) & Writing Part 1 (essay – giving an opinion)</p>
+                    <span class="tag">Essay structure</span><span class="tag">Character adjectives</span>
+                </div>
             </div>
 
-            <div class="card">
-                <h3><span class="icon">📬</span> Part 2 – Choice of Task</h3>
-                <p>Choose <strong>one</strong> from three options (situationally based):</p>
-                <ul style="margin:0.5rem 0 0 1.5rem; color:var(--text-light);">
-                    <li><strong>Letter/Email</strong> – formal or informal</li>
-                    <li><strong>Proposal</strong> – persuasive, formal, with headings</li>
-                    <li><strong>Report</strong> – factual, formal, with headings/sections</li>
-                    <li><strong>Review</strong> – descriptive &amp; evaluative, semi-formal</li>
-                </ul>
-                <p style="margin-top:0.5rem;"><strong>220–260 words.</strong> The question includes context, purpose, and target reader.</p>
+            <!-- Unit 2 -->
+            <div class="accordion">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span><span class="unit-badge">U2</span> The world around us – Environment & nature</span>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p><strong>Theme:</strong> Climate change, conservation, eco‑tourism</p>
+                    <p>📘 <strong>Grammar:</strong> Articles (a/an/the/zero), determiners, quantifiers</p>
+                    <p>📗 <strong>Vocabulary:</strong> Environment collocations, phrasal verbs with <em>out/up</em>, word formation (prefixes <em>over‑, under‑</em>)</p>
+                    <p>🎯 <strong>Exam spotlight:</strong> Listening Part 2 (sentence completion) & Use of English Part 3 (word formation)</p>
+                    <span class="tag">Listening for detail</span><span class="tag">Word building</span>
+                </div>
             </div>
 
-            <div class="tip-box">
-                <strong>💡 Writing Checklist:</strong> Plan for 5–10 minutes. Use <strong>clear paragraphs</strong>. Include an introduction and conclusion. Use a range of <strong>C1 linking devices</strong> (e.g., <em>furthermore, nevertheless, in stark contrast, consequently</em>). Check for errors in the final 5 minutes.
+            <!-- Unit 3 -->
+            <div class="accordion">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span><span class="unit-badge">U3</span> Travel & adventure – Journeys & experiences</span>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p><strong>Theme:</strong> Travel stories, gap years, extreme tourism</p>
+                    <p>📘 <strong>Grammar:</strong> Narrative tenses (past simple, continuous, perfect), used to/would</p>
+                    <p>📗 <strong>Vocabulary:</strong> Travel idioms, adjectives ending in <em>-ing/-ed</em>, verbs of movement</p>
+                    <p>🎯 <strong>Exam spotlight:</strong> Writing Part 2 (review) & Reading Part 7 (gapped text)</p>
+                    <span class="tag">Cohesion</span><span class="tag">Descriptive language</span>
+                </div>
             </div>
 
-            <h3 style="margin-top:1.5rem; color:var(--primary);">📐 Assessment Criteria</h3>
-            <table>
-                <thead>
-                    <tr><th>Criterion</th><th>What it means</th><th>Weight</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td><strong>Content</strong></td><td>Fully answers the question; all points covered</td><td>5</td></tr>
-                    <tr><td><strong>Communicative Achievement</strong></td><td>Appropriate register, tone, and conventions for the genre</td><td>5</td></tr>
-                    <tr><td><strong>Organisation</strong></td><td>Clear paragraphing, logical flow, cohesive devices</td><td>5</td></tr>
-                    <tr><td><strong>Language</strong></td><td>Range of grammar &amp; vocabulary; accuracy; natural expression</td><td>5</td></tr>
-                </tbody>
-            </table>
+            <!-- Unit 4 -->
+            <div class="accordion">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span><span class="unit-badge">U4</span> Health & fitness – Body & mind</span>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p><strong>Theme:</strong> Well‑being, mental health, sports science</p>
+                    <p>📘 <strong>Grammar:</strong> Modals of obligation, necessity & advice (present & past)</p>
+                    <p>📗 <strong>Vocabulary:</strong> Health collocations, phrasal verbs (health), negative prefixes (<em>un‑, in‑, dis‑</em>)</p>
+                    <p>🎯 <strong>Exam spotlight:</strong> Listening Part 3 (multiple choice) & Use of English Part 2 (open cloze)</p>
+                    <span class="tag">Modals</span><span class="tag">Attitude listening</span>
+                </div>
+            </div>
+
+            <!-- Unit 5 -->
+            <div class="accordion">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span><span class="unit-badge">U5</span> The arts – Culture & creativity</span>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p><strong>Theme:</strong> Art forms, museums, censorship, music</p>
+                    <p>📘 <strong>Grammar:</strong> Passive forms (all tenses), impersonal passive, causative <em>have/get</em></p>
+                    <p>📗 <strong>Vocabulary:</strong> Art & culture lexis, suffixes (<em>-tion, -ity, -al</em>), words often confused</p>
+                    <p>🎯 <strong>Exam spotlight:</strong> Writing Part 1 (essay – discursive) & Reading Part 6 (cross‑text multiple matching)</p>
+                    <span class="tag">Passives</span><span class="tag">Critical reading</span>
+                </div>
+            </div>
+
+            <!-- Unit 6 -->
+            <div class="accordion">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span><span class="unit-badge">U6</span> Media & entertainment – News & celebrity</span>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p><strong>Theme:</strong> Journalism, social media, film reviews</p>
+                    <p>📘 <strong>Grammar:</strong> Reported speech (statements, questions, commands), reporting verbs patterns</p>
+                    <p>📗 <strong>Vocabulary:</strong> Media verbs, film & TV words, collocations with <em>take/have</em></p>
+                    <p>🎯 <strong>Exam spotlight:</strong> Listening Part 1 (short extracts) & Use of English Part 4 (key word transformations)</p>
+                    <span class="tag">Paraphrasing</span><span class="tag">Reporting</span>
+                </div>
+            </div>
+
+            <!-- Unit 7 -->
+            <div class="accordion">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span><span class="unit-badge">U7</span> Technology & innovation – The digital age</span>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p><strong>Theme:</strong> AI, gadgets, internet privacy, future tech</p>
+                    <p>📘 <strong>Grammar:</strong> Future forms (will, going to, present continuous, future perfect, future continuous)</p>
+                    <p>📗 <strong>Vocabulary:</strong> Technology compounds, dependent prepositions, phrasal verbs (tech)</p>
+                    <p>🎯 <strong>Exam spotlight:</strong> Writing Part 2 (proposal) & Reading Part 8 (multiple matching)</p>
+                    <span class="tag">Proposal structure</span><span class="tag">Scanning</span>
+                </div>
+            </div>
+
+            <!-- Unit 8 -->
+            <div class="accordion">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span><span class="unit-badge">U8</span> Education & learning – Academic life</span>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p><strong>Theme:</strong> Learning styles, university, lifelong learning</p>
+                    <p>📘 <strong>Grammar:</strong> Conditionals (zero, 1st, 2nd, 3rd, mixed), inversions with conditionals</p>
+                    <p>📗 <strong>Vocabulary:</strong> Academic verbs, noun suffixes (<em>-ment, -ness, -ship</em>), collocations with <em>study/learn</em></p>
+                    <p>🎯 <strong>Exam spotlight:</strong> Listening Part 4 (multiple matching) & Use of English Part 1 (multiple‑choice cloze)</p>
+                    <span class="tag">Conditionals</span><span class="tag">Collocations</span>
+                </div>
+            </div>
+
+            <!-- Unit 9 -->
+            <div class="accordion">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span><span class="unit-badge">U9</span> The world of work – Careers & business</span>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p><strong>Theme:</strong> Employment, management, entrepreneurship</p>
+                    <p>📘 <strong>Grammar:</strong> Gerunds & infinitives (changes in meaning), verb + -ing/to patterns</p>
+                    <p>📗 <strong>Vocabulary:</strong> Business collocations, formal register, word families (<em>employ, employer, employment</em>)</p>
+                    <p>🎯 <strong>Exam spotlight:</strong> Writing Part 2 (report) & Reading Part 5 (multiple choice)</p>
+                    <span class="tag">Report writing</span><span class="tag">Gerund/infinitive</span>
+                </div>
+            </div>
+
+            <!-- Unit 10 -->
+            <div class="accordion">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span><span class="unit-badge">U10</span> Crime & punishment – Law & justice</span>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p><strong>Theme:</strong> Types of crime, legal systems, rehabilitation</p>
+                    <p>📘 <strong>Grammar:</strong> Emphasis (cleft sentences, inversion after negative adverbials), <em>what</em> clauses</p>
+                    <p>📗 <strong>Vocabulary:</strong> Crime lexis, legal collocations, prefixes <em>mis‑, re‑, under‑</em></p>
+                    <p>🎯 <strong>Exam spotlight:</strong> Listening Part 2 (sentence completion) & Use of English Part 4 (key word transformations)</p>
+                    <span class="tag">Inversion</span><span class="tag">Emphasis</span>
+                </div>
+            </div>
+
+            <!-- Unit 11 -->
+            <div class="accordion">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span><span class="unit-badge">U11</span> The environment – Sustainability & change</span>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p><strong>Theme:</strong> Renewable energy, urban planning, global warming</p>
+                    <p>📘 <strong>Grammar:</strong> Linking words and cohesion (contrast, cause, effect, addition), complex connectors</p>
+                    <p>📗 <strong>Vocabulary:</strong> Environment idioms, formal linking phrases, word formation (<em>-able, -ible</em>)</p>
+                    <p>🎯 <strong>Exam spotlight:</strong> Writing Part 1 (essay) & Reading Part 6 (cross‑text multiple matching)</p>
+                    <span class="tag">Cohesion</span><span class="tag">Discourse markers</span>
+                </div>
+            </div>
+
+            <!-- Unit 12 -->
+            <div class="accordion">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span><span class="unit-badge">U12</span> Society & change – Global issues</span>
+                    <span class="arrow">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <p><strong>Theme:</strong> Population, migration, social trends, future of work</p>
+                    <p>📘 <strong>Grammar:</strong> Review of all C1 structures; advanced word formation & collocations</p>
+                    <p>📗 <strong>Vocabulary:</strong> Abstract nouns, global issues vocabulary, revision of prefixes/suffixes</p>
+                    <p>🎯 <strong>Exam spotlight:</strong> Speaking Parts 3 & 4 (collaborative task & discussion); final review of all Use of English parts</p>
+                    <span class="tag gold">Exam consolidation</span>
+                </div>
+            </div>
         </section>
 
-        <!-- ═══════════ LISTENING ═══════════ -->
-        <section class="anchor-offset" id="listening">
-            <h2 class="section-title">🎧 Listening</h2>
-            <p class="section-subtitle">4 parts · 30 questions · ~40 minutes · Each recording played <strong>twice</strong></p>
-
-            <div class="card">
-                <h3><span class="icon">1️⃣</span> Part 1 – Multiple choice (short extracts)</h3>
-                <p><strong>6 questions · 1 mark each.</strong> Three short unrelated extracts; two questions per extract. Tests gist, detail, attitude, opinion, and context.</p>
-            </div>
-            <div class="card">
-                <h3><span class="icon">2️⃣</span> Part 2 – Sentence completion</h3>
-                <p><strong>8 questions · 1 mark each.</strong> A monologue (lecture/talk); complete sentences with a word or short phrase. Tests listening for specific information.</p>
-            </div>
-            <div class="card">
-                <h3><span class="icon">3️⃣</span> Part 3 – Multiple choice (long)</h3>
-                <p><strong>6 questions · 1 mark each.</strong> A conversation with 2+ speakers; answer multiple-choice questions. Tests understanding of interaction, attitude, and opinion.</p>
-            </div>
-            <div class="card">
-                <h3><span class="icon">4️⃣</span> Part 4 – Multiple matching</h3>
-                <p><strong>10 questions · 1 mark each.</strong> Five short themed monologues; match each speaker to the correct option. Tests gist, main idea, and parallel meaning.</p>
-            </div>
-            <div class="warning-box">
-                <strong>⚠️ Watch out:</strong> Distractors are common! Speakers may mention words from <em>all</em> options. Listen for the <strong>overall meaning</strong>, not isolated words. Spelling must be correct in Part 2 (minor misspellings accepted if recognisable).
-            </div>
-        </section>
-
-        <!-- ═══════════ SPEAKING ═══════════ -->
-        <section class="anchor-offset" id="speaking">
-            <h2 class="section-title">🗣️ Speaking</h2>
-            <p class="section-subtitle">4 parts · ~15 minutes · Usually with a partner (or group of three)</p>
-
-            <div class="card">
-                <h3><span class="icon">👋</span> Part 1 – Interview (2 min)</h3>
-                <p>Examiner asks each candidate questions about themselves: hobbies, work/study, travel, future plans. <strong>Give extended answers</strong> (not just yes/no).</p>
-                <span class="tag">Personal topics</span>
-            </div>
-            <div class="card">
-                <h3><span class="icon">🖼️</span> Part 2 – Long turn (4 min)</h3>
-                <p>Each candidate gets <strong>3 pictures</strong> and a prompt. Speak for <strong>1 minute</strong> comparing two of them and answering the question. The partner answers a short follow-up question (~30 sec).</p>
-                <span class="tag">Comparing</span><span class="tag">Speculating</span>
-            </div>
-            <div class="card">
-                <h3><span class="icon">💬</span> Part 3 – Collaborative task (4 min)</h3>
-                <p>Work with your partner. Discuss a mind-map or prompts for <strong>2 minutes</strong>, then try to reach a decision in <strong>1 minute</strong>. Tests turn-taking, negotiating, and interactive communication.</p>
-                <span class="tag">Interaction</span><span class="tag">Negotiation</span>
-            </div>
-            <div class="card">
-                <h3><span class="icon">🎤</span> Part 4 – Discussion (5 min)</h3>
-                <p>Examiner leads a broader discussion related to the Part 3 topic. Express and justify opinions, agree/disagree, and develop ideas.</p>
-                <span class="tag">Opinion</span><span class="tag">Justification</span>
-            </div>
-            <div class="tip-box">
-                <strong>💡 Speaking Criteria:</strong> You are assessed on <strong>Grammatical Resource</strong>, <strong>Lexical Resource</strong>, <strong>Discourse Management</strong>, <strong>Pronunciation</strong>, and <strong>Interactive Communication</strong>. Use a range of C1 structures: inversions, cleft sentences, mixed conditionals, hedging language.
-            </div>
-        </section>
-
-        <!-- ═══════════ GRAMMAR ═══════════ -->
+        <!-- ═══ GRAMMAR REFERENCE ═══ -->
         <section class="anchor-offset" id="grammar">
-            <h2 class="section-title">🔧 Essential C1 Grammar</h2>
-            <p class="section-subtitle">These structures frequently appear in Use of English Parts 2 &amp; 4, and are expected in Writing &amp; Speaking.</p>
-
-            <div class="accordion">
-                <div class="accordion-header" onclick="toggleAccordion(this)">
-                    🔄 Conditionals &amp; Mixed Conditionals <span class="arrow">▼</span>
-                </div>
-                <div class="accordion-content">
-                    <ul style="margin-left:1.5rem; color:var(--text-light);">
-                        <li><strong>Zero:</strong> If + present, present (general truths)</li>
-                        <li><strong>1st:</strong> If + present, will + infinitive (real future)</li>
-                        <li><strong>2nd:</strong> If + past, would + infinitive (unreal present)</li>
-                        <li><strong>3rd:</strong> If + past perfect, would have + past participle (unreal past)</li>
-                        <li><strong>Mixed:</strong> If + past perfect, would + infinitive (past condition → present result)</li>
-                        <li><strong>Inverted:</strong> <em>Had I known, … / Were she to ask, … / Should you need, …</em></li>
+            <h2 class="section-title">🔧 Grammar Focus Across Units</h2>
+            <p class="section-subtitle">Gold C1 Advanced systematically builds the grammatical range needed for C1.</p>
+            <div class="grid-2col">
+                <div class="card">
+                    <h3>📌 Tenses & verb forms</h3>
+                    <ul style="padding-left:1.5rem; color:var(--text-secondary);">
+                        <li>Present tenses review (U1)</li>
+                        <li>Narrative tenses (U3)</li>
+                        <li>Future forms (U7)</li>
+                        <li>Gerunds & infinitives (U9)</li>
                     </ul>
                 </div>
-            </div>
-
-            <div class="accordion">
-                <div class="accordion-header" onclick="toggleAccordion(this)">
-                    📌 Inversions &amp; Cleft Sentences <span class="arrow">▼</span>
-                </div>
-                <div class="accordion-content">
-                    <ul style="margin-left:1.5rem; color:var(--text-light);">
-                        <li><strong>Negative adverbs:</strong> <em>Never have I seen, Rarely does one find, Not only … but also, No sooner … than, Hardly … when</em></li>
-                        <li><strong>Cleft:</strong> <em>It is/was … that/who …</em> (e.g., <em>It was John who broke the vase.</em>)</li>
-                        <li><strong>What-clauses:</strong> <em>What I need is a holiday. / What happened was that we got lost.</em></li>
+                <div class="card">
+                    <h3>🧩 Modality & passives</h3>
+                    <ul style="padding-left:1.5rem; color:var(--text-secondary);">
+                        <li>Modals of obligation/advice (U4)</li>
+                        <li>Passive & causative (U5)</li>
+                        <li>Reporting verbs (U6)</li>
                     </ul>
                 </div>
-            </div>
-
-            <div class="accordion">
-                <div class="accordion-header" onclick="toggleAccordion(this)">
-                    📝 Passive &amp; Causative Forms <span class="arrow">▼</span>
-                </div>
-                <div class="accordion-content">
-                    <ul style="margin-left:1.5rem; color:var(--text-light);">
-                        <li><strong>All passive forms:</strong> <em>is said to be, was believed to have been, will be being built</em></li>
-                        <li><strong>Causative:</strong> <em>have/get something done</em> (e.g., <em>I had my car repaired.</em>)</li>
-                        <li><strong>Reporting verbs:</strong> <em>It is thought that… / She is alleged to have…</em></li>
+                <div class="card">
+                    <h3>🔄 Conditionals & inversion</h3>
+                    <ul style="padding-left:1.5rem; color:var(--text-secondary);">
+                        <li>All conditionals (U8)</li>
+                        <li>Inversions & emphasis (U10)</li>
+                        <li>Cleft sentences (U10)</li>
                     </ul>
                 </div>
-            </div>
-
-            <div class="accordion">
-                <div class="accordion-header" onclick="toggleAccordion(this)">
-                    🧩 Modal Verbs (advanced) <span class="arrow">▼</span>
-                </div>
-                <div class="accordion-content">
-                    <ul style="margin-left:1.5rem; color:var(--text-light);">
-                        <li><strong>Deduction:</strong> <em>must have, can't have, might have, could have</em></li>
-                        <li><strong>Obligation/necessity:</strong> <em>needn't have vs. didn't need to</em></li>
-                        <li><strong>Alternatives:</strong> <em>be bound to, be likely to, be supposed to, be to (formal)</em></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="accordion">
-                <div class="accordion-header" onclick="toggleAccordion(this)">
-                    🔗 Linking Words &amp; Cohesive Devices <span class="arrow">▼</span>
-                </div>
-                <div class="accordion-content">
-                    <ul style="margin-left:1.5rem; color:var(--text-light);">
-                        <li><strong>Addition:</strong> furthermore, moreover, in addition, not to mention</li>
-                        <li><strong>Contrast:</strong> whereas, while, nevertheless, albeit, despite the fact that</li>
-                        <li><strong>Cause/effect:</strong> consequently, as a result, owing to, on account of</li>
-                        <li><strong>Emphasis:</strong> indeed, in fact, undoubtedly, needless to say</li>
+                <div class="card">
+                    <h3>🔗 Cohesion & linking</h3>
+                    <ul style="padding-left:1.5rem; color:var(--text-secondary);">
+                        <li>Articles & determiners (U2)</li>
+                        <li>Linking words & cohesion (U11)</li>
+                        <li>Prepositional phrases (U2, U7)</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <!-- ═══════════ VOCABULARY ═══════════ -->
+        <!-- ═══ VOCABULARY REFERENCE ═══ -->
         <section class="anchor-offset" id="vocabulary">
-            <h2 class="section-title">📚 Key Vocabulary Areas</h2>
-            <p class="section-subtitle">C1 expects a wide lexical range. Focus on these high-frequency C1 topics.</p>
-
-            <div class="info-grid">
-                <div class="info-card">
-                    <strong style="color:var(--primary);">🌍 Topic Areas</strong>
-                    <p style="margin-top:0.5rem; font-size:0.9rem;">Environment &amp; sustainability · Technology &amp; AI · Health &amp; well-being · Education &amp; lifelong learning · Work &amp; careers · Travel &amp; tourism · Media &amp; news · Culture &amp; arts · Crime &amp; law · Globalisation</p>
+            <h2 class="section-title">📖 Vocabulary Development</h2>
+            <p class="section-subtitle">The Gold course emphasises word formation, collocations, and topic lexis.</p>
+            <div class="grid-2col">
+                <div class="card">
+                    <h3>🧠 Word formation</h3>
+                    <p>Prefixes (U2, U4, U10, U12) · Suffixes (U5, U8, U11) · Common word families (U9, U12)</p>
+                    <span class="tag">Use of English Part 3</span>
                 </div>
-                <div class="info-card">
-                    <strong style="color:var(--primary);">🔤 Word Formation</strong>
-                    <p style="margin-top:0.5rem; font-size:0.9rem;">Prefixes: <em>un-, in-, mis-, dis-, over-, under-, re-, co-, inter-</em><br>Suffixes: <em>-tion, -sion, -ment, -ness, -ity, -ance, -ence, -al, -ous, -ive, -ful, -less</em></p>
+                <div class="card">
+                    <h3>💬 Collocations & fixed phrases</h3>
+                    <p>Verb + noun (U1, U6) · Adjective + preposition (U1, U7) · Idioms (U3, U11)</p>
+                    <span class="tag">Use of English Part 1</span>
+                </div>
+                <div class="card">
+                    <h3>🔤 Topic vocabulary</h3>
+                    <p>Environment (U2, U11) · Health (U4) · Arts (U5) · Technology (U7) · Work (U9) · Crime (U10)</p>
+                    <span class="tag gold">All papers</span>
+                </div>
+                <div class="card">
+                    <h3>📈 Phrasal verbs</h3>
+                    <p>In context: <em>carry out, break down, come across</em> – units 2,4,7</p>
+                    <span class="tag">Listening & Speaking</span>
                 </div>
             </div>
-
-            <h3 style="color:var(--primary); margin-top:1.5rem;">🗨️ Useful C1 Phrases for Speaking &amp; Writing</h3>
-            <ul class="phrase-list">
-                <li>It goes without saying that…</li>
-                <li>By and large, …</li>
-                <li>On the whole, …</li>
-                <li>Having said that, …</li>
-                <li>In stark contrast to…</li>
-                <li>There is no denying that…</li>
-                <li>It is widely believed that…</li>
-                <li>From my standpoint, …</li>
-                <li>A case in point is…</li>
-                <li>Needless to say, …</li>
-                <li>To put it bluntly, …</li>
-                <li>In all likelihood, …</li>
-                <li>That is not to say that…</li>
-                <li>All things considered, …</li>
-                <li>At the end of the day, …</li>
-                <li>Be that as it may, …</li>
-                <li>For the most part, …</li>
-                <li>In the grand scheme of things, …</li>
-                <li>To a certain extent, …</li>
-                <li>With this in mind, …</li>
-                <li>It is worth bearing in mind that…</li>
-                <li>This raises the question of whether…</li>
-            </ul>
         </section>
 
-        <!-- ═══════════ EXAM TIPS ═══════════ -->
+        <!-- ═══ EXAM SKILLS (Active Teach emphasis) ═══ -->
+        <section class="anchor-offset" id="exam-skills">
+            <h2 class="section-title">🎯 Exam Skills with Gold C1 Active Teach</h2>
+            <p class="section-subtitle">How each paper is developed through the course.</p>
+
+            <div class="card">
+                <h3>📖 Reading & Use of English</h3>
+                <p>Every unit covers at least one part. The <strong>Active Teach</strong> platform provides interactive gap‑fill exercises, timed practice, and instant feedback. Units build from cloze tasks to full texts. Key skills: skimming, scanning, inference, understanding reference.</p>
+                <span class="tag">Parts 1‑8</span><span class="tag gold">Interactive whiteboard</span>
+            </div>
+            <div class="card">
+                <h3>✍️ Writing</h3>
+                <p>Dedicated writing sections in Units 1,3,5,7,9,11 cover essay, review, proposal, report, and formal/informal email/letter. Model answers, language banks, and peer‑editing checklists are available digitally.</p>
+                <span class="tag">Genre‑based</span><span class="tag gold">Model answers</span>
+            </div>
+            <div class="card">
+                <h3>🎧 Listening</h3>
+                <p>Listening tasks mirror exam parts. Audio scripts and videos (Active Teach) help with decoding natural speech. Units 2,4,6,8,10,12 feature dedicated listening input.</p>
+                <span class="tag">Parts 1‑4</span><span class="tag gold">Audio + video</span>
+            </div>
+            <div class="card">
+                <h3>🗣️ Speaking</h3>
+                <p>Speaking sections appear in every unit, often integrated with vocabulary input. The Active Teach includes video recordings of mock speaking tests, pronunciation models, and interactive discussion prompts.</p>
+                <span class="tag">All parts</span><span class="tag gold">Mock test videos</span>
+            </div>
+
+            <div class="tip-box">
+                <strong>💡 How to use Active Teach effectively:</strong> Review the digital grammar reference before each unit. Use the interactive whiteboard to complete gap‑fills as a class. Watch speaking test videos to analyse examiner expectations. Complete the Exam Maximiser on the same topic for extra practice.
+            </div>
+        </section>
+
+        <!-- ═══ EXAM DAY TIPS ═══ -->
         <section class="anchor-offset" id="tips">
-            <h2 class="section-title">💯 Top Exam-Day Tips</h2>
-            <p class="section-subtitle">Practical advice to maximise your score across all papers.</p>
-
+            <h2 class="section-title">✨ Exam‑Day Gold Advice</h2>
             <div class="card">
-                <h3><span class="icon">⏱️</span> Time Management</h3>
-                <p>Reading &amp; Use of English: Spend ~10 min on Part 1–4 (quick wins), then ~50 min on Parts 5–8. Writing: 10 min planning, 35 min writing, 5 min checking <strong>per task</strong>. Listening: Use the pause to read ahead. Speaking: Keep talking – silence loses marks.</p>
+                <h3>⏱️ Time management</h3>
+                <p>Use the Gold practice tests to get used to timing. For Reading & Use of English, spend 15 minutes on Parts 1‑4 and 45 minutes on the long texts. Leave 5 minutes to transfer answers.</p>
             </div>
-
             <div class="card">
-                <h3><span class="icon">✅</span> Answer Sheet Discipline</h3>
-                <p>Transfer answers carefully. For multiple-choice, fill the lozenge completely. For open cloze (Part 2), write <strong>one word only</strong> in CAPITAL LETTERS. For sentence completion (Listening Part 2), check spelling.</p>
+                <h3>📝 Answer sheet rules</h3>
+                <p>Write in CAPITAL LETTERS for open‑cloze answers. For Listening Part 2, check that your word/phrase fits grammatically. In Writing, stick to the word limit (220‑260 words).</p>
             </div>
-
-            <div class="card">
-                <h3><span class="icon">🧠</span> Mental Preparation</h3>
-                <p>Get a full night's sleep. Bring your ID and confirmation. Arrive early. During the exam, if you get stuck, <strong>move on and return later</strong>. Never leave a blank – guess if you must. In Speaking, be a good partner: listen and respond naturally.</p>
-            </div>
-
             <div class="warning-box">
-                <strong>⚠️ Common Pitfalls:</strong> (1) Writing over 260 words – you'll lose marks for lack of concision or run out of time. (2) Using informal language in essays/reports/proposals. (3) Not reading the instructions fully – e.g., choosing <em>one</em> bullet point instead of two in the essay. (4) Forgetting that Listening Part 2 answers must fit grammatically into the printed sentence.
+                <strong>⚠️ Avoid these common mistakes:</strong> Ignoring the key word in transformations (Part 4), not reading the two essay bullet points carefully, using informal language in proposals/reports, and spelling errors in Listening Part 2. Practise with the Gold Exam Maximiser to iron these out.
             </div>
         </section>
 
-        <!-- ── QUICK REFERENCE TABLE ────────── -->
-        <section style="margin-top:2rem;">
-            <h2 class="section-title">📊 Quick Mark Conversion</h2>
+        <!-- ═══ SCORE CONVERSION ═══ -->
+        <section style="margin-top: 2rem;">
+            <h2 class="section-title">📊 Score & Grade Reference</h2>
             <table>
                 <thead>
-                    <tr><th>Cambridge English Scale Score</th><th>Grade</th><th>CEFR Level</th><th>Approx. %</th></tr>
+                    <tr><th>Cambridge Scale Score</th><th>Grade</th><th>CEFR Level</th></tr>
                 </thead>
                 <tbody>
-                    <tr class="highlight-cell"><td>200–210</td><td>Grade A</td><td>C2</td><td>80%+</td></tr>
-                    <tr><td>193–199</td><td>Grade B</td><td>C1</td><td>73–79%</td></tr>
-                    <tr><td>180–192</td><td>Grade C</td><td>C1</td><td>60–72%</td></tr>
-                    <tr><td>160–179</td><td>B2 (fail)</td><td>B2</td><td>45–59%</td></tr>
+                    <tr class="highlight-cell"><td>200 – 210</td><td>Grade A</td><td>C2</td></tr>
+                    <tr><td>193 – 199</td><td>Grade B</td><td>C1</td></tr>
+                    <tr><td>180 – 192</td><td>Grade C</td><td>C1</td></tr>
+                    <tr><td>160 – 179</td><td>B2 (fail)</td><td>B2</td></tr>
                 </tbody>
             </table>
-            <p style="font-size:0.85rem; color:var(--text-light); margin-top:0.5rem;">* Approximate percentages; official scoring uses item Response Theory (IRT).</p>
         </section>
+    </div>
 
-    </div><!-- /container -->
-
-    <!-- ═══════════════ FOOTER ═══════════════ -->
+    <!-- ═══════════ FOOTER ═══════════ -->
     <footer>
-        <p>📘 <strong>Cambridge C1 Advanced (CAE) Complete Manual</strong> — Created for self-study &amp; classroom use.</p>
-        <p>For official materials, visit <a href="https://www.cambridgeenglish.org/exams-and-tests/advanced/" target="_blank" rel="noopener">Cambridge English</a>. Good luck! 🍀</p>
+        <p>📘 <strong>Gold C1 Advanced · Active Teach Exam Manual</strong> – Unofficial study companion based on Pearson’s Gold C1 Advanced course.</p>
+        <p>For official materials visit <a href="https://www.pearson.com/english" target="_blank" rel="noopener">Pearson English</a> and <a href="https://www.cambridgeenglish.org/exams-and-tests/advanced/" target="_blank" rel="noopener">Cambridge English</a>.</p>
+        <p style="margin-top:0.5rem;">✨ Good luck with your C1 Advanced preparation!</p>
     </footer>
 
-    <!-- ═══════════════ SCRIPT ═══════════════ -->
+    <!-- ═══════════ SCRIPTS ═══════════ -->
     <script>
         // Accordion toggle
         function toggleAccordion(header) {
             const content = header.nextElementSibling;
             const isOpen = content.classList.contains('open');
-            // Close all accordions first (optional – comment out for independent toggles)
+            // Optional: close all others (uncomment if you want single-expand)
             // document.querySelectorAll('.accordion-content').forEach(c => c.classList.remove('open'));
-            // document.querySelectorAll('.accordion-header').forEach(h => h.classList.remove('open-arrow'));
+            // document.querySelectorAll('.accordion-header').forEach(h => h.classList.remove('active'));
+
             if (!isOpen) {
                 content.classList.add('open');
-                header.classList.add('open-arrow');
+                header.classList.add('active');
             } else {
                 content.classList.remove('open');
-                header.classList.remove('open-arrow');
+                header.classList.remove('active');
             }
         }
 
-        // Smooth scroll for nav links + active highlight
+        // Smooth scroll & active nav
         const navLinks = document.querySelectorAll('.nav-links a');
         navLinks.forEach(link => {
             link.addEventListener('click', function(e) {
@@ -829,13 +758,12 @@
                 if (target) {
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
-                // Update active class
                 navLinks.forEach(l => l.classList.remove('active'));
                 this.classList.add('active');
             });
         });
 
-        // Update active nav on scroll
+        // Scroll spy
         window.addEventListener('scroll', () => {
             let current = '';
             const sections = document.querySelectorAll('section[id], header[id]');
@@ -851,7 +779,6 @@
                     link.classList.add('active');
                 }
             });
-            // Default to overview if at top
             if (window.scrollY < 200) {
                 navLinks.forEach(l => l.classList.remove('active'));
                 document.querySelector('.nav-links a[href="#overview"]')?.classList.add('active');
