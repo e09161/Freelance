@@ -318,15 +318,12 @@
     });
 
     function toggleAudio(slideNum, btn) {
-        // Direct file in the same folder as HTML
         const src = `slide${String(slideNum).padStart(2,'0')}.mp3`;
-
         if (audioEl.getAttribute('data-current-slide') === `${slideNum}` && !audioEl.paused) {
             audioEl.pause();
             btn.classList.remove('playing');
             return;
         }
-
         audioEl.src = src;
         audioEl.setAttribute('data-current-slide', slideNum);
         audioEl.play().then(() => {
@@ -336,50 +333,55 @@
             alert(`Couldn't play ${src}. Make sure it's in the same directory as this HTML.`);
             btn.classList.remove('playing');
         });
-
         audioEl.onended = () => btn.classList.remove('playing');
     }
 
+    // ============= EXPANDED SCRIPTS (7 minutes) =============
     const scripts = {
         1: { title:"Title", lines:[
             {speaker:"Kenneth", text:"Good morning, everyone. Welcome to our presentation on Themes and Global Issues in Charlotte’s Web."},
-            {speaker:"Alex", text:"We’ll be exploring compassion and justice, and connecting them to a real‑world issue: protecting children from bullying."}
+            {speaker:"Alex", text:"We’ll be exploring compassion and justice, and connecting them to a real‑world issue: protecting children from bullying. Together we’ll see how a spider and a pig can teach us to stand up for what is right — in the barn and in our world."}
         ]},
         2: { title:"Theme – Definition", lines:[
             {speaker:"Kenneth", text:"Compassion means deep care and the will to help, even when it costs you. Justice means fairness – standing up for what is right."},
-            {speaker:"Alex", text:"Together they drive the whole story. Fern’s bold stand is justice. Charlotte’s selfless friendship is compassion."}
+            {speaker:"Alex", text:"Together they drive the whole story. Fern’s bold stand is justice. Charlotte’s selfless friendship is compassion. In fact, every major moment turns on these themes — from the farmhouse door to the fairground."}
         ]},
         3: { title:"Theme – Quotes", lines:[
             {speaker:"Alex", text:"Fern asked: The pig couldn’t help being born small, could it? If I had been very small at birth, would you have killed me? That’s justice."},
-            {speaker:"Kenneth", text:"And Charlotte said: You have been my friend. That in itself is a tremendous thing. That’s compassion. Two voices, one message: every life has value."}
+            {speaker:"Kenneth", text:"And Charlotte said: You have been my friend. That in itself is a tremendous thing. That’s compassion. Two voices, one message: every life has value. What makes these quotes so powerful? Fern forces us to ask who deserves to live. Charlotte reminds us that friendship doesn’t need a reason — it’s itself the greatest gift."}
         ]},
         4: { title:"Textual Evidence", lines:[
             {speaker:"Kenneth", text:"We see the theme in three key moments. First, Fern stops her father from killing the runt pig – that’s justice."},
             {speaker:"Alex", text:"Second, Charlotte weaves words like SOME PIG to change how others see Wilbur – that’s compassion in action."},
-            {speaker:"Kenneth", text:"Third, Wilbur protects Charlotte’s egg sac after she dies – he passes compassion forward."}
+            {speaker:"Kenneth", text:"Third, Wilbur protects Charlotte’s egg sac after she dies – he passes compassion forward."},
+            {speaker:"Alex", text:"And that’s the pattern: justice starts the rescue, compassion sustains it, and gratitude pays it forward. The book shows that standing up for others is a chain reaction."}
         ]},
         5: { title:"Global Issue – Definition & Impact", lines:[
             {speaker:"Alex", text:"Our global issue is bullying. It’s repeated, unfair treatment of someone seen as weaker or different."},
             {speaker:"Kenneth", text:"Just like Wilbur was marginalised for being small, many children are left out, teased, or hurt."},
-            {speaker:"Alex", text:"The impact is serious – lower self‑esteem, fear, loneliness. But upstanders can change everything, just like Fern and Charlotte did."}
+            {speaker:"Alex", text:"The impact is serious – lower self‑esteem, fear, loneliness. But upstanders can change everything, just like Fern and Charlotte did."},
+            {speaker:"Alex", text:"According to UNESCO, one in three students worldwide experiences bullying. That’s millions of children who feel like Wilbur — alone and without a voice."}
         ]},
         6: { title:"Real life", lines:[
             {speaker:"Kenneth", text:"UNESCO holds an International Day against Bullying in over 190 countries. Finland’s KiVa programme teaches kids to be defenders."},
             {speaker:"Alex", text:"Campaigns like Choose Kindness show that kind words are like webs – they lift people up."},
-            {speaker:"Kenneth", text:"An upstander is like Fern: someone who speaks out. An upstander is like Charlotte: someone who makes others feel seen and valued."}
+            {speaker:"Kenneth", text:"An upstander is like Fern: someone who speaks out. An upstander is like Charlotte: someone who makes others feel seen and valued."},
+            {speaker:"Alex", text:"And the best part? You don’t need a spiderweb to be an upstander. A simple ‘Are you okay?’ or saving someone a seat can be your ‘Some Pig’ moment."}
         ]},
         7: { title:"Reflections", lines:[
             {speaker:"Alex", text:"So we ask you: Who could you be a Fern or a Charlotte for?"},
             {speaker:"Kenneth", text:"This story taught us that justice and compassion aren’t just for books – they’re choices we make every day."},
-            {speaker:"Alex", text:"When we defend someone, we are Fern. When we use kind words to lift someone up, we are Charlotte."}
+            {speaker:"Alex", text:"When we defend someone, we are Fern. When we use kind words to lift someone up, we are Charlotte."},
+            {speaker:"Kenneth", text:"And Charlotte showed us that even the smallest creature can do a tremendous thing. Size or age doesn’t matter — what matters is choosing kindness."}
         ]},
         8: { title:"Sources", lines:[
             {speaker:"Kenneth", text:"Our main source is the book Charlotte’s Web by E. B. White."},
             {speaker:"Alex", text:"We also used information from UNESCO’s anti‑bullying campaign and the KiVa programme from Finland."},
-            {speaker:"Kenneth", text:"All other sources are listed on the slide for you to review."}
+            {speaker:"Kenneth", text:"These sources reminded us that stories like Charlotte’s Web aren’t just entertainment — they’re guides for how to treat each other in real life."}
         ]},
         9: { title:"Thank You", lines:[
-            {speaker:"Both", text:"Thank you for listening! Remember: When you choose kindness, you write a web that can save a life."}
+            {speaker:"Alex", text:"Thank you for listening! Remember: When you choose kindness, you write a web that can save a life."},
+            {speaker:"Kenneth", text:"Now it’s your turn. Go write your own web — with kindness, with courage, with compassion."}
         ]}
     };
 
