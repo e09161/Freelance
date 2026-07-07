@@ -72,6 +72,15 @@
       border: 1px solid #dee2e6; border-radius: 8px; font-size: 16px; line-height: 1.7; text-align: justify;
     }
 
+    /* Role label styling */
+    .role-label {
+      font-weight: 700; color: #0078d4; margin-right: 4px;
+    }
+    /* In dark mode make labels lighter */
+    @media (prefers-color-scheme: dark) {
+      .role-label { color: #66aaff; }
+    }
+
     @media (max-width: 768px) {
       body { padding: 12px; }
       h2 { font-size: 1.3rem; }
@@ -138,51 +147,52 @@
   </div>
 
   <script>
-    // The whole interview text, with each piece (Elena's & Sandy's paragraphs) separated by double newlines.
+    // The whole interview text, with role labels for clear speaker identification.
+    // Each paragraph begins with a <span class="role-label">...</span> that will not be hidden.
     const originalText = `
-Good morning, Sandy. Thank you for coming in today. I’m Elena Vargas, Export Operations Manager. I've reviewed your CV and I'm interested to hear more about you. To start, why did you choose a career in international business, and what attracts you to the agro‑export sector in Peru?
+<span class="role-label">Elena Vargas:</span> Good morning, Sandy. Thank you for coming in today. I’m Elena Vargas, Export Operations Manager. I've reviewed your CV and I'm interested to hear more about you. To start, why did you choose a career in international business, and what attracts you to the agro‑export sector in Peru?
 
-Good morning, Ms. Vargas. Thank you for having me. I chose international business because I've always been fascinated by how products from my country reach tables all over the world. Growing up in Peru, I saw how much effort goes into our asparagus, avocados, and blueberries, and I wanted to be part of the process that takes them to demanding markets like the US, Europe, and Asia. The agro‑export sector is particularly exciting because it’s dynamic, it drives so much of Peru’s growth, and it constantly faces new challenges: certification standards, cold chain logistics, seasonality. I completed my degree at Universidad del Pacífico, and during my internship at a logistics agency I handled documentation for fresh fruit shipments. That’s where I confirmed I want to build my career in exports.
+<span class="role-label">Sandy:</span> Good morning, Ms. Vargas. Thank you for having me. I chose international business because I've always been fascinated by how products from my country reach tables all over the world. Growing up in Peru, I saw how much effort goes into our asparagus, avocados, and blueberries, and I wanted to be part of the process that takes them to demanding markets like the US, Europe, and Asia. The agro‑export sector is particularly exciting because it’s dynamic, it drives so much of Peru’s growth, and it constantly faces new challenges: certification standards, cold chain logistics, seasonality. I completed my degree at Universidad del Pacífico, and during my internship at a logistics agency I handled documentation for fresh fruit shipments. That’s where I confirmed I want to build my career in exports.
 
-You mentioned documentation. At AndinaFresh, precise documentation is critical — a single error in a phytosanitary certificate can block a container at port. Could you walk me through your understanding of the key documents needed to export fresh grapes from Peru to the United States?
+<span class="role-label">Elena Vargas:</span> You mentioned documentation. At AndinaFresh, precise documentation is critical — a single error in a phytosanitary certificate can block a container at port. Could you walk me through your understanding of the key documents needed to export fresh grapes from Peru to the United States?
 
-Of course. The essential documents start with the commercial invoice, packing list, and the bill of lading or airway bill. For fresh grapes specifically, because they're a plant product, we need a phytosanitary certificate issued by SENASA to confirm the shipment is free from pests and complies with USDA-APHIS requirements. A certificate of origin is required if we want to benefit from the US-Peru Trade Promotion Agreement, which makes these grapes duty‑free. Depending on the buyer, there might be a fumigation certificate, a certificate of conformity like GlobalG.A.P., and for the US, the FDA Prior Notice submission before arrival. I also understand that grapes need cold treatment protocols in transit, and that documentation must be consistent with the treatment schedule to avoid rejection at the port.
+<span class="role-label">Sandy:</span> Of course. The essential documents start with the commercial invoice, packing list, and the bill of lading or airway bill. For fresh grapes specifically, because they're a plant product, we need a phytosanitary certificate issued by SENASA to confirm the shipment is free from pests and complies with USDA-APHIS requirements. A certificate of origin is required if we want to benefit from the US-Peru Trade Promotion Agreement, which makes these grapes duty‑free. Depending on the buyer, there might be a fumigation certificate, a certificate of conformity like GlobalG.A.P., and for the US, the FDA Prior Notice submission before arrival. I also understand that grapes need cold treatment protocols in transit, and that documentation must be consistent with the treatment schedule to avoid rejection at the port.
 
-I'm impressed with that answer. Many graduates forget the Fumigation Certificate or the FDA Prior Notice. Now, let’s move to a real-world problem: imagine we have a shipment of mangoes that arrives in Rotterdam and the buyer complains that the fruit arrived overripe, exceeding the agreed firmness limits. You need to investigate what went wrong. Where would you start?
+<span class="role-label">Elena Vargas:</span> I'm impressed with that answer. Many graduates forget the Fumigation Certificate or the FDA Prior Notice. Now, let’s move to a real-world problem: imagine we have a shipment of mangoes that arrives in Rotterdam and the buyer complains that the fruit arrived overripe, exceeding the agreed firmness limits. You need to investigate what went wrong. Where would you start?
 
-I’d start by checking the cold chain records along the whole route. First, I’d look at the pre‑cooling process and the temperature log at the packing plant here in Peru to ensure the fruit left at the correct pulp temperature, typically around 8‑9°C for mangoes. Then I’d review the container’s temperature data logger records during the sea transit — any deviation, even a few hours of high temperature, can trigger ripening. I’d also verify whether the container was set to the required ventilation and humidity levels, because high CO₂ can accelerate ripening too. Next, I’d cross‑check the harvest date with the shipping schedule: if the fruit was harvested too mature, it ripened faster. I’d talk to the quality team about firmness and Brix levels at packing time. Lastly, I’d review the documentation to see if the shipment was subject to a pre‑loading inspection by a third party like SGS. With that information, I’d put together a non‑conformity report and discuss with the customer if a claim is justified or if it was a handling issue after discharge.
+<span class="role-label">Sandy:</span> I’d start by checking the cold chain records along the whole route. First, I’d look at the pre‑cooling process and the temperature log at the packing plant here in Peru to ensure the fruit left at the correct pulp temperature, typically around 8‑9°C for mangoes. Then I’d review the container’s temperature data logger records during the sea transit — any deviation, even a few hours of high temperature, can trigger ripening. I’d also verify whether the container was set to the required ventilation and humidity levels, because high CO₂ can accelerate ripening too. Next, I’d cross‑check the harvest date with the shipping schedule: if the fruit was harvested too mature, it ripened faster. I’d talk to the quality team about firmness and Brix levels at packing time. Lastly, I’d review the documentation to see if the shipment was subject to a pre‑loading inspection by a third party like SGS. With that information, I’d put together a non‑conformity report and discuss with the customer if a claim is justified or if it was a handling issue after discharge.
 
-Very systematic. That’s exactly what I’d expect. Now, part of your role would involve communicating with international buyers. Let’s say a European client emails you, frustrated because a container of avocados was delayed by two days due to a documentation hold at Callao port. They are threatening to deduct from the invoice. How would you respond?
+<span class="role-label">Elena Vargas:</span> Very systematic. That’s exactly what I’d expect. Now, part of your role would involve communicating with international buyers. Let’s say a European client emails you, frustrated because a container of avocados was delayed by two days due to a documentation hold at Callao port. They are threatening to deduct from the invoice. How would you respond?
 
-I would reply promptly and empathetically, acknowledging the delay and their frustration without being defensive. My first message would thank them for informing us, confirm that we are investigating what caused the documentation hold, and provide a realistic timeline for a resolution. For example, I’d say, “I understand your concerns regarding the delay of container MSCU1234567 and the impact on your inbound planning. We are currently reviewing the documentation with our customs broker and SENASA to identify why the phytosanitary certificate was held. I will send you a detailed report by tomorrow 12 pm Peru time. In the meantime, we stand by the quality of our fruit and will work with you to minimize any commercial disruption.” Then I’d coordinate internally to gather facts. If it was our error, I’d propose a goodwill discount or a shipment upgrade on the next order. If it was a force majeure issue with port authorities, I’d still look for a compromise, because keeping a long‑term relationship is more important than debating over one deduction.
+<span class="role-label">Sandy:</span> I would reply promptly and empathetically, acknowledging the delay and their frustration without being defensive. My first message would thank them for informing us, confirm that we are investigating what caused the documentation hold, and provide a realistic timeline for a resolution. For example, I’d say, “I understand your concerns regarding the delay of container MSCU1234567 and the impact on your inbound planning. We are currently reviewing the documentation with our customs broker and SENASA to identify why the phytosanitary certificate was held. I will send you a detailed report by tomorrow 12 pm Peru time. In the meantime, we stand by the quality of our fruit and will work with you to minimize any commercial disruption.” Then I’d coordinate internally to gather facts. If it was our error, I’d propose a goodwill discount or a shipment upgrade on the next order. If it was a force majeure issue with port authorities, I’d still look for a compromise, because keeping a long‑term relationship is more important than debating over one deduction.
 
-That shows maturity. Switching to regulation: the European Union is becoming stricter on due diligence for deforestation-free products. Have you followed these changes, and how might they affect our exports?
+<span class="role-label">Elena Vargas:</span> That shows maturity. Switching to regulation: the European Union is becoming stricter on due diligence for deforestation-free products. Have you followed these changes, and how might they affect our exports?
 
-Yes, I’ve read about the EU Deforestation Regulation (EUDR) that applies to products like coffee, cocoa, and palm oil, and although avocados and mangoes aren’t currently listed, there are discussions about expanding the scope. Even without direct regulation, European retailers are increasingly requiring proof of sustainable land use, like Rainforest Alliance or SMETA certifications. For us, it means we have to be proactive: we need to geolocate our production plots, ensure we have legal land titles, and provide traceability back to the farm. I think AndinaFresh could turn this into a commercial advantage by offering a “zero deforestation” verified supply chain to European buyers before it becomes a mandatory requirement. That would strengthen our brand and potentially open doors with premium clients.
+<span class="role-label">Sandy:</span> Yes, I’ve read about the EU Deforestation Regulation (EUDR) that applies to products like coffee, cocoa, and palm oil, and although avocados and mangoes aren’t currently listed, there are discussions about expanding the scope. Even without direct regulation, European retailers are increasingly requiring proof of sustainable land use, like Rainforest Alliance or SMETA certifications. For us, it means we have to be proactive: we need to geolocate our production plots, ensure we have legal land titles, and provide traceability back to the farm. I think AndinaFresh could turn this into a commercial advantage by offering a “zero deforestation” verified supply chain to European buyers before it becomes a mandatory requirement. That would strengthen our brand and potentially open doors with premium clients.
 
-Great perspective. Now, a more analytical question: suppose we need to ship 24 metric tons of blueberries by air to Shanghai, and you are comparing two routes: direct Lima–Shanghai with a transit time of 20 hours vs. Lima–Los Angeles–Shanghai with 30 hours. The direct route freight cost is $3.60/kg and the indirect is $2.80/kg. How would you decide which route to recommend? Consider that blueberries have a shelf life of 45–60 days under optimal conditions.
+<span class="role-label">Elena Vargas:</span> Great perspective. Now, a more analytical question: suppose we need to ship 24 metric tons of blueberries by air to Shanghai, and you are comparing two routes: direct Lima–Shanghai with a transit time of 20 hours vs. Lima–Los Angeles–Shanghai with 30 hours. The direct route freight cost is $3.60/kg and the indirect is $2.80/kg. How would you decide which route to recommend? Consider that blueberries have a shelf life of 45–60 days under optimal conditions.
 
-At first glance, the indirect route saves $0.80 per kilogram, which on 24,000 kilograms would be a saving of $19,200 — significant. But I need to consider more than just the freight rate. First, quality risk: although 45–60 days shelf life gives us a cushion, blueberries are sensitive to temperature changes and handling during transshipment. An extra 10 hours of transit, plus potential delays in Los Angeles (for customs inspection or connecting flights), could increase the risk of dehydration or condensation. If even 2% of the fruit arrived in unsellable condition, that’s 480 kg lost. At a CIF value of, say, $12/kg, that’s $5,760 loss, which already eats into a large part of the savings. I’d also compare the reliability of the two options — some trade lanes have more frequent bumping of perishable cargo. I’d check historical on‑time performance. If the direct route has a 98% reliability and the indirect 85%, the risk of a full shipment being delayed and missing a promotional window at the destination could be catastrophic. My recommendation would probably be the direct route unless the buyer accepts the risk and we have a proven performance record on the transshipment option. I’d present the cost‑benefit analysis to the commercial team and let the final decision consider the customer relationship.
+<span class="role-label">Sandy:</span> At first glance, the indirect route saves $0.80 per kilogram, which on 24,000 kilograms would be a saving of $19,200 — significant. But I need to consider more than just the freight rate. First, quality risk: although 45–60 days shelf life gives us a cushion, blueberries are sensitive to temperature changes and handling during transshipment. An extra 10 hours of transit, plus potential delays in Los Angeles (for customs inspection or connecting flights), could increase the risk of dehydration or condensation. If even 2% of the fruit arrived in unsellable condition, that’s 480 kg lost. At a CIF value of, say, $12/kg, that’s $5,760 loss, which already eats into a large part of the savings. I’d also compare the reliability of the two options — some trade lanes have more frequent bumping of perishable cargo. I’d check historical on‑time performance. If the direct route has a 98% reliability and the indirect 85%, the risk of a full shipment being delayed and missing a promotional window at the destination could be catastrophic. My recommendation would probably be the direct route unless the buyer accepts the risk and we have a proven performance record on the transshipment option. I’d present the cost‑benefit analysis to the commercial team and let the final decision consider the customer relationship.
 
-Nicely reasoned. At AndinaFresh, we often work with suppliers in different regions — Piura, Ica, Trujillo. How would you go about building good relationships with producers and packing houses, keeping in mind that many are family‑run businesses with deep experience but informal processes?
+<span class="role-label">Elena Vargas:</span> Nicely reasoned. At AndinaFresh, we often work with suppliers in different regions — Piura, Ica, Trujillo. How would you go about building good relationships with producers and packing houses, keeping in mind that many are family‑run businesses with deep experience but informal processes?
 
-I believe the key is respect and listening first. Many of these producers know their land and crop far better than I ever will. I’d start by visiting them on their farms, not in an office, and spending time understanding their challenges — water scarcity, fertilizer costs, labor availability. My approach would be to show that I’m there to facilitate their connection to international markets, not just to audit them. When I need to introduce a new certification requirement or a packing protocol, I’d explain the "why" clearly, with examples of how it opens a $0.50 premium per kilo with a certain buyer. I’d also offer support, maybe connecting them with agronomists or helping them digitize simple records. I’ve learned that trust comes from small consistent actions: returning calls, celebrating a good harvest together, and being honest when a shipment didn’t perform well. That’s how you build long-term partnerships.
+<span class="role-label">Sandy:</span> I believe the key is respect and listening first. Many of these producers know their land and crop far better than I ever will. I’d start by visiting them on their farms, not in an office, and spending time understanding their challenges — water scarcity, fertilizer costs, labor availability. My approach would be to show that I’m there to facilitate their connection to international markets, not just to audit them. When I need to introduce a new certification requirement or a packing protocol, I’d explain the "why" clearly, with examples of how it opens a $0.50 premium per kilo with a certain buyer. I’d also offer support, maybe connecting them with agronomists or helping them digitize simple records. I’ve learned that trust comes from small consistent actions: returning calls, celebrating a good harvest together, and being honest when a shipment didn’t perform well. That’s how you build long-term partnerships.
 
-You sound genuinely interested in the growers. A couple of quick practical questions. Are you familiar with Incoterms 2020, and which ones do we commonly use in agro-export?
+<span class="role-label">Elena Vargas:</span> You sound genuinely interested in the growers. A couple of quick practical questions. Are you familiar with Incoterms 2020, and which ones do we commonly use in agro-export?
 
-Yes, very familiar. In our sector, we frequently use FOB, CIF, and sometimes DAP. FOB is common when the foreign buyer controls freight from Callao. CIF is used when we arrange the freight and insurance and offer a delivered price, which some retailers in Europe prefer to compare with other origins. For programs where we want to give a landed cost guarantee, we might use DAP to a distribution center in the Netherlands. I understand the split of costs and risks at loading, discharge, and handover, and I know that properly selecting the Incoterm affects our margins and the customer’s payment responsibility.
+<span class="role-label">Sandy:</span> Yes, very familiar. In our sector, we frequently use FOB, CIF, and sometimes DAP. FOB is common when the foreign buyer controls freight from Callao. CIF is used when we arrange the freight and insurance and offer a delivered price, which some retailers in Europe prefer to compare with other origins. For programs where we want to give a landed cost guarantee, we might use DAP to a distribution center in the Netherlands. I understand the split of costs and risks at loading, discharge, and handover, and I know that properly selecting the Incoterm affects our margins and the customer’s payment responsibility.
 
-Last question: where do you see yourself in three years, and how does AndinaFresh fit into that plan?
+<span class="role-label">Elena Vargas:</span> Last question: where do you see yourself in three years, and how does AndinaFresh fit into that plan?
 
-In three years, I see myself as a well‑rounded export operations specialist, capable of managing a product line independently — blueberries, for example — from procurement to delivery, coordinating with production, logistics, and commercial teams. I want to deeply understand not only documentation and logistics but also the hedging of foreign currency and freight rates. AndinaFresh, with its diverse product basket and presence in multiple markets, is the ideal environment for me to learn all these facets. I hope to grow here and eventually take on commercial responsibilities, maybe opening new markets in Asia. I’m committed to investing my energy to make that happen.
+<span class="role-label">Sandy:</span> In three years, I see myself as a well‑rounded export operations specialist, capable of managing a product line independently — blueberries, for example — from procurement to delivery, coordinating with production, logistics, and commercial teams. I want to deeply understand not only documentation and logistics but also the hedging of foreign currency and freight rates. AndinaFresh, with its diverse product basket and presence in multiple markets, is the ideal environment for me to learn all these facets. I hope to grow here and eventually take on commercial responsibilities, maybe opening new markets in Asia. I’m committed to investing my energy to make that happen.
 
-Thank you, Sandy. Any questions you’d like to ask me?
+<span class="role-label">Elena Vargas:</span> Thank you, Sandy. Any questions you’d like to ask me?
 
-Yes, I’d love to know how AndinaFresh fosters collaboration between the export operations team and the field agronomy team. What does that interface look like on a typical week? And also, what are the most important traits you’ve observed in successful junior analysts here?
+<span class="role-label">Sandy:</span> Yes, I’d love to know how AndinaFresh fosters collaboration between the export operations team and the field agronomy team. What does that interface look like on a typical week? And also, what are the most important traits you’ve observed in successful junior analysts here?
 
-Excellent questions. We have weekly cross‑functional meetings where operations, quality, and commercial sit together with the agronomy leads from each crop. For example, every Monday we review shipment forecasts and any field alerts like pest outbreaks or delayed harvests. That ensures operations can adjust shipping plans proactively. The most successful juniors are those who show curiosity beyond their immediate task — they ask to go to a packing plant visit, they learn to read a shipping line schedule, they anticipate documentation gaps before they become emergencies. You’ve shown that curiosity today. We’ll be in touch soon, Sandy.
+<span class="role-label">Elena Vargas:</span> Excellent questions. We have weekly cross‑functional meetings where operations, quality, and commercial sit together with the agronomy leads from each crop. For example, every Monday we review shipment forecasts and any field alerts like pest outbreaks or delayed harvests. That ensures operations can adjust shipping plans proactively. The most successful juniors are those who show curiosity beyond their immediate task — they ask to go to a packing plant visit, they learn to read a shipping line schedule, they anticipate documentation gaps before they become emergencies. You’ve shown that curiosity today. We’ll be in touch soon, Sandy.
 
-Thank you very much, Ms. Vargas. I really enjoyed this conversation and I’m even more excited about the possibility of joining AndinaFresh. Have a great day.`;
+<span class="role-label">Sandy:</span> Thank you very much, Ms. Vargas. I really enjoyed this conversation and I’m even more excited about the possibility of joining AndinaFresh. Have a great day.`;
 
     let isTouchDevice = false;
     
@@ -199,27 +209,37 @@ Thank you very much, Ms. Vargas. I really enjoyed this conversation and I’m ev
       showFullTextBtn.textContent = '📄 Show Whole Text';
 
       isTouchDevice = detectTouchDevice();
+      // Split by double newline to keep paragraphs
       const paragraphs = originalText.trim().split('\n\n');
       let result = '';
       
       paragraphs.forEach(paragraph => {
-        const words = paragraph.split(' ');
-        const numGaps = Math.floor(words.length * 0.35); // slightly fewer gaps for long text
+        // We'll split into words, preserving HTML tags (the role label span)
+        // Use a simple regex to split on whitespace but keep the label intact
+        const tokens = paragraph.match(/(<span[^>]*>.*?<\/span>|\S+)/g) || [];
+        const numGaps = Math.max(1, Math.floor(tokens.length * 0.25)); // fewer gaps because text is long
         const gapIndices = new Set();
         while (gapIndices.size < numGaps) {
-          const i = Math.floor(Math.random() * words.length);
-          const clean = words[i].replace(/[.,!?;:]/g, '');
-          if (!words[i].includes('<span') && clean.length > 2) gapIndices.add(i);
+          const idx = Math.floor(Math.random() * tokens.length);
+          // Do not turn role label into a gap (it contains '<span')
+          const token = tokens[idx];
+          if (!token.startsWith('<span') && token.replace(/[.,!?;:]/g, '').length > 2) {
+            gapIndices.add(idx);
+          }
         }
-        const processedParagraph = words.map((word, i) => {
-          const clean = word.replace(/[.,!?;:]/g, '');
-          const punctuation = word.match(/[.,!?;:]+$/);
+        
+        const processedTokens = tokens.map((token, i) => {
+          if (token.startsWith('<span')) {
+            return token; // role label, pass as is
+          }
           if (gapIndices.has(i)) {
+            const clean = token.replace(/[.,!?;:]/g, '');
+            const punctuation = token.match(/[.,!?;:]+$/);
             return `<span class="gap" data-word="${clean}">__________</span>${punctuation ? punctuation[0] : ''}`;
           }
-          return word;
-        }).join(' ');
-        result += `<p>${processedParagraph}</p>`;
+          return token;
+        });
+        result += `<p>${processedTokens.join(' ')}</p>`;
       });
       
       container.innerHTML = result;
@@ -253,8 +273,9 @@ Thank you very much, Ms. Vargas. I really enjoyed this conversation and I’m ev
         showFullTextBtn.textContent = '📄 Show Whole Text';
         generateGaps();
       } else {
+        // Display full text with paragraphs preserved
         const paragraphs = originalText.trim().split('\n\n');
-        fullTextDiv.innerHTML = paragraphs.map(p => `<p>${p.replace(/\n/g, ' ')}</p>`).join('');
+        fullTextDiv.innerHTML = paragraphs.map(p => `<p>${p}</p>`).join('');
         fullTextDiv.style.display = 'block';
         container.style.display = 'none';
         showFullTextBtn.textContent = '🔄 Back to Gaps';
