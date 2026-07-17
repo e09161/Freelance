@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Banking Vocabulary – Hover to Reveal</title>
+    <title>Adrián Interview – Hover to Reveal</title>
     <style>
         * { box-sizing: border-box; }
         body {
@@ -72,6 +72,10 @@
             border: 1px solid #dee2e6; border-radius: 8px; font-size: 16px; line-height: 1.7; text-align: justify;
         }
 
+        .role-label {
+            font-weight: 700; color: #0078d4; margin-right: 4px;
+        }
+
         @media (max-width: 768px) {
             body { padding: 12px; }
             h2 { font-size: 1.3rem; }
@@ -100,6 +104,7 @@
             .gap:hover, .gap.touch-active { background-color: #3a2d1a; color: #ffcc80; }
             .gap::after { background: #424242; color: #f5f5f5; }
             #fullTextDisplay { background-color: #2d2d2d; border-color: #404040; }
+            .role-label { color: #66aaff; }
         }
         @media (hover: none) and (pointer: coarse) {
             .gap::after { bottom: auto; top: 100%; transform: translateX(-50%) translateY(10px); }
@@ -109,10 +114,10 @@
 </head>
 <body>
     <div class="container">
-        <h2>🏦 Banking Vocabulary – Hover to Reveal</h2>
+        <h2>🎙 Adrián – Computational Scientist Interview (Hover to Reveal)</h2>
 
         <div class="instructions">
-            <p><strong>Instructions:</strong> Hover over the blank spaces to reveal the hidden words. Tap on mobile. Click <strong>🔄 New Gaps</strong> to shuffle the hidden words or <strong>📄 Show Whole Text</strong> to see the full sentences.</p>
+            <p><strong>Instructions:</strong> Hover over the blank spaces to reveal the hidden words. Tap on mobile. Click <strong>🔄 New Gaps</strong> to shuffle the hidden words or <strong>📄 Show Whole Text</strong> to see the full transcript.</p>
         </div>
 
         <div class="mobile-instructions">
@@ -130,7 +135,7 @@
         </div>
 
         <div class="transcript-container">
-            <h3>Banking Sentences:</h3>
+            <h3>Interview Transcript:</h3>
             <div id="transcript" class="transcript-content"></div>
             <div id="fullTextDisplay"></div>
             <button id="newGapsBtn" onclick="generateGaps()">🔄 New Gaps</button>
@@ -139,23 +144,59 @@
     </div>
 
     <script>
-        // The 8 banking sentences as separate paragraphs.
-        // Each sentence is a paragraph – no role labels, so no tokens start with '<span'.
-        const originalText = `1. I checked my account balance online yesterday.
+        // The interview text with speaker labels wrapped in <span class="role-label"> to prevent them from being hidden.
+        const originalText = `
+<span class="role-label">Interviewer:</span> Good morning, Adrián. Thanks for coming in. Could you start by telling me a bit about yourself?
 
-2. She used the ATM to withdraw cash.
+<span class="role-label">Adrián:</span> Good morning. I hold a bachelor’s degree in Physics, and I’ve spent the last few years blending research with technology. I’m currently working as a programmer and data analyst, building AI and automation solutions, and I’m also finishing a master’s in Artificial Intelligence. My long-term goal is to become a computational scientist who applies scientific computing and AI to complex, real-world problems.
 
-3. The bank approved my student loan.
+<span class="role-label">Interviewer:</span> Interesting. Walk me through your academic trajectory. What took you from Physics into Artificial Intelligence?
 
-4. I paid for lunch using my debit card.
+<span class="role-label">Adrián:</span> During my undergraduate degree, I joined a research group in medical physics where I worked on numerical simulation and detector calibration. I was using Monte Carlo methods and optimization techniques, and I realized machine learning could accelerate those simulations and make the predictions more robust. That curiosity led me to a graduate program in Artificial Intelligence and Big Data, and later to a second master’s where I’m specializing in reinforcement learning and computer vision.
 
-5. I made a deposit of AED 500.
+<span class="role-label">Interviewer:</span> Tell me more about that research. You mentioned a publication. Could you explain what it was about to someone without a technical background?
 
-6. The bank charges a monthly fee.
+<span class="role-label">Adrián:</span> Sure. Imagine a camera that uses radiation to see inside the human body. My work was about making those images sharper and more accurate. I built a computer simulation that shoots millions of tiny light particles through a virtual detector, mimicking what happens in the real machine. By comparing the simulation to real measurements, we could calibrate the detector better, so doctors could identify tumors with more precision. That work was published in a peer-reviewed journal.
 
-7. The savings account pays 3% interest.
+<span class="role-label">Interviewer:</span> That’s clear, thank you. Now, let’s talk about your current role. What do you do for a living, and what are your main responsibilities?
 
-8. I made a transfer to my university account.`;
+<span class="role-label">Adrián:</span> I work as a programmer and data analyst, focusing on AI, automation, and data-analysis solutions. My main responsibilities include designing predictive models, building data pipelines, and deploying monitoring systems. I also make technical decisions about software architecture and occasionally lead small development projects.
+
+<span class="role-label">Interviewer:</span> Can you share your strongest project so far?
+
+<span class="role-label">Adrián:</span> The one I’m proudest of was an AI-powered monitoring system for a Network Operations Center. I built a predictive model that analyzes real-time network traffic and alerts engineers before incidents occur. I designed an API and a data pipeline to feed the model clean data, then deployed everything on the client’s infrastructure. As a result, incident response time dropped by 40%. It taught me a lot about scalability and working under tight deadlines.
+
+<span class="role-label">Interviewer:</span> Where exactly do you apply AI in your everyday work?
+
+<span class="role-label">Adrián:</span> I use machine learning mostly for anomaly detection and predictive maintenance. I’m also exploring reinforcement learning to optimize resource allocation, and I apply computer vision to automate infrastructure inspections — a process that previously took hours of manual review.
+
+<span class="role-label">Interviewer:</span> You work with many people who aren’t engineers. How would you explain, for instance, how a machine learning model learns to a marketing manager?
+
+<span class="role-label">Adrián:</span> I’d say it’s very similar to teaching a child to recognize fruits. You show them many pictures and correct them when they make mistakes. Over time, the child can identify apples and bananas on their own. Training a machine learning model works the same way: you give it lots of examples with the correct answers, and it learns to make predictions without being explicitly programmed for every single case.
+
+<span class="role-label">Interviewer:</span> Good. And how about an API? How would you describe that to a non-technical person?
+
+<span class="role-label">Adrián:</span> An API is like a waiter in a restaurant. You tell the waiter what you want from the menu, the waiter takes the order to the kitchen, and then brings you your dish. In software, the API is the messenger that takes a request from one system to another and delivers the data back.
+
+<span class="role-label">Interviewer:</span> Where do you see yourself in the next few years?
+
+<span class="role-label">Adrián:</span> In the short term, I plan to finish my master’s and gain more hands-on experience with high-performance computing. Long term, I want to become a computational scientist who uses scientific computing and AI to tackle challenges in fields like healthcare or climate science.
+
+<span class="role-label">Interviewer:</span> What keeps you motivated in research? It’s not always a fast-moving field.
+
+<span class="role-label">Adrián:</span> I enjoy the process of exploring open questions and connecting theory with data. While research can be slow and full of dead ends, the moment when a model finally matches experimental results is incredibly rewarding. That blend of curiosity and problem-solving is what keeps me going.
+
+<span class="role-label">Interviewer:</span> Can you describe a difficult technical problem you faced and how you solved it?
+
+<span class="role-label">Adrián:</span> Once, a simulation I was running kept producing results that didn’t match the experimental data. I broke the problem down systematically: first, I isolated whether it was a data acquisition issue, an algorithm limitation, or an infrastructure bottleneck. Eventually, I discovered the detector calibration parameters were slightly off. I prototyped a correction algorithm, tested it incrementally, and validated it against new data. That approach — isolating, researching, prototyping — is what I apply whenever I hit a wall.
+
+<span class="role-label">Interviewer:</span> What skills are you actively trying to improve right now?
+
+<span class="role-label">Adrián:</span> On the technical side, I’m deepening my knowledge of reinforcement learning and high-performance computing. On the professional side, I’m working on my leadership and communication skills, so that I can present technical decisions more effectively to stakeholders who don’t share my background.
+
+<span class="role-label">Interviewer:</span> I think that covers everything I wanted to ask. Thank you for your time, Adrián.
+
+<span class="role-label">Adrián:</span> Thank you. I really enjoyed the conversation.`;
 
         let isTouchDevice = false;
 
@@ -176,25 +217,27 @@
             let result = '';
 
             paragraphs.forEach(paragraph => {
-                // Split into tokens: words, preserving punctuation as a single token or as a separate entity.
-                // Simple regex to capture words and punctuation marks.
-                const tokens = paragraph.match(/[\w']+|[.,!?;:]/g) || [];
-                const numGaps = Math.max(1, Math.floor(tokens.length * 0.25)); // about 25% gaps
+                // Split into tokens, preserving HTML tags (the role label spans) and punctuation
+                const tokens = paragraph.match(/(<span[^>]*>.*?<\/span>|\S+)/g) || [];
+                const numGaps = Math.max(1, Math.floor(tokens.length * 0.25));
                 const gapIndices = new Set();
                 while (gapIndices.size < numGaps) {
                     const idx = Math.floor(Math.random() * tokens.length);
                     const token = tokens[idx];
-                    // Don't hide punctuation or tokens that are just numbers (like "1.")
-                    if (token.length > 2 && !/^\d+$/.test(token) && !/^[.,!?;:]+$/.test(token)) {
+                    // Don't turn role labels or numbers/punctuation into gaps
+                    if (!token.startsWith('<span') && token.replace(/[.,!?;:]/g, '').length > 2) {
                         gapIndices.add(idx);
                     }
                 }
 
                 const processedTokens = tokens.map((token, i) => {
+                    if (token.startsWith('<span')) {
+                        return token; // role label, pass as is
+                    }
                     if (gapIndices.has(i)) {
-                        // clean token from punctuation (already separated, so no punctuation attached)
-                        const clean = token;
-                        return `<span class="gap" data-word="${clean}">__________</span>`;
+                        const clean = token.replace(/[.,!?;:]/g, '');
+                        const punctuation = token.match(/[.,!?;:]+$/);
+                        return `<span class="gap" data-word="${clean}">__________</span>${punctuation ? punctuation[0] : ''}`;
                     }
                     return token;
                 });
