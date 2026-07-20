@@ -3,416 +3,515 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adrián Interview – Fill the Gap</title>
+    <title>Adrián Interview – Gap Filling</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Inter', 'Segoe UI', Tahoma, sans-serif;
-        }
+        * { box-sizing: border-box; }
+
         body {
-            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            color: #2d3436;
-        }
-        .container {
-            background: #fff;
-            border-radius: 18px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-            width: 100%;
-            max-width: 900px;
-            overflow: hidden;
-            animation: fadeIn 0.5s ease;
-        }
-        header {
-            background: linear-gradient(90deg, #6c5ce7 0%, #a29bfe 100%);
-            color: white;
-            padding: 26px 28px;
-            text-align: center;
-        }
-        h1 { font-size: 30px; margin-bottom: 8px; font-weight: 700; }
-        header p { opacity: 0.95; }
-        .instructions {
-            background: #f8faff;
-            padding: 18px 22px;
-            border-bottom: 1px solid #e0e6f1;
-            font-size: 16px;
-            color: #555;
-        }
-        .audio-container {
-            margin: 15px 22px; padding: 15px; background-color: #f0f7ff;
-            border-radius: 10px; border: 1px solid #cce0ff;
-            text-align: center; color: #0078d4;
-        }
-        .audio-container iframe { border-radius: 6px; overflow: hidden; }
-        .story-container {
-            padding: 28px;
-            position: relative;
-        }
-        .story-text {
-            font-size: 18px;
-            line-height: 1.8;
-            margin-bottom: 24px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            padding: 15px;
+            margin: 0;
+            background-color: #f5f7fa;
             color: #333;
-            max-height: 55vh;
-            overflow-y: auto;
-            padding-bottom: 20px;
         }
-        .role-label {
-            font-weight: 700; color: #6c5ce7; margin-right: 4px;
+
+        .container { max-width: 900px; margin: 0 auto; }
+
+        h2 {
+            color: #2a2a2a;
+            border-bottom: 3px solid #0078d4;
+            padding-bottom: 12px;
+            margin: 0 0 15px 0;
+            font-size: 1.5rem;
+            line-height: 1.3;
         }
-        .gap {
-            padding: 2px 6px;
-            border-bottom: 2px dashed #6c5ce7;
-            background: rgba(108, 92, 231, 0.12);
-            border-radius: 4px;
-            transition: all 0.25s;
-            white-space: nowrap;
-            cursor: pointer;
+
+        .transcript-container {
+            margin-top: 20px;
+            background-color: white;
+            padding: 20px 15px;
+            border-radius: 12px;
+            border: 1px solid #e1e5e9;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         }
-        .gap.active {
-            background: rgba(108, 92, 231, 0.2);
-            border-bottom-color: #5a4ac4;
-            outline: 2px solid transparent;
-        }
-        .gap.filled {
-            background: transparent;
-            border-bottom: none;
-            color: #2ecc71;
-            font-weight: 600;
-            cursor: default;
-        }
-        .progress-container {
-            margin: 18px 0 20px;
-        }
-        .progress-bar {
-            height: 12px;
-            background: #f1f2f6;
+
+        .gap-input {
+            display: inline-block;
+            min-width: 60px;
+            margin: 2px;
+            padding: 8px 10px;
+            border: 2px solid #d1d9e6;
             border-radius: 6px;
-            overflow: hidden;
-        }
-        .progress {
-            height: 100%;
-            background: linear-gradient(90deg, #6c5ce7 0%, #a29bfe 100%);
-            width: 0%;
-            transition: width 0.5s ease;
-        }
-        .progress-text {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 14px;
-            color: #666;
-            margin-top: 8px;
-        }
-        .message {
-            padding: 12px;
-            border-radius: 8px;
-            margin-bottom: 15px;
+            background-color: white;
             text-align: center;
+            font-family: inherit;
+            font-size: 16px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        .gap-input:focus {
+            outline: none;
+            border-color: #0078d4;
+            box-shadow: 0 0 0 3px rgba(0, 120, 212, 0.1);
+        }
+
+        .correct { border-color: #28a745; background-color: #f0fff4; }
+        .incorrect { border-color: #dc3545; background-color: #fff0f0; }
+        .correct-answer { color: #28a745; font-weight: bold; }
+
+        .buttons-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 25px 0 15px 0;
+        }
+
+        button {
+            flex: 1;
+            min-width: 140px;
+            padding: 14px 16px;
+            font-size: 16px;
             font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        #checkAnswers { background-color: #0078d4; color: white; }
+        #checkAnswers:hover, #checkAnswers:active { background-color: #005fa3; }
+
+        #showAnswers { background-color: #28a745; color: white; }
+        #showAnswers:hover, #showAnswers:active { background-color: #218838; }
+
+        #resetGaps { background-color: #ff9800; color: white; }
+        #resetGaps:hover, #resetGaps:active { background-color: #e68900; }
+
+        #showFullText { background-color: #6f42c1; color: white; }
+        #showFullText:hover, #showFullText:active { background-color: #5a32a3; }
+
+        .instructions {
+            background-color: #e8f4fc;
+            padding: 16px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #0078d4;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .audio-container {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f0f7ff;
+            border-radius: 10px;
+            border: 1px solid #cce0ff;
+        }
+
+        .audio-container iframe { border-radius: 6px; overflow: hidden; }
+
+        .results {
+            margin-top: 20px;
+            padding: 18px;
+            border-radius: 10px;
+            background-color: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            display: none;
+            font-size: 15px;
+        }
+
+        .score { font-size: 18px; font-weight: bold; color: #0078d4; margin-bottom: 12px; text-align: center; }
+
+        .gap-container { position: relative; display: inline-block; margin: 2px; vertical-align: middle; }
+
+        .gap-number {
+            position: absolute;
+            top: -18px;
+            left: 0;
+            right: 0;
+            font-size: 10px;
+            color: #666;
+            font-weight: bold;
+            text-align: center;
+            pointer-events: none;
+        }
+
+        .transcript-content p { margin: 0 0 20px 0; font-size: 16px; line-height: 1.7; word-wrap: break-word; }
+        .transcript-content p:last-child { margin-bottom: 0; }
+
+        #fullTextDisplay {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            font-size: 15px;
+            line-height: 1.7;
             display: none;
         }
-        .success { background: #e8f9f1; color: #1f9e56; border: 1px solid #b8eacb; }
-        .error { background: #fdecea; color: #d6453d; border: 1px solid #f5b7b1; }
-        .input-area {
-            display: flex;
-            gap: 10px;
-            align-items: stretch;
-            margin-bottom: 8px;
-            position: sticky;
-            bottom: 0;
-            background: white;
-            padding: 15px 0;
-            border-top: 1px solid #e2e8f0;
-            z-index: 10;
+
+        /* Speaker label styling in full text display */
+        .speaker { font-weight: 700; color: #0078d4; }
+
+        @media (max-width: 768px) {
+            body { padding: 12px; }
+            h2 { font-size: 1.3rem; padding-bottom: 10px; }
+            .transcript-container { padding: 15px 12px; }
+            .gap-input { min-width: 50px; padding: 6px 8px; font-size: 15px; margin: 1px; }
+            .gap-number { font-size: 9px; top: -15px; }
+            .transcript-content p { font-size: 15px; line-height: 1.6; }
+            button { min-width: 120px; padding: 12px 14px; font-size: 15px; }
+            .instructions { padding: 14px; font-size: 13px; }
+            .results { padding: 15px; font-size: 14px; }
         }
-        .field { position: relative; flex: 1; display: flex; align-items: center; }
-        .field label {
-            position: absolute; left: 12px; top: -10px; background: #fff;
-            padding: 0 6px; font-size: 12px; color: #6b7280;
+
+        @media (max-width: 480px) {
+            .buttons-container { flex-direction: column; gap: 8px; }
+            button { width: 100%; min-width: auto; }
+            .gap-input { min-width: 40px; padding: 5px 6px; font-size: 14px; }
+            .transcript-content p { font-size: 14px; line-height: 1.5; }
+            h2 { font-size: 1.2rem; }
+            .container { padding: 0 8px; }
         }
-        #word-input {
-            width: 100%; padding: 14px; border: 2px solid #e2e8f0;
-            border-radius: 10px; font-size: 16px;
-            transition: border-color 0.25s, box-shadow 0.25s;
+
+        .gap-input { min-height: 44px; }
+        button { min-height: 50px; touch-action: manipulation; }
+
+        @media (max-width: 360px) {
+            .gap-input { min-width: 35px; font-size: 13px; padding: 4px 5px; min-height: 40px; }
+            .gap-number { font-size: 8px; top: -12px; }
+            .transcript-content p { font-size: 13px; }
         }
-        #word-input:focus {
-            outline: none; border-color: #6c5ce7;
-            box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.2);
-        }
-        #submit-btn {
-            background: linear-gradient(90deg, #6c5ce7 0%, #a29bfe 100%);
-            color: white; border: none; padding: 0 20px; border-radius: 10px;
-            cursor: pointer; font-weight: 700; transition: transform 0.15s, opacity 0.25s;
-            min-width: 120px;
-        }
-        #submit-btn:hover { transform: translateY(-1px); opacity: 0.92; }
-        .controls { display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
-        .controls button {
-            flex: 1; padding: 12px 16px; border: none; border-radius: 10px;
-            cursor: pointer; font-weight: 700; transition: transform 0.15s, opacity 0.25s;
-            min-width: 140px; color: white;
-        }
-        .controls button:hover { transform: translateY(-1px); opacity: 0.95; }
-        #hint-btn { background: #f39c12; }
-        #reset-btn { background: #e74c3c; }
-        #solution-btn { background: #2ecc71; }
-        footer {
-            text-align: center; padding: 16px; color: #888;
-            font-size: 14px; border-top: 1px solid #f1f2f6;
-        }
-        @media (max-width: 640px) {
-            h1 { font-size: 22px; }
-            .story-text { font-size: 16px; max-height: 35vh; }
-            .input-area {
-                flex-direction: column; position: fixed; bottom: 0; left: 0; right: 0;
-                padding: 10px 15px; box-shadow: 0 -2px 10px rgba(0,0,0,0.1); margin-bottom: 0;
-            }
-            #submit-btn { width: 100%; }
-            .controls { flex-direction: column; margin-bottom: 80px; }
-            .controls button { width: 100%; }
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        :focus-visible {
-            outline: 3px solid rgba(108, 92, 231, 0.55);
-            outline-offset: 2px; border-radius: 8px;
+
+        @media (prefers-color-scheme: dark) {
+            body { background-color: #1a1a1a; color: #e0e0e0; }
+            .transcript-container { background-color: #2d2d2d; border-color: #404040; }
+            .instructions { background-color: #2a3b4d; border-left-color: #0078d4; }
+            .audio-container { background-color: #2a3b4d; border-color: #404040; }
+            .results { background-color: #2d2d2d; border-color: #404040; }
+            .gap-input { background-color: #3a3a3a; border-color: #555; color: #e0e0e0; }
+            .gap-input::placeholder { color: #888; }
+            .correct { background-color: #1e3a1e; }
+            .incorrect { background-color: #3a1e1e; }
+            #fullTextDisplay { background-color: #2d2d2d; border-color: #404040; }
+            .speaker { color: #66aaff; }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>Adrián – Computational Scientist Interview</h1>
-            <p>Fill in the missing words to complete the transcript</p>
-        </header>
+        <h2>🎧 Adrián Interview – Fill the Gaps</h2>
 
         <div class="instructions">
-            <p>Type the correct word and press Enter. Words can appear more than once.</p>
+            <p><strong>Instructions:</strong> Listen to the audio, then fill in the blanks with the correct words. Press Enter or click "Check Answers" to validate. Answers are case‑insensitive but must be spelled correctly.</p>
         </div>
 
+        <!-- Audio: Adrián interview from SoundCloud -->
         <div class="audio-container">
-            🔊 <strong>Audio:</strong>
-            <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay; encrypted-media" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2362493300&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+            <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay; encrypted-media"
+                    src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2362493300&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
+            </iframe>
             <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;">
                 <a href="https://soundcloud.com/edu-casa-346926859" title="Edu CASA" target="_blank" style="color: #cccccc; text-decoration: none;">Edu CASA</a> ·
                 <a href="https://soundcloud.com/edu-casa-346926859/adrian_interview" title="adrian_interview" target="_blank" style="color: #cccccc; text-decoration: none;">adrian_interview</a>
             </div>
         </div>
 
-        <div class="story-container">
-            <div class="message success" id="success-message">Correct!</div>
-            <div class="message error" id="error-message">Incorrect. Try again.</div>
+        <div class="transcript-container">
+            <h3>Fill in the Blanks:</h3>
+            <div id="transcript" class="transcript-content"></div>
 
-            <div class="story-text" id="story-text">
-                <p><span class="role-label">Interviewer:</span> Good morning, Adrián. Thanks for coming in. Could you start by telling me a bit about yourself?</p>
-                <p><span class="role-label">Adrián:</span> Good morning. I hold a bachelor's degree in <span class="gap" data-word="Physics">_______</span>, and I've spent the last few years blending <span class="gap" data-word="research">________</span> with technology. I'm currently working as a programmer and data <span class="gap" data-word="analyst">_______</span>, building AI and automation <span class="gap" data-word="solutions">_________</span>, and I'm also finishing a master's in Artificial <span class="gap" data-word="Intelligence">____________</span>. My long-term goal is to become a computational <span class="gap" data-word="scientist">_________</span> who applies scientific computing and AI to complex, <span class="gap" data-word="real-world">__________</span> problems.</p>
-                <p><span class="role-label">Interviewer:</span> Interesting. Walk me through your academic <span class="gap" data-word="trajectory">__________</span>. What took you from Physics into Artificial Intelligence?</p>
-                <p><span class="role-label">Adrián:</span> During my undergraduate degree, I joined a research group in medical <span class="gap" data-word="physics">_______</span> where I worked on numerical simulation and detector <span class="gap" data-word="calibration">___________</span>. I was using Monte Carlo <span class="gap" data-word="methods">_______</span> and optimization techniques, and I realized machine <span class="gap" data-word="learning">________</span> could accelerate those simulations and make the predictions more <span class="gap" data-word="robust">______</span>. That curiosity led me to a graduate <span class="gap" data-word="program">_______</span> in Artificial Intelligence and Big Data, and later to a second master's where I'm specializing in reinforcement <span class="gap" data-word="learning">________</span> and computer <span class="gap" data-word="vision">______</span>.</p>
-                <p><span class="role-label">Interviewer:</span> Tell me more about that research. You mentioned a <span class="gap" data-word="publication">___________</span>. Could you explain what it was about to someone without a technical background?</p>
-                <p><span class="role-label">Adrián:</span> Sure. Imagine a camera that uses radiation to see inside the human <span class="gap" data-word="body">____</span>. My work was about making those images <span class="gap" data-word="sharper">_______</span> and more accurate. I built a computer <span class="gap" data-word="simulation">__________</span> that shoots millions of tiny light <span class="gap" data-word="particles">_________</span> through a virtual detector, mimicking what happens in the real <span class="gap" data-word="machine">_______</span>. By comparing the simulation to real <span class="gap" data-word="measurements">____________</span>, we could calibrate the detector better, so doctors could identify tumors with more <span class="gap" data-word="precision">_________</span>. That work was published in a peer-reviewed <span class="gap" data-word="journal">_______</span>.</p>
-                <p><span class="role-label">Interviewer:</span> That's clear, thank you. Now, let's talk about your current <span class="gap" data-word="role">____</span>. What do you do for a living, and what are your main <span class="gap" data-word="responsibilities">_______________</span>?</p>
-                <p><span class="role-label">Adrián:</span> I work as a programmer and data analyst, focusing on AI, automation, and data-analysis solutions. My main responsibilities include designing predictive <span class="gap" data-word="models">______</span>, building data <span class="gap" data-word="pipelines">_________</span>, and deploying monitoring <span class="gap" data-word="systems">_______</span>. I also make technical decisions about software <span class="gap" data-word="architecture">____________</span> and occasionally lead small development <span class="gap" data-word="projects">________</span>.</p>
-                <p><span class="role-label">Interviewer:</span> Can you share your strongest project so far?</p>
-                <p><span class="role-label">Adrián:</span> The one I'm proudest of was an AI-powered monitoring <span class="gap" data-word="system">______</span> for a Network Operations Center. I built a predictive <span class="gap" data-word="model">_____</span> that analyzes real-time network <span class="gap" data-word="traffic">_______</span> and alerts engineers before incidents occur. I designed an <span class="gap" data-word="API">___</span> and a data pipeline to feed the model clean <span class="gap" data-word="data">____</span>, then deployed everything on the client's <span class="gap" data-word="infrastructure">______________</span>. As a result, incident response <span class="gap" data-word="time">____</span> dropped by 40%. It taught me a lot about <span class="gap" data-word="scalability">___________</span> and working under tight <span class="gap" data-word="deadlines">_________</span>.</p>
-                <p><span class="role-label">Interviewer:</span> Where exactly do you apply AI in your everyday <span class="gap" data-word="work">____</span>?</p>
-                <p><span class="role-label">Adrián:</span> I use machine learning mostly for anomaly <span class="gap" data-word="detection">_________</span> and predictive maintenance. I'm also exploring reinforcement learning to optimize resource <span class="gap" data-word="allocation">__________</span>, and I apply computer vision to automate <span class="gap" data-word="infrastructure">______________</span> inspections — a process that previously took hours of manual <span class="gap" data-word="review">______</span>.</p>
-                <p><span class="role-label">Interviewer:</span> You work with many people who aren't engineers. How would you explain, for instance, how a machine learning model learns to a marketing manager?</p>
-                <p><span class="role-label">Adrián:</span> I'd say it's very similar to teaching a child to recognize <span class="gap" data-word="fruits">______</span>. You show them many pictures and correct them when they make <span class="gap" data-word="mistakes">________</span>. Over time, the child can identify apples and bananas on their <span class="gap" data-word="own">___</span>. Training a machine learning model works the same <span class="gap" data-word="way">___</span>: you give it lots of examples with the correct <span class="gap" data-word="answers">_______</span>, and it learns to make predictions without being explicitly programmed for every single <span class="gap" data-word="case">____</span>.</p>
-                <p><span class="role-label">Interviewer:</span> Good. And how about an API? How would you describe that to a non-technical person?</p>
-                <p><span class="role-label">Adrián:</span> An API is like a <span class="gap" data-word="waiter">______</span> in a restaurant. You tell the waiter what you want from the <span class="gap" data-word="menu">____</span>, the waiter takes the order to the <span class="gap" data-word="kitchen">_______</span>, and then brings you your <span class="gap" data-word="dish">____</span>. In software, the API is the messenger that takes a <span class="gap" data-word="request">_______</span> from one system to another and delivers the <span class="gap" data-word="data">____</span> back.</p>
-                <p><span class="role-label">Interviewer:</span> Where do you see yourself in the next few <span class="gap" data-word="years">_____</span>?</p>
-                <p><span class="role-label">Adrián:</span> In the short term, I plan to finish my master's and gain more hands-on experience with high-performance <span class="gap" data-word="computing">__________</span>. Long term, I want to become a computational scientist who uses scientific computing and AI to tackle <span class="gap" data-word="challenges">__________</span> in fields like <span class="gap" data-word="healthcare">__________</span> or climate <span class="gap" data-word="science">_______</span>.</p>
-                <p><span class="role-label">Interviewer:</span> What keeps you motivated in research? It's not always a fast-moving field.</p>
-                <p><span class="role-label">Adrián:</span> I enjoy the process of exploring open <span class="gap" data-word="questions">_________</span> and connecting theory with <span class="gap" data-word="data">____</span>. While research can be slow and full of dead <span class="gap" data-word="ends">____</span>, the moment when a model finally matches experimental <span class="gap" data-word="results">_______</span> is incredibly rewarding. That blend of <span class="gap" data-word="curiosity">_________</span> and problem-solving is what keeps me going.</p>
-                <p><span class="role-label">Interviewer:</span> Can you describe a difficult technical <span class="gap" data-word="problem">_______</span> you faced and how you solved it?</p>
-                <p><span class="role-label">Adrián:</span> Once, a simulation I was running kept producing <span class="gap" data-word="results">_______</span> that didn't match the experimental <span class="gap" data-word="data">____</span>. I broke the problem down <span class="gap" data-word="systematically">______________</span>: first, I isolated whether it was a data acquisition issue, an algorithm <span class="gap" data-word="limitation">__________</span>, or an infrastructure <span class="gap" data-word="bottleneck">__________</span>. Eventually, I discovered the detector calibration parameters were slightly <span class="gap" data-word="off">___</span>. I prototyped a correction <span class="gap" data-word="algorithm">_________</span>, tested it incrementally, and validated it against new data. That approach — isolating, researching, prototyping — is what I apply whenever I hit a <span class="gap" data-word="wall">____</span>.</p>
-                <p><span class="role-label">Interviewer:</span> What skills are you actively trying to improve right now?</p>
-                <p><span class="role-label">Adrián:</span> On the technical side, I'm deepening my knowledge of reinforcement <span class="gap" data-word="learning">________</span> and high-performance computing. On the professional side, I'm working on my <span class="gap" data-word="leadership">__________</span> and communication <span class="gap" data-word="skills">______</span>, so that I can present technical decisions more effectively to <span class="gap" data-word="stakeholders">____________</span> who don't share my <span class="gap" data-word="background">__________</span>.</p>
-                <p><span class="role-label">Interviewer:</span> I think that covers everything I wanted to ask. Thank you for your time, Adrián.</p>
-                <p><span class="role-label">Adrián:</span> Thank you. I really enjoyed the <span class="gap" data-word="conversation">____________</span>.</p>
+            <div class="buttons-container">
+                <button id="checkAnswers" onclick="checkAnswers()">✓ Check Answers</button>
+                <button id="showAnswers" onclick="showAllAnswers()">👁 Show Answers</button>
+                <button id="resetGaps" onclick="generateGaps()">🔄 New Gaps</button>
+                <button id="showFullText" onclick="showFullText()">📄 Show Whole Text</button>
             </div>
 
-            <div class="progress-container">
-                <div class="progress-bar"><div class="progress" id="progress-bar"></div></div>
-                <div class="progress-text"><span id="progress-text">0</span>/85 words completed</div>
+            <div id="results" class="results">
+                <div id="scoreDisplay" class="score"></div>
+                <div id="detailedResults"></div>
             </div>
 
-            <div class="input-area">
-                <div class="field">
-                    <label for="word-input">Enter word</label>
-                    <input type="text" id="word-input" placeholder="Type a word and press Enter">
-                </div>
-                <button id="submit-btn">Submit</button>
-            </div>
-
-            <div class="controls">
-                <button id="hint-btn">Hint</button>
-                <button id="reset-btn">Reset</button>
-                <button id="solution-btn">See Answers</button>
-            </div>
+            <div id="fullTextDisplay"></div>
         </div>
-
-        <footer>Adrián interview – fill the gap exercise</footer>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const gaps = document.querySelectorAll('.gap');
-            const wordInput = document.getElementById('word-input');
-            const submitBtn = document.getElementById('submit-btn');
-            const resetBtn = document.getElementById('reset-btn');
-            const hintBtn = document.getElementById('hint-btn');
-            const solutionBtn = document.getElementById('solution-btn');
-            const progressBar = document.getElementById('progress-bar');
-            const progressText = document.getElementById('progress-text');
-            const successMsg = document.getElementById('success-message');
-            const errorMsg = document.getElementById('error-message');
+        // The full transcript with speaker labels wrapped in <span> to prevent them from being turned into gaps.
+        // Each paragraph is separated by a double newline.
+        const originalText = `
+<span class="speaker">Interviewer:</span> Good morning, Adrián. Thanks for coming in. Could you start by telling me a bit about yourself?
 
-            let currentGapIndex = 0;
-            let completedGaps = 0;
-            const totalGaps = gaps.length;
+<span class="speaker">Adrián:</span> Good morning. I hold a bachelor’s degree in Physics, and I’ve spent the last few years blending research with technology. I’m currently working as a programmer and data analyst, building AI and automation solutions, and I’m also finishing a master’s in Artificial Intelligence. My long‑term goal is to become a computational scientist who applies scientific computing and AI to complex, real‑world problems.
 
-            function init() {
-                updateProgress();
-                gaps.forEach((g, i) => {
-                    if (i === 0) g.classList.add('active');
-                    g.addEventListener('click', () => {
-                        if (!g.classList.contains('filled')) {
-                            gaps.forEach(gap => gap.classList.remove('active'));
-                            g.classList.add('active');
-                            currentGapIndex = Array.from(gaps).indexOf(g);
-                            wordInput.focus();
-                        }
-                    });
+<span class="speaker">Interviewer:</span> Interesting. Walk me through your academic trajectory. What took you from Physics into Artificial Intelligence?
+
+<span class="speaker">Adrián:</span> During my undergraduate degree, I joined a research group in medical physics where I worked on numerical simulation and detector calibration. I was using Monte Carlo methods and optimization techniques, and I realized machine learning could accelerate those simulations and make the predictions more robust. That curiosity led me to a graduate program in Artificial Intelligence and Big Data, and later to a second master’s where I’m specializing in reinforcement learning and computer vision.
+
+<span class="speaker">Interviewer:</span> Tell me more about that research. You mentioned a publication. Could you explain what it was about to someone without a technical background?
+
+<span class="speaker">Adrián:</span> Sure. Imagine a camera that uses radiation to see inside the human body. My work was about making those images sharper and more accurate. I built a computer simulation that shoots millions of tiny light particles through a virtual detector, mimicking what happens in the real machine. By comparing the simulation to real measurements, we could calibrate the detector better, so doctors could identify tumors with more precision. That work was published in a peer‑reviewed journal.
+
+<span class="speaker">Interviewer:</span> That’s clear, thank you. Now, let’s talk about your current role. What do you do for a living, and what are your main responsibilities?
+
+<span class="speaker">Adrián:</span> I work as a programmer and data analyst, focusing on AI, automation, and data‑analysis solutions. My main responsibilities include designing predictive models, building data pipelines, and deploying monitoring systems. I also make technical decisions about software architecture and occasionally lead small development projects.
+
+<span class="speaker">Interviewer:</span> Can you share your strongest project so far?
+
+<span class="speaker">Adrián:</span> The one I’m proudest of was an AI‑powered monitoring system for a Network Operations Center. I built a predictive model that analyzes real‑time network traffic and alerts engineers before incidents occur. I designed an API and a data pipeline to feed the model clean data, then deployed everything on the client’s infrastructure. As a result, incident response time dropped by 40%. It taught me a lot about scalability and working under tight deadlines.
+
+<span class="speaker">Interviewer:</span> Where exactly do you apply AI in your everyday work?
+
+<span class="speaker">Adrián:</span> I use machine learning mostly for anomaly detection and predictive maintenance. I’m also exploring reinforcement learning to optimize resource allocation, and I apply computer vision to automate infrastructure inspections — a process that previously took hours of manual review.
+
+<span class="speaker">Interviewer:</span> You work with many people who aren’t engineers. How would you explain, for instance, how a machine learning model learns to a marketing manager?
+
+<span class="speaker">Adrián:</span> I’d say it’s very similar to teaching a child to recognize fruits. You show them many pictures and correct them when they make mistakes. Over time, the child can identify apples and bananas on their own. Training a machine learning model works the same way: you give it lots of examples with the correct answers, and it learns to make predictions without being explicitly programmed for every single case.
+
+<span class="speaker">Interviewer:</span> Good. And how about an API? How would you describe that to a non‑technical person?
+
+<span class="speaker">Adrián:</span> An API is like a waiter in a restaurant. You tell the waiter what you want from the menu, the waiter takes the order to the kitchen, and then brings you your dish. In software, the API is the messenger that takes a request from one system to another and delivers the data back.
+
+<span class="speaker">Interviewer:</span> Where do you see yourself in the next few years?
+
+<span class="speaker">Adrián:</span> In the short term, I plan to finish my master’s and gain more hands‑on experience with high‑performance computing. Long term, I want to become a computational scientist who uses scientific computing and AI to tackle challenges in fields like healthcare or climate science.
+
+<span class="speaker">Interviewer:</span> What keeps you motivated in research? It’s not always a fast‑moving field.
+
+<span class="speaker">Adrián:</span> I enjoy the process of exploring open questions and connecting theory with data. While research can be slow and full of dead ends, the moment when a model finally matches experimental results is incredibly rewarding. That blend of curiosity and problem‑solving is what keeps me going.
+
+<span class="speaker">Interviewer:</span> Can you describe a difficult technical problem you faced and how you solved it?
+
+<span class="speaker">Adrián:</span> Once, a simulation I was running kept producing results that didn’t match the experimental data. I broke the problem down systematically: first, I isolated whether it was a data acquisition issue, an algorithm limitation, or an infrastructure bottleneck. Eventually, I discovered the detector calibration parameters were slightly off. I prototyped a correction algorithm, tested it incrementally, and validated it against new data. That approach — isolating, researching, prototyping — is what I apply whenever I hit a wall.
+
+<span class="speaker">Interviewer:</span> What skills are you actively trying to improve right now?
+
+<span class="speaker">Adrián:</span> On the technical side, I’m deepening my knowledge of reinforcement learning and high‑performance computing. On the professional side, I’m working on my leadership and communication skills, so that I can present technical decisions more effectively to stakeholders who don’t share my background.
+
+<span class="speaker">Interviewer:</span> I think that covers everything I wanted to ask. Thank you for your time, Adrián.
+
+<span class="speaker">Adrián:</span> Thank you. I really enjoyed the conversation.
+`;
+
+        let currentGaps = [];
+        let gapInputs = [];
+
+        function generateGaps() {
+            const container = document.getElementById('transcript');
+            const paragraphs = originalText.trim().split('\n\n');
+            const resultsDiv = document.getElementById('results');
+            const scoreDisplay = document.getElementById('scoreDisplay');
+            const detailedResults = document.getElementById('detailedResults');
+            const fullTextDisplay = document.getElementById('fullTextDisplay');
+
+            // Reset state
+            currentGaps = [];
+            gapInputs = [];
+            resultsDiv.style.display = 'none';
+            scoreDisplay.textContent = '';
+            detailedResults.innerHTML = '';
+            fullTextDisplay.style.display = 'none';
+
+            let htmlContent = '';
+            let gapCounter = 1;
+
+            paragraphs.forEach(paragraph => {
+                const words = paragraph.split(' ');
+                const numGaps = Math.floor(words.length * 0.35); // 35% gaps
+                const gapIndices = new Set();
+
+                while (gapIndices.size < numGaps) {
+                    const i = Math.floor(Math.random() * words.length);
+                    const clean = words[i].replace(/[.,!?;:]/g, '');
+                    // Skip speaker labels (they contain '<') and very short words/numbers
+                    if (!words[i].includes('<') && clean.length > 3 && !/^\d+$/.test(clean)) {
+                        gapIndices.add(i);
+                    }
+                }
+
+                const processedWords = words.map((word, i) => {
+                    const clean = word.replace(/[.,!?;:]/g, '');
+                    const punctuation = word.match(/[.,!?;:]+$/);
+
+                    if (gapIndices.has(i)) {
+                        currentGaps.push({
+                            id: gapCounter,
+                            correctAnswer: clean.toLowerCase(),
+                            fullWord: word,
+                            position: gapCounter
+                        });
+
+                        const gapHtml = `
+                            <span class="gap-container">
+                                <span class="gap-number">${gapCounter}</span>
+                                <input type="text"
+                                       class="gap-input"
+                                       id="gap-${gapCounter}"
+                                       data-gap-id="${gapCounter}"
+                                       placeholder="___"
+                                       style="width: ${Math.max(60, clean.length * 8)}px">
+                                ${punctuation ? punctuation[0] : ''}
+                            </span>
+                        `;
+                        gapCounter++;
+                        return gapHtml;
+                    }
+                    return word;
                 });
-                wordInput.focus();
-            }
 
-            function updateProgress() {
-                const percent = (completedGaps / totalGaps) * 100;
-                progressBar.style.width = `${percent}%`;
-                progressText.textContent = completedGaps;
-            }
+                htmlContent += `<p>${processedWords.join(' ')}</p>`;
+            });
 
-            function checkWord() {
-                const entered = wordInput.value.trim().toLowerCase();
-                if (!entered) return;
+            container.innerHTML = htmlContent;
 
-                let found = false;
-                const matchedIndices = [];
+            gapInputs = Array.from(document.querySelectorAll('.gap-input'));
 
-                gaps.forEach((gap, idx) => {
-                    const correct = gap.getAttribute('data-word').toLowerCase();
-                    if (entered === correct && !gap.classList.contains('filled')) {
-                        found = true;
-                        matchedIndices.push(idx);
+            gapInputs.forEach(input => {
+                input.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        checkAnswers();
                     }
                 });
 
-                if (found) {
-                    matchedIndices.forEach(idx => {
-                        const gap = gaps[idx];
-                        gap.textContent = entered;
-                        gap.classList.add('filled');
-                        gap.classList.remove('active');
-                        completedGaps++;
-                    });
-
-                    updateProgress();
-                    successMsg.style.display = 'block';
-                    errorMsg.style.display = 'none';
-
-                    if (completedGaps >= totalGaps) {
-                        wordInput.disabled = true;
-                        submitBtn.disabled = true;
-                        successMsg.textContent = '🎉 All gaps filled! Well done.';
-                    } else {
-                        let next = -1;
-                        for (let i = 0; i < gaps.length; i++) {
-                            if (!gaps[i].classList.contains('filled')) {
-                                next = i;
-                                break;
-                            }
-                        }
-                        if (next !== -1) {
-                            gaps.forEach(g => g.classList.remove('active'));
-                            gaps[next].classList.add('active');
-                            currentGapIndex = next;
-                        }
+                input.addEventListener('blur', function() {
+                    if (this.value.length > 0) {
+                        this.style.width = Math.max(60, this.value.length * 8) + 'px';
                     }
-                    wordInput.value = '';
-                    wordInput.focus();
+                });
+
+                input.addEventListener('focus', function() {
+                    this.style.fontSize = '16px';
+                });
+            });
+
+            document.addEventListener('touchstart', function() {}, { passive: true });
+        }
+
+        function checkAnswers() {
+            let correctCount = 0;
+            const results = [];
+
+            gapInputs.forEach(input => {
+                const gapId = parseInt(input.dataset.gapId);
+                const userAnswer = input.value.trim().toLowerCase();
+                const gapInfo = currentGaps.find(gap => gap.id === gapId);
+
+                if (!gapInfo) return;
+
+                if (userAnswer === gapInfo.correctAnswer) {
+                    input.classList.add('correct');
+                    input.classList.remove('incorrect');
+                    correctCount++;
+                    results.push({
+                        id: gapId,
+                        correct: true,
+                        userAnswer: userAnswer,
+                        correctAnswer: gapInfo.correctAnswer
+                    });
                 } else {
-                    const alreadyFilled = Array.from(gaps).some(gap => {
-                        return entered === gap.getAttribute('data-word').toLowerCase() && gap.classList.contains('filled');
+                    input.classList.add('incorrect');
+                    input.classList.remove('correct');
+                    results.push({
+                        id: gapId,
+                        correct: false,
+                        userAnswer: userAnswer,
+                        correctAnswer: gapInfo.correctAnswer
                     });
-                    errorMsg.textContent = alreadyFilled ? 'This word is already filled in.' : 'Incorrect. Try again.';
-                    errorMsg.style.display = 'block';
-                    successMsg.style.display = 'none';
-                    wordInput.select();
                 }
-            }
+            });
 
-            function showHint() {
-                if (currentGapIndex < gaps.length && !gaps[currentGapIndex].classList.contains('filled')) {
-                    const word = gaps[currentGapIndex].getAttribute('data-word');
-                    wordInput.value = word.substring(0, 1);
-                    wordInput.focus();
-                    wordInput.select();
+            const resultsDiv = document.getElementById('results');
+            const scoreDisplay = document.getElementById('scoreDisplay');
+            const detailedResults = document.getElementById('detailedResults');
+
+            const percentage = Math.round((correctCount / currentGaps.length) * 100);
+            scoreDisplay.textContent = `Score: ${correctCount}/${currentGaps.length} (${percentage}%)`;
+
+            let detailedHTML = '<h4>Detailed Results:</h4><ul style="margin: 0; padding-left: 20px;">';
+            results.forEach(result => {
+                if (result.correct) {
+                    detailedHTML += `<li style="margin-bottom: 8px;">Gap ${result.id}: ✅ Correct! You answered: "${result.userAnswer}"</li>`;
+                } else {
+                    detailedHTML += `<li style="margin-bottom: 8px;">Gap ${result.id}: ❌ Incorrect. You answered: "${result.userAnswer}". Correct answer: <span class="correct-answer">"${result.correctAnswer}"</span></li>`;
                 }
+            });
+            detailedHTML += '</ul>';
+
+            detailedResults.innerHTML = detailedHTML;
+            resultsDiv.style.display = 'block';
+
+            setTimeout(() => {
+                resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 100);
+        }
+
+        function showAllAnswers() {
+            gapInputs.forEach(input => {
+                const gapId = parseInt(input.dataset.gapId);
+                const gapInfo = currentGaps.find(gap => gap.id === gapId);
+
+                if (gapInfo) {
+                    input.value = gapInfo.correctAnswer;
+                    input.style.width = Math.max(60, gapInfo.correctAnswer.length * 8) + 'px';
+                    input.classList.add('correct');
+                    input.classList.remove('incorrect');
+                }
+            });
+
+            const resultsDiv = document.getElementById('results');
+            const scoreDisplay = document.getElementById('scoreDisplay');
+            const detailedResults = document.getElementById('detailedResults');
+
+            scoreDisplay.textContent = `All answers revealed! Perfect score: ${currentGaps.length}/${currentGaps.length} (100%)`;
+            detailedResults.innerHTML = '<p>All correct answers have been filled in for you.</p>';
+            resultsDiv.style.display = 'block';
+
+            setTimeout(() => {
+                resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 100);
+        }
+
+        function showFullText() {
+            const fullTextDisplay = document.getElementById('fullTextDisplay');
+            const transcriptDiv = document.getElementById('transcript');
+            const resultsDiv = document.getElementById('results');
+
+            if (fullTextDisplay.style.display === 'block') {
+                fullTextDisplay.style.display = 'none';
+                transcriptDiv.style.display = 'block';
+                document.getElementById('showFullText').textContent = '📄 Show Whole Text';
+            } else {
+                // Show full text with speaker labels preserved as styled spans
+                fullTextDisplay.innerHTML = originalText.trim()
+                    .split('\n\n')
+                    .map(p => `<p>${p.replace(/\n/g, ' ')}</p>`)
+                    .join('');
+                fullTextDisplay.style.display = 'block';
+                transcriptDiv.style.display = 'none';
+                resultsDiv.style.display = 'none';
+                document.getElementById('showFullText').textContent = '🔄 Back to Gaps';
             }
+        }
 
-            function showSolution() {
-                gaps.forEach(gap => {
-                    gap.textContent = gap.getAttribute('data-word');
-                    gap.classList.add('filled');
-                    gap.classList.remove('active');
-                });
-                completedGaps = totalGaps;
-                updateProgress();
-                wordInput.disabled = true;
-                submitBtn.disabled = true;
-                successMsg.textContent = 'Answers revealed.';
-                successMsg.style.display = 'block';
-                errorMsg.style.display = 'none';
+        // Initial setup
+        document.getElementById('fullTextDisplay').style.display = 'none';
+        document.getElementById('showFullText').textContent = '📄 Show Whole Text';
+
+        generateGaps();
+
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function(event) {
+            const now = Date.now();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
             }
-
-            function resetExercise() {
-                gaps.forEach(gap => {
-                    const word = gap.getAttribute('data-word');
-                    const len = word.length;
-                    gap.textContent = '_'.repeat(len <= 3 ? 3 : len);
-                    gap.classList.remove('filled', 'active');
-                });
-                gaps[0].classList.add('active');
-                currentGapIndex = 0;
-                completedGaps = 0;
-                updateProgress();
-                wordInput.value = '';
-                wordInput.disabled = false;
-                submitBtn.disabled = false;
-                successMsg.style.display = 'none';
-                errorMsg.style.display = 'none';
-                wordInput.focus();
-            }
-
-            submitBtn.addEventListener('click', checkWord);
-            wordInput.addEventListener('keypress', e => { if (e.key === 'Enter') checkWord(); });
-            hintBtn.addEventListener('click', showHint);
-            solutionBtn.addEventListener('click', showSolution);
-            resetBtn.addEventListener('click', resetExercise);
-
-            init();
-        });
+            lastTouchEnd = now;
+        }, false);
     </script>
 </body>
 </html>
