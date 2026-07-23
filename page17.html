@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peru Mushroom Market – Gap Filling (with Audio)</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            padding: 15px;
+            margin: 0;
+            background-color: #f5f7fa;
+            color: #333;
+        }
+        .container { max-width: 900px; margin: 0 auto; }
+        h2 {
+            color: #2a2a2a;
+            border-bottom: 3px solid #0078d4;
+            padding-bottom: 12px;
+            margin: 0 0 15px 0;
+            font-size: 1.5rem;
+            line-height: 1.3;
+        }
+        .transcript-container {
+            margin-top: 20px;
+            background-color: white;
+            padding: 20px 15px;
+            border-radius: 12px;
+            border: 1px solid #e1e5e9;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .gap-input {
+            display: inline-block;
+            min-width: 60px;
+            margin: 2px;
+            padding: 8px 10px;
+            border: 2px solid #d1d9e6;
+            border-radius: 6px;
+            background-color: white;
+            text-align: center;
+            font-family: inherit;
+            font-size: 16px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+        .gap-input:focus {
+            outline: none;
+            border-color: #0078d4;
+            box-shadow: 0 0 0 3px rgba(0, 120, 212, 0.1);
+        }
+        .correct { border-color: #28a745; background-color: #f0fff4; }
+        .incorrect { border-color: #dc3545; background-color: #fff0f0; }
+        .correct-answer { color: #28a745; font-weight: bold; }
+        .buttons-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 25px 0 15px 0;
+        }
+        button {
+            flex: 1;
+            min-width: 140px;
+            padding: 14px 16px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            color: white;
+        }
+        #checkAnswers { background-color: #0078d4; }
+        #checkAnswers:hover, #checkAnswers:active { background-color: #005fa3; }
+        #showAnswers { background-color: #28a745; }
+        #showAnswers:hover, #showAnswers:active { background-color: #218838; }
+        #resetGaps { background-color: #ff9800; }
+        #resetGaps:hover, #resetGaps:active { background-color: #e68900; }
+        #showFullText { background-color: #6f42c1; }
+        #showFullText:hover, #showFullText:active { background-color: #5a32a3; }
+        .instructions {
+            background-color: #e8f4fc;
+            padding: 16px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #0078d4;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .audio-container {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f0f7ff;
+            border-radius: 10px;
+            border: 1px solid #cce0ff;
+            text-align: center;
+        }
+        .audio-container iframe { border-radius: 6px; overflow: hidden; }
+        .results {
+            margin-top: 20px;
+            padding: 18px;
+            border-radius: 10px;
+            background-color: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            display: none;
+            font-size: 15px;
+        }
+        .score { font-size: 18px; font-weight: bold; color: #0078d4; margin-bottom: 12px; text-align: center; }
+        .gap-container { position: relative; display: inline-block; margin: 2px; vertical-align: middle; }
+        .gap-number {
+            position: absolute;
+            top: -18px;
+            left: 0;
+            right: 0;
+            font-size: 10px;
+            color: #666;
+            font-weight: bold;
+            text-align: center;
+            pointer-events: none;
+        }
+        .transcript-content p { margin: 0 0 20px 0; font-size: 16px; line-height: 1.7; word-wrap: break-word; }
+        .transcript-content p:last-child { margin-bottom: 0; }
+        #fullTextDisplay {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            font-size: 15px;
+            line-height: 1.7;
+            display: none;
+        }
+        @media (max-width: 768px) {
+            body { padding: 12px; }
+            h2 { font-size: 1.3rem; padding-bottom: 10px; }
+            .transcript-container { padding: 15px 12px; }
+            .gap-input { min-width: 50px; padding: 6px 8px; font-size: 15px; margin: 1px; }
+            .gap-number { font-size: 9px; top: -15px; }
+            .transcript-content p { font-size: 15px; line-height: 1.6; }
+            button { min-width: 120px; padding: 12px 14px; font-size: 15px; }
+            .instructions { padding: 14px; font-size: 13px; }
+            .results { padding: 15px; font-size: 14px; }
+        }
+        @media (max-width: 480px) {
+            .buttons-container { flex-direction: column; gap: 8px; }
+            button { width: 100%; min-width: auto; }
+            .gap-input { min-width: 40px; padding: 5px 6px; font-size: 14px; }
+            .transcript-content p { font-size: 14px; line-height: 1.5; }
+            h2 { font-size: 1.2rem; }
+            .container { padding: 0 8px; }
+        }
+        .gap-input { min-height: 44px; }
+        button { min-height: 50px; touch-action: manipulation; }
+        @media (max-width: 360px) {
+            .gap-input { min-width: 35px; font-size: 13px; padding: 4px 5px; min-height: 40px; }
+            .gap-number { font-size: 8px; top: -12px; }
+            .transcript-content p { font-size: 13px; }
+        }
+        @media (prefers-color-scheme: dark) {
+            body { background-color: #1a1a1a; color: #e0e0e0; }
+            .transcript-container { background-color: #2d2d2d; border-color: #404040; }
+            .instructions { background-color: #2a3b4d; border-left-color: #0078d4; }
+            .audio-container { background-color: #2a3b4d; border-color: #404040; }
+            .results { background-color: #2d2d2d; border-color: #404040; }
+            .gap-input { background-color: #3a3a3a; border-color: #555; color: #e0e0e0; }
+            .gap-input::placeholder { color: #888; }
+            .correct { background-color: #1e3a1e; }
+            .incorrect { background-color: #3a1e1e; }
+            #fullTextDisplay { background-color: #2d2d2d; border-color: #404040; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>📈 Peru Mushroom Market – Fill the Gaps</h2>
+
+        <div class="instructions">
+            <p><strong>Instructions:</strong> Fill in the blanks with the correct words from the market report. Press <kbd>Enter</kbd> or click <strong>Check Answers</strong>. Answers are case‑insensitive.</p>
+        </div>
+
+        <!-- ==================== AUDIO PLAYER (replace with your own SoundCloud URL) ==================== -->
+        <div class="audio-container">
+            🔊 <strong>Audio:</strong>
+            <!-- Replace the "src" with your own SoundCloud track URL -->
+            <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay; encrypted-media"
+                    src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/PASTE_YOUR_TRACK_ID_HERE&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
+            </iframe>
+            <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;">
+                <a href="https://soundcloud.com/your-account" title="Your Name" target="_blank" style="color: #cccccc; text-decoration: none;">Your Name</a> ·
+                <a href="https://soundcloud.com/your-account/your-track" title="Your Track" target="_blank" style="color: #cccccc; text-decoration: none;">Your Track</a>
+            </div>
+        </div>
+        <!-- ==================== END AUDIO PLAYER ==================== -->
+
+        <div class="transcript-container">
+            <h3>Fill in the Blanks:</h3>
+            <div id="transcript" class="transcript-content"></div>
+
+            <div class="buttons-container">
+                <button id="checkAnswers" onclick="checkAnswers()">✓ Check Answers</button>
+                <button id="showAnswers" onclick="showAllAnswers()">👁 Show Answers</button>
+                <button id="resetGaps" onclick="generateGaps()">🔄 New Gaps</button>
+                <button id="showFullText" onclick="showFullText()">📄 Show Whole Text</button>
+            </div>
+
+            <div id="results" class="results">
+                <div id="scoreDisplay" class="score"></div>
+                <div id="detailedResults"></div>
+            </div>
+
+            <div id="fullTextDisplay"></div>
+        </div>
+    </div>
+
+    <script>
+        // ========== Peru Mushroom Market Article ==========
+        const originalText = `
+Peru Mushroom Market (2025 - 2031) | Analysis, Size, Value, Companies, COVID-19 IMPACT, Share, Revenue, Industry, Growth, Forecast & Trends
+
+Market Forecast By Product (Button, Shiitake, Oyster, Matsutake, Truffles, Others), By Form (Fresh, Processed), By Distribution Channel (Direct to Customer, Grocery Stores, Supermarkets & Hypermarkets, Convenience Store, Online Stores), By Application (Food, Pharmaceuticals, Cosmetics) And Competitive Landscape
+
+Peru's mushroom import market saw significant growth in 2024, with China, Italy, and Spain emerging as key exporting countries. The high Herfindahl-Hirschman Index (HHI) indicates a concentrated market, potentially driving competition and market dynamics. The impressive Compound Annual Growth Rate (CAGR) of 14.28% from 2020 to 2024 reflects sustained market expansion. Moreover, the remarkable growth rate of 75.91% in 2024 alone showcases a surge in demand for imported mushrooms in Peru. These trends suggest a thriving market with opportunities for both domestic and international players to capitalize on the growing consumer interest in mushrooms.
+
+The Mushroom market in Peru is projected to grow at a growth rate of 8.92% by 2027, within the Latin America region led by Brazil, along with other countries like Mexico, Argentina, Colombia and Chile, collectively shaping a dynamic and evolving market environment driven by innovation and increasing adoption of emerging technologies.
+
+The Peru Mushroom Market is experiencing steady growth driven by increasing consumer awareness about the nutritional benefits and culinary versatility of mushrooms. Oyster and Shiitake mushrooms are the most popular varieties in Peru due to their unique flavors and health benefits. The market is also benefiting from the growing trend of plant-based diets and the rising demand for organic and locally sourced produce. Key market players are focusing on product innovation, sustainable farming practices, and expanding distribution channels to meet the growing demand. With the government's support for the agriculture sector and favorable climatic conditions for mushroom cultivation, the Peru Mushroom Market is expected to continue its growth trajectory in the coming years.
+
+The Peru Mushroom Market is experiencing a growth trend driven by increasing consumer awareness of the health benefits and versatility of mushrooms. There is a growing demand for exotic and specialty mushrooms such as shiitake, oyster, and enoki varieties, reflecting evolving consumer preferences for unique flavors and textures. The market is also witnessing a rise in the adoption of sustainable and organic mushroom cultivation practices, aligning with the global trend towards healthier and environmentally friendly food choices. Additionally, the foodservice sector in Peru is incorporating mushrooms in innovative ways, expanding the market beyond traditional retail channels. Overall, the Peru Mushroom Market is poised for further growth as consumers seek out nutritious and flavorful options in their diets.
+
+In the Peru Mushroom Market, some challenges faced include limited consumer awareness and preference for traditional mushroom varieties, inadequate infrastructure for cultivation leading to inconsistent supply, difficulties in securing reliable distribution channels, and competition from imported mushrooms. Additionally, there are challenges related to regulatory constraints and lack of standardized quality control measures, which can impact consumer trust and market growth. Furthermore, fluctuations in raw material prices, weather conditions affecting cultivation, and transportation costs can also pose challenges for mushroom producers in Peru. Overall, addressing these challenges will require strategic marketing efforts, investment in infrastructure and technology, as well as collaboration among stakeholders to promote the growth and sustainability of the Peru Mushroom Market.
+
+The Peru mushroom market presents promising investment opportunities due to increasing consumer awareness of the health benefits and culinary versatility of mushrooms. With a growing demand for organic and specialty mushrooms in the country, investors can explore opportunities in mushroom cultivation, processing, and distribution. Additionally, the rise of urban farming and sustainable agricultural practices in Peru creates a conducive environment for innovative mushroom farming techniques such as vertical farming and controlled environment agriculture. Investing in research and development for new mushroom varieties tailored to the local market preferences can also be a strategic move. Overall, the Peru mushroom market offers potential for growth and diversification for investors looking to capitalize on the increasing popularity of mushrooms in the country.
+
+In Peru, the mushroom market is regulated by government policies that focus on promoting sustainable agriculture practices and ensuring food safety standards. The Ministry of Agriculture and Irrigation oversees the regulation of mushroom production, distribution, and sale, with a specific emphasis on promoting organic cultivation methods and supporting small-scale farmers in the industry. Additionally, the government provides technical assistance and financial incentives to encourage innovation and competitiveness within the mushroom sector. Importantly, there are strict regulations in place to monitor and control the quality and safety of mushrooms sold in the market, including inspections of production facilities and adherence to labeling requirements. Overall, the government policies in Peru aim to foster a thriving and responsible mushroom market that contributes to the country's agricultural development and food security goals.
+
+The Peru Mushroom Market is expected to witness steady growth in the coming years due to increasing consumer awareness about the health benefits of mushrooms and a rising trend of incorporating them in various cuisines. The market is likely to be driven by factors such as growing demand for organic and exotic mushrooms, advancements in mushroom cultivation techniques, and a shift towards plant-based diets among consumers. Additionally, the rising popularity of gourmet mushrooms and the expanding foodservice industry in Peru are expected to further boost market growth. However, challenges such as limited awareness about different mushroom varieties and the availability of substitutes may hinder the market's growth to some extent. Overall, the Peru Mushroom Market is poised for expansion, with opportunities for market players to innovate and diversify their product offerings to cater to evolving consumer preferences.
+`;
+
+        let currentGaps = [];
+        let gapInputs = [];
+
+        function generateGaps() {
+            const container = document.getElementById('transcript');
+            const paragraphs = originalText.trim().split('\n\n');
+            const resultsDiv = document.getElementById('results');
+            const scoreDisplay = document.getElementById('scoreDisplay');
+            const detailedResults = document.getElementById('detailedResults');
+            const fullTextDisplay = document.getElementById('fullTextDisplay');
+
+            currentGaps = [];
+            gapInputs = [];
+            resultsDiv.style.display = 'none';
+            scoreDisplay.textContent = '';
+            detailedResults.innerHTML = '';
+            fullTextDisplay.style.display = 'none';
+
+            let htmlContent = '';
+            let gapCounter = 1;
+
+            paragraphs.forEach(paragraph => {
+                const words = paragraph.split(' ');
+                const numGaps = Math.floor(words.length * 0.35);
+                const gapIndices = new Set();
+
+                while (gapIndices.size < numGaps) {
+                    const i = Math.floor(Math.random() * words.length);
+                    const clean = words[i].replace(/[.,!?;:]/g, '');
+                    if (clean.length > 3 && !/^\d+$/.test(clean) && !words[i].includes('<')) {
+                        gapIndices.add(i);
+                    }
+                }
+
+                const processedWords = words.map((word, i) => {
+                    const clean = word.replace(/[.,!?;:]/g, '');
+                    const punctuation = word.match(/[.,!?;:]+$/);
+
+                    if (gapIndices.has(i)) {
+                        currentGaps.push({
+                            id: gapCounter,
+                            correctAnswer: clean.toLowerCase(),
+                            fullWord: word,
+                            position: gapCounter
+                        });
+
+                        const gapHtml = `
+                            <span class="gap-container">
+                                <span class="gap-number">${gapCounter}</span>
+                                <input type="text"
+                                       class="gap-input"
+                                       id="gap-${gapCounter}"
+                                       data-gap-id="${gapCounter}"
+                                       placeholder="___"
+                                       style="width: ${Math.max(60, clean.length * 8)}px">
+                                ${punctuation ? punctuation[0] : ''}
+                            </span>
+                        `;
+                        gapCounter++;
+                        return gapHtml;
+                    }
+                    return word;
+                });
+
+                htmlContent += `<p>${processedWords.join(' ')}</p>`;
+            });
+
+            container.innerHTML = htmlContent;
+
+            gapInputs = Array.from(document.querySelectorAll('.gap-input'));
+
+            gapInputs.forEach(input => {
+                input.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        checkAnswers();
+                    }
+                });
+
+                input.addEventListener('blur', function() {
+                    if (this.value.length > 0) {
+                        this.style.width = Math.max(60, this.value.length * 8) + 'px';
+                    }
+                });
+
+                input.addEventListener('focus', function() {
+                    this.style.fontSize = '16px';
+                });
+            });
+
+            document.addEventListener('touchstart', function() {}, { passive: true });
+        }
+
+        function checkAnswers() {
+            let correctCount = 0;
+            const results = [];
+
+            gapInputs.forEach(input => {
+                const gapId = parseInt(input.dataset.gapId);
+                const userAnswer = input.value.trim().toLowerCase();
+                const gapInfo = currentGaps.find(gap => gap.id === gapId);
+
+                if (!gapInfo) return;
+
+                if (userAnswer === gapInfo.correctAnswer) {
+                    input.classList.add('correct');
+                    input.classList.remove('incorrect');
+                    correctCount++;
+                    results.push({
+                        id: gapId,
+                        correct: true,
+                        userAnswer: userAnswer,
+                        correctAnswer: gapInfo.correctAnswer
+                    });
+                } else {
+                    input.classList.add('incorrect');
+                    input.classList.remove('correct');
+                    results.push({
+                        id: gapId,
+                        correct: false,
+                        userAnswer: userAnswer,
+                        correctAnswer: gapInfo.correctAnswer
+                    });
+                }
+            });
+
+            const resultsDiv = document.getElementById('results');
+            const scoreDisplay = document.getElementById('scoreDisplay');
+            const detailedResults = document.getElementById('detailedResults');
+
+            const percentage = Math.round((correctCount / currentGaps.length) * 100);
+            scoreDisplay.textContent = `Score: ${correctCount}/${currentGaps.length} (${percentage}%)`;
+
+            let detailedHTML = '<h4>Detailed Results:</h4><ul style="margin: 0; padding-left: 20px;">';
+            results.forEach(result => {
+                if (result.correct) {
+                    detailedHTML += `<li style="margin-bottom: 8px;">Gap ${result.id}: ✅ Correct! You answered: "${result.userAnswer}"</li>`;
+                } else {
+                    detailedHTML += `<li style="margin-bottom: 8px;">Gap ${result.id}: ❌ Incorrect. You answered: "${result.userAnswer}". Correct answer: <span class="correct-answer">"${result.correctAnswer}"</span></li>`;
+                }
+            });
+            detailedHTML += '</ul>';
+
+            detailedResults.innerHTML = detailedHTML;
+            resultsDiv.style.display = 'block';
+
+            setTimeout(() => {
+                resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 100);
+        }
+
+        function showAllAnswers() {
+            gapInputs.forEach(input => {
+                const gapId = parseInt(input.dataset.gapId);
+                const gapInfo = currentGaps.find(gap => gap.id === gapId);
+
+                if (gapInfo) {
+                    input.value = gapInfo.correctAnswer;
+                    input.style.width = Math.max(60, gapInfo.correctAnswer.length * 8) + 'px';
+                    input.classList.add('correct');
+                    input.classList.remove('incorrect');
+                }
+            });
+
+            const resultsDiv = document.getElementById('results');
+            const scoreDisplay = document.getElementById('scoreDisplay');
+            const detailedResults = document.getElementById('detailedResults');
+
+            scoreDisplay.textContent = `All answers revealed! Perfect score: ${currentGaps.length}/${currentGaps.length} (100%)`;
+            detailedResults.innerHTML = '<p>All correct answers have been filled in for you.</p>';
+            resultsDiv.style.display = 'block';
+
+            setTimeout(() => {
+                resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 100);
+        }
+
+        function showFullText() {
+            const fullTextDisplay = document.getElementById('fullTextDisplay');
+            const transcriptDiv = document.getElementById('transcript');
+            const resultsDiv = document.getElementById('results');
+
+            if (fullTextDisplay.style.display === 'block') {
+                fullTextDisplay.style.display = 'none';
+                transcriptDiv.style.display = 'block';
+                document.getElementById('showFullText').textContent = '📄 Show Whole Text';
+            } else {
+                fullTextDisplay.innerHTML = originalText.trim()
+                    .split('\n\n')
+                    .map(p => `<p>${p.replace(/\n/g, ' ')}</p>`)
+                    .join('');
+                fullTextDisplay.style.display = 'block';
+                transcriptDiv.style.display = 'none';
+                resultsDiv.style.display = 'none';
+                document.getElementById('showFullText').textContent = '🔄 Back to Gaps';
+            }
+        }
+
+        document.getElementById('fullTextDisplay').style.display = 'none';
+        document.getElementById('showFullText').textContent = '📄 Show Whole Text';
+
+        generateGaps();
+
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function(event) {
+            const now = Date.now();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+    </script>
+</body>
+</html>
