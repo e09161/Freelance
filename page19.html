@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adrián – Personal Presentation (Fill the Gaps)</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            padding: 15px;
+            margin: 0;
+            background-color: #f5f7fa;
+            color: #333;
+        }
+        .container { max-width: 900px; margin: 0 auto; }
+        h2 {
+            color: #2a2a2a;
+            border-bottom: 3px solid #0078d4;
+            padding-bottom: 12px;
+            margin: 0 0 15px 0;
+            font-size: 1.5rem;
+            line-height: 1.3;
+        }
+        .transcript-container {
+            margin-top: 20px;
+            background-color: white;
+            padding: 20px 15px;
+            border-radius: 12px;
+            border: 1px solid #e1e5e9;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .gap-input {
+            display: inline-block;
+            min-width: 60px;
+            margin: 2px;
+            padding: 8px 10px;
+            border: 2px solid #d1d9e6;
+            border-radius: 6px;
+            background-color: white;
+            text-align: center;
+            font-family: inherit;
+            font-size: 16px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+        .gap-input:focus {
+            outline: none;
+            border-color: #0078d4;
+            box-shadow: 0 0 0 3px rgba(0, 120, 212, 0.1);
+        }
+        .correct { border-color: #28a745; background-color: #f0fff4; }
+        .incorrect { border-color: #dc3545; background-color: #fff0f0; }
+        .correct-answer { color: #28a745; font-weight: bold; }
+        .buttons-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 25px 0 15px 0;
+        }
+        button {
+            flex: 1;
+            min-width: 140px;
+            padding: 14px 16px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            color: white;
+        }
+        #checkAnswers { background-color: #0078d4; }
+        #checkAnswers:hover, #checkAnswers:active { background-color: #005fa3; }
+        #showAnswers { background-color: #28a745; }
+        #showAnswers:hover, #showAnswers:active { background-color: #218838; }
+        #resetGaps { background-color: #ff9800; }
+        #resetGaps:hover, #resetGaps:active { background-color: #e68900; }
+        #showFullText { background-color: #6f42c1; }
+        #showFullText:hover, #showFullText:active { background-color: #5a32a3; }
+        .instructions {
+            background-color: #e8f4fc;
+            padding: 16px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #0078d4;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .audio-container {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f0f7ff;
+            border-radius: 10px;
+            border: 1px solid #cce0ff;
+            text-align: center;
+        }
+        .audio-container iframe { border-radius: 6px; overflow: hidden; }
+        .results {
+            margin-top: 20px;
+            padding: 18px;
+            border-radius: 10px;
+            background-color: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            display: none;
+            font-size: 15px;
+        }
+        .score { font-size: 18px; font-weight: bold; color: #0078d4; margin-bottom: 12px; text-align: center; }
+        .gap-container { position: relative; display: inline-block; margin: 2px; vertical-align: middle; }
+        .gap-number {
+            position: absolute;
+            top: -18px;
+            left: 0;
+            right: 0;
+            font-size: 10px;
+            color: #666;
+            font-weight: bold;
+            text-align: center;
+            pointer-events: none;
+        }
+        .transcript-content p { margin: 0 0 20px 0; font-size: 16px; line-height: 1.7; word-wrap: break-word; }
+        .transcript-content p:last-child { margin-bottom: 0; }
+        #fullTextDisplay {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            font-size: 15px;
+            line-height: 1.7;
+            display: none;
+        }
+        @media (max-width: 768px) {
+            body { padding: 12px; }
+            h2 { font-size: 1.3rem; padding-bottom: 10px; }
+            .transcript-container { padding: 15px 12px; }
+            .gap-input { min-width: 50px; padding: 6px 8px; font-size: 15px; margin: 1px; }
+            .gap-number { font-size: 9px; top: -15px; }
+            .transcript-content p { font-size: 15px; line-height: 1.6; }
+            button { min-width: 120px; padding: 12px 14px; font-size: 15px; }
+            .instructions { padding: 14px; font-size: 13px; }
+            .results { padding: 15px; font-size: 14px; }
+        }
+        @media (max-width: 480px) {
+            .buttons-container { flex-direction: column; gap: 8px; }
+            button { width: 100%; min-width: auto; }
+            .gap-input { min-width: 40px; padding: 5px 6px; font-size: 14px; }
+            .transcript-content p { font-size: 14px; line-height: 1.5; }
+            h2 { font-size: 1.2rem; }
+            .container { padding: 0 8px; }
+        }
+        .gap-input { min-height: 44px; }
+        button { min-height: 50px; touch-action: manipulation; }
+        @media (max-width: 360px) {
+            .gap-input { min-width: 35px; font-size: 13px; padding: 4px 5px; min-height: 40px; }
+            .gap-number { font-size: 8px; top: -12px; }
+            .transcript-content p { font-size: 13px; }
+        }
+        @media (prefers-color-scheme: dark) {
+            body { background-color: #1a1a1a; color: #e0e0e0; }
+            .transcript-container { background-color: #2d2d2d; border-color: #404040; }
+            .instructions { background-color: #2a3b4d; border-left-color: #0078d4; }
+            .audio-container { background-color: #2a3b4d; border-color: #404040; }
+            .results { background-color: #2d2d2d; border-color: #404040; }
+            .gap-input { background-color: #3a3a3a; border-color: #555; color: #e0e0e0; }
+            .gap-input::placeholder { color: #888; }
+            .correct { background-color: #1e3a1e; }
+            .incorrect { background-color: #3a1e1e; }
+            #fullTextDisplay { background-color: #2d2d2d; border-color: #404040; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>👤 Adrián – Personal Presentation (Fill the Gaps)</h2>
+
+        <div class="instructions">
+            <p><strong>Instructions:</strong> Listen to the audio (optional context) and fill in the missing words from Adrián's personal story. Press <kbd>Enter</kbd> or click <strong>Check Answers</strong>. Answers are case‑insensitive.</p>
+        </div>
+
+        <!-- Audio: same as before (optional context) -->
+        <div class="audio-container">
+            🔊 <strong>Audio:</strong>
+            <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay; encrypted-media" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2366847170&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/edu-casa-346926859" title="Edu CASA" target="_blank" style="color: #cccccc; text-decoration: none;">Edu CASA</a> · <a href="https://soundcloud.com/edu-casa-346926859/adrian_monologue" title="adrian_monologue" target="_blank" style="color: #cccccc; text-decoration: none;">adrian_monologue</a></div>
+        </div>
+
+        <div class="transcript-container">
+            <h3>Fill in the Blanks:</h3>
+            <div id="transcript" class="transcript-content"></div>
+
+            <div class="buttons-container">
+                <button id="checkAnswers" onclick="checkAnswers()">✓ Check Answers</button>
+                <button id="showAnswers" onclick="showAllAnswers()">👁 Show Answers</button>
+                <button id="resetGaps" onclick="generateGaps()">🔄 New Gaps</button>
+                <button id="showFullText" onclick="showFullText()">📄 Show Whole Text</button>
+            </div>
+
+            <div id="results" class="results">
+                <div id="scoreDisplay" class="score"></div>
+                <div id="detailedResults"></div>
+            </div>
+
+            <div id="fullTextDisplay"></div>
+        </div>
+    </div>
+
+    <script>
+        // ==================== PERSONAL PRESENTATION TEXT ====================
+        const originalText = `
+Hello, my name is Adrián. I hold a bachelor's degree in Physics and I'm currently finishing two master's degrees, both in Artificial Intelligence. My career path has blended research with technology, moving from medical physics into AI and data analysis.
+
+Today, I work as a Data Analyst and Programmer at Sociedad Tecnológica del Perú (STP). I design scalable data architectures using PostgreSQL and MySQL, and I've led the development of two major projects. One is 'ATC Monitor' and the other is 'Universidad Virtual del Perú', where I integrated a GenAI chatbot using LangChain and the OpenAI API. The backend was built with Python and Flask, and I used PostgreSQL to store user data and conversation logs. I also deployed a full-stack interactive dashboard with React and Java, containerized with Docker, and automated KPI extraction pipelines for real-time budget and alarm monitoring.
+
+Before STP, I worked briefly as a Data Visualization Consultant at IMA Go. I created Power BI executive dashboards that turned complex data into clear visual stories, and I optimized ETL processes using Advanced DAX.
+
+My foundation in research comes from several years at the International Medical Physics Group at UNI. As a Research Associate, I led the computational dosimetry unit. I developed custom algorithms in Python, using Pandas, NumPy, SciPy, and TensorFlow, which reduced processing time by 40% and improved accuracy. I also collaborated on Monte Carlo simulations in MATLAB for radiotherapy quality assurance. That experience taught me how to bridge theory and experiments – a skill I now apply to AI.
+
+I've also been involved in funded research projects. I designed a low-cost isotropic electric field sensor at INICTEL-UNI. We validated simulations with experimental measurements, and the work was published in IEEE Latin America Transactions in 2024. Other projects included plasmonic photothermal therapy for cancer cells and thermal modeling, where I used finite element simulations.
+
+My technical toolkit includes Python, R, Java, SQL, MATLAB, and I'm comfortable with React, Flask, Docker, Git, and Power BI. For the GenAI chatbot, I used LangChain and the OpenAI API. I'm fluent in English (TOEFL 98) and Spanish is my native language.
+
+What really drives me is the intersection of physics and AI. I want to keep applying computational science to solve real-world problems, whether in healthcare, education, or operations. In the next few years, I'd like to lead larger projects that integrate AI into production systems and eventually help shape an organization's AI strategy. I believe that the mix of curiosity, rigorous analysis, and practical problem-solving can make a real impact.
+`;
+
+        let currentGaps = [];
+        let gapInputs = [];
+
+        function generateGaps() {
+            const container = document.getElementById('transcript');
+            const paragraphs = originalText.trim().split('\n\n');
+            const resultsDiv = document.getElementById('results');
+            const scoreDisplay = document.getElementById('scoreDisplay');
+            const detailedResults = document.getElementById('detailedResults');
+            const fullTextDisplay = document.getElementById('fullTextDisplay');
+
+            currentGaps = [];
+            gapInputs = [];
+            resultsDiv.style.display = 'none';
+            scoreDisplay.textContent = '';
+            detailedResults.innerHTML = '';
+            fullTextDisplay.style.display = 'none';
+
+            let htmlContent = '';
+            let gapCounter = 1;
+
+            paragraphs.forEach(paragraph => {
+                const words = paragraph.split(' ');
+                const numGaps = Math.floor(words.length * 0.35); // 35% gaps
+                const gapIndices = new Set();
+
+                while (gapIndices.size < numGaps) {
+                    const i = Math.floor(Math.random() * words.length);
+                    const clean = words[i].replace(/[.,!?;:]/g, '');
+                    // Ignore words that are just numbers, punctuation, or very short
+                    if (clean.length > 3 && !/^\d+$/.test(clean) && !words[i].includes('<')) {
+                        gapIndices.add(i);
+                    }
+                }
+
+                const processedWords = words.map((word, i) => {
+                    const clean = word.replace(/[.,!?;:]/g, '');
+                    const punctuation = word.match(/[.,!?;:]+$/);
+
+                    if (gapIndices.has(i)) {
+                        currentGaps.push({
+                            id: gapCounter,
+                            correctAnswer: clean.toLowerCase(),
+                            fullWord: word,
+                            position: gapCounter
+                        });
+
+                        const gapHtml = `
+                            <span class="gap-container">
+                                <span class="gap-number">${gapCounter}</span>
+                                <input type="text"
+                                       class="gap-input"
+                                       id="gap-${gapCounter}"
+                                       data-gap-id="${gapCounter}"
+                                       placeholder="___"
+                                       style="width: ${Math.max(60, clean.length * 8)}px">
+                                ${punctuation ? punctuation[0] : ''}
+                            </span>
+                        `;
+                        gapCounter++;
+                        return gapHtml;
+                    }
+                    return word;
+                });
+
+                htmlContent += `<p>${processedWords.join(' ')}</p>`;
+            });
+
+            container.innerHTML = htmlContent;
+
+            gapInputs = Array.from(document.querySelectorAll('.gap-input'));
+
+            gapInputs.forEach(input => {
+                input.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        checkAnswers();
+                    }
+                });
+
+                input.addEventListener('blur', function() {
+                    if (this.value.length > 0) {
+                        this.style.width = Math.max(60, this.value.length * 8) + 'px';
+                    }
+                });
+
+                input.addEventListener('focus', function() {
+                    this.style.fontSize = '16px';
+                });
+            });
+
+            document.addEventListener('touchstart', function() {}, { passive: true });
+        }
+
+        function checkAnswers() {
+            let correctCount = 0;
+            const results = [];
+
+            gapInputs.forEach(input => {
+                const gapId = parseInt(input.dataset.gapId);
+                const userAnswer = input.value.trim().toLowerCase();
+                const gapInfo = currentGaps.find(gap => gap.id === gapId);
+
+                if (!gapInfo) return;
+
+                if (userAnswer === gapInfo.correctAnswer) {
+                    input.classList.add('correct');
+                    input.classList.remove('incorrect');
+                    correctCount++;
+                    results.push({
+                        id: gapId,
+                        correct: true,
+                        userAnswer: userAnswer,
+                        correctAnswer: gapInfo.correctAnswer
+                    });
+                } else {
+                    input.classList.add('incorrect');
+                    input.classList.remove('correct');
+                    results.push({
+                        id: gapId,
+                        correct: false,
+                        userAnswer: userAnswer,
+                        correctAnswer: gapInfo.correctAnswer
+                    });
+                }
+            });
+
+            const resultsDiv = document.getElementById('results');
+            const scoreDisplay = document.getElementById('scoreDisplay');
+            const detailedResults = document.getElementById('detailedResults');
+
+            const percentage = Math.round((correctCount / currentGaps.length) * 100);
+            scoreDisplay.textContent = `Score: ${correctCount}/${currentGaps.length} (${percentage}%)`;
+
+            let detailedHTML = '<h4>Detailed Results:</h4><ul style="margin: 0; padding-left: 20px;">';
+            results.forEach(result => {
+                if (result.correct) {
+                    detailedHTML += `<li style="margin-bottom: 8px;">Gap ${result.id}: ✅ Correct! You answered: "${result.userAnswer}"</li>`;
+                } else {
+                    detailedHTML += `<li style="margin-bottom: 8px;">Gap ${result.id}: ❌ Incorrect. You answered: "${result.userAnswer}". Correct answer: <span class="correct-answer">"${result.correctAnswer}"</span></li>`;
+                }
+            });
+            detailedHTML += '</ul>';
+
+            detailedResults.innerHTML = detailedHTML;
+            resultsDiv.style.display = 'block';
+
+            setTimeout(() => {
+                resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 100);
+        }
+
+        function showAllAnswers() {
+            gapInputs.forEach(input => {
+                const gapId = parseInt(input.dataset.gapId);
+                const gapInfo = currentGaps.find(gap => gap.id === gapId);
+
+                if (gapInfo) {
+                    input.value = gapInfo.correctAnswer;
+                    input.style.width = Math.max(60, gapInfo.correctAnswer.length * 8) + 'px';
+                    input.classList.add('correct');
+                    input.classList.remove('incorrect');
+                }
+            });
+
+            const resultsDiv = document.getElementById('results');
+            const scoreDisplay = document.getElementById('scoreDisplay');
+            const detailedResults = document.getElementById('detailedResults');
+
+            scoreDisplay.textContent = `All answers revealed! Perfect score: ${currentGaps.length}/${currentGaps.length} (100%)`;
+            detailedResults.innerHTML = '<p>All correct answers have been filled in for you.</p>';
+            resultsDiv.style.display = 'block';
+
+            setTimeout(() => {
+                resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 100);
+        }
+
+        function showFullText() {
+            const fullTextDisplay = document.getElementById('fullTextDisplay');
+            const transcriptDiv = document.getElementById('transcript');
+            const resultsDiv = document.getElementById('results');
+
+            if (fullTextDisplay.style.display === 'block') {
+                fullTextDisplay.style.display = 'none';
+                transcriptDiv.style.display = 'block';
+                document.getElementById('showFullText').textContent = '📄 Show Whole Text';
+            } else {
+                fullTextDisplay.innerHTML = originalText.trim()
+                    .split('\n\n')
+                    .map(p => `<p>${p.replace(/\n/g, ' ')}</p>`)
+                    .join('');
+                fullTextDisplay.style.display = 'block';
+                transcriptDiv.style.display = 'none';
+                resultsDiv.style.display = 'none';
+                document.getElementById('showFullText').textContent = '🔄 Back to Gaps';
+            }
+        }
+
+        // Initial setup
+        document.getElementById('fullTextDisplay').style.display = 'none';
+        document.getElementById('showFullText').textContent = '📄 Show Whole Text';
+
+        generateGaps();
+
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function(event) {
+            const now = Date.now();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+    </script>
+</body>
+</html>
