@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jonathan · C1 Advanced Progress Report & Lesson Plan | Educasa</title>
+    <style>
+        :root {
+            --pearson-blue: #003057;
+            --gold: #F2A900;
+            --educasa-green: #2E7D32;
+            --educasa-light: #E8F5E9;
+            --bg: #F9F9FB;
+            --card: #FFFFFF;
+            --text: #1E1E1E;
+            --text-secondary: #505050;
+            --border: #DCE1E8;
+            --shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+            --radius: 10px;
+            --transition: 0.25s ease;
+            --tag-bg: #E6F0FA;
+            --tag-text: #003057;
+            --success: #2E7D32;
+            --warning: #E65100;
+            --danger: #C62828;
+            --highlight: #FFF8E1;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', 'Segoe UI', Roboto, system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+        .top-nav {
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            background: #1B3A2D;
+            padding: 0.4rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.4rem 0;
+        }
+        .logo-area img {
+            height: 44px;
+            width: auto;
+            border-radius: 6px;
+        }
+        .logo-text {
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: #fff;
+            letter-spacing: 0.5px;
+        }
+        .logo-text span {
+            color: #F2A900;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 0.15rem;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: #C8E6C9;
+            text-decoration: none;
+            padding: 0.6rem 0.9rem;
+            border-radius: 6px;
+            font-size: 0.84rem;
+            font-weight: 500;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+            font-weight: 600;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+        }
+        .student-header {
+            background: linear-gradient(135deg, #FFFFFF 0%, #E8F5E9 100%);
+            border-radius: var(--radius);
+            padding: 2.2rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1.8rem;
+        }
+        .student-avatar {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: #1B3A2D;
+            color: #fff;
+            font-size: 2.5rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 4px 14px rgba(27, 58, 45, 0.3);
+        }
+        .student-info h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #1B3A2D;
+            margin-bottom: 0.15rem;
+        }
+        .student-info .goal-line {
+            font-size: 1rem;
+            color: #3D4F5F;
+            margin-bottom: 0.3rem;
+        }
+        .student-info .goal-line strong {
+            color: #E65100;
+        }
+        .meta-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: 0.3rem;
+        }
+        .meta-tag {
+            display: inline-block;
+            background: #E6F0FA;
+            color: #003057;
+            font-weight: 600;
+            font-size: 0.73rem;
+            padding: 0.22rem 0.75rem;
+            border-radius: 20px;
+        }
+        .meta-tag.gold {
+            background: #FFF8E1;
+            color: #5C3D00;
+        }
+        .meta-tag.green {
+            background: #E8F5E9;
+            color: #1B5E20;
+        }
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #1B3A2D;
+            margin: 2.2rem 0 0.3rem;
+            padding-bottom: 0.45rem;
+            border-bottom: 3px solid #F2A900;
+            display: inline-block;
+        }
+        .section-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 1.3rem;
+            font-size: 0.95rem;
+        }
+        .card {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 1.4rem 1.7rem;
+            margin-bottom: 1.2rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+        .card:hover {
+            box-shadow: 0 10px 26px rgba(0, 0, 0, 0.07);
+        }
+        .card h3 {
+            font-size: 1.1rem;
+            color: #1B3A2D;
+            margin-bottom: 0.45rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .card .icon {
+            font-size: 1.3rem;
+        }
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin: 1rem 0;
+        }
+        @media (max-width: 700px) {
+            .grid-2col {
+                grid-template-columns: 1fr;
+            }
+            .student-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .student-info h1 {
+                font-size: 1.4rem;
+            }
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        thead {
+            background: #1B3A2D;
+            color: #fff;
+        }
+        th {
+            padding: 0.7rem 0.9rem;
+            text-align: left;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            font-size: 0.82rem;
+        }
+        td {
+            padding: 0.6rem 0.9rem;
+            border-bottom: 1px solid var(--border);
+            background: #fff;
+            font-size: 0.88rem;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        tbody tr:hover td {
+            background: #FDFBF5;
+        }
+        .score-high {
+            background: #E8F5E9 !important;
+            font-weight: 700;
+            color: #1B5E20;
+        }
+        .score-mid {
+            background: #FFF8E1 !important;
+            font-weight: 600;
+            color: #5C3D00;
+        }
+        .score-low {
+            background: #FFEBEE !important;
+            font-weight: 600;
+            color: #B71C1C;
+        }
+        .score-na {
+            background: #F5F5F5 !important;
+            color: #999;
+            font-style: italic;
+        }
+        .tip-box {
+            background: #E8F5E9;
+            border-left: 5px solid var(--success);
+            padding: 1rem 1.3rem;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            margin: 1.2rem 0;
+            font-size: 0.93rem;
+        }
+        .tip-box strong {
+            color: #1B5E20;
+        }
+        .warning-box {
+            background: #FFF3E0;
+            border-left: 5px solid var(--warning);
+            padding: 1rem 1.3rem;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            margin: 1.2rem 0;
+            font-size: 0.93rem;
+        }
+        .warning-box strong {
+            color: #BF360C;
+        }
+        .danger-box {
+            background: #FFEBEE;
+            border-left: 5px solid var(--danger);
+            padding: 1rem 1.3rem;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            margin: 1.2rem 0;
+            font-size: 0.93rem;
+        }
+        .danger-box strong {
+            color: #B71C1C;
+        }
+        .progress-bar-wrap {
+            background: #E0E0E0;
+            border-radius: 20px;
+            height: 22px;
+            margin: 0.5rem 0 0.3rem;
+            overflow: hidden;
+            position: relative;
+        }
+        .progress-bar-fill {
+            height: 100%;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #fff;
+            text-align: center;
+            line-height: 22px;
+            transition: width 0.6s ease;
+        }
+        .fill-green {
+            background: #2E7D32;
+        }
+        .fill-gold {
+            background: #F2A900;
+            color: #1B3A2D;
+        }
+        .fill-orange {
+            background: #E65100;
+        }
+        .fill-red {
+            background: #C62828;
+        }
+        .accordion {
+            margin: 1rem 0;
+        }
+        .accordion-header {
+            background: #F3F5F9;
+            padding: 0.85rem 1.3rem;
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-weight: 700;
+            color: #1B3A2D;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+            border: 1px solid var(--border);
+            font-size: 0.95rem;
+        }
+        .accordion-header:hover {
+            background: #E6EEF5;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease;
+            background: #fff;
+            border-radius: 0 0 var(--radius) var(--radius);
+            border: 1px solid var(--border);
+            border-top: none;
+            padding: 0 1.3rem;
+        }
+        .accordion-content.open {
+            max-height: 1200px;
+            padding: 1.1rem 1.3rem;
+        }
+        .accordion-header .arrow {
+            transition: var(--transition);
+            font-size: 1.1rem;
+        }
+        .accordion-header.active .arrow {
+            transform: rotate(180deg);
+            color: #F2A900;
+        }
+        .tag {
+            display: inline-block;
+            background: var(--tag-bg);
+            color: var(--tag-text);
+            font-weight: 600;
+            font-size: 0.72rem;
+            padding: 0.18rem 0.65rem;
+            border-radius: 20px;
+            margin: 0.15rem 0.25rem;
+        }
+        .tag.gold {
+            background: #FFF8E1;
+            color: #5C3D00;
+        }
+        .tag.green {
+            background: #E8F5E9;
+            color: #1B5E20;
+        }
+        .tag.red {
+            background: #FFEBEE;
+            color: #B71C1C;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #606060;
+            font-size: 0.82rem;
+            border-top: 1px solid var(--border);
+            margin-top: 3rem;
+        }
+        footer img {
+            height: 36px;
+            vertical-align: middle;
+            margin: 0 0.4rem;
+        }
+        footer a {
+            color: #1B3A2D;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .anchor-offset {
+            scroll-margin-top: 90px;
+        }
+        .scenario-table th, .scenario-table td {
+            text-align: center;
+            vertical-align: middle;
+        }
+        .scenario-table .highlight-col {
+            background-color: #E8F5E9;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="logo-area">
+            <img src="https://educasa.pe/wp-content/uploads/2025/05/cropped-educasa_chamilo_big-1-150x150.png"
+            alt="Educasa Logo"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <span class="logo-text" style="display:none; align-items:center; gap:0.4rem;">
+                <span style="background:#F2A900;width:12px;height:12px;border-radius:50%;display:inline-block;"></span> Educasa
+            </span>
+            <span class="logo-text">Educasa <span>·</span> Gold C1</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#overview" class="active">Overview</a></li>
+            <li><a href="#diagnosis">Diagnosis</a></li>
+            <li><a href="#scores">Scores</a></li>
+            <li><a href="#frequency-options">Frequency Options</a></li>
+            <li><a href="#lesson-plan">Lesson Plan</a></li>
+            <li><a href="#unit-guide">Unit Map</a></li>
+            <li><a href="#resources">Resources</a></li>
+            <li><a href="#tips">Exam Tips</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <header class="student-header anchor-offset" id="overview">
+            <div class="student-avatar">J</div>
+            <div class="student-info">
+                <h1>Jonathan Landa</h1>
+                <p class="goal-line">
+                    🎯 <strong>Target:</strong> Cambridge C1 Advanced – Grade A or B<br>
+                    📅 <strong>Exam window:</strong> November / December 2026<br>
+                    🏫 <strong>Provider:</strong> Educasa · Gold C1 Advanced (Pearson) + Canvas
+                </p>
+                <div class="meta-tags">
+                    <span class="meta-tag green">📘 Current: Unit 2 – Gapped Text</span>
+                    <span class="meta-tag">🕐 2–3 sessions/week (flexible)</span>
+                    <span class="meta-tag gold">⏱️ 94h 17m on Canvas</span>
+                    <span class="meta-tag">📊 Kartkówka avg: 13.0/15</span>
+                    <span class="meta-tag green">✅ 17 sessions completed</span>
+                    <span class="meta-tag">📚 Background up to Unit 6/12</span>
+                </div>
+            </div>
+        </header>
+
+        <section class="anchor-offset" id="diagnosis">
+            <h2 class="section-title">🔍 Personalized Diagnosis</h2>
+            <p class="section-subtitle">Based on Canvas score report, Kartkówka quizzes, extensive practice hours, and current unit progress.</p>
+            <div class="grid-2col">
+                <div class="card">
+                    <h3><span class="icon">💪</span> Strengths</h3>
+                    <ul style="padding-left:1.4rem; color:var(--text-secondary); font-size:0.9rem; line-height:2;">
+                        <li><strong>Kartkówka quizzes:</strong> 13.0/15 (86.7%) – very solid vocabulary & grammar retention</li>
+                        <li><strong>Use of English mastery:</strong> 100% on Open Cloze (Part 2), Word Formation (Part 3), and Giving Opinions</li>
+                        <li><strong>Gapped text (Part 7):</strong> 100% on <em>How to have a conversation – Missing paragraphs</em> – ready for exam level</li>
+                        <li><strong>Integrated speaking & grammar:</strong> 100% on Unit 2 Speaking and Grammar Focus</li>
+                        <li><strong>Massive Canvas engagement:</strong> 94h+ of active platform time indicates high discipline</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3><span class="icon">⚠️</span> Areas for Development</h3>
+                    <ul style="padding-left:1.4rem; color:var(--text-secondary); font-size:0.9rem; line-height:2;">
+                        <li><strong>Reading comprehension (long texts):</strong> 50% on <em>CAE Reading – The Changing Perception of Cities</em></li>
+                        <li><strong>Unit 1 Exam overall:</strong> 59.49% – suggests inconsistency under exam conditions</li>
+                        <li><strong>Narrative tenses accuracy:</strong> 55% – needs review</li>
+                        <li><strong>CAE Word Choice (sales):</strong> 50% – vocabulary in context needs sharpening</li>
+                        <li><strong>Listening detail:</strong> Some scores at 75–76% – room for B-grade precision</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="tip-box">
+                <strong>💡 Positive outlook:</strong> Jonathan's Use of English and gapped text skills are already at C1 level. His main opportunity is converting strong discrete skills into consistent exam performance across all sections, particularly under timed conditions. With his current pace (2‑3 sessions/week) and background up to Unit 6, covering the full syllabus by November is very achievable.
+            </div>
+        </section>
+
+        <section class="anchor-offset" id="scores">
+            <h2 class="section-title">📊 Key Canvas Scores – Jonathan</h2>
+            <p class="section-subtitle">Selected high‑relevance C1 assignments. Full data available on Canvas.</p>
+            <table>
+                <thead><tr><th>Assignment</th><th>Score</th><th>Max</th><th>%</th><th>Skill Area</th></tr></thead>
+                <tbody>
+                    <tr><td>Kartkówka Quizzes (average)</td><td class="score-high">13.0</td><td>15</td><td class="score-high">86.7%</td><td><span class="tag green">Vocabulary/Grammar</span></td></tr>
+                    <tr><td>CAE Open Cloze – I want what she's got</td><td class="score-high">100</td><td>100</td><td class="score-high">100%</td><td><span class="tag green">Use of English Pt.2</span></td></tr>
+                    <tr><td>CAE Word Formation: Emojis and the Over-30s</td><td class="score-high">100</td><td>100</td><td class="score-high">100%</td><td><span class="tag green">Use of English Pt.3</span></td></tr>
+                    <tr><td>How to have a conversation – Missing paragraphs</td><td class="score-high">100</td><td>100</td><td class="score-high">100%</td><td><span class="tag green">Reading Pt.7 (Gapped Text)</span></td></tr>
+                    <tr><td>Unit 2 – Giving Opinions Expressions</td><td class="score-high">100</td><td>100</td><td class="score-high">100%</td><td><span class="tag green">Speaking/Vocabulary</span></td></tr>
+                    <tr><td>Unit 2 Speaking and Grammar Focus</td><td class="score-high">100</td><td>100</td><td class="score-high">100%</td><td><span class="tag green">Integrated Skills</span></td></tr>
+                    <tr><td>Listening Comprehension – Homes and Living Spaces</td><td class="score-high">23</td><td>25</td><td class="score-high">92%</td><td><span class="tag green">Listening</span></td></tr>
+                    <tr><td>CAE Reading – The Changing Perception of Cities</td><td class="score-low">3</td><td>6</td><td class="score-low">50%</td><td><span class="tag red">Reading Comprehension</span></td></tr>
+                    <tr><td>Unit 1 Exam (with Madrid reading)</td><td class="score-low">59.49</td><td>100</td><td class="score-low">59.5%</td><td><span class="tag red">Overall Exam Simulation</span></td></tr>
+                    <tr><td>Narrative Tenses – Choose the correct sentences</td><td class="score-low">2.75</td><td>5</td><td class="score-low">55%</td><td><span class="tag red">Grammar</span></td></tr>
+                    <tr><td>CAE Word Choice - Sales Techniques</td><td class="score-mid">50</td><td>100</td><td class="score-mid">50%</td><td><span class="tag">Vocabulary in Context</span></td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="anchor-offset" id="frequency-options">
+            <h2 class="section-title">📈 Session Frequency Options – Two Pathways to November/December</h2>
+            <p class="section-subtitle">Jonathan currently attends 2–3 times per week. Even a small increase unlocks deeper exam preparation.</p>
+            <div class="grid-2col">
+                <div class="card">
+                    <h3>🟡 Scenario A: Current Pace</h3>
+                    <p><strong>2–3 sessions/week</strong><br>≈ 30–45 sessions remaining</p>
+                    <ul style="padding-left:1.4rem; color:var(--text-secondary); font-size:0.9rem;">
+                        <li>Units 3‑12 covered comfortably</li>
+                        <li>3–4 full mock exams</li>
+                        <li>Regular speaking & writing workshops</li>
+                        <li>Grade projection: B (possible A)</li>
+                    </ul>
+                    <span class="tag gold">Already very strong coverage</span>
+                </div>
+                <div class="card" style="border-left:5px solid #2E7D32;">
+                    <h3>🟢 Scenario B: Intensive Pace</h3>
+                    <p><strong>3–4 sessions/week</strong><br>≈ 45–60 sessions remaining</p>
+                    <ul style="padding-left:1.4rem; color:var(--text-secondary); font-size:0.9rem;">
+                        <li>All 12 units + 2‑week dedicated review</li>
+                        <li>6–8 full mock exams with analysis</li>
+                        <li>Intensive weak‑point drilling (narrative tenses, timed reading)</li>
+                        <li>Grade projection: A (high confidence)</li>
+                    </ul>
+                    <span class="tag green">Recommended for A‑grade target</span>
+                </div>
+            </div>
+            <table class="scenario-table">
+                <thead><tr><th>Metric</th><th>Scenario A (2–3/week)</th><th class="highlight-col">Scenario B (3–4/week)</th></tr></thead>
+                <tbody>
+                    <tr><td>Remaining weeks until Nov 1</td><td>~13</td><td class="highlight-col">~13</td></tr>
+                    <tr><td>Total sessions available</td><td>30–45</td><td class="highlight-col">45–60</td></tr>
+                    <tr><td>Full mock tests</td><td>3–4</td><td class="highlight-col">6–8</td></tr>
+                    <tr><td>Writing tasks graded</td><td>6–8</td><td class="highlight-col">10–12</td></tr>
+                    <tr><td>Speaking simulations</td><td>4–5</td><td class="highlight-col">6–8</td></tr>
+                </tbody>
+            </table>
+            <div class="tip-box">
+                <strong>💡 Recommendation:</strong> Even with 2‑3 sessions/week, Jonathan is on track for a solid B. To secure a Grade A, adding one more session per week (Scenario B) will provide the extra mock practice and error analysis that makes the difference at the top end.
+            </div>
+        </section>
+
+        <section class="anchor-offset" id="lesson-plan">
+            <h2 class="section-title">📅 Proposed Lesson Plan – Dual‑Track (Scenario A &amp; B)</h2>
+            <p class="section-subtitle">Because Jonathan already has background up to Unit 6, the plan can accelerate from Unit 3 onward while revisiting weak spots.</p>
+            <table>
+                <thead><tr><th>Phase</th><th>Weeks</th><th>Scenario A (2–3/week) – Solid Coverage</th><th>Scenario B (3–4/week) – Deep Dive</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td><strong>🔴 1: Foundation & Review</strong></td>
+                        <td>Aug W1–W2</td>
+                        <td>Finish U2 · Quick review U3–U4 (narrative, modals)</td>
+                        <td>Finish U2 · Full U3, U4, U5 (passives) + narrative tense drill</td>
+                    </tr>
+                    <tr>
+                        <td><strong>🟡 2: Core Expansion</strong></td>
+                        <td>Aug W3 – Sep W4</td>
+                        <td>U5, U6, U7, U8, U9 (key grammar)</td>
+                        <td>U5–U10 + full writing genre cycle, weekly timed readings</td>
+                    </tr>
+                    <tr>
+                        <td><strong>🟢 3: Exam Skills Intensive</strong></td>
+                        <td>Oct W1 – Oct W4</td>
+                        <td>U10, U11, U12 · 3 full mocks · Part 4 & 7 focus</td>
+                        <td>U11, U12 + 5 mocks · Speaking & listening clinics · weak‑spot workshops</td>
+                    </tr>
+                    <tr>
+                        <td><strong>🏁 4: Final Polish</strong></td>
+                        <td>Nov W1 – Exam</td>
+                        <td>Review · 1‑2 additional mocks · error log correction</td>
+                        <td>3‑4 mocks with detailed examiner‑style feedback · final refinement</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="card" style="margin-top:1rem;">
+                <h3>📌 Weekly Blueprint (both scenarios)</h3>
+                <table>
+                    <thead><tr><th>Session Type</th><th>Activities</th><th>Canvas / Active Teach</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>Main Session</strong></td><td>Gold unit input, grammar focus, vocabulary expansion, reading/listening task</td><td>Active Teach interactive + Canvas CD‑ROM quiz</td></tr>
+                        <tr><td><strong>Supplementary / Intensive</strong></td><td>Speaking practice, writing workshop, key word transformations (Part 4), Kartkówka, mock test review</td><td>Timed mini‑tests, gapped text reinforcement, error analysis</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="anchor-offset" id="unit-guide">
+            <h2 class="section-title">📚 Gold C1 Unit Map – Jonathan’s Tracker</h2>
+            <p class="section-subtitle">Current: ✅ Unit 2 (in progress) · Background knowledge up to Unit 6 · 6 units remaining until full coverage.</p>
+            <div class="accordion">
+                <div class="accordion-header" onclick="toggleAccordion(this)"><span>✅ Unit 1 – Completed (prior work)</span><span class="arrow">▼</span></div>
+                <div class="accordion-content"><p>Present tenses, stative verbs. Jonathan: 59% on Unit 1 Exam – some revival needed.</p></div>
+            </div>
+            <div class="accordion">
+                <div class="accordion-header active" onclick="toggleAccordion(this)"><span>🔄 Unit 2 – The world around us (In Progress)</span><span class="arrow">▼</span></div>
+                <div class="accordion-content open"><p><strong>Current focus:</strong> Gapped Text – How to Have a Conversation. Jonathan scored 100% on this task – excellent. Continue to consolidate articles and environment vocabulary.</p><span class="tag green">Strength area</span></div>
+            </div>
+            <div class="accordion">
+                <div class="accordion-header" onclick="toggleAccordion(this)"><span>⏳ Units 3–12 (Accelerated pathway)</span><span class="arrow">▼</span></div>
+                <div class="accordion-content"><p>Units 3‑6 will be covered briskly, leveraging existing knowledge. Units 7‑12 receive deeper treatment. Scenario B allows full, unhurried coverage of all units.</p></div>
+            </div>
+        </section>
+
+        <section class="anchor-offset" id="resources">
+            <h2 class="section-title">🛠️ Resources & Materials</h2>
+            <div class="grid-2col">
+                <div class="card"><h3>📘 Core Materials</h3><ul style="padding-left:1.4rem; color:var(--text-secondary);"><li>Gold C1 Advanced Student's Book</li><li>Gold C1 Exam Maximiser</li><li>Active Teach digital platform</li></ul></div>
+                <div class="card"><h3>💻 Canvas Materials</h3><ul style="padding-left:1.4rem; color:var(--text-secondary);"><li>CAE Gold CD‑ROM exercises (transformed)</li><li>Kartkówka quizzes</li><li>Timed practice tests & mock exams</li><li>Speaking rubrics & self‑assessment</li></ul></div>
+            </div>
+        </section>
+
+        <section class="anchor-offset" id="tips">
+            <h2 class="section-title">🎯 Exam‑Day Strategy & Jonathan‑Specific Tips</h2>
+            <div class="card"><h3>📖 Reading Comprehension – CAE Part 5/6</h3><p>Your 50% on <em>Changing Perception of Cities</em> suggests you benefit from more timed, long‑form reading practice. Dedicate 15 min per session to skimming and inference tasks.</p></div>
+            <div class="card"><h3>🔄 Key Word Transformations (Part 4)</h3><p>Not yet heavily tested; start immediately. Aim for 5‑6 transformations per week using Canvas drills. Never change the key word.</p></div>
+            <div class="card"><h3>📝 Writing – Essay & Report</h3><p>Your grammar is strong; now push for sophisticated C1 linking devices and consistent register. Write one full essay per week under timed conditions.</p></div>
+            <div class="warning-box"><strong>⚠️ Jonathan reminder:</strong> Your Unit 1 Exam result shows that exam‑day pressure affects performance. Build resilience through weekly timed mocks – even short 15‑minute bursts will help.</div>
+        </section>
+
+        <section style="margin-top:2rem;">
+            <h2 class="section-title">📆 Session Log & Overall Progress</h2>
+            <p><strong>Units completed (with tutoring):</strong> 1.5 of 12 (Unit 2 nearly done)</p>
+            <div class="progress-bar-wrap"><div class="progress-bar-fill fill-orange" style="width:12.5%;">~12.5%</div></div>
+            <p style="margin-top:0.8rem;"><strong>Sessions used:</strong> 17 · <strong>Current Canvas overall score:</strong> ~79.7% (weighted)</p>
+            <div class="progress-bar-wrap"><div class="progress-bar-fill fill-gold" style="width:79.7%;">79.7%</div></div>
+            <p style="margin-top:0.8rem;"><strong>Kartkówka average:</strong> 86.7%</p>
+            <div class="progress-bar-wrap"><div class="progress-bar-fill fill-green" style="width:86.7%;">86.7%</div></div>
+            <p style="margin-top:1rem;">📋 <strong>Session dates:</strong> 23/05, 31/05, 06/06, 13/06, 14/06, 20/06, 21/06, 27/06, 28/06, 11/07, 12/07, 15/07, 18/07, 22/07, 25/07, 24/07, 30/07 (most recent).</p>
+        </section>
+    </div>
+
+    <footer>
+        <img src="https://educasa.pe/wp-content/uploads/2025/05/cropped-educasa_chamilo_big-1-150x150.png" alt="Educasa" style="height:40px; vertical-align:middle; border-radius:6px;" onerror="this.style.display='none';">
+        <p><strong>Educasa</strong> · Gold C1 Advanced (Pearson) · Cambridge C1 Exam Preparation<br>
+        Personalized report for <strong>Jonathan Landa</strong> – August 2026<br>
+        <a href="https://educasa.pe" target="_blank">educasa.pe</a> · <a href="https://www.cambridgeenglish.org/exams-and-tests/advanced/" target="_blank">Cambridge C1 Advanced</a></p>
+        <p style="margin-top:0.3rem; font-size:0.75rem; color:#888;">✨ ¡Adelante Jonathan! Your foundation is excellent – now turn it into an A.</p>
+    </footer>
+
+    <script>
+        function toggleAccordion(header) {
+            const content = header.nextElementSibling;
+            const isOpen = content.classList.contains('open');
+            if (!isOpen) { content.classList.add('open'); header.classList.add('active'); }
+            else { content.classList.remove('open'); header.classList.remove('active'); }
+        }
+        const navLinks = document.querySelectorAll('.nav-links a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const target = document.getElementById(targetId);
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                navLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section[id], header[id]');
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 120;
+                if (window.scrollY >= sectionTop) current = section.getAttribute('id');
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+            });
+            if (window.scrollY < 200) {
+                navLinks.forEach(l => l.classList.remove('active'));
+                document.querySelector('.nav-links a[href="#overview"]')?.classList.add('active');
+            }
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+            const unit2Header = document.querySelector('.accordion-header.active');
+            if (unit2Header) {
+                const content = unit2Header.nextElementSibling;
+                if (content && !content.classList.contains('open')) content.classList.add('open');
+            }
+        });
+    </script>
+</body>
+</html>
