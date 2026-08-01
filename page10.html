@@ -39,7 +39,6 @@
             line-height: 1.7;
         }
 
-        /* ── TOP NAVIGATION ──────────────── */
         .top-nav {
             position: sticky;
             top: 0;
@@ -95,14 +94,12 @@
             font-weight: 600;
         }
 
-        /* ── CONTAINER ──────────────────── */
         .container {
             max-width: 1100px;
             margin: 0 auto;
             padding: 2rem 1.5rem 4rem;
         }
 
-        /* ── HERO / STUDENT HEADER ──────── */
         .student-header {
             background: linear-gradient(135deg, #FFFFFF 0%, #E8F5E9 100%);
             border-radius: var(--radius);
@@ -167,7 +164,6 @@
             color: #1B5E20;
         }
 
-        /* ── SECTION TITLES ─────────────── */
         .section-title {
             font-size: 1.6rem;
             font-weight: 700;
@@ -183,7 +179,6 @@
             font-size: 0.95rem;
         }
 
-        /* ── CARDS ──────────────────────── */
         .card {
             background: var(--card);
             border-radius: var(--radius);
@@ -227,7 +222,6 @@
             }
         }
 
-        /* ── TABLES ─────────────────────── */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -281,7 +275,6 @@
             font-style: italic;
         }
 
-        /* ── TIP / WARNING BOXES ────────── */
         .tip-box {
             background: #E8F5E9;
             border-left: 5px solid var(--success);
@@ -316,7 +309,6 @@
             color: #B71C1C;
         }
 
-        /* ── PROGRESS BAR ────────────────── */
         .progress-bar-wrap {
             background: #E0E0E0;
             border-radius: 20px;
@@ -349,7 +341,6 @@
             background: #C62828;
         }
 
-        /* ── ACCORDION ──────────────────── */
         .accordion {
             margin: 1rem 0;
         }
@@ -416,7 +407,6 @@
             color: #B71C1C;
         }
 
-        /* ── FOOTER ──────────────────────── */
         footer {
             text-align: center;
             padding: 2rem;
@@ -440,23 +430,17 @@
             scroll-margin-top: 90px;
         }
 
-        @media print {
-            .top-nav {
-                position: static;
-            }
-            .accordion-content {
-                max-height: none !important;
-                display: block !important;
-            }
-            body {
-                background: #fff;
-            }
+        .scenario-table th, .scenario-table td {
+            text-align: center;
+            vertical-align: middle;
+        }
+        .scenario-table .highlight-col {
+            background-color: #E8F5E9;
+            font-weight: 700;
         }
     </style>
 </head>
 <body>
-
-    <!-- ═══════════ NAVIGATION ═══════════ -->
     <nav class="top-nav">
         <div class="logo-area">
             <img src="https://educasa.pe/wp-content/uploads/2025/05/cropped-educasa_chamilo_big-1-150x150.png"
@@ -471,6 +455,7 @@
             <li><a href="#overview" class="active">Overview</a></li>
             <li><a href="#diagnosis">Diagnosis</a></li>
             <li><a href="#scores">Scores</a></li>
+            <li><a href="#frequency-options">Frequency Options</a></li>
             <li><a href="#lesson-plan">Lesson Plan</a></li>
             <li><a href="#unit-guide">Unit Map</a></li>
             <li><a href="#resources">Resources</a></li>
@@ -478,10 +463,7 @@
         </ul>
     </nav>
 
-    <!-- ═══════════ MAIN CONTENT ═══════════ -->
     <div class="container">
-
-        <!-- ═══ STUDENT HEADER ═══ -->
         <header class="student-header anchor-offset" id="overview">
             <div class="student-avatar">M</div>
             <div class="student-info">
@@ -493,7 +475,7 @@
                 </p>
                 <div class="meta-tags">
                     <span class="meta-tag green">📘 Current: Unit 2 – Gapped Text</span>
-                    <span class="meta-tag">🕐 1–2 sessions/week</span>
+                    <span class="meta-tag">🕐 1–2 sessions/week (flexible)</span>
                     <span class="meta-tag gold">⏱️ 21h 44m on Canvas</span>
                     <span class="meta-tag">📊 Kartkówka avg: 13.3/15</span>
                     <span class="meta-tag green">✅ 16 sessions completed</span>
@@ -501,446 +483,244 @@
             </div>
         </header>
 
-        <!-- ═══ DIAGNOSIS ═══ -->
         <section class="anchor-offset" id="diagnosis">
             <h2 class="section-title">🔍 Personalized Diagnosis</h2>
             <p class="section-subtitle">Based on Canvas score report, Kartkówka quizzes, session attendance, and current unit progress.</p>
-
             <div class="grid-2col">
                 <div class="card">
                     <h3><span class="icon">💪</span> Strengths</h3>
                     <ul style="padding-left:1.4rem; color:var(--text-secondary); font-size:0.9rem; line-height:2;">
-                        <li><strong>Kartkówka quizzes:</strong> 13.3/15 (88.7%) – excellent retention of vocabulary & grammar</li>
-                        <li><strong>Grammar fundamentals:</strong> 100% on <em>Grammar Tenses – The City and Its Stories</em>; strong in narrative tenses</li>
-                        <li><strong>Open cloze (Part 2):</strong> 100% on <em>CAE Open Cloze – I want what she's got</em></li>
-                        <li><strong>Vocabulary collocations:</strong> Solid adjective synonym & phrasal verb recognition (66.67% – above average baseline)</li>
-                        <li><strong>Consistent attendance:</strong> 16 sessions since May 2026; regular commitment</li>
-                        <li><strong>Canvas engagement:</strong> 21h 44m of active platform time</li>
+                        <li><strong>Kartkówka quizzes:</strong> 13.3/15 (88.7%) – excellent memory and application</li>
+                        <li><strong>Grammar fundamentals:</strong> 100% on tenses, open cloze, word formation</li>
+                        <li><strong>Open cloze (Part 2):</strong> 100% — strong grasp of function words</li>
+                        <li><strong>Vocabulary collocations:</strong> Solid foundation; above-average baseline</li>
+                        <li><strong>Consistent attendance:</strong> 16 sessions since May 2026</li>
+                        <li><strong>Canvas engagement:</strong> 21h 44m of active learning time</li>
                     </ul>
                 </div>
                 <div class="card">
                     <h3><span class="icon">⚠️</span> Areas for Development</h3>
                     <ul style="padding-left:1.4rem; color:var(--text-secondary); font-size:0.9rem; line-height:2;">
-                        <li><strong>Gapped text (Part 7):</strong> 3/10 (30%) on <em>How to have a conversation – Missing paragraphs</em> – needs urgent strategy work</li>
-                        <li><strong>Speaking & grammar integration:</strong> 16.67% on <em>Unit 2 Speaking and Grammar Focus</em></li>
-                        <li><strong>Overall Canvas average:</strong> ~66% current score – indicates inconsistency across task types</li>
-                        <li><strong>Pace through units:</strong> Only at Unit 2 of 12 after 3 months – requires acceleration</li>
-                        <li><strong>Listening detail:</strong> Some listening tasks show mid-range scores (50–62%)</li>
+                        <li><strong>Gapped text (Part 7):</strong> 3/10 (30%) – urgent strategy work required</li>
+                        <li><strong>Speaking & grammar integration:</strong> 16.67% on Unit 2 combined task</li>
+                        <li><strong>Overall Canvas average:</strong> ~66% – inconsistency across task types</li>
+                        <li><strong>Pace through units:</strong> Only Unit 2 of 12 after 3 months</li>
+                        <li><strong>Listening detail:</strong> Some listening tasks at 50–62%</li>
                     </ul>
                 </div>
             </div>
-
             <div class="warning-box">
-                <strong>⚠️ Critical observation:</strong> At the current pace (~1 unit per 8 sessions), completing all 12 Gold C1 units by November would require <strong>~80 more sessions</strong>, but only ~14–30 sessions remain (at 1–2/week). A <strong>streamlined, high-priority curriculum</strong> is essential. See the proposed lesson plan below.
+                <strong>⚠️ Critical observation:</strong> At the current pace (~1 unit per 8 sessions), completing all 12 units by November would require <strong>~80 more sessions</strong>, but only ~14–30 sessions remain (1–2/week). <strong>Increasing session frequency</strong> is the most effective way to cover all essential content and still allow time for exam strategy and mock tests.
             </div>
-
             <div class="tip-box">
-                <strong>💡 Positive note:</strong> Mathias's Kartkówka average (88.7%) demonstrates strong memory and understanding of taught material. The main gap is <strong>exam strategy and pacing</strong>, not language ability. With focused intervention on Reading Parts 6 & 7, and consistent timed practice, a Grade C or B is achievable.
+                <strong>💡 Positive note:</strong> Mathias's Kartkówka average (88.7%) shows strong retention. The main gap is <strong>exam strategy and pacing</strong>, not language ability. With focused intervention and a higher session frequency, a Grade B is realistic.
             </div>
         </section>
 
-        <!-- ═══ SCORES TABLE ═══ -->
         <section class="anchor-offset" id="scores">
             <h2 class="section-title">📊 Key Canvas Scores – Mathias</h2>
             <p class="section-subtitle">Selected high-relevance assignments. Full CSV data available on Canvas.</p>
             <table>
-                <thead>
-                    <tr>
-                        <th>Assignment</th>
-                        <th>Score</th>
-                        <th>Max</th>
-                        <th>%</th>
-                        <th>Skill Area</th>
-                    </tr>
-                </thead>
+                <thead><tr><th>Assignment</th><th>Score</th><th>Max</th><th>%</th><th>Skill Area</th></tr></thead>
                 <tbody>
-                    <tr>
-                        <td>Kartkówka Quizzes (average)</td>
-                        <td class="score-high">13.3</td>
-                        <td>15</td>
-                        <td class="score-high">88.7%</td>
-                        <td><span class="tag green">Vocabulary/Grammar</span></td>
-                    </tr>
-                    <tr>
-                        <td>Grammar Tenses – The City and Its Stories</td>
-                        <td class="score-high">100</td>
-                        <td>100</td>
-                        <td class="score-high">100%</td>
-                        <td><span class="tag green">Grammar</span></td>
-                    </tr>
-                    <tr>
-                        <td>CAE Open Cloze – I want what she's got</td>
-                        <td class="score-high">100</td>
-                        <td>100</td>
-                        <td class="score-high">100%</td>
-                        <td><span class="tag green">Use of English Pt.2</span></td>
-                    </tr>
-                    <tr>
-                        <td>Adjective Synonyms – Phrasal Verb Distractors</td>
-                        <td class="score-mid">66.67</td>
-                        <td>100</td>
-                        <td class="score-mid">66.7%</td>
-                        <td><span class="tag">Vocabulary</span></td>
-                    </tr>
-                    <tr>
-                        <td>How to have a conversation – Missing paragraphs</td>
-                        <td class="score-low">3</td>
-                        <td>10</td>
-                        <td class="score-low">30%</td>
-                        <td><span class="tag red">Reading Pt.7 (Gapped Text)</span></td>
-                    </tr>
-                    <tr>
-                        <td>Unit 2 Speaking and Grammar Focus</td>
-                        <td class="score-low">16.67</td>
-                        <td>100</td>
-                        <td class="score-low">16.7%</td>
-                        <td><span class="tag red">Speaking + Grammar</span></td>
-                    </tr>
-                    <tr>
-                        <td>Grammar Practice – Connectors and Linking Phrases</td>
-                        <td class="score-high">17</td>
-                        <td>20</td>
-                        <td class="score-high">85%</td>
-                        <td><span class="tag green">Cohesion</span></td>
-                    </tr>
-                    <tr>
-                        <td>CAE Word Formation: Emojis and the Over-30s</td>
-                        <td class="score-high">100</td>
-                        <td>100</td>
-                        <td class="score-high">100%</td>
-                        <td><span class="tag green">Use of English Pt.3</span></td>
-                    </tr>
-                    <tr>
-                        <td>Listening Comprehension – Homes and Living Spaces</td>
-                        <td class="score-mid">62</td>
-                        <td>100</td>
-                        <td class="score-mid">62%</td>
-                        <td><span class="tag">Listening</span></td>
-                    </tr>
-                    <tr>
-                        <td>IELTS Listening Section 3: British Cinema History</td>
-                        <td class="score-mid">50</td>
-                        <td>100</td>
-                        <td class="score-mid">50%</td>
-                        <td><span class="tag">Listening</span></td>
-                    </tr>
-                    <tr>
-                        <td>CAE Key Word Transformations – Part 4</td>
-                        <td class="score-na">—</td>
-                        <td>100</td>
-                        <td class="score-na">Not yet</td>
-                        <td><span class="tag">Use of English Pt.4</span></td>
-                    </tr>
+                    <tr><td>Kartkówka Quizzes (average)</td><td class="score-high">13.3</td><td>15</td><td class="score-high">88.7%</td><td><span class="tag green">Vocabulary/Grammar</span></td></tr>
+                    <tr><td>Grammar Tenses – The City and Its Stories</td><td class="score-high">100</td><td>100</td><td class="score-high">100%</td><td><span class="tag green">Grammar</span></td></tr>
+                    <tr><td>CAE Open Cloze – I want what she's got</td><td class="score-high">100</td><td>100</td><td class="score-high">100%</td><td><span class="tag green">Use of English Pt.2</span></td></tr>
+                    <tr><td>Adjective Synonyms – Phrasal Verb Distractors</td><td class="score-mid">66.67</td><td>100</td><td class="score-mid">66.7%</td><td><span class="tag">Vocabulary</span></td></tr>
+                    <tr><td>How to have a conversation – Missing paragraphs</td><td class="score-low">3</td><td>10</td><td class="score-low">30%</td><td><span class="tag red">Reading Pt.7 (Gapped Text)</span></td></tr>
+                    <tr><td>Unit 2 Speaking and Grammar Focus</td><td class="score-low">16.67</td><td>100</td><td class="score-low">16.7%</td><td><span class="tag red">Speaking + Grammar</span></td></tr>
+                    <tr><td>Grammar Practice – Connectors and Linking Phrases</td><td class="score-high">17</td><td>20</td><td class="score-high">85%</td><td><span class="tag green">Cohesion</span></td></tr>
+                    <tr><td>CAE Word Formation: Emojis and the Over-30s</td><td class="score-high">100</td><td>100</td><td class="score-high">100%</td><td><span class="tag green">Use of English Pt.3</span></td></tr>
+                    <tr><td>Listening Comprehension – Homes and Living Spaces</td><td class="score-mid">62</td><td>100</td><td class="score-mid">62%</td><td><span class="tag">Listening</span></td></tr>
+                    <tr><td>CAE Key Word Transformations – Part 4</td><td class="score-na">—</td><td>100</td><td class="score-na">Not yet</td><td><span class="tag">Use of English Pt.4</span></td></tr>
                 </tbody>
             </table>
-            <p style="font-size:0.8rem; color:var(--text-secondary);">* Green = strong (≥80%) · Gold = moderate (60–79%) · Red = needs work (&lt;60%) · Grey = not yet attempted</p>
         </section>
 
-        <!-- ═══ LESSON PLAN ═══ -->
-        <section class="anchor-offset" id="lesson-plan">
-            <h2 class="section-title">📅 Proposed Lesson Plan – Path to November/December 2026</h2>
-            <p class="section-subtitle">Accelerated schedule: 1–2 sessions/week · ~20–30 sessions remaining · Priority-based unit selection</p>
+        <!-- ═══ NEW: SESSION FREQUENCY OPTIONS ═══ -->
+        <section class="anchor-offset" id="frequency-options">
+            <h2 class="section-title">📈 Session Frequency Options – Two Pathways to November/December</h2>
+            <p class="section-subtitle">Increasing weekly sessions dramatically changes unit coverage, practice volume, and confidence.</p>
+            <div class="grid-2col">
+                <div class="card">
+                    <h3>🟡 Scenario A: Current Pace</h3>
+                    <p><strong>1–2 sessions/week</strong><br>≈ 20–30 sessions remaining</p>
+                    <ul style="padding-left:1.4rem; color:var(--text-secondary); font-size:0.9rem;">
+                        <li>Units fully covered: ~6–7 (priority core)</li>
+                        <li>Mock tests: 1–2 full simulations</li>
+                        <li>Gapped text & speaking: limited drills</li>
+                        <li>Writing: 4–5 essays</li>
+                        <li>Grade projection: C (possible low B)</li>
+                    </ul>
+                    <span class="tag red">Time pressure — selective syllabus</span>
+                </div>
+                <div class="card" style="border-left:5px solid #2E7D32;">
+                    <h3>🟢 Scenario B: Accelerated Pace</h3>
+                    <p><strong>3–4 sessions/week</strong><br>≈ 40–55 sessions remaining</p>
+                    <ul style="padding-left:1.4rem; color:var(--text-secondary); font-size:0.9rem;">
+                        <li>Units fully covered: all 12 with depth</li>
+                        <li>Mock tests: 4–6 full simulations</li>
+                        <li>Gapped text & speaking: targeted intensive practice</li>
+                        <li>Writing: 8–10 essays across all genres</li>
+                        <li>Grade projection: B (possible A)</li>
+                    </ul>
+                    <span class="tag green">Recommended — maximises C1 readiness</span>
+                </div>
+            </div>
+            <table class="scenario-table">
+                <thead><tr><th>Metric</th><th>Scenario A (1–2/week)</th><th class="highlight-col">Scenario B (3–4/week)</th></tr></thead>
+                <tbody>
+                    <tr><td>Remaining weeks until Nov 1</td><td>~10–15</td><td class="highlight-col">~10–15</td></tr>
+                    <tr><td>Total sessions available</td><td>20–30</td><td class="highlight-col">40–55</td></tr>
+                    <tr><td>Units completed by exam</td><td>6–7 (priority)</td><td class="highlight-col">All 12 + review</td></tr>
+                    <tr><td>Gapped text drill time</td><td>~3–4 focused sessions</td><td class="highlight-col">~8–10 sessions</td></tr>
+                    <tr><td>Speaking mock tests</td><td>2–3</td><td class="highlight-col">5–7</td></tr>
+                    <tr><td>Writing tasks (all genres)</td><td>4–5</td><td class="highlight-col">8–10</td></tr>
+                </tbody>
+            </table>
+            <div class="tip-box">
+                <strong>💡 Recommendation:</strong> If Mathias's schedule permits, moving to <strong>3 sessions per week</strong> transforms the preparation from a race against time into a thorough, confidence-building journey. Even <strong>2 fixed sessions + 1 intensive weekend session</strong> can provide the needed boost. The lesson plan below accommodates both scenarios.
+            </div>
+        </section>
 
+        <!-- ═══ LESSON PLAN (updated with dual scenario) ═══ -->
+        <section class="anchor-offset" id="lesson-plan">
+            <h2 class="section-title">📅 Proposed Lesson Plan – Dual‑Track (Scenario A &amp; B)</h2>
+            <p class="section-subtitle">Phases adapt automatically: Scenario A uses condensed core; Scenario B uses full coverage.</p>
             <table>
-                <thead>
-                    <tr>
-                        <th>Phase</th>
-                        <th>Weeks</th>
-                        <th>Units</th>
-                        <th>Focus</th>
-                        <th>Sessions</th>
-                    </tr>
-                </thead>
+                <thead><tr><th>Phase</th><th>Weeks</th><th>Scenario A (1–2/week) – Essential</th><th>Scenario B (3–4/week) – Full Coverage</th></tr></thead>
                 <tbody>
                     <tr>
-                        <td><strong>🔴 Phase 1: Foundation Fix</strong></td>
+                        <td><strong>🔴 1: Foundation Fix</strong></td>
                         <td>Aug W1–W3</td>
-                        <td>Finish U2 + U3</td>
-                        <td>Gapped text strategy (Part 7) · Narrative tenses · Speaking confidence</td>
-                        <td>~4–6</td>
+                        <td>Finish U2 + U3 (narrative, gapped text)</td>
+                        <td>U2, U3, U4 (modals) + early U5 passive</td>
                     </tr>
                     <tr>
-                        <td><strong>🟡 Phase 2: Core Acceleration</strong></td>
+                        <td><strong>🟡 2: Core Acceleration</strong></td>
                         <td>Aug W4 – Sep W4</td>
-                        <td>U4, U5, U6, U8</td>
-                        <td>Modals · Passives · Reported speech · Conditionals · Key word transformations</td>
-                        <td>~8–10</td>
+                        <td>U4, U5, U6, U8 (high‑impact grammar)</td>
+                        <td>U4, U5, U6, U7, U8, U9 (full grammar &amp; vocab)</td>
                     </tr>
                     <tr>
-                        <td><strong>🟢 Phase 3: Exam Skills Blitz</strong></td>
+                        <td><strong>🟢 3: Exam Skills Blitz</strong></td>
                         <td>Oct W1 – Oct W4</td>
-                        <td>U7, U9, U10 (selected)</td>
-                        <td>Writing genres · Listening Parts 3&4 · Speaking Parts 3&4 · Mock tests</td>
-                        <td>~6–8</td>
+                        <td>U7, U9 (selected), writing genres, mocks</td>
+                        <td>U10, U11, U12 + full mock cycle, speaking intensives</td>
                     </tr>
                     <tr>
-                        <td><strong>🏁 Phase 4: Final Sprint</strong></td>
+                        <td><strong>🏁 4: Final Sprint</strong></td>
                         <td>Nov W1 – Exam</td>
-                        <td>U11, U12 (condensed) + review</td>
-                        <td>Full mock exams · Timed practice · Speaking simulation · Weak-spot drilling</td>
-                        <td>~4–6</td>
+                        <td>Review, 2 mocks, error correction</td>
+                        <td>4–6 mocks, targeted weakness drilling, exam simulation</td>
                     </tr>
                 </tbody>
             </table>
-
-            <div class="card">
-                <h3><span class="icon">📌</span> Weekly Structure (1–2 sessions)</h3>
+            <div class="card" style="margin-top:1rem;">
+                <h3>📌 Weekly Session Blueprint (applies to both scenarios)</h3>
                 <table>
-                    <thead>
-                        <tr><th>Session Type</th><th>Activities</th><th>Canvas/Active Teach</th></tr>
-                    </thead>
+                    <thead><tr><th>Session Type</th><th>Activities</th><th>Canvas / Active Teach</th></tr></thead>
                     <tbody>
-                        <tr>
-                            <td><strong>Session A</strong><br>(main session)</td>
-                            <td>Gold C1 unit input · Grammar focus · Vocabulary expansion · Reading/Listening task</td>
-                            <td>Active Teach interactive exercises · Canvas quiz follow-up</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Session B</strong><br>(supplementary)</td>
-                            <td>Speaking practice · Writing workshop · Exam strategy · Error correction · Kartkówka</td>
-                            <td>CD-ROM exercises on Canvas · Timed mini-tests · Speaking video analysis</td>
-                        </tr>
+                        <tr><td><strong>Main Session</strong></td><td>Gold unit input, grammar, vocabulary, reading/listening task</td><td>Active Teach interactive + Canvas follow‑up quiz</td></tr>
+                        <tr><td><strong>Supplementary / Intensive</strong></td><td>Speaking practice, writing workshop, gapped text strategy, Kartkówka, mock test review</td><td>CD‑ROM exercises on Canvas, timed mini‑tests</td></tr>
                     </tbody>
                 </table>
             </div>
-
-            <div class="tip-box">
-                <strong>📌 Priority adjustments for Mathias:</strong>
-                <ul style="padding-left:1.2rem; margin-top:0.3rem;">
-                    <li><strong>Gapped text (Part 7):</strong> Dedicate 15–20 min every session to paragraph reinsertion exercises. Use the Gold CD-ROM gapped text activities uploaded to Canvas.</li>
-                    <li><strong>Speaking:</strong> Start each session with 5–7 min of spontaneous speaking. Record and review.</li>
-                    <li><strong>Key Word Transformations (Part 4):</strong> Introduce immediately – this is a high-weight skill not yet assessed.</li>
-                    <li><strong>Listening:</strong> Assign one timed listening task per week as homework; review in class.</li>
-                </ul>
-            </div>
-
             <div class="danger-box">
-                <strong>🚨 Time constraint alert:</strong> With ~20–30 sessions left, covering all 12 units in depth is not feasible. Units 5 (passives), 6 (reported speech), 8 (conditionals), and 10 (inversion/emphasis) carry the <strong>highest grammar weight</strong> for the exam. Units 2, 7, and 11 can be partially condensed. The lesson plan above prioritises exam-critical content.
+                <strong>🚨 Time reality check:</strong> Scenario A remains tight; we must be selective. Scenario B removes the time pressure entirely, allowing for the full Gold C1 syllabus and extensive exam practice. <strong>Strongly consider increasing to 3 weekly sessions if at all possible.</strong>
             </div>
         </section>
 
-        <!-- ═══ UNIT MAP (ABBREVIATED) ═══ -->
         <section class="anchor-offset" id="unit-guide">
             <h2 class="section-title">📚 Gold C1 Unit Map – Progress Tracker</h2>
             <p class="section-subtitle">Current status: ✅ Unit 1 complete · 🔄 Unit 2 in progress (Gapped Text – How to Have a Conversation)</p>
-
             <div class="accordion">
-                <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <span>✅ Unit 1 – Getting to know you (Completed)</span><span class="arrow">▼</span>
-                </div>
-                <div class="accordion-content">
-                    <p><strong>Grammar:</strong> Present tenses, stative verbs · <strong>Vocabulary:</strong> Adjective + preposition, opinions</p>
-                    <p><strong>Exam focus:</strong> Reading Part 5, Writing Part 1 (essay)</p>
-                    <p><strong>Mathias's performance:</strong> Strong – 87.5% on HW, 100% on grammar tenses, good Kartkówka scores.</p>
-                </div>
+                <div class="accordion-header" onclick="toggleAccordion(this)"><span>✅ Unit 1 – Getting to know you (Completed)</span><span class="arrow">▼</span></div>
+                <div class="accordion-content"><p>Grammar: Present tenses, stative verbs. Vocabulary: adjective + preposition. Mathias: 87.5% HW, strong.</p></div>
             </div>
             <div class="accordion">
-                <div class="accordion-header active" onclick="toggleAccordion(this)">
-                    <span>🔄 Unit 2 – The world around us (In Progress)</span><span class="arrow">▼</span>
-                </div>
-                <div class="accordion-content open">
-                    <p><strong>Current topic:</strong> CAE Gapped Text – How to Have a Conversation</p>
-                    <p><strong>Grammar:</strong> Articles, determiners · <strong>Vocabulary:</strong> Environment collocations, phrasal verbs</p>
-                    <p><strong>Exam focus:</strong> Listening Part 2, Use of English Part 3</p>
-                    <p><strong>Mathias's performance:</strong> ⚠️ 3/10 on gapped text – needs strategy focus. 100% on Word Formation (Part 3).</p>
-                    <span class="tag red">Priority: Gapped Text Strategy</span>
-                </div>
+                <div class="accordion-header active" onclick="toggleAccordion(this)"><span>🔄 Unit 2 – The world around us (In Progress)</span><span class="arrow">▼</span></div>
+                <div class="accordion-content open"><p>Current: Gapped Text – How to Have a Conversation. ⚠️ 3/10 on gapped text – strategy focus needed. 100% on Word Formation.</p><span class="tag red">Priority: Gapped Text Strategy</span></div>
             </div>
             <div class="accordion">
-                <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <span>⏳ Unit 3 – Travel & adventure (Next)</span><span class="arrow">▼</span>
-                </div>
-                <div class="accordion-content">
-                    <p><strong>Grammar:</strong> Narrative tenses, used to/would · <strong>Writing:</strong> Review</p>
-                    <p><strong>Exam focus:</strong> Reading Part 7 (more gapped text practice!)</p>
-                </div>
-            </div>
-            <div class="accordion">
-                <div class="accordion-header" onclick="toggleAccordion(this)">
-                    <span>📋 Units 4–12 (Planned)</span><span class="arrow">▼</span>
-                </div>
-                <div class="accordion-content">
-                    <p>See the <a href="#lesson-plan" style="color:#1B3A2D;font-weight:700;">Lesson Plan</a> section above for the accelerated schedule. Priority units: 4, 5, 6, 8, 10.</p>
-                </div>
+                <div class="accordion-header" onclick="toggleAccordion(this)"><span>⏳ Units 3–12 (Planned based on scenario)</span><span class="arrow">▼</span></div>
+                <div class="accordion-content"><p>See the lesson plan above. Scenario B allows all units; Scenario A prioritises U3,4,5,6,8,10.</p></div>
             </div>
         </section>
 
-        <!-- ═══ RESOURCES ═══ -->
         <section class="anchor-offset" id="resources">
             <h2 class="section-title">🛠️ Resources & Materials</h2>
             <div class="grid-2col">
-                <div class="card">
-                    <h3>📘 Core Materials</h3>
-                    <ul style="padding-left:1.4rem; color:var(--text-secondary); font-size:0.9rem; line-height:2;">
-                        <li><strong>Gold C1 Advanced</strong> – Student's Book (Pearson)</li>
-                        <li><strong>Gold C1 Exam Maximiser</strong> – Extra practice</li>
-                        <li><strong>Active Teach</strong> – Digital platform (interactive whiteboard, audio, video)</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h3>💻 Canvas Materials</h3>
-                    <ul style="padding-left:1.4rem; color:var(--text-secondary); font-size:0.9rem; line-height:2;">
-                        <li><strong>CAE Gold CD-ROM exercises</strong> – Transformed into Canvas quizzes</li>
-                        <li><strong>Kartkówka quizzes</strong> – Weekly vocabulary/grammar checks</li>
-                        <li><strong>Timed practice tests</strong> – Simulating exam conditions</li>
-                        <li><strong>Speaking rubrics & self-assessment</strong></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="tip-box">
-                <strong>💡 Active Teach + Canvas workflow:</strong> Use Active Teach in-session for interactive input and instant feedback. Assign CD-ROM-based Canvas exercises as homework. Review incorrect answers together at the start of the next session. This dual-platform approach maximises exposure to exam-style tasks.
+                <div class="card"><h3>📘 Core Materials</h3><ul style="padding-left:1.4rem; color:var(--text-secondary);"><li>Gold C1 Advanced Student's Book</li><li>Gold C1 Exam Maximiser</li><li>Active Teach digital platform</li></ul></div>
+                <div class="card"><h3>💻 Canvas Materials</h3><ul style="padding-left:1.4rem; color:var(--text-secondary);"><li>CAE Gold CD‑ROM exercises (transformed)</li><li>Kartkówka quizzes</li><li>Timed practice tests</li><li>Speaking rubrics & self-assessment</li></ul></div>
             </div>
         </section>
 
-        <!-- ═══ EXAM TIPS ═══ -->
         <section class="anchor-offset" id="tips">
-            <h2 class="section-title">🎯 Exam-Day Strategy & Key Tips</h2>
-            <div class="card">
-                <h3>📖 Reading Part 7 – Gapped Text (Mathias's priority)</h3>
-                <p>Read the text <strong>before and after</strong> each gap carefully. Look for <strong>pronoun references, lexical cohesion, and logical connectors</strong>. The missing paragraph must fit both the preceding and following sentences. Practise with all Gold CD-ROM gapped text exercises on Canvas.</p>
-            </div>
-            <div class="card">
-                <h3>✍️ Writing – Essay (Part 1)</h3>
-                <p>Always address <strong>two</strong> of the three bullet points. State your opinion clearly in the introduction. Use a range of C1 linking devices. Keep to 220–260 words.</p>
-            </div>
-            <div class="card">
-                <h3>🔄 Use of English Part 4 – Key Word Transformations</h3>
-                <p>Never change the key word. Write <strong>3–6 words</strong>. Contractions count as two words. Practise daily – this is the most formulaic and improvable part.</p>
-            </div>
-            <div class="warning-box">
-                <strong>⚠️ Mathias-specific reminder:</strong> Based on your score pattern, you tend to score well on discrete grammar/vocabulary items but struggle with <strong>integrated skills</strong> (speaking + grammar combined, gapped text). In the remaining sessions, focus on tasks that combine multiple skills simultaneously.
-            </div>
+            <h2 class="section-title">🎯 Exam-Day Strategy & Mathias‑Specific Reminders</h2>
+            <div class="card"><h3>📖 Gapped Text (Part 7) – Priority</h3><p>Focus on pronoun references, lexical chains, and logical flow before and after each gap. Use Gold CD‑ROM gapped text exercises on Canvas. In Scenario B, we'll dedicate 8–10 sessions to this skill alone.</p></div>
+            <div class="card"><h3>🔄 Key Word Transformations (Part 4)</h3><p>Start immediately – not yet assessed. 3–6 words, never change the key word. With more sessions we can drill 5–6 transformations per week.</p></div>
+            <div class="warning-box"><strong>⚠️ Mathias reminder:</strong> You excel at discrete grammar/vocabulary but need more integrated practice. Increased session frequency (Scenario B) will provide the speaking + grammar combination work you need.</div>
         </section>
 
-        <!-- ═══ SESSION LOG ═══ -->
         <section style="margin-top:2rem;">
-            <h2 class="section-title">📆 Session Log (Canvas)</h2>
-            <table>
-                <thead>
-                    <tr><th>#</th><th>Date</th><th>Type</th><th>Notes</th></tr>
-                </thead>
-                <tbody>
-                    <tr><td>1</td><td>11/05/2026</td><td>Demo</td><td>Introductory session</td></tr>
-                    <tr><td>2</td><td>18/05/2026</td><td>Regular</td><td>Unit 1 start</td></tr>
-                    <tr><td>3</td><td>21/05/2026</td><td>Regular</td><td></td></tr>
-                    <tr><td>4</td><td>31/05/2026</td><td>Regular</td><td></td></tr>
-                    <tr><td>5</td><td>06/06/2026</td><td>Regular</td><td></td></tr>
-                    <tr><td>6</td><td>10/06/2026</td><td>Regular</td><td></td></tr>
-                    <tr><td>7</td><td>14/06/2026</td><td>Regular</td><td></td></tr>
-                    <tr><td>8</td><td>16/06/2026</td><td>Regular</td><td></td></tr>
-                    <tr><td>9</td><td>20/06/2026</td><td>Regular</td><td></td></tr>
-                    <tr><td>10</td><td>30/06/2026</td><td>Regular</td><td></td></tr>
-                    <tr><td>11</td><td>05/07/2026</td><td>Regular</td><td></td></tr>
-                    <tr><td>12</td><td>07/07/2026</td><td>Regular</td><td></td></tr>
-                    <tr><td>13</td><td>13/07/2026</td><td>Regular</td><td></td></tr>
-                    <tr><td>14</td><td>22/07/2026</td><td>Regular</td><td></td></tr>
-                    <tr><td>15</td><td>28/07/2026</td><td>Regular</td><td>Most recent – Unit 2 in progress</td></tr>
-                </tbody>
-            </table>
-            <p style="font-size:0.82rem; color:var(--text-secondary);">Total: 16 sessions (1 demo + 15 regular) · Total Canvas time: <strong>21 hours 44 minutes</strong></p>
-        </section>
-
-        <!-- ═══ PROGRESS BAR ═══ -->
-        <section style="margin-top:2rem;">
-            <h2 class="section-title">📈 Overall Progress Snapshot</h2>
+            <h2 class="section-title">📆 Session Log & Overall Progress</h2>
             <p><strong>Units completed:</strong> 1 of 12 (8.3%)</p>
-            <div class="progress-bar-wrap">
-                <div class="progress-bar-fill fill-red" style="width:8.3%;">8.3%</div>
-            </div>
-            <p style="margin-top:0.8rem;"><strong>Sessions used:</strong> 16 of estimated 40–46 (35–40%)</p>
-            <div class="progress-bar-wrap">
-                <div class="progress-bar-fill fill-orange" style="width:37%;">~37%</div>
-            </div>
-            <p style="margin-top:0.8rem;"><strong>Canvas current score:</strong> ~66%</p>
-            <div class="progress-bar-wrap">
-                <div class="progress-bar-fill fill-gold" style="width:66%;">66%</div>
-            </div>
+            <div class="progress-bar-wrap"><div class="progress-bar-fill fill-red" style="width:8.3%;">8.3%</div></div>
+            <p style="margin-top:0.8rem;"><strong>Sessions used:</strong> 16 · <strong>Current Canvas score:</strong> ~66%</p>
+            <div class="progress-bar-wrap"><div class="progress-bar-fill fill-gold" style="width:66%;">66%</div></div>
             <p style="margin-top:0.8rem;"><strong>Kartkówka average:</strong> 88.7%</p>
-            <div class="progress-bar-wrap">
-                <div class="progress-bar-fill fill-green" style="width:88.7%;">88.7%</div>
-            </div>
-            <div class="warning-box" style="margin-top:1.5rem;">
-                <strong>⚠️ Note on pacing:</strong> The unit completion rate (8.3%) lags significantly behind session usage (37%). This confirms the need for the <strong>accelerated lesson plan</strong> outlined above. Prioritising high-impact units and integrating exam strategy into every session will close this gap.
-            </div>
+            <div class="progress-bar-wrap"><div class="progress-bar-fill fill-green" style="width:88.7%;">88.7%</div></div>
+            <p style="margin-top:1rem;">📋 <strong>Session dates:</strong> 11/05, 18/05, 21/05, 31/05, 06/06, 10/06, 14/06, 16/06, 20/06, 30/06, 05/07, 07/07, 13/07, 22/07, 28/07 (most recent).</p>
         </section>
+    </div>
 
-    </div><!-- /container -->
-
-    <!-- ═══════════ FOOTER ═══════════ -->
     <footer>
-        <img src="https://educasa.pe/wp-content/uploads/2025/05/cropped-educasa_chamilo_big-1-150x150.png"
-        alt="Educasa"
-        style="height:40px; vertical-align:middle; border-radius:6px;"
-        onerror="this.style.display='none';">
-        <p style="margin-top:0.4rem;">
-            <strong>Educasa</strong> · Gold C1 Advanced (Pearson) · Cambridge C1 Exam Preparation<br>
-            Personalized report for <strong>Mathias Cabanillas</strong> – Generated August 2026<br>
-            <a href="https://educasa.pe" target="_blank" rel="noopener">educasa.pe</a> ·
-            <a href="https://www.cambridgeenglish.org/exams-and-tests/advanced/" target="_blank" rel="noopener">Cambridge C1 Advanced</a>
-        </p>
-        <p style="margin-top:0.3rem; font-size:0.75rem; color:#888;">✨ ¡Vamos Mathias! Consistent effort + smart strategy = C1 success.</p>
+        <img src="https://educasa.pe/wp-content/uploads/2025/05/cropped-educasa_chamilo_big-1-150x150.png" alt="Educasa" style="height:40px; vertical-align:middle; border-radius:6px;" onerror="this.style.display='none';">
+        <p><strong>Educasa</strong> · Gold C1 Advanced (Pearson) · Cambridge C1 Exam Preparation<br>Personalized report for <strong>Mathias Cabanillas</strong> – Updated August 2026<br>
+        <a href="https://educasa.pe" target="_blank">educasa.pe</a> · <a href="https://www.cambridgeenglish.org/exams-and-tests/advanced/" target="_blank">Cambridge C1 Advanced</a></p>
+        <p style="margin-top:0.3rem; font-size:0.75rem; color:#888;">✨ ¡Vamos Mathias! With the right rhythm, your C1 goal is within reach.</p>
     </footer>
 
-    <!-- ═══════════ SCRIPTS ═══════════ -->
     <script>
-        // Accordion toggle
         function toggleAccordion(header) {
             const content = header.nextElementSibling;
             const isOpen = content.classList.contains('open');
-            if (!isOpen) {
-                content.classList.add('open');
-                header.classList.add('active');
-            } else {
-                content.classList.remove('open');
-                header.classList.remove('active');
-            }
+            if (!isOpen) { content.classList.add('open'); header.classList.add('active'); }
+            else { content.classList.remove('open'); header.classList.remove('active'); }
         }
-
-        // Smooth scroll & active nav
         const navLinks = document.querySelectorAll('.nav-links a');
         navLinks.forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href').substring(1);
                 const target = document.getElementById(targetId);
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 navLinks.forEach(l => l.classList.remove('active'));
                 this.classList.add('active');
             });
         });
-
-        // Scroll spy
         window.addEventListener('scroll', () => {
             let current = '';
             const sections = document.querySelectorAll('section[id], header[id]');
             sections.forEach(section => {
                 const sectionTop = section.offsetTop - 120;
-                if (window.scrollY >= sectionTop) {
-                    current = section.getAttribute('id');
-                }
+                if (window.scrollY >= sectionTop) current = section.getAttribute('id');
             });
             navLinks.forEach(link => {
                 link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + current) {
-                    link.classList.add('active');
-                }
+                if (link.getAttribute('href') === '#' + current) link.classList.add('active');
             });
             if (window.scrollY < 200) {
                 navLinks.forEach(l => l.classList.remove('active'));
                 document.querySelector('.nav-links a[href="#overview"]')?.classList.add('active');
             }
         });
-
-        // Open Unit 2 accordion by default
         document.addEventListener('DOMContentLoaded', function() {
             const unit2Header = document.querySelector('.accordion-header.active');
             if (unit2Header) {
                 const content = unit2Header.nextElementSibling;
-                if (content && !content.classList.contains('open')) {
-                    content.classList.add('open');
-                }
+                if (content && !content.classList.contains('open')) content.classList.add('open');
             }
         });
     </script>
