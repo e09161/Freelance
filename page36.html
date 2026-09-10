@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cambridge C1 Advanced (CAE) · Lima, Peru · Exam Details Summary | Educasa</title>
+    <style>
+        :root {
+            --pearson-blue: #003057;
+            --gold: #F2A900;
+            --educasa-green: #2E7D32;
+            --educasa-light: #E8F5E9;
+            --bg: #F9F9FB;
+            --card: #FFFFFF;
+            --text: #1E1E1E;
+            --text-secondary: #505050;
+            --border: #DCE1E8;
+            --shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+            --radius: 10px;
+            --transition: 0.25s ease;
+            --tag-bg: #E6F0FA;
+            --tag-text: #003057;
+            --success: #2E7D32;
+            --warning: #E65100;
+            --danger: #C62828;
+            --highlight: #FFF8E1;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', 'Segoe UI', Roboto, system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+        .top-nav {
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            background: #1B3A2D;
+            padding: 0.4rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.4rem 0;
+        }
+        .logo-area img {
+            height: 44px;
+            width: auto;
+            border-radius: 6px;
+        }
+        .logo-text {
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: #fff;
+            letter-spacing: 0.5px;
+        }
+        .logo-text span {
+            color: #F2A900;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 0.15rem;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: #C8E6C9;
+            text-decoration: none;
+            padding: 0.6rem 0.9rem;
+            border-radius: 6px;
+            font-size: 0.84rem;
+            font-weight: 500;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+            font-weight: 600;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+        }
+        .student-header {
+            background: linear-gradient(135deg, #FFFFFF 0%, #E8F5E9 100%);
+            border-radius: var(--radius);
+            padding: 2.2rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+        .student-header .badge {
+            display: inline-block;
+            background: var(--gold);
+            color: #003057;
+            font-weight: 800;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 0.35rem 1.3rem;
+            border-radius: 30px;
+            margin-bottom: 0.8rem;
+        }
+        .student-header h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #1B3A2D;
+            margin-bottom: 0.4rem;
+            letter-spacing: -0.5px;
+        }
+        .student-header .goal-line {
+            font-size: 1.05rem;
+            color: #3D4F5F;
+            max-width: 800px;
+            margin: 0 auto 0.8rem;
+        }
+        .student-header .goal-line strong {
+            color: #E65100;
+        }
+        .meta-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            justify-content: center;
+            margin-top: 0.5rem;
+        }
+        .meta-tag {
+            display: inline-block;
+            background: #E6F0FA;
+            color: #003057;
+            font-weight: 600;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.8rem;
+            border-radius: 20px;
+        }
+        .meta-tag.gold {
+            background: #FFF8E1;
+            color: #5C3D00;
+        }
+        .meta-tag.green {
+            background: #E8F5E9;
+            color: #1B5E20;
+        }
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #1B3A2D;
+            margin: 2.2rem 0 0.3rem;
+            padding-bottom: 0.45rem;
+            border-bottom: 3px solid #F2A900;
+            display: inline-block;
+        }
+        .section-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 1.3rem;
+            font-size: 0.95rem;
+        }
+        .card {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 1.4rem 1.7rem;
+            margin-bottom: 1.2rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+        .card:hover {
+            box-shadow: 0 10px 26px rgba(0, 0, 0, 0.07);
+        }
+        .card h3 {
+            font-size: 1.1rem;
+            color: #1B3A2D;
+            margin-bottom: 0.45rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .card .icon {
+            font-size: 1.3rem;
+        }
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin: 1rem 0;
+        }
+        .grid-3col {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.2rem;
+            margin: 1rem 0;
+        }
+        @media (max-width: 800px) {
+            .grid-2col, .grid-3col {
+                grid-template-columns: 1fr;
+            }
+            .student-header h1 {
+                font-size: 1.6rem;
+            }
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        thead {
+            background: #1B3A2D;
+            color: #fff;
+        }
+        th {
+            padding: 0.7rem 0.9rem;
+            text-align: left;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            font-size: 0.82rem;
+        }
+        td {
+            padding: 0.6rem 0.9rem;
+            border-bottom: 1px solid var(--border);
+            background: #fff;
+            font-size: 0.88rem;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        tbody tr:hover td {
+            background: #FDFBF5;
+        }
+        .date-card {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 1.3rem 1rem;
+            margin-bottom: 1.2rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            text-align: center;
+            border-top: 4px solid #F2A900;
+            transition: var(--transition);
+        }
+        .date-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+        }
+        .date-card .day {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #1B3A2D;
+            line-height: 1.1;
+        }
+        .date-card .month {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #E65100;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .date-card .weekday {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 0.2rem;
+        }
+        .tip-box {
+            background: #E8F5E9;
+            border-left: 5px solid var(--success);
+            padding: 1rem 1.3rem;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            margin: 1.2rem 0;
+            font-size: 0.93rem;
+        }
+        .tip-box strong {
+            color: #1B5E20;
+        }
+        .warning-box {
+            background: #FFF3E0;
+            border-left: 5px solid var(--warning);
+            padding: 1rem 1.3rem;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            margin: 1.2rem 0;
+            font-size: 0.93rem;
+        }
+        .warning-box strong {
+            color: #BF360C;
+        }
+        .danger-box {
+            background: #FFEBEE;
+            border-left: 5px solid var(--danger);
+            padding: 1rem 1.3rem;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            margin: 1.2rem 0;
+            font-size: 0.93rem;
+        }
+        .danger-box strong {
+            color: #B71C1C;
+        }
+        .tag {
+            display: inline-block;
+            background: var(--tag-bg);
+            color: var(--tag-text);
+            font-weight: 600;
+            font-size: 0.72rem;
+            padding: 0.18rem 0.65rem;
+            border-radius: 20px;
+            margin: 0.15rem 0.25rem;
+        }
+        .tag.gold {
+            background: #FFF8E1;
+            color: #5C3D00;
+        }
+        .tag.green {
+            background: #E8F5E9;
+            color: #1B5E20;
+        }
+        .tag.red {
+            background: #FFEBEE;
+            color: #B71C1C;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #606060;
+            font-size: 0.82rem;
+            border-top: 1px solid var(--border);
+            margin-top: 3rem;
+        }
+        footer img {
+            height: 36px;
+            vertical-align: middle;
+            margin: 0 0.4rem;
+        }
+        footer a {
+            color: #1B3A2D;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .anchor-offset {
+            scroll-margin-top: 90px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="logo-area">
+            <img src="https://educasa.pe/wp-content/uploads/2025/05/cropped-educasa_chamilo_big-1-150x150.png"
+            alt="Educasa Logo"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <span class="logo-text" style="display:none; align-items:center; gap:0.4rem;">
+                <span style="background:#F2A900;width:12px;height:12px;border-radius:50%;display:inline-block;"></span> Educasa
+            </span>
+            <span class="logo-text">Educasa <span>·</span> C1 Exam Details</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#overview" class="active">Overview</a></li>
+            <li><a href="#dates">Test Dates</a></li>
+            <li><a href="#centers">Test Centers</a></li>
+            <li><a href="#formats">Formats</a></li>
+            <li><a href="#registration">Registration</a></li>
+            <li><a href="#choosing">Choosing a Center</a></li>
+            <li><a href="#summary">Quick Summary</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- ═══ HERO ═══ -->
+        <header class="student-header anchor-offset" id="overview">
+            <div class="badge">Cambridge C1 Advanced (CAE) · Lima, Peru</div>
+            <h1>Exam Details Summary</h1>
+            <p class="goal-line">
+                Everything you need to know about <strong>test dates, centers, prices, formats, and registration</strong> for the Cambridge C1 Advanced exam in Lima, Peru. Designed for quick decision‑making.
+            </p>
+            <div class="meta-tags">
+                <span class="meta-tag green">📅 Dec 2026 – Jan 2027 dates</span>
+                <span class="meta-tag">🏛️ 4 main centers</span>
+                <span class="meta-tag gold">💰 S/ 790 – S/ 850</span>
+                <span class="meta-tag">💻 Digital &amp; Paper-based</span>
+                <span class="meta-tag green">📍 Lima, PE</span>
+            </div>
+        </header>
+
+        <!-- ═══ TEST DATES ═══ -->
+        <section class="anchor-offset" id="dates">
+            <h2 class="section-title">📅 Official Global Test Dates</h2>
+            <p class="section-subtitle">These are the central dates established by Cambridge English. Authorized test centers in Lima host their sessions on or around these key dates.</p>
+
+            <div class="grid-3col">
+                <div class="date-card">
+                    <div class="day">05</div>
+                    <div class="month">December 2026</div>
+                    <div class="weekday">Saturday</div>
+                    <div style="margin-top:0.6rem;"><span class="tag gold">Written papers</span></div>
+                </div>
+                <div class="date-card">
+                    <div class="day">12</div>
+                    <div class="month">December 2026</div>
+                    <div class="weekday">Saturday</div>
+                    <div style="margin-top:0.6rem;"><span class="tag gold">Written papers</span></div>
+                </div>
+                <div class="date-card">
+                    <div class="day">23</div>
+                    <div class="month">January 2027</div>
+                    <div class="weekday">Saturday</div>
+                    <div style="margin-top:0.6rem;"><span class="tag gold">Written papers</span></div>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <strong>⚠️ Important note on Speaking:</strong> The Speaking portion is scheduled <strong>independently by each local center</strong>, usually within a window of a few days before or after the main written date. Confirm the exact Speaking date directly with your chosen center at the time of registration.
+            </div>
+
+            <div class="tip-box">
+                <strong>💡 Practical tip:</strong> December dates fall within peak holiday season in Lima. Book early – both for the exam itself and for any travel/accommodation needs around the test window.
+            </div>
+        </section>
+
+        <!-- ═══ TEST CENTERS ═══ -->
+        <section class="anchor-offset" id="centers">
+            <h2 class="section-title">🏛️ Comparison Chart: Test Centers in Lima</h2>
+            <p class="section-subtitle">Standard prices generally range between <strong>S/ 790 and S/ 850</strong>, depending on whether the candidate is an internal student at that institution or an external candidate.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Test Center</th>
+                        <th>Formats Offered</th>
+                        <th>Estimated Local Price</th>
+                        <th>Location / Venue</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Asociación Peruano Británica (Británico)</strong></td>
+                        <td><span class="tag green">Digital</span><span class="tag green">Paper-based</span></td>
+                        <td><strong>S/ 790</strong></td>
+                        <td>Main branches in Lima (San Isidro, Miraflores, Surco, etc.)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Idiomas Católica (PUCP)</strong></td>
+                        <td><span class="tag green">Digital</span><span class="tag green">Paper-based</span></td>
+                        <td><strong>S/ 800 – S/ 830</strong></td>
+                        <td>San Miguel &amp; San Borja (Chacarilla)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Universidad del Pacífico (Centro de Idiomas)</strong></td>
+                        <td><span class="tag green">Digital</span><span class="tag green">Paper-based</span></td>
+                        <td><strong>S/ 800 – S/ 850</strong></td>
+                        <td>Jesús María &amp; Miraflores</td>
+                    </tr>
+                    <tr>
+                        <td><strong>International House (IH) Lima</strong></td>
+                        <td><span class="tag green">Digital</span><span class="tag green">Paper-based</span></td>
+                        <td>Contact center for quote</td>
+                        <td>Lima (verify current venue)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="danger-box">
+                <strong>🚨 Verification reminder:</strong> Prices, formats, and locations are subject to change. Always confirm the <strong>current fee, exact address, and available dates</strong> directly on each center's official website or by phone before registering.
+            </div>
+        </section>
+
+        <!-- ═══ FORMATS ═══ -->
+        <section class="anchor-offset" id="formats">
+            <h2 class="section-title">💻 Digital vs. Paper-based</h2>
+            <p class="section-subtitle">All four main centers offer both formats. Here's how to choose.</p>
+
+            <div class="grid-2col">
+                <div class="card">
+                    <h3><span class="icon">🖥️</span> Digital (Computer-based)</h3>
+                    <ul style="padding-left:1.4rem; color:var(--text-secondary); font-size:0.9rem; line-height:2;">
+                        <li>Faster results — typically <strong>2–3 weeks</strong></li>
+                        <li>Multiple test dates available per month at some centers</li>
+                        <li>Headphones for Listening (better audio isolation)</li>
+                        <li>Typing for Writing (advantage if you type faster than you write)</li>
+                        <li>On-screen timer and word count tools</li>
+                        <li>Same exam content and difficulty as paper</li>
+                    </ul>
+                    <span class="tag green">Recommended if you're comfortable with computers</span>
+                </div>
+                <div class="card">
+                    <h3><span class="icon">📄</span> Paper-based</h3>
+                    <ul style="padding-left:1.4rem; color:var(--text-secondary); font-size:0.9rem; line-height:2;">
+                        <li>Results in <strong>4–6 weeks</strong></li>
+                        <li>Familiar format for those who prefer writing by hand</li>
+                        <li>Can annotate and circle text directly on the paper</li>
+                        <li>Listening played on loudspeaker (room acoustics matter)</li>
+                        <li>Limited test dates (only on official global dates)</li>
+                        <li>Same exam content and difficulty as digital</li>
+                    </ul>
+                    <span class="tag gold">Choose if you prefer paper reading &amp; handwriting</span>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <strong>💡 Which is better?</strong> There is <strong>no advantage in scoring</strong> — both are accepted identically by universities and employers. Choose based on your comfort with the medium. If you type essays for practice, choose Digital. If you annotate heavily when reading, choose Paper-based.
+            </div>
+        </section>
+
+        <!-- ═══ REGISTRATION ═══ -->
+        <section class="anchor-offset" id="registration">
+            <h2 class="section-title">📝 Registration &amp; Practical Info</h2>
+            <p class="section-subtitle">What to prepare before you register, and what to expect on test day.</p>
+
+            <div class="grid-2col">
+                <div class="card">
+                    <h3><span class="icon">📋</span> Before You Register</h3>
+                    <ul style="padding-left:1.4rem; color:var(--text-secondary); font-size:0.9rem; line-height:2;">
+                        <li><strong>Valid ID:</strong> Passport or DNI (check center requirements)</li>
+                        <li><strong>Payment method:</strong> Most centers accept card or bank transfer</li>
+                        <li><strong>Preferred date:</strong> Have 2–3 options ready in case one is full</li>
+                        <li><strong>Preferred format:</strong> Digital or Paper-based</li>
+                        <li><strong>Speaking availability:</strong> Confirm the speaking window</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3><span class="icon">📌</span> Registration Timeline</h3>
+                    <ul style="padding-left:1.4rem; color:var(--text-secondary); font-size:0.9rem; line-height:2;">
+                        <li><strong>6–8 weeks before:</strong> Ideal registration window for December dates</li>
+                        <li><strong>4 weeks before:</strong> Last reasonable window; prices may rise</li>
+                        <li><strong>2 weeks before:</strong> Very limited availability; risk of full sessions</li>
+                        <li><strong>Late registration:</strong> Some centers offer it with a surcharge</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3><span class="icon">🎒</span> On Test Day — Bring With You</h3>
+                <ul style="padding-left:1.4rem; color:var(--text-secondary); font-size:0.9rem; line-height:2;">
+                    <li>✅ Valid ID matching your registration name exactly</li>
+                    <li>✅ Printed confirmation email (or digital copy)</li>
+                    <li>✅ Pencil, eraser, and blue/black pen (paper-based only)</li>
+                    <li>✅ Water bottle (transparent, no label)</li>
+                    <li>❌ No phones, smartwatches, or study materials in the exam room</li>
+                </ul>
+            </div>
+
+            <div class="warning-box">
+                <strong>⚠️ Name consistency:</strong> The name on your ID must match the name you use to register. If not, you may be denied entry. Use your <strong>passport name</strong> if you plan to use a passport as your ID.
+            </div>
+        </section>
+
+        <!-- ═══ CHOOSING A CENTER ═══ -->
+        <section class="anchor-offset" id="choosing">
+            <h2 class="section-title">🧭 How to Choose Your Center</h2>
+            <p class="section-subtitle">Five factors to weigh before making your final decision.</p>
+
+            <div class="grid-3col">
+                <div class="card">
+                    <h3><span class="icon">📍</span> Location &amp; Commute</h3>
+                    <p>Pick a center close to home or with a reliable route. Arriving stressed after a long commute can affect your performance, especially for Speaking.</p>
+                </div>
+                <div class="card">
+                    <h3><span class="icon">💻</span> Format Availability</h3>
+                    <p>Not every center offers both formats on the exact date you want. Confirm the format availability before committing.</p>
+                </div>
+                <div class="card">
+                    <h3><span class="icon">💰</span> Total Cost</h3>
+                    <p>Compare prices, but also consider travel cost and time. The Británico at S/ 790 is the lowest starting price, but other factors may override this.</p>
+                </div>
+                <div class="card">
+                    <h3><span class="icon">⏳</span> Result Delivery</h3>
+                    <p>Digital format typically delivers results in 2–3 weeks vs. 4–6 weeks for Paper-based. If you need results urgently, choose Digital.</p>
+                </div>
+                <div class="card">
+                    <h3><span class="icon">🗣️</span> Speaking Window</h3>
+                    <p>Ask the center when the Speaking portion will be scheduled. Some centers confirm it at registration; others announce it later.</p>
+                </div>
+                <div class="card">
+                    <h3><span class="icon">📞</span> Responsiveness</h3>
+                    <p>Call or email the center before registering. Prompt, clear answers indicate good administrative support — important if issues arise.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ QUICK SUMMARY ═══ -->
+        <section class="anchor-offset" id="summary">
+            <h2 class="section-title">⚡ Quick Summary</h2>
+            <p class="section-subtitle">The essentials in one glance.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Exam</strong></td>
+                        <td>Cambridge C1 Advanced (CAE)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Location</strong></td>
+                        <td>Lima, Peru</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Official test dates</strong></td>
+                        <td>Dec 5, 2026 · Dec 12, 2026 · Jan 23, 2027 (Saturdays)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Speaking date</strong></td>
+                        <td>Scheduled separately by each center (a few days before/after the written date)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Main centers</strong></td>
+                        <td>Británico · Idiomas Católica (PUCP) · Universidad del Pacífico · IH Lima</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Price range</strong></td>
+                        <td>Approx. S/ 790 – S/ 850</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Formats</strong></td>
+                        <td>Digital (fast results) or Paper-based (traditional)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Results time</strong></td>
+                        <td>2–3 weeks (Digital) · 4–6 weeks (Paper)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Recommended registration</strong></td>
+                        <td>6–8 weeks before your chosen date</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="tip-box">
+                <strong>💡 Final recommendation:</strong> Register early, choose Digital if you want fast results, and confirm the Speaking window with your center before paying. For most candidates, the <strong>Británico</strong> (lowest published price) or <strong>Idiomas Católica</strong> (central, well‑established) are the strongest starting points.
+            </div>
+        </section>
+
+    </div>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer>
+        <img src="https://educasa.pe/wp-content/uploads/2025/05/cropped-educasa_chamilo_big-1-150x150.png" alt="Educasa" style="height:40px; vertical-align:middle; border-radius:6px;" onerror="this.style.display='none';">
+        <p><strong>Educasa</strong> · Cambridge C1 Advanced (CAE) · Lima, Peru Exam Details Summary<br>
+        <a href="https://educasa.pe" target="_blank">educasa.pe</a> · <a href="https://www.cambridgeenglish.org/exams-and-tests/advanced/" target="_blank">Cambridge C1 Advanced</a> · <a href="https://www.cambridgeenglish.org/exams-and-tests/qualifications/exam-dates/" target="_blank">Official Exam Dates</a></p>
+        <p style="margin-top:0.3rem; font-size:0.75rem; color:#888;">📌 Always verify prices, dates, and availability directly with your chosen center before registering. Prices and details subject to change.</p>
+    </footer>
+
+    <script>
+        // Smooth scroll & active nav
+        const navLinks = document.querySelectorAll('.nav-links a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const target = document.getElementById(targetId);
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                navLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section[id], header[id]');
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 120;
+                if (window.scrollY >= sectionTop) current = section.getAttribute('id');
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+            });
+            if (window.scrollY < 200) {
+                navLinks.forEach(l => l.classList.remove('active'));
+                document.querySelector('.nav-links a[href="#overview"]')?.classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cambridge C1 Advanced (CAE) · Lima, Peru · Exam Details Summary | Educasa</title>
+    <style>
+        :root {
+            --pearson-blue: #003057;
+            --gold: #F2A900;
+            --educasa-green: #2E7D32;
+            --educasa-light: #E8F5E9;
+            --bg: #F9F9FB;
+            --card: #FFFFFF;
+            --text: #1E1E1E;
+            --text-secondary: #505050;
+            --border: #DCE1E8;
+            --shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+            --radius: 10px;
+            --transition: 0.25s ease;
+            --tag-bg: #E6F0FA;
+            --tag-text: #003057;
+            --success: #2E7D32;
+            --warning: #E65100;
+            --danger: #C62828;
+            --highlight: #FFF8E1;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', 'Segoe UI', Roboto, system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+        .top-nav {
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            background: #1B3A2D;
+            padding: 0.4rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.4rem 0;
+        }
+        .logo-area img {
+            height: 44px;
+            width: auto;
+            border-radius: 6px;
+        }
+        .logo-text {
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: #fff;
+            letter-spacing: 0.5px;
+        }
+        .logo-text span {
+            color: #F2A900;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 0.15rem;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: #C8E6C9;
+            text-decoration: none;
+            padding: 0.6rem 0.9rem;
+            border-radius: 6px;
+            font-size: 0.84rem;
+            font-weight: 500;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: rgba(255, 255, 255, 0.12);
+            color: #fff;
+            font-weight: 600;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+        }
+        .student-header {
+            background: linear-gradient(135deg, #FFFFFF 0%, #E8F5E9 100%);
+            border-radius: var(--radius);
+            padding: 2.2rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+        .student-header .badge {
+            display: inline-block;
+            background: var(--gold);
+            color: #003057;
+            font-weight: 800;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 0.35rem 1.3rem;
+            border-radius: 30px;
+            margin-bottom: 0.8rem;
+        }
+        .student-header h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #1B3A2D;
+            margin-bottom: 0.4rem;
+            letter-spacing: -0.5px;
+        }
+        .student-header .goal-line {
+            font-size: 1.05rem;
+            color: #3D4F5F;
+            max-width: 800px;
+            margin: 0 auto 0.8rem;
+        }
+        .student-header .goal-line strong {
+            color: #E65100;
+        }
+        .meta-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            justify-content: center;
+            margin-top: 0.5rem;
+        }
+        .meta-tag {
+            display: inline-block;
+            background: #E6F0FA;
+            color: #003057;
+            font-weight: 600;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.8rem;
+            border-radius: 20px;
+        }
+        .meta-tag.gold {
+            background: #FFF8E1;
+            color: #5C3D00;
+        }
+        .meta-tag.green {
+            background: #E8F5E9;
+            color: #1B5E20;
+        }
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #1B3A2D;
+            margin: 2.2rem 0 0.3rem;
+            padding-bottom: 0.45rem;
+            border-bottom: 3px solid #F2A900;
+            display: inline-block;
+        }
+        .section-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 1.3rem;
+            font-size: 0.95rem;
+        }
+        .card {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 1.4rem 1.7rem;
+            margin-bottom: 1.2rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+        .card:hover {
+            box-shadow: 0 10px 26px rgba(0, 0, 0, 0.07);
+        }
+        .card h3 {
+            font-size: 1.1rem;
+            color: #1B3A2D;
+            margin-bottom: 0.45rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .card .icon {
+            font-size: 1.3rem;
+        }
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin: 1rem 0;
+        }
+        .grid-3col {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.2rem;
+            margin: 1rem 0;
+        }
+        @media (max-width: 800px) {
+            .grid-2col, .grid-3col {
+                grid-template-columns: 1fr;
+            }
+            .student-header h1 {
+                font-size: 1.6rem;
+            }
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        thead {
+            background: #1B3A2D;
+            color: #fff;
+        }
+        th {
+            padding: 0.7rem 0.9rem;
+            text-align: left;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            font-size: 0.82rem;
+        }
+        td {
+            padding: 0.6rem 0.9rem;
+            border-bottom: 1px solid var(--border);
+            background: #fff;
+            font-size: 0.88rem;
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        tbody tr:hover td {
+            background: #FDFBF5;
+        }
+        .date-card {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 1.3rem 1rem;
+            margin-bottom: 1.2rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            text-align: center;
+            border-top: 4px solid #F2A900;
+            transition: var(--transition);
+        }
+        .date-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+        }
+        .date-card .day {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #1B3A2D;
+            line-height: 1.1;
+        }
+        .date-card .month {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #E65100;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .date-card .weekday {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 0.2rem;
+        }
+        .tip-box {
+            background: #E8F5E9;
+            border-left: 5px solid var(--success);
+            padding: 1rem 1.3rem;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            margin: 1.2rem 0;
+            font-size: 0.93rem;
+        }
+        .tip-box strong {
+            color: #1B5E20;
+        }
+        .warning-box {
+            background: #FFF3E0;
+            border-left: 5px solid var(--warning);
+            padding: 1rem 1.3rem;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            margin: 1.2rem 0;
+            font-size: 0.93rem;
+        }
+        .warning-box strong {
+            color: #BF360C;
+        }
+        .danger-box {
+            background: #FFEBEE;
+            border-left: 5px solid var(--danger);
+            padding: 1rem 1.3rem;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            margin: 1.2rem 0;
+            font-size: 0.93rem;
+        }
+        .danger-box strong {
+            color: #B71C1C;
+        }
+        .tag {
+            display: inline-block;
+            background: var(--tag-bg);
+            color: var(--tag-text);
+            font-weight: 600;
+            font-size: 0.72rem;
+            padding: 0.18rem 0.65rem;
+            border-radius: 20px;
+            margin: 0.15rem 0.25rem;
+        }
+        .tag.gold {
+            background: #FFF8E1;
+            color: #5C3D00;
+        }
+        .tag.green {
+            background: #E8F5E9;
+            color: #1B5E20;
+        }
+        .tag.red {
+            background: #FFEBEE;
+            color: #B71C1C;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #606060;
+            font-size: 0.82rem;
+            border-top: 1px solid var(--border);
+            margin-top: 3rem;
+        }
+        footer img {
+            height: 36px;
+            vertical-align: middle;
+            margin: 0 0.4rem;
+        }
+        footer a {
+            color: #1B3A2D;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .anchor-offset {
+            scroll-margin-top: 90px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="logo-area">
+            <img src="https://educasa.pe/wp-content/uploads/2025/05/cropped-educasa_chamilo_big-1-150x150.png"
+            alt="Educasa Logo"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <span class="logo-text" style="display:none; align-items:center; gap:0.4rem;">
+                <span style="background:#F2A900;width:12px;height:12px;border-radius:50%;display:inline-block;"></span> Educasa
+            </span>
+            <span class="logo-text">Educasa <span>·</span> C1 Exam Details</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#overview" class="active">Overview</a></li>
+            <li><a href="#dates">Test Dates</a></li>
+            <li><a href="#centers">Test Centers</a></li>
+            <li><a href="#formats">Formats</a></li>
+            <li><a href="#registration">Registration</a></li>
+            <li><a href="#choosing">Choosing a Center</a></li>
+            <li><a href="#summary">Quick Summary</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- ═══ HERO ═══ -->
+        <header class="student-header anchor-offset" id="overview">
+            <div class="badge">Cambridge C1 Advanced (CAE) · Lima, Peru</div>
+            <h1>Exam Details Summary</h1>
+            <p class="goal-line">
+                Everything you need to know about <strong>test dates, centers, prices, formats, and registration</strong> for the Cambridge C1 Advanced exam in Lima, Peru. Designed for quick decision‑making.
+            </p>
+            <div class="meta-tags">
+                <span class="meta-tag green">📅 Dec 2026 – Jan 2027 dates</span>
+                <span class="meta-tag">🏛️ 4 main centers</span>
+                <span class="meta-tag gold">💰 S/ 790 – S/ 850</span>
+                <span class="meta-tag">💻 Digital &amp; Paper-based</span>
+                <span class="meta-tag green">📍 Lima, PE</span>
+            </div>
+        </header>
+
+        <!-- ═══ TEST DATES ═══ -->
+        <section class="anchor-offset" id="dates">
+            <h2 class="section-title">📅 Official Global Test Dates</h2>
+            <p class="section-subtitle">These are the central dates established by Cambridge English. Authorized test centers in Lima host their sessions on or around these key dates.</p>
+
+            <div class="grid-3col">
+                <div class="date-card">
+                    <div class="day">05</div>
+                    <div class="month">December 2026</div>
+                    <div class="weekday">Saturday</div>
+                    <div style="margin-top:0.6rem;"><span class="tag gold">Written papers</span></div>
+                </div>
+                <div class="date-card">
+                    <div class="day">12</div>
+                    <div class="month">December 2026</div>
+                    <div class="weekday">Saturday</div>
+                    <div style="margin-top:0.6rem;"><span class="tag gold">Written papers</span></div>
+                </div>
+                <div class="date-card">
+                    <div class="day">23</div>
+                    <div class="month">January 2027</div>
+                    <div class="weekday">Saturday</div>
+                    <div style="margin-top:0.6rem;"><span class="tag gold">Written papers</span></div>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <strong>⚠️ Important note on Speaking:</strong> The Speaking portion is scheduled <strong>independently by each local center</strong>, usually within a window of a few days before or after the main written date. Confirm the exact Speaking date directly with your chosen center at the time of registration.
+            </div>
+
+            <div class="tip-box">
+                <strong>💡 Practical tip:</strong> December dates fall within peak holiday season in Lima. Book early – both for the exam itself and for any travel/accommodation needs around the test window.
+            </div>
+        </section>
+
+        <!-- ═══ TEST CENTERS ═══ -->
+        <section class="anchor-offset" id="centers">
+            <h2 class="section-title">🏛️ Comparison Chart: Test Centers in Lima</h2>
+            <p class="section-subtitle">Standard prices generally range between <strong>S/ 790 and S/ 850</strong>, depending on whether the candidate is an internal student at that institution or an external candidate.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Test Center</th>
+                        <th>Formats Offered</th>
+                        <th>Estimated Local Price</th>
+                        <th>Location / Venue</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Asociación Peruano Británica (Británico)</strong></td>
+                        <td><span class="tag green">Digital</span><span class="tag green">Paper-based</span></td>
+                        <td><strong>S/ 790</strong></td>
+                        <td>Main branches in Lima (San Isidro, Miraflores, Surco, etc.)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Idiomas Católica (PUCP)</strong></td>
+                        <td><span class="tag green">Digital</span><span class="tag green">Paper-based</span></td>
+                        <td><strong>S/ 800 – S/ 830</strong></td>
+                        <td>San Miguel &amp; San Borja (Chacarilla)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Universidad del Pacífico (Centro de Idiomas)</strong></td>
+                        <td><span class="tag green">Digital</span><span class="tag green">Paper-based</span></td>
+                        <td><strong>S/ 800 – S/ 850</strong></td>
+                        <td>Jesús María &amp; Miraflores</td>
+                    </tr>
+                    <tr>
+                        <td><strong>International House (IH) Lima</strong></td>
+                        <td><span class="tag green">Digital</span><span class="tag green">Paper-based</span></td>
+                        <td>Contact center for quote</td>
+                        <td>Lima (verify current venue)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="danger-box">
+                <strong>🚨 Verification reminder:</strong> Prices, formats, and locations are subject to change. Always confirm the <strong>current fee, exact address, and available dates</strong> directly on each center's official website or by phone before registering.
+            </div>
+        </section>
+
+        <!-- ═══ FORMATS ═══ -->
+        <section class="anchor-offset" id="formats">
+            <h2 class="section-title">💻 Digital vs. Paper-based</h2>
+            <p class="section-subtitle">All four main centers offer both formats. Here's how to choose.</p>
+
+            <div class="grid-2col">
+                <div class="card">
+                    <h3><span class="icon">🖥️</span> Digital (Computer-based)</h3>
+                    <ul style="padding-left:1.4rem; color:var(--text-secondary); font-size:0.9rem; line-height:2;">
+                        <li>Faster results — typically <strong>2–3 weeks</strong></li>
+                        <li>Multiple test dates available per month at some centers</li>
+                        <li>Headphones for Listening (better audio isolation)</li>
+                        <li>Typing for Writing (advantage if you type faster than you write)</li>
+                        <li>On-screen timer and word count tools</li>
+                        <li>Same exam content and difficulty as paper</li>
+                    </ul>
+                    <span class="tag green">Recommended if you're comfortable with computers</span>
+                </div>
+                <div class="card">
+                    <h3><span class="icon">📄</span> Paper-based</h3>
+                    <ul style="padding-left:1.4rem; color:var(--text-secondary); font-size:0.9rem; line-height:2;">
+                        <li>Results in <strong>4–6 weeks</strong></li>
+                        <li>Familiar format for those who prefer writing by hand</li>
+                        <li>Can annotate and circle text directly on the paper</li>
+                        <li>Listening played on loudspeaker (room acoustics matter)</li>
+                        <li>Limited test dates (only on official global dates)</li>
+                        <li>Same exam content and difficulty as digital</li>
+                    </ul>
+                    <span class="tag gold">Choose if you prefer paper reading &amp; handwriting</span>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <strong>💡 Which is better?</strong> There is <strong>no advantage in scoring</strong> — both are accepted identically by universities and employers. Choose based on your comfort with the medium. If you type essays for practice, choose Digital. If you annotate heavily when reading, choose Paper-based.
+            </div>
+        </section>
+
+        <!-- ═══ REGISTRATION ═══ -->
+        <section class="anchor-offset" id="registration">
+            <h2 class="section-title">📝 Registration &amp; Practical Info</h2>
+            <p class="section-subtitle">What to prepare before you register, and what to expect on test day.</p>
+
+            <div class="grid-2col">
+                <div class="card">
+                    <h3><span class="icon">📋</span> Before You Register</h3>
+                    <ul style="padding-left:1.4rem; color:var(--text-secondary); font-size:0.9rem; line-height:2;">
+                        <li><strong>Valid ID:</strong> Passport or DNI (check center requirements)</li>
+                        <li><strong>Payment method:</strong> Most centers accept card or bank transfer</li>
+                        <li><strong>Preferred date:</strong> Have 2–3 options ready in case one is full</li>
+                        <li><strong>Preferred format:</strong> Digital or Paper-based</li>
+                        <li><strong>Speaking availability:</strong> Confirm the speaking window</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3><span class="icon">📌</span> Registration Timeline</h3>
+                    <ul style="padding-left:1.4rem; color:var(--text-secondary); font-size:0.9rem; line-height:2;">
+                        <li><strong>6–8 weeks before:</strong> Ideal registration window for December dates</li>
+                        <li><strong>4 weeks before:</strong> Last reasonable window; prices may rise</li>
+                        <li><strong>2 weeks before:</strong> Very limited availability; risk of full sessions</li>
+                        <li><strong>Late registration:</strong> Some centers offer it with a surcharge</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3><span class="icon">🎒</span> On Test Day — Bring With You</h3>
+                <ul style="padding-left:1.4rem; color:var(--text-secondary); font-size:0.9rem; line-height:2;">
+                    <li>✅ Valid ID matching your registration name exactly</li>
+                    <li>✅ Printed confirmation email (or digital copy)</li>
+                    <li>✅ Pencil, eraser, and blue/black pen (paper-based only)</li>
+                    <li>✅ Water bottle (transparent, no label)</li>
+                    <li>❌ No phones, smartwatches, or study materials in the exam room</li>
+                </ul>
+            </div>
+
+            <div class="warning-box">
+                <strong>⚠️ Name consistency:</strong> The name on your ID must match the name you use to register. If not, you may be denied entry. Use your <strong>passport name</strong> if you plan to use a passport as your ID.
+            </div>
+        </section>
+
+        <!-- ═══ CHOOSING A CENTER ═══ -->
+        <section class="anchor-offset" id="choosing">
+            <h2 class="section-title">🧭 How to Choose Your Center</h2>
+            <p class="section-subtitle">Five factors to weigh before making your final decision.</p>
+
+            <div class="grid-3col">
+                <div class="card">
+                    <h3><span class="icon">📍</span> Location &amp; Commute</h3>
+                    <p>Pick a center close to home or with a reliable route. Arriving stressed after a long commute can affect your performance, especially for Speaking.</p>
+                </div>
+                <div class="card">
+                    <h3><span class="icon">💻</span> Format Availability</h3>
+                    <p>Not every center offers both formats on the exact date you want. Confirm the format availability before committing.</p>
+                </div>
+                <div class="card">
+                    <h3><span class="icon">💰</span> Total Cost</h3>
+                    <p>Compare prices, but also consider travel cost and time. The Británico at S/ 790 is the lowest starting price, but other factors may override this.</p>
+                </div>
+                <div class="card">
+                    <h3><span class="icon">⏳</span> Result Delivery</h3>
+                    <p>Digital format typically delivers results in 2–3 weeks vs. 4–6 weeks for Paper-based. If you need results urgently, choose Digital.</p>
+                </div>
+                <div class="card">
+                    <h3><span class="icon">🗣️</span> Speaking Window</h3>
+                    <p>Ask the center when the Speaking portion will be scheduled. Some centers confirm it at registration; others announce it later.</p>
+                </div>
+                <div class="card">
+                    <h3><span class="icon">📞</span> Responsiveness</h3>
+                    <p>Call or email the center before registering. Prompt, clear answers indicate good administrative support — important if issues arise.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ QUICK SUMMARY ═══ -->
+        <section class="anchor-offset" id="summary">
+            <h2 class="section-title">⚡ Quick Summary</h2>
+            <p class="section-subtitle">The essentials in one glance.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Exam</strong></td>
+                        <td>Cambridge C1 Advanced (CAE)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Location</strong></td>
+                        <td>Lima, Peru</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Official test dates</strong></td>
+                        <td>Dec 5, 2026 · Dec 12, 2026 · Jan 23, 2027 (Saturdays)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Speaking date</strong></td>
+                        <td>Scheduled separately by each center (a few days before/after the written date)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Main centers</strong></td>
+                        <td>Británico · Idiomas Católica (PUCP) · Universidad del Pacífico · IH Lima</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Price range</strong></td>
+                        <td>Approx. S/ 790 – S/ 850</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Formats</strong></td>
+                        <td>Digital (fast results) or Paper-based (traditional)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Results time</strong></td>
+                        <td>2–3 weeks (Digital) · 4–6 weeks (Paper)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Recommended registration</strong></td>
+                        <td>6–8 weeks before your chosen date</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="tip-box">
+                <strong>💡 Final recommendation:</strong> Register early, choose Digital if you want fast results, and confirm the Speaking window with your center before paying. For most candidates, the <strong>Británico</strong> (lowest published price) or <strong>Idiomas Católica</strong> (central, well‑established) are the strongest starting points.
+            </div>
+        </section>
+
+    </div>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer>
+        <img src="https://educasa.pe/wp-content/uploads/2025/05/cropped-educasa_chamilo_big-1-150x150.png" alt="Educasa" style="height:40px; vertical-align:middle; border-radius:6px;" onerror="this.style.display='none';">
+        <p><strong>Educasa</strong> · Cambridge C1 Advanced (CAE) · Lima, Peru Exam Details Summary<br>
+        <a href="https://educasa.pe" target="_blank">educasa.pe</a> · <a href="https://www.cambridgeenglish.org/exams-and-tests/advanced/" target="_blank">Cambridge C1 Advanced</a> · <a href="https://www.cambridgeenglish.org/exams-and-tests/qualifications/exam-dates/" target="_blank">Official Exam Dates</a></p>
+        <p style="margin-top:0.3rem; font-size:0.75rem; color:#888;">📌 Always verify prices, dates, and availability directly with your chosen center before registering. Prices and details subject to change.</p>
+    </footer>
+
+    <script>
+        // Smooth scroll & active nav
+        const navLinks = document.querySelectorAll('.nav-links a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const target = document.getElementById(targetId);
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                navLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section[id], header[id]');
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 120;
+                if (window.scrollY >= sectionTop) current = section.getAttribute('id');
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+            });
+            if (window.scrollY < 200) {
+                navLinks.forEach(l => l.classList.remove('active'));
+                document.querySelector('.nav-links a[href="#overview"]')?.classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>
