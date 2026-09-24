@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matilda – Abuse of Power &amp; Human Rights' Violations</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #0f0f1a;
+            display: flex; justify-content: center; align-items: center;
+            height: 100vh; overflow: hidden; color: #fff;
+        }
+        .slideshow {
+            width: 95vw; max-width: 1200px; aspect-ratio: 16/9;
+            position: relative; border-radius: 15px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.7); overflow: hidden;
+            background: #1a1a2e;
+        }
+        .slides {
+            display: flex; width: 100%; height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slide {
+            min-width: 100%; height: 100%;
+            padding: 4% 5%; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
+            position: relative;
+            background: radial-gradient(circle at 20% 30%, #2d2d44 0%, #1a1a2e 90%);
+            overflow-y: auto;
+        }
+        .slide-title { background: radial-gradient(circle at 5% 20%, #3a3a5a 0%, #141428 80%); }
+        .slide-dark { background: #0a0a14; }
+
+        h1 {
+            font-size: clamp(2rem, 4.5vw, 4rem); font-weight: 800;
+            letter-spacing: 2px; margin-bottom: 1rem; color: #ffb347;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.6);
+        }
+        h2 { font-size: clamp(1.8rem, 3vw, 2.8rem); color: #ffb347; margin-bottom: 1.5rem; }
+        .subtitle { font-size: clamp(1.2rem, 2.5vw, 2rem); color: #ccc; margin-bottom: 2rem; font-style: italic; }
+        .keyword-large {
+            font-size: clamp(3rem, 6vw, 5rem); font-weight: 900;
+            text-transform: uppercase; letter-spacing: 4px; margin: 1rem 0;
+            background: linear-gradient(135deg, #ffb347, #ff6b6b);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .quote-text {
+            font-size: clamp(1.4rem, 2.8vw, 2.2rem); font-weight: 600;
+            line-height: 1.4; margin: 1.5rem 0; max-width: 85%;
+            color: #f0e6d3; font-style: italic; position: relative;
+        }
+        .quote-text::before { content: open-quote; font-size: 3.5rem; color: #ffb347; position: absolute; left: -30px; top: -15px; }
+        .quote-text::after  { content: close-quote; font-size: 3.5rem; color: #ffb347; position: absolute; right: -30px; bottom: -30px; }
+        .caption { font-size: 1.1rem; color: #aaa; margin-top: 0.5rem; }
+        .info-text { font-size: 1.2rem; color: #ccc; max-width: 85%; line-height: 1.6; margin: 0.8rem auto; }
+
+        .book-cover {
+            width: 140px; height: 200px; border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            background: linear-gradient(135deg, #d32f2f, #8e0000);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.8rem; font-weight: 900; color: #fff;
+            letter-spacing: 2px; margin: 1rem 0; padding: 10px;
+            text-align: center;
+        }
+
+        .evidence-grid {
+            display: grid; grid-template-columns: repeat(3,1fr);
+            gap: 1.2rem; width: 100%; max-width: 900px; margin-top: 1rem;
+        }
+        .evidence-card {
+            background: rgba(255,255,255,0.06); border-radius: 12px;
+            padding: 1rem; text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .evidence-card i { font-size: 2rem; color: #ffb347; margin-bottom: 0.5rem; display: block; }
+        .evidence-card h3 { color: #ffb347; margin-bottom: 0.5rem; font-size: 1.3rem; }
+        .evidence-card p { color: #ccc; font-size: 1rem; line-height: 1.4; }
+
+        .real-life-list { text-align: left; max-width: 650px; margin: 1rem auto; font-size: 1.15rem; line-height: 1.8; color: #ccc; }
+        .real-life-list li { margin-bottom: 0.6rem; }
+        .real-life-list strong { color: #ffb347; }
+
+        .sources-list { text-align: left; font-size: 0.95rem; color: #aaa; line-height: 1.8; max-width: 650px; margin: 0 auto; }
+        .sources-list li { margin-bottom: 0.4rem; }
+
+        .contents-list { list-style: none; text-align: left; max-width: 500px; margin: 1rem auto; font-size: 1.3rem; line-height: 2; color: #ccc; }
+        .contents-list li::before { content: "➤ "; color: #ffb347; }
+
+        .big-question {
+            font-size: clamp(1.8rem, 4vw, 3.2rem); color: #ff6b6b; font-weight: 700;
+            margin: 1rem 0; text-shadow: 0 0 20px rgba(255,107,107,0.3);
+        }
+
+        /* Quiz */
+        .quiz-container { max-width: 780px; margin: 0 auto; text-align: left; }
+        .quiz-question { margin-bottom: 1.2rem; }
+        .quiz-question h3 { color: #ffb347; font-size: 1.25rem; margin-bottom: 0.5rem; }
+        .quiz-option {
+            display: block; width: 100%; text-align: left;
+            background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2);
+            color: #ddd; padding: 0.6rem 1rem; border-radius: 8px;
+            margin-bottom: 0.5rem; cursor: pointer; transition: 0.2s;
+            font-size: 1rem; font-family: inherit;
+        }
+        .quiz-option:hover { background: rgba(255,255,255,0.15); }
+        .quiz-option.correct { background: #2e7d32; border-color: #66bb6a; color: white; }
+        .quiz-option.incorrect { background: #c62828; border-color: #ef5350; color: white; }
+
+        /* Navigation */
+        .nav-buttons {
+            position: absolute; bottom: 20px; right: 25px;
+            display: flex; gap: 15px; z-index: 10;
+        }
+        .nav-btn {
+            background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
+            color: white; font-size: 1.5rem; width: 45px; height: 45px;
+            border-radius: 50%; cursor: pointer; transition: 0.3s;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .nav-btn:hover { background: rgba(255,255,255,0.25); border-color: #ffb347; transform: scale(1.1); }
+        .slide-counter { position: absolute; bottom: 25px; left: 30px; color: #aaa; font-size: 0.9rem; z-index: 10; }
+
+        /* Top buttons */
+        .top-buttons {
+            position: absolute; top: 15px; right: 20px;
+            display: flex; gap: 10px; z-index: 12;
+        }
+        .top-btn {
+            background: rgba(255,179,71,0.25); border: 1px solid #ffb347;
+            color: #ffb347; font-size: 1.5rem; width: 44px; height: 44px;
+            border-radius: 12px; cursor: pointer; transition: 0.3s;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .top-btn:hover { background: rgba(255,179,71,0.5); }
+        .top-btn.playing { background: #ffb347; color: #1a1a2e; }
+
+        /* Script overlay */
+        .script-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(10,10,20,0.92); backdrop-filter: blur(6px);
+            z-index: 20; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; padding: 3rem;
+            text-align: left; opacity: 0; pointer-events: none;
+            transition: opacity 0.3s; border-radius: 15px;
+        }
+        .script-overlay.active { opacity: 1; pointer-events: auto; }
+        .script-close {
+            position: absolute; top: 20px; right: 25px;
+            font-size: 2rem; color: #ffb347; cursor: pointer;
+            font-weight: bold; border: none; background: none;
+        }
+        .script-box {
+            max-width: 800px; width: 100%; max-height: 80%; overflow-y: auto;
+            background: rgba(255,255,255,0.07); border-radius: 16px;
+            padding: 2rem; box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+        .script-line {
+            margin: 0.8rem 0; padding: 0.8rem 1rem;
+            border-left: 6px solid; border-radius: 8px;
+            background: rgba(255,255,255,0.05); font-size: 1rem; line-height: 1.5;
+        }
+        .gerardo-line { border-left-color: #4fc3f7; color: #b3e5fc; }
+        .kenneth-line { border-left-color: #81c784; color: #c8e6c9; }
+        .together-line { border-left-color: #ffb347; color: #ffe0b2; font-style: italic; }
+        .script-label { font-weight: bold; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 4px; }
+        .script-slide-title { text-align: center; font-size: 1.5rem; color: #ffb347; margin-bottom: 1.5rem; }
+    </style>
+</head>
+<body>
+<div class="slideshow">
+    <div class="slides" id="slidesContainer">
+        <!-- ====== SLIDE 1: TITLE ====== -->
+        <div class="slide slide-title" data-slide="1">
+            <div class="book-cover">MATILDA</div>
+            <h1>ABUSE OF POWER<br>&amp; HUMAN RIGHTS' VIOLATIONS</h1>
+            <div class="subtitle">Themes &amp; Global Issues in Matilda</div>
+            <div class="caption">Gerardo Perez &amp; Kenneth Kyle C. J</div>
+        </div>
+
+        <!-- ====== SLIDE 2: CONTENTS ====== -->
+        <div class="slide" data-slide="2">
+            <h2>Contents</h2>
+            <ul class="contents-list">
+                <li>Theme – Definition</li>
+                <li>Theme – Quotes</li>
+                <li>Theme – Textual Evidence</li>
+                <li>Global Issue – Definition &amp; Impact</li>
+                <li>Global Issue – Real life</li>
+                <li>Reflection</li>
+                <li>Sources</li>
+                <li>Questions</li>
+            </ul>
+        </div>
+
+        <!-- ====== SLIDE 3: THEME – DEFINITION ====== -->
+        <div class="slide" data-slide="3">
+            <h2>Theme – Definition</h2>
+            <span class="keyword-large">ABUSE OF POWER</span>
+            <p class="info-text">
+                <strong>Abuse of power</strong> happens when someone uses their authority to control, intimidate, or harm others.
+            </p>
+            <p class="info-text">
+                In <em>Matilda</em>, Miss Trunchbull is the perfect example: she is the headmistress, but she uses her position to frighten and punish children instead of protecting them.
+            </p>
+        </div>
+
+        <!-- ====== SLIDE 4: THEME – QUOTES ====== -->
+        <div class="slide slide-dark" data-slide="4">
+            <h2>Theme – Quotes</h2>
+            <div style="display: flex; gap: 2rem; align-items: center; margin: 1rem 0; flex-wrap: wrap; justify-content: center;">
+                <div style="flex:1; min-width: 250px;">
+                    <div class="quote-text" style="max-width:90%;">"I'm right and you're wrong, I'm big and you're small, and there's nothing you can do about it."</div>
+                    <div class="caption">– Miss Trunchbull (Abuse of Power)</div>
+                </div>
+                <div style="flex:1; min-width: 250px;">
+                    <div class="quote-text" style="max-width:90%;">"Miss Trunchbull, the Headmistress, was something else altogether. She was a gigantic holy terror, a fierce tyrannical monster who frightened the life out of the pupils and teachers alike."</div>
+                    <div class="caption">– Narrator (Describing the Tyrant)</div>
+                </div>
+            </div>
+            <p class="info-text">Both quotes show how power is misused through fear and intimidation.</p>
+        </div>
+
+        <!-- ====== SLIDE 5: TEXTUAL EVIDENCE ====== -->
+        <div class="slide" data-slide="5">
+            <h2>Theme – Textual Evidence</h2>
+            <div class="evidence-grid">
+                <div class="evidence-card"><i>🚪</i><h3>The Chokey</h3><p>Miss Trunchbull locks children in a small cupboard with nails and broken glass. This is physical and psychological abuse.</p></div>
+                <div class="evidence-card"><i>💇‍♀️</i><h3>The Pigtail Incident</h3><p>Trunchbull grabs Amanda Thripp by her pigtails and swings her around, abusing her authority and violating the child’s right to safety.</p></div>
+                <div class="evidence-card"><i>🎂</i><h3>The Cake Incident</h3><p>She force-feeds Bruce Bogtrotter an entire chocolate cake in front of the whole school, a form of public humiliation and cruel punishment.</p></div>
+            </div>
+            <p class="info-text" style="margin-top:1.2rem;">Each example proves that Miss Trunchbull’s power is used to harm, not to help.</p>
+        </div>
+
+        <!-- ====== SLIDE 6: GLOBAL ISSUE – DEFINITION & IMPACT ====== -->
+        <div class="slide slide-dark" data-slide="6">
+            <h2>Global Issue – Definition &amp; Impact</h2>
+            <span class="keyword-large" style="font-size:2.5rem; -webkit-text-fill-color:#ffb347;">HUMAN RIGHTS' VIOLATIONS</span>
+            <p class="info-text">
+                A human rights violation occurs when a state or non-state actor purposefully ignores, denies, or infringes upon the fundamental rights and freedoms to which every person is entitled simply by being human.
+            </p>
+            <p class="info-text">
+                Impact: children lose their safety, dignity, and right to learn in a secure environment – just like the students at Crunchem Hall.
+            </p>
+        </div>
+
+        <!-- ====== SLIDE 7: REAL LIFE ====== -->
+        <div class="slide" data-slide="7">
+            <h2>Human Rights' Violations in Real Life</h2>
+            <ul class="real-life-list">
+                <li><strong>Corporal punishment:</strong> Some schools still allow teachers to physically hit students, violating children’s rights.</li>
+                <li><strong>Emotional abuse:</strong> Children may face humiliation, fear, or systems that ignore their needs, which also violates their dignity.</li>
+            </ul>
+            <p class="info-text">UNICEF and international laws, like the Convention on the Rights of the Child, work to protect children from these abuses.</p>
+        </div>
+
+        <!-- ====== SLIDE 8: REFLECTION ====== -->
+        <div class="slide slide-dark" data-slide="8">
+            <h2>Reflection</h2>
+            <div class="big-question">WHAT CAN WE DO WHEN WE SEE ABUSE OF POWER?</div>
+            <p class="info-text">Matilda teaches us to stand up against unfair authority and to speak for those who cannot speak for themselves.</p>
+            <p class="info-text">Just like Matilda used her courage and intelligence, we can choose to challenge cruelty and protect human dignity.</p>
+        </div>
+
+        <!-- ====== SLIDE 9: SOURCES ====== -->
+        <div class="slide" data-slide="9">
+            <h2>Sources</h2>
+            <ul class="sources-list">
+                <li><strong>Book:</strong> Dahl, Roald. <em>Matilda</em>.</li>
+                <li><strong>UNICEF:</strong> Child protection and human rights.</li>
+                <li><strong>UN Convention on the Rights of the Child.</strong></li>
+                <li><strong>Class discussion.</strong></li>
+            </ul>
+        </div>
+
+        <!-- ====== SLIDE 10: QUESTIONS ====== -->
+        <div class="slide" data-slide="10">
+            <h2>Questions</h2>
+            <div class="quiz-container">
+                <div class="quiz-question">
+                    <h3>1. What is our theme?</h3>
+                    <button class="quiz-option" data-correct="true">Abuse of power</button>
+                    <button class="quiz-option" data-correct="false">Good vs Evil</button>
+                </div>
+                <div class="quiz-question">
+                    <h3>2. What are the 2 types of human rights' violations we mention?</h3>
+                    <button class="quiz-option" data-correct="true">Physical and Psychological</button>
+                    <button class="quiz-option" data-correct="false">Intelligence and Neglect</button>
+                </div>
+                <div class="quiz-question">
+                    <h3>3. What quotes do we mention?</h3>
+                    <button class="quiz-option" data-correct="true">Of Trunchbull and the narrator</button>
+                    <button class="quiz-option" data-correct="false">Matilda and Bruce</button>
+                </div>
+                <div class="quiz-question">
+                    <h3>4. What sources do we use?</h3>
+                    <button class="quiz-option" data-correct="true">Google, Matilda's book, UNICEF, our minds</button>
+                    <button class="quiz-option" data-correct="false">ChatGPT, Gemini, Claude</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ====== SLIDE 11: THANK YOU ====== -->
+        <div class="slide slide-title" data-slide="11">
+            <h1 style="font-size: clamp(3rem,6vw,6rem);">THANK YOU</h1>
+            <div class="subtitle">Speak up for what is right, even when it’s hard.</div>
+            <div class="caption">Gerardo &amp; Kenneth</div>
+        </div>
+    </div>
+
+    <div class="nav-buttons">
+        <button class="nav-btn" id="prevBtn">←</button>
+        <button class="nav-btn" id="nextBtn">→</button>
+    </div>
+    <div class="slide-counter" id="slideCounter">1 / 11</div>
+
+    <div class="script-overlay" id="scriptOverlay">
+        <button class="script-close" id="closeScript">×</button>
+        <div class="script-box" id="scriptContent"></div>
+    </div>
+
+    <audio id="slideAudio" preload="none"></audio>
+</div>
+
+<script>
+    const slidesContainer = document.getElementById('slidesContainer');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const counter = document.getElementById('slideCounter');
+    const audioEl = document.getElementById('slideAudio');
+    const totalSlides = 11;
+    let currentIndex = 0;
+
+    function updateSlide() {
+        slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+        counter.textContent = `${currentIndex + 1} / ${totalSlides}`;
+    }
+
+    function nextSlide() { currentIndex = (currentIndex + 1) % totalSlides; updateSlide(); }
+    function prevSlide() { currentIndex = (currentIndex - 1 + totalSlides) % totalSlides; updateSlide(); }
+
+    nextBtn.addEventListener('click', nextSlide);
+    prevBtn.addEventListener('click', prevSlide);
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') nextSlide();
+        if (e.key === 'ArrowLeft') prevSlide();
+        if (e.key === 'Escape') document.getElementById('scriptOverlay').classList.remove('active');
+    });
+
+    let touchStart = 0;
+    slidesContainer.addEventListener('touchstart', e => touchStart = e.changedTouches[0].screenX);
+    slidesContainer.addEventListener('touchend', e => {
+        const diff = touchStart - e.changedTouches[0].screenX;
+        if (Math.abs(diff) > 50) diff > 0 ? nextSlide() : prevSlide();
+    });
+
+    // Setup audio and script buttons
+    document.querySelectorAll('.slide').forEach(slide => {
+        const slideNum = parseInt(slide.dataset.slide);
+        if (isNaN(slideNum)) return;
+
+        let topBtns = slide.querySelector('.top-buttons');
+        if (!topBtns) {
+            topBtns = document.createElement('div');
+            topBtns.className = 'top-buttons';
+            slide.appendChild(topBtns);
+        }
+
+        const scriptBtn = document.createElement('button');
+        scriptBtn.className = 'top-btn script-btn';
+        scriptBtn.innerHTML = '📝';
+        scriptBtn.title = 'View script';
+        scriptBtn.addEventListener('click', e => { e.stopPropagation(); showScript(slideNum); });
+        topBtns.appendChild(scriptBtn);
+
+        const audioBtn = document.createElement('button');
+        audioBtn.className = 'top-btn audio-btn';
+        audioBtn.setAttribute('data-slide', slideNum);
+        audioBtn.innerHTML = '🔊';
+        audioBtn.title = 'Play audio';
+        audioBtn.addEventListener('click', e => { e.stopPropagation(); toggleAudio(slideNum, audioBtn); });
+        topBtns.appendChild(audioBtn);
+    });
+
+    const AUDIO_FILE = 'matilda_abuse_of_power.mp3';
+    audioEl.src = AUDIO_FILE;
+
+    function toggleAudio(slideNum, btn) {
+        if (audioEl.paused) {
+            audioEl.currentTime = 0;
+            audioEl.play().then(() => {
+                document.querySelectorAll('.audio-btn').forEach(b => b.classList.remove('playing'));
+                btn.classList.add('playing');
+            }).catch(() => {
+                alert(`Couldn't play ${AUDIO_FILE}. Make sure it's in the same directory as this HTML.`);
+            });
+        } else {
+            audioEl.pause();
+            document.querySelectorAll('.audio-btn').forEach(b => b.classList.remove('playing'));
+        }
+    }
+    audioEl.onended = () => {
+        document.querySelectorAll('.audio-btn').forEach(b => b.classList.remove('playing'));
+    };
+
+    // ============= SCRIPTS =============
+    const scripts = {
+        1: { title: "Title", lines: [
+            {speaker: "Gerardo", text: "Good morning, everyone. Welcome to our presentation on Themes and Global Issues in Matilda."},
+            {speaker: "Kenneth", text: "We will explore the theme of abuse of power and connect it to the real-world issue of human rights violations. Together we’ll see how a little girl named Matilda stands up to cruelty and injustice."}
+        ]},
+        2: { title: "Contents", lines: [
+            {speaker: "Kenneth", text: "Here is what we will cover today. First, we will define the theme of abuse of power, then look at key quotes and textual evidence."},
+            {speaker: "Gerardo", text: "Next, we will explain the global issue of human rights violations, share real-life examples, reflect on the story, review our sources, and end with a quick quiz and thank-you."}
+        ]},
+        3: { title: "Theme – Definition", lines: [
+            {speaker: "Gerardo", text: "Abuse of power happens when someone uses their authority to control, intimidate, or harm others instead of helping them."},
+            {speaker: "Kenneth", text: "In Matilda, Miss Trunchbull is the perfect example. She is the headmistress, but she uses her power to frighten and punish children rather than protect them."},
+            {speaker: "Gerardo", text: "This theme can be found in schools, workplaces, and governments — anywhere power is misused."}
+        ]},
+        4: { title: "Theme – Quotes", lines: [
+            {speaker: "Kenneth", text: "Our first quote is spoken by Miss Trunchbull: “I’m right and you’re wrong, I’m big and you’re small, and there’s nothing you can do about it.”"},
+            {speaker: "Gerardo", text: "That quote shows the unfair power dynamic between adults and children. It’s pure intimidation."},
+            {speaker: "Kenneth", text: "The second quote describes Miss Trunchbull as a “gigantic holy terror” and a “fierce tyrannical monster.”"},
+            {speaker: "Gerardo", text: "This proves that her power is based on fear, not respect. Abuse of power affects everyone in the school."}
+        ]},
+        5: { title: "Textual Evidence", lines: [
+            {speaker: "Kenneth", text: "We have three strong examples from the story. First, the Chokey: a tiny cupboard lined with nails and broken glass where Trunchbull locks children. That’s physical and psychological abuse."},
+            {speaker: "Gerardo", text: "Second, the pigtail incident: Trunchbull grabs Amanda Thripp by her pigtails and swings her around. That violates the child’s right to safety."},
+            {speaker: "Kenneth", text: "Third, the cake incident: she force-feeds Bruce Bogtrotter an entire cake in front of the school. That’s public humiliation and cruel punishment."},
+            {speaker: "Gerardo", text: "All three examples show that Miss Trunchbull’s power is used to harm, not to help."}
+        ]},
+        6: { title: "Global Issue – Definition & Impact", lines: [
+            {speaker: "Gerardo", text: "Our global issue is human rights violations. A human rights violation occurs when someone ignores, denies, or infringes upon the fundamental rights and freedoms every person has just by being human."},
+            {speaker: "Kenneth", text: "In Matilda, the children’s rights are violated. According to the UN Convention on the Rights of the Child, every child has the right to education, protection from violence, and freedom from cruel or degrading treatment."},
+            {speaker: "Gerardo", text: "The impact is serious: children lose their safety, their dignity, and their ability to learn in a secure environment — just like at Crunchem Hall."}
+        ]},
+        7: { title: "Real life", lines: [
+            {speaker: "Kenneth", text: "Abuse of power in schools still happens in real life. Some schools still allow corporal punishment, where teachers physically hit students as punishment. This violates children’s rights."},
+            {speaker: "Gerardo", text: "Children may also face emotional abuse, like humiliation or fear, even when it is not physical. This violates their dignity."},
+            {speaker: "Kenneth", text: "Organizations like UNICEF and international laws like the Convention on the Rights of the Child work to protect children from these abuses."}
+        ]},
+        8: { title: "Reflection", lines: [
+            {speaker: "Gerardo", text: "So what can we do when we see abuse of power? Matilda teaches us to stand up against unfair authority and to speak for those who cannot speak for themselves."},
+            {speaker: "Kenneth", text: "Just like Matilda used her courage and intelligence, we can choose to challenge cruelty and protect human dignity."},
+            {speaker: "Gerardo", text: "Even small acts of courage — like speaking up for a classmate — can make a big difference."}
+        ]},
+        9: { title: "Sources", lines: [
+            {speaker: "Kenneth", text: "Our main source is the book Matilda by Roald Dahl."},
+            {speaker: "Gerardo", text: "We also used information from UNICEF and the UN Convention on the Rights of the Child to support our global issue."},
+            {speaker: "Kenneth", text: "We also used class discussion and our own analysis of the story."}
+        ]},
+        10: { title: "Questions", lines: [
+            {speaker: "Gerardo", text: "Now let’s test your understanding with a quick quiz. Click on the correct answer for each question."},
+            {speaker: "Kenneth", text: "Question 1: What is our theme? The correct answer is Abuse of power."},
+            {speaker: "Gerardo", text: "Question 2: What are the two types of human rights violations we mention? The correct answer is Physical and Psychological."},
+            {speaker: "Kenneth", text: "Question 3: What quotes do we mention? The correct answer is from Trunchbull and the narrator."},
+            {speaker: "Gerardo", text: "Question 4: What sources do we use? The correct answer is Google, Matilda’s book, UNICEF, and our own minds."}
+        ]},
+        11: { title: "Thank You", lines: [
+            {speaker: "Kenneth", text: "Thank you for listening! Remember: when you see abuse of power, be like Matilda — use your courage, your voice, and your kindness to stand up for what is right."},
+            {speaker: "Gerardo", text: "Together, we can create a world where every child is safe, respected, and free to learn. Thank you!"}
+        ]}
+    };
+
+    const overlay = document.getElementById('scriptOverlay');
+    const scriptContent = document.getElementById('scriptContent');
+    const closeScriptBtn = document.getElementById('closeScript');
+
+    function showScript(num) {
+        const data = scripts[num];
+        if (!data) return;
+        let html = `<div class="script-slide-title">${data.title} – Script</div>`;
+        data.lines.forEach(line => {
+            const cls = line.speaker === 'Gerardo' ? 'gerardo-line' :
+                       (line.speaker === 'Kenneth' ? 'kenneth-line' : 'together-line');
+            html += `<div class="script-line ${cls}"><span class="script-label">${line.speaker}</span>${line.text}</div>`;
+        });
+        scriptContent.innerHTML = html;
+        overlay.classList.add('active');
+    }
+
+    closeScriptBtn.addEventListener('click', () => overlay.classList.remove('active'));
+    overlay.addEventListener('click', e => { if (e.target === overlay) overlay.classList.remove('active'); });
+
+    // Quiz logic
+    document.querySelectorAll('.quiz-option').forEach(btn => {
+        btn.addEventListener('click', () => {
+            if (btn.classList.contains('correct') || btn.classList.contains('incorrect')) return; // prevent double-click
+            if (btn.dataset.correct === 'true') {
+                btn.classList.add('correct');
+            } else {
+                btn.classList.add('incorrect');
+                const parent = btn.closest('.quiz-question');
+                parent.querySelectorAll('.quiz-option[data-correct="true"]').forEach(correctBtn => {
+                    correctBtn.classList.add('correct');
+                });
+            }
+        });
+    });
+
+    updateSlide();
+</script>
+</body>
+</html>
