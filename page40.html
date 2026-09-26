@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matilda – Abuse of Power &amp; Human Rights' Violations</title>
+    <title>Matilda – Abuse of Power & Human Rights' Violations</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -204,7 +204,7 @@
                 <strong>Abuse of power</strong> happens when someone uses their authority to control, intimidate, or harm others.
             </p>
             <p class="info-text">
-                In <em>Matilda</em>, Miss Trunchbull is the perfect example: she is the headmistress, but she uses her position to frighten and punish children instead of protecting them.
+                In <em>Matilda</em>, Miss Trunchbull and Mr. Wormwood both misuse their power, but Trunchbull is the clearest example.
             </p>
         </div>
 
@@ -214,7 +214,7 @@
             <div style="display: flex; gap: 2rem; align-items: center; margin: 1rem 0; flex-wrap: wrap; justify-content: center;">
                 <div style="flex:1; min-width: 250px;">
                     <div class="quote-text" style="max-width:90%;">"I'm right and you're wrong, I'm big and you're small, and there's nothing you can do about it."</div>
-                    <div class="caption">– Miss Trunchbull (Abuse of Power)</div>
+                    <div class="caption">– Mr. Wormwood (Abuse of Power)</div>
                 </div>
                 <div style="flex:1; min-width: 250px;">
                     <div class="quote-text" style="max-width:90%;">"Miss Trunchbull, the Headmistress, was something else altogether. She was a gigantic holy terror, a fierce tyrannical monster who frightened the life out of the pupils and teachers alike."</div>
@@ -270,15 +270,15 @@
             <h2>Sources</h2>
             <ul class="sources-list">
                 <li><strong>Book:</strong> Dahl, Roald. <em>Matilda</em>.</li>
-                <li><strong>UNICEF:</strong> Child protection and human rights.</li>
                 <li><strong>UN Convention on the Rights of the Child.</strong></li>
-                <li><strong>Class discussion.</strong></li>
+                <li><strong>UNICEF:</strong> Reports on violence against children in schools.</li>
+                <li><strong>Film adaptation</strong> (visual examples).</li>
             </ul>
         </div>
 
-        <!-- ====== SLIDE 10: QUESTIONS ====== -->
+        <!-- ====== SLIDE 10: QUESTION TIME (interactive quiz) ====== -->
         <div class="slide" data-slide="10">
-            <h2>Questions</h2>
+            <h2>Question Time</h2>
             <div class="quiz-container">
                 <div class="quiz-question">
                     <h3>1. What is our theme?</h3>
@@ -292,7 +292,7 @@
                 </div>
                 <div class="quiz-question">
                     <h3>3. What quotes do we mention?</h3>
-                    <button class="quiz-option" data-correct="true">Of Trunchbull and the narrator</button>
+                    <button class="quiz-option" data-correct="true">Of Mr. Wormwood and the narrator</button>
                     <button class="quiz-option" data-correct="false">Matilda and Bruce</button>
                 </div>
                 <div class="quiz-question">
@@ -303,8 +303,15 @@
             </div>
         </div>
 
-        <!-- ====== SLIDE 11: THANK YOU ====== -->
-        <div class="slide slide-title" data-slide="11">
+        <!-- ====== SLIDE 11: QUESTIONS ====== -->
+        <div class="slide slide-dark" data-slide="11">
+            <h2>Questions</h2>
+            <p class="info-text">Thank you for listening. We would now be happy to answer any questions you may have.</p>
+            <p class="info-text">If you have questions about the theme, the global issue, or the connections we made, please feel free to ask.</p>
+        </div>
+
+        <!-- ====== SLIDE 12: THANK YOU ====== -->
+        <div class="slide slide-title" data-slide="12">
             <h1 style="font-size: clamp(3rem,6vw,6rem);">THANK YOU</h1>
             <div class="subtitle">Speak up for what is right, even when it’s hard.</div>
             <div class="caption">Gerardo &amp; Kenneth</div>
@@ -315,7 +322,7 @@
         <button class="nav-btn" id="prevBtn">←</button>
         <button class="nav-btn" id="nextBtn">→</button>
     </div>
-    <div class="slide-counter" id="slideCounter">1 / 11</div>
+    <div class="slide-counter" id="slideCounter">1 / 12</div>
 
     <div class="script-overlay" id="scriptOverlay">
         <button class="script-close" id="closeScript">×</button>
@@ -331,7 +338,7 @@
     const nextBtn = document.getElementById('nextBtn');
     const counter = document.getElementById('slideCounter');
     const audioEl = document.getElementById('slideAudio');
-    const totalSlides = 11;
+    const totalSlides = 12;
     let currentIndex = 0;
 
     function updateSlide() {
@@ -406,63 +413,69 @@
         document.querySelectorAll('.audio-btn').forEach(b => b.classList.remove('playing'));
     };
 
-    // ============= SCRIPTS =============
+    // ============= UPDATED SCRIPTS (matching modified script) =============
     const scripts = {
         1: { title: "Title", lines: [
-            {speaker: "Gerardo", text: "Good morning, everyone. Welcome to our presentation on Themes and Global Issues in Matilda."},
-            {speaker: "Kenneth", text: "We will explore the theme of abuse of power and connect it to the real-world issue of human rights violations. Together we’ll see how a little girl named Matilda stands up to cruelty and injustice."}
+            {speaker: "Gerardo", text: "Good morning, everyone. Today we are going to talk about the book “Matilda” by Roald Dahl and how the story illustrates the theme of the abuse of power."},
+            {speaker: "Kenneth", text: "We will also connect this theme to a real global issue: human rights violations. We are Gerardo and Kenneth, and we hope you enjoy our presentation."}
         ]},
         2: { title: "Contents", lines: [
-            {speaker: "Kenneth", text: "Here is what we will cover today. First, we will define the theme of abuse of power, then look at key quotes and textual evidence."},
-            {speaker: "Gerardo", text: "Next, we will explain the global issue of human rights violations, share real-life examples, reflect on the story, review our sources, and end with a quick quiz and thank-you."}
+            {speaker: "Gerardo", text: "We will now present the main topics we will discuss. First, we will define the theme of the abuse of power. Then, we will show supporting quotes and textual evidence from the book."},
+            {speaker: "Kenneth", text: "After that, we will explain the global issue of human rights violations, give real-life examples, share a short reflection, and finally, we will answer any questions you may have."}
         ]},
-        3: { title: "Theme – Definition", lines: [
-            {speaker: "Gerardo", text: "Abuse of power happens when someone uses their authority to control, intimidate, or harm others instead of helping them."},
-            {speaker: "Kenneth", text: "In Matilda, Miss Trunchbull is the perfect example. She is the headmistress, but she uses her power to frighten and punish children rather than protect them."},
-            {speaker: "Gerardo", text: "This theme can be found in schools, workplaces, and governments — anywhere power is misused."}
+        3: { title: "Theme – Abuse of Power", lines: [
+            {speaker: "Gerardo", text: "Our theme is abuse of power. This happens when someone uses their authority or position to control, intimidate, or harm others."},
+            {speaker: "Kenneth", text: "In Matilda, the clearest example is Miss Trunchbull. She is the headmistress, but instead of protecting and educating the children, she uses her power to frighten and punish them."},
+            {speaker: "Gerardo", text: "Abuse of power can appear in many places: at school, at work, in government, or even at home. In this story, the school becomes a place where children’s rights are violated because one person misuses her authority."}
         ]},
-        4: { title: "Theme – Quotes", lines: [
-            {speaker: "Kenneth", text: "Our first quote is spoken by Miss Trunchbull: “I’m right and you’re wrong, I’m big and you’re small, and there’s nothing you can do about it.”"},
-            {speaker: "Gerardo", text: "That quote shows the unfair power dynamic between adults and children. It’s pure intimidation."},
-            {speaker: "Kenneth", text: "The second quote describes Miss Trunchbull as a “gigantic holy terror” and a “fierce tyrannical monster.”"},
-            {speaker: "Gerardo", text: "This proves that her power is based on fear, not respect. Abuse of power affects everyone in the school."}
+        4: { title: "Quotes", lines: [
+            {speaker: "Kenneth", text: "Our first quote is from Mr Wormwood: “I’m right and you’re wrong, I’m big and you’re small, and there’s nothing you can do about it.”"},
+            {speaker: "Gerardo", text: "This quote shows the unfair power dynamic between adults and children. Mr Wormwood does not listen to reason. He simply says that because he is bigger and more powerful, he is always right."},
+            {speaker: "Kenneth", text: "Our second quote describes Miss Trunchbull directly: “Miss Trunchbull, the Headmistress, was something else altogether. She was a gigantic holy terror, a fierce tyrannical monster who frightened the life out of the pupils and teachers alike.”"},
+            {speaker: "Gerardo", text: "This quote reinforces the idea that her power is based on fear. She is not just strict; she is a tyrant. Both students and teachers are afraid of her, which shows how abuse of power affects everyone in the school."}
         ]},
         5: { title: "Textual Evidence", lines: [
-            {speaker: "Kenneth", text: "We have three strong examples from the story. First, the Chokey: a tiny cupboard lined with nails and broken glass where Trunchbull locks children. That’s physical and psychological abuse."},
-            {speaker: "Gerardo", text: "Second, the pigtail incident: Trunchbull grabs Amanda Thripp by her pigtails and swings her around. That violates the child’s right to safety."},
-            {speaker: "Kenneth", text: "Third, the cake incident: she force-feeds Bruce Bogtrotter an entire cake in front of the school. That’s public humiliation and cruel punishment."},
-            {speaker: "Gerardo", text: "All three examples show that Miss Trunchbull’s power is used to harm, not to help."}
+            {speaker: "Kenneth", text: "Now let’s look at some specific examples from the story that support the theme of abuse of power."},
+            {speaker: "Gerardo", text: "First, the Chokey. Miss Trunchbull locks children in a small cupboard with nails and broken glass. This is not discipline — it is physical and psychological abuse."},
+            {speaker: "Kenneth", text: "Second, the pigtail incident. Trunchbull grabs a student named Amanda Thripp by her pigtails and swings her around. This is a clear abuse of authority and a violation of the child’s right to safety."},
+            {speaker: "Gerardo", text: "Third, the cake incident. She force-feeds Bruce Bogtrotter an entire chocolate cake in front of the whole school. This is public humiliation and cruel punishment."},
+            {speaker: "Kenneth", text: "All of these examples show that Miss Trunchbull uses her position to harm children instead of helping them. That is exactly what abuse of power looks like."}
         ]},
-        6: { title: "Global Issue – Definition & Impact", lines: [
-            {speaker: "Gerardo", text: "Our global issue is human rights violations. A human rights violation occurs when someone ignores, denies, or infringes upon the fundamental rights and freedoms every person has just by being human."},
-            {speaker: "Kenneth", text: "In Matilda, the children’s rights are violated. According to the UN Convention on the Rights of the Child, every child has the right to education, protection from violence, and freedom from cruel or degrading treatment."},
-            {speaker: "Gerardo", text: "The impact is serious: children lose their safety, their dignity, and their ability to learn in a secure environment — just like at Crunchem Hall."}
+        6: { title: "Global Issue – Human Rights Violations", lines: [
+            {speaker: "Gerardo", text: "Now we connect this to our global issue: human rights violations."},
+            {speaker: "Kenneth", text: "A human rights violation occurs when a state or non-state actor purposefully ignores, denies, or infringes upon the fundamental rights and freedoms to which every person is entitled simply by being human."},
+            {speaker: "Gerardo", text: "In Matilda, the children’s human rights are violated. According to the UN Convention on the Rights of the Child, every child has the right to education, protection from violence, and protection from cruel or degrading treatment."},
+            {speaker: "Kenneth", text: "Miss Trunchbull violates these rights when she physically abuses students, humiliates them, and creates a school environment based on fear. The impact is serious: children lose their confidence, their sense of safety, and sometimes their right to learn."}
         ]},
-        7: { title: "Real life", lines: [
-            {speaker: "Kenneth", text: "Abuse of power in schools still happens in real life. Some schools still allow corporal punishment, where teachers physically hit students as punishment. This violates children’s rights."},
-            {speaker: "Gerardo", text: "Children may also face emotional abuse, like humiliation or fear, even when it is not physical. This violates their dignity."},
-            {speaker: "Kenneth", text: "Organizations like UNICEF and international laws like the Convention on the Rights of the Child work to protect children from these abuses."}
+        7: { title: "Human Rights Violations in Real Life", lines: [
+            {speaker: "Gerardo", text: "Unfortunately, this is not just a fictional problem. In real life, abuse of power in schools and other institutions still happens."},
+            {speaker: "Kenneth", text: "For example, some schools still allow corporal punishment, where teachers physically hit students as punishment. This is a violation of children’s rights."},
+            {speaker: "Gerardo", text: "In other cases, children may face emotional abuse from teachers or systems that ignore their needs. Even when it is not physical, humiliation and fear can violate a child’s dignity."},
+            {speaker: "Kenneth", text: "Organizations like UNICEF and Human Rights Watch work to protect children from these abuses. International laws, such as the Convention on the Rights of the Child, exist to hold governments and institutions accountable."}
         ]},
         8: { title: "Reflection", lines: [
-            {speaker: "Gerardo", text: "So what can we do when we see abuse of power? Matilda teaches us to stand up against unfair authority and to speak for those who cannot speak for themselves."},
-            {speaker: "Kenneth", text: "Just like Matilda used her courage and intelligence, we can choose to challenge cruelty and protect human dignity."},
-            {speaker: "Gerardo", text: "Even small acts of courage — like speaking up for a classmate — can make a big difference."}
+            {speaker: "Gerardo", text: "So why does this matter? Matilda is more than just a children’s story. It teaches us that we should not accept abuse of power as normal."},
+            {speaker: "Kenneth", text: "Matilda is small, but she finds the courage to stand up to Miss Trunchbull. This shows that even one person can make a difference."},
+            {speaker: "Gerardo", text: "The story reminds us to question authority when it harms others, and to speak up for those who cannot speak for themselves."},
+            {speaker: "Kenneth", text: "By connecting literature to real human rights issues, we can better understand the importance of protecting dignity and justice for everyone."}
         ]},
         9: { title: "Sources", lines: [
-            {speaker: "Kenneth", text: "Our main source is the book Matilda by Roald Dahl."},
-            {speaker: "Gerardo", text: "We also used information from UNICEF and the UN Convention on the Rights of the Child to support our global issue."},
-            {speaker: "Kenneth", text: "We also used class discussion and our own analysis of the story."}
+            {speaker: "Gerardo", text: "Here are some of the sources we used for this presentation."},
+            {speaker: "Kenneth", text: "Dahl, Roald. Matilda. 1988. United Nations. Convention on the Rights of the Child. 1989. UNICEF. Reports on violence against children in schools."},
+            {speaker: "Gerardo", text: "We also referenced the film adaptation of Matilda for some visual examples."}
         ]},
-        10: { title: "Questions", lines: [
-            {speaker: "Gerardo", text: "Now let’s test your understanding with a quick quiz. Click on the correct answer for each question."},
-            {speaker: "Kenneth", text: "Question 1: What is our theme? The correct answer is Abuse of power."},
-            {speaker: "Gerardo", text: "Question 2: What are the two types of human rights violations we mention? The correct answer is Physical and Psychological."},
-            {speaker: "Kenneth", text: "Question 3: What quotes do we mention? The correct answer is from Trunchbull and the narrator."},
-            {speaker: "Gerardo", text: "Question 4: What sources do we use? The correct answer is Google, Matilda’s book, UNICEF, and our own minds."}
+        10: { title: "Question Time", lines: [
+            {speaker: "Gerardo", text: "What is our theme?"},
+            {speaker: "Kenneth", text: "What are two types of human rights’ violations we mention?"},
+            {speaker: "Gerardo", text: "What quotes do we mention?"},
+            {speaker: "Kenneth", text: "What sources do we use?"}
         ]},
-        11: { title: "Thank You", lines: [
-            {speaker: "Kenneth", text: "Thank you for listening! Remember: when you see abuse of power, be like Matilda — use your courage, your voice, and your kindness to stand up for what is right."},
-            {speaker: "Gerardo", text: "Together, we can create a world where every child is safe, respected, and free to learn. Thank you!"}
+        11: { title: "Questions", lines: [
+            {speaker: "Kenneth", text: "Thank you for listening. We would now be happy to answer any questions you may have."},
+            {speaker: "Gerardo", text: "If you have questions about the theme, the global issue, or the connections we made, please feel free to ask."}
+        ]},
+        12: { title: "Thank You", lines: [
+            {speaker: "Both", text: "Thank you!"}
         ]}
     };
 
