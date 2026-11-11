@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Little Prince – Narrow‑Mindedness vs. Imagination</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #0f0f1a;
+            display: flex; justify-content: center; align-items: center;
+            height: 100vh; overflow: hidden; color: #fff;
+        }
+        .slideshow {
+            width: 95vw; max-width: 1200px; aspect-ratio: 16/9;
+            position: relative; border-radius: 15px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.7); overflow: hidden;
+            background: #1a1a2e;
+        }
+        .slides {
+            display: flex; width: 100%; height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slide {
+            min-width: 100%; height: 100%;
+            padding: 4% 5%; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
+            position: relative;
+            background: radial-gradient(circle at 20% 30%, #2d2d44 0%, #1a1a2e 90%);
+            overflow-y: auto;
+        }
+        .slide-title { background: radial-gradient(circle at 5% 20%, #3a3a5a 0%, #141428 80%); }
+        .slide-dark { background: #0a0a14; }
+
+        h1 {
+            font-size: clamp(2rem, 4.5vw, 4rem); font-weight: 800;
+            letter-spacing: 2px; margin-bottom: 1rem; color: #ffb347;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.6);
+        }
+        h2 { font-size: clamp(1.8rem, 3vw, 2.8rem); color: #ffb347; margin-bottom: 1.5rem; }
+        .subtitle { font-size: clamp(1.2rem, 2.5vw, 2rem); color: #ccc; margin-bottom: 2rem; font-style: italic; }
+        .keyword-large {
+            font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900;
+            text-transform: uppercase; letter-spacing: 4px; margin: 1rem 0;
+            background: linear-gradient(135deg, #ffb347, #ff6b6b);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .quote-text {
+            font-size: clamp(1.4rem, 2.8vw, 2.2rem); font-weight: 600;
+            line-height: 1.4; margin: 1.5rem 0; max-width: 85%;
+            color: #f0e6d3; font-style: italic; position: relative;
+        }
+        .quote-text::before { content: open-quote; font-size: 3.5rem; color: #ffb347; position: absolute; left: -30px; top: -15px; }
+        .quote-text::after  { content: close-quote; font-size: 3.5rem; color: #ffb347; position: absolute; right: -30px; bottom: -30px; }
+        .caption { font-size: 1.1rem; color: #aaa; margin-top: 0.5rem; }
+        .info-text { font-size: 1.2rem; color: #ccc; max-width: 85%; line-height: 1.6; margin: 0.8rem auto; }
+
+        .book-cover {
+            width: 140px; height: 200px; border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            background: linear-gradient(135deg, #4a90d9, #1e3c72);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.4rem; font-weight: 900; color: #fff;
+            letter-spacing: 2px; margin: 1rem 0; padding: 10px;
+            text-align: center;
+        }
+
+        .evidence-grid {
+            display: grid; grid-template-columns: repeat(3,1fr);
+            gap: 1.2rem; width: 100%; max-width: 900px; margin-top: 1rem;
+        }
+        .evidence-card {
+            background: rgba(255,255,255,0.06); border-radius: 12px;
+            padding: 1rem; text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .evidence-card i { font-size: 2rem; color: #ffb347; margin-bottom: 0.5rem; display: block; }
+        .evidence-card h3 { color: #ffb347; margin-bottom: 0.5rem; font-size: 1.3rem; }
+        .evidence-card p { color: #ccc; font-size: 1rem; line-height: 1.4; }
+
+        .real-life-list { text-align: left; max-width: 650px; margin: 1rem auto; font-size: 1.15rem; line-height: 1.8; color: #ccc; }
+        .real-life-list li { margin-bottom: 0.6rem; }
+        .real-life-list strong { color: #ffb347; }
+
+        .sources-list { text-align: left; font-size: 0.95rem; color: #aaa; line-height: 1.8; max-width: 650px; margin: 0 auto; }
+        .sources-list li { margin-bottom: 0.4rem; }
+
+        .contents-list { list-style: none; text-align: left; max-width: 500px; margin: 1rem auto; font-size: 1.3rem; line-height: 2; color: #ccc; }
+        .contents-list li::before { content: "➤ "; color: #ffb347; }
+
+        .big-question {
+            font-size: clamp(1.8rem, 4vw, 3.2rem); color: #ff6b6b; font-weight: 700;
+            margin: 1rem 0; text-shadow: 0 0 20px rgba(255,107,107,0.3);
+        }
+
+        /* Navigation */
+        .nav-buttons {
+            position: absolute; bottom: 20px; right: 25px;
+            display: flex; gap: 15px; z-index: 10;
+        }
+        .nav-btn {
+            background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
+            color: white; font-size: 1.5rem; width: 45px; height: 45px;
+            border-radius: 50%; cursor: pointer; transition: 0.3s;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .nav-btn:hover { background: rgba(255,255,255,0.25); border-color: #ffb347; transform: scale(1.1); }
+        .slide-counter { position: absolute; bottom: 25px; left: 30px; color: #aaa; font-size: 0.9rem; z-index: 10; }
+
+        /* Top buttons */
+        .top-buttons {
+            position: absolute; top: 15px; right: 20px;
+            display: flex; gap: 10px; z-index: 12;
+        }
+        .top-btn {
+            background: rgba(255,179,71,0.25); border: 1px solid #ffb347;
+            color: #ffb347; font-size: 1.5rem; width: 44px; height: 44px;
+            border-radius: 12px; cursor: pointer; transition: 0.3s;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .top-btn:hover { background: rgba(255,179,71,0.5); }
+        .top-btn.playing { background: #ffb347; color: #1a1a2e; }
+
+        /* Script overlay */
+        .script-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(10,10,20,0.92); backdrop-filter: blur(6px);
+            z-index: 20; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; padding: 3rem;
+            text-align: left; opacity: 0; pointer-events: none;
+            transition: opacity 0.3s; border-radius: 15px;
+        }
+        .script-overlay.active { opacity: 1; pointer-events: auto; }
+        .script-close {
+            position: absolute; top: 20px; right: 25px;
+            font-size: 2rem; color: #ffb347; cursor: pointer;
+            font-weight: bold; border: none; background: none;
+        }
+        .script-box {
+            max-width: 800px; width: 100%; max-height: 80%; overflow-y: auto;
+            background: rgba(255,255,255,0.07); border-radius: 16px;
+            padding: 2rem; box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+        .script-line {
+            margin: 0.8rem 0; padding: 0.8rem 1rem;
+            border-left: 6px solid #ffb347; border-radius: 8px;
+            background: rgba(255,255,255,0.05); font-size: 1rem; line-height: 1.5;
+            color: #ffe0b2;
+        }
+        .script-label { font-weight: bold; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 4px; }
+        .script-slide-title { text-align: center; font-size: 1.5rem; color: #ffb347; margin-bottom: 1.5rem; }
+    </style>
+</head>
+<body>
+<div class="slideshow">
+    <div class="slides" id="slidesContainer">
+        <!-- Slide 1: Title -->
+        <div class="slide slide-title" data-slide="1">
+            <div class="book-cover">THE LITTLE PRINCE</div>
+            <h1>NARROW‑MINDEDNESS<br>VS. IMAGINATION</h1>
+            <div class="subtitle">Themes &amp; Global Issues in The Little Prince</div>
+            <div class="caption">By Kenneth Kyle Castañeda Jiménez</div>
+        </div>
+
+        <!-- Slide 2: Contents -->
+        <div class="slide" data-slide="2">
+            <h2>Contents</h2>
+            <ul class="contents-list">
+                <li>Theme – Definition</li>
+                <li>Theme – Quotes</li>
+                <li>Theme – Textual Evidence</li>
+                <li>Global Issue – Definition &amp; Impact</li>
+                <li>Analysis</li>
+                <li>Result</li>
+                <li>Conclusion</li>
+                <li>Sources</li>
+            </ul>
+        </div>
+
+        <!-- Slide 3: Theme Definition -->
+        <div class="slide" data-slide="3">
+            <h2>Theme – Definition</h2>
+            <div style="display:flex; gap:2rem; justify-content:center; flex-wrap:wrap;">
+                <div style="flex:1; min-width:250px;">
+                    <span class="keyword-large" style="font-size:2rem;">NARROW‑MINDEDNESS</span>
+                    <p class="info-text">The quality or state of being unwilling or unready to accept ideas, beliefs, or behaviors that are different from your own.</p>
+                </div>
+                <div style="flex:1; min-width:250px;">
+                    <span class="keyword-large" style="font-size:2rem;">IMAGINATION</span>
+                    <p class="info-text">The faculty or action of forming new ideas, or mental images or concepts of external objects not present to the senses.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Quotes -->
+        <div class="slide slide-dark" data-slide="4">
+            <h2>Theme – Quotes</h2>
+            <div class="quote-text">
+                “They answered, ‘Why be scared of a hat?’ My drawing was not a picture of a hat. It was a picture of a boa constrictor digesting an elephant.”
+            </div>
+            <div class="quote-text">
+                “That's the crate. The sheep you want is inside.” … “That's exactly how I wanted it!”
+            </div>
+        </div>
+
+        <!-- Slide 5: Textual Evidence -->
+        <div class="slide" data-slide="5">
+            <h2>Theme – Textual Evidence</h2>
+            <div class="evidence-grid">
+                <div class="evidence-card"><i>🐍</i><h3>The Boa Constrictor</h3><p>Shows how adults are narrow‑minded because they only see a hat instead of imagining what the drawing represents.</p></div>
+                <div class="evidence-card"><i>📦</i><h3>The Sheep Inside the Box</h3><p>Shows how the Little Prince uses imagination to see beyond what is physically visible.</p></div>
+                <div class="evidence-card"><i>❤️</i><h3>Seeing with the Heart</h3><p>“It is only with the heart that one can see rightly; what is essential is invisible to the eye.”</p></div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Global Issue Definition & Impact -->
+        <div class="slide slide-dark" data-slide="6">
+            <h2>Global Issue – Definition &amp; Impact</h2>
+            <span class="keyword-large" style="font-size:1.8rem;">RIGID SYSTEMS &amp; SUPPRESSION</span>
+            <p class="info-text">Rigid educational systems, suppression of creative thinking, and ideological extremism refer to situations where people are forced to follow strict rules, accept certain beliefs, and avoid questioning traditional ideas.</p>
+            <p class="info-text">These situations discourage creativity, curiosity, and independent thinking.</p>
+        </div>
+
+        <!-- Slide 7: Analysis -->
+        <div class="slide" data-slide="7">
+            <h2>Analysis</h2>
+            <p class="info-text">In <em>The Little Prince</em>, adults often see only the surface — a hat instead of a boa constrictor digesting an elephant. This is narrow‑mindedness: refusing to look beyond what is familiar or practical.</p>
+            <p class="info-text">The Little Prince and the narrator (as a child) use imagination to see deeper meaning — like the sheep inside the crate. This conflict mirrors real‑world problems.</p>
+            <p class="info-text">Rigid educational systems, suppression of creative thinking, and ideological extremism force people to accept one way of thinking and reject new ideas. When this happens, imagination is treated as a waste of time instead of a vital human ability.</p>
+        </div>
+
+        <!-- Slide 8: Result -->
+        <div class="slide slide-dark" data-slide="8">
+            <h2>Result</h2>
+            <p class="info-text">When imagination is suppressed, people become passive, conformist, and unable to question unfair rules. They stop seeing possibilities and accepting differences.</p>
+            <p class="info-text">In the story, the narrator gives up drawing after adults criticize his boa constrictor picture. This shows the cost of narrow‑mindedness: a creative soul is silenced.</p>
+            <p class="info-text">In real life, rigid education produces students who can memorize facts but cannot think critically. Ideological extremism leads to intolerance and conflict. The result is a society that values obedience over curiosity, conformity over creativity, and fear over understanding.</p>
+        </div>
+
+        <!-- Slide 9: Conclusion -->
+        <div class="slide" data-slide="9">
+            <h2>Conclusion</h2>
+            <p class="info-text"><em>The Little Prince</em> reminds us that “what is essential is invisible to the eye.” Imagination and open‑mindedness are not childish extras — they are essential for understanding ourselves, connecting with others, and solving problems.</p>
+            <p class="info-text">To fight narrow‑mindedness, we must encourage curiosity, creative expression, and independent thinking at home, in school, and in society.</p>
+            <p class="info-text">By protecting the child within each person, we build a more compassionate, innovative, and just world.</p>
+        </div>
+
+        <!-- Slide 10: Sources -->
+        <div class="slide slide-dark" data-slide="10">
+            <h2>Sources</h2>
+            <ul class="sources-list">
+                <li>Saint‑Exupéry, Antoine de. <em>The Little Prince</em>.</li>
+                <li>Educational resources on imagination and narrow‑mindedness in literature.</li>
+            </ul>
+        </div>
+
+        <!-- Slide 11: Thank You -->
+        <div class="slide slide-title" data-slide="11">
+            <h1 style="font-size: clamp(3rem,6vw,6rem);">THANK YOU</h1>
+            <div class="subtitle">Stay curious. Question. Imagine.</div>
+            <div class="caption">Presented by Kenneth Kyle Castañeda Jiménez</div>
+        </div>
+    </div>
+
+    <div class="nav-buttons">
+        <button class="nav-btn" id="prevBtn">←</button>
+        <button class="nav-btn" id="nextBtn">→</button>
+    </div>
+    <div class="slide-counter" id="slideCounter">1 / 11</div>
+
+    <!-- Script overlay -->
+    <div class="script-overlay" id="scriptOverlay">
+        <button class="script-close" id="closeScript">×</button>
+        <div class="script-box" id="scriptContent"></div>
+    </div>
+
+    <!-- Single audio element for whole presentation -->
+    <audio id="audioPlayer" preload="none" src="little_prince_presentation.mp3"></audio>
+</div>
+
+<script>
+    const slidesContainer = document.getElementById('slidesContainer');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const counter = document.getElementById('slideCounter');
+    const audioEl = document.getElementById('audioPlayer');
+    const totalSlides = 11;
+    let currentIndex = 0;
+
+    function updateSlide() {
+        slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+        counter.textContent = `${currentIndex + 1} / ${totalSlides}`;
+        // Update audio button playing states
+        document.querySelectorAll('.audio-btn').forEach(btn => {
+            if (!audioEl.paused) {
+                btn.classList.add('playing');
+                btn.innerHTML = '⏸️'; // pause icon
+            } else {
+                btn.classList.remove('playing');
+                btn.innerHTML = '🔊'; // speaker icon
+            }
+        });
+    }
+
+    function nextSlide() { currentIndex = (currentIndex + 1) % totalSlides; updateSlide(); }
+    function prevSlide() { currentIndex = (currentIndex - 1 + totalSlides) % totalSlides; updateSlide(); }
+
+    nextBtn.addEventListener('click', nextSlide);
+    prevBtn.addEventListener('click', prevSlide);
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') nextSlide();
+        if (e.key === 'ArrowLeft') prevSlide();
+        if (e.key === 'Escape') document.getElementById('scriptOverlay').classList.remove('active');
+    });
+
+    let touchStart = 0;
+    slidesContainer.addEventListener('touchstart', e => touchStart = e.changedTouches[0].screenX);
+    slidesContainer.addEventListener('touchend', e => {
+        const diff = touchStart - e.changedTouches[0].screenX;
+        if (Math.abs(diff) > 50) diff > 0 ? nextSlide() : prevSlide();
+    });
+
+    // Setup top buttons: script + audio
+    document.querySelectorAll('.slide').forEach(slide => {
+        const slideNum = parseInt(slide.dataset.slide);
+        if (isNaN(slideNum)) return;
+
+        let topBtns = slide.querySelector('.top-buttons');
+        if (!topBtns) {
+            topBtns = document.createElement('div');
+            topBtns.className = 'top-buttons';
+            slide.appendChild(topBtns);
+        }
+
+        // Script button
+        const scriptBtn = document.createElement('button');
+        scriptBtn.className = 'top-btn script-btn';
+        scriptBtn.innerHTML = '📝';
+        scriptBtn.title = 'View script';
+        scriptBtn.addEventListener('click', e => { e.stopPropagation(); showScript(slideNum); });
+        topBtns.appendChild(scriptBtn);
+
+        // Audio button (single audio control)
+        const audioBtn = document.createElement('button');
+        audioBtn.className = 'top-btn audio-btn';
+        audioBtn.innerHTML = '🔊';
+        audioBtn.title = 'Play/pause audio';
+        audioBtn.addEventListener('click', e => { e.stopPropagation(); toggleAudio(); });
+        topBtns.appendChild(audioBtn);
+    });
+
+    function toggleAudio() {
+        if (audioEl.paused) {
+            audioEl.currentTime = 0;
+            audioEl.play().catch(err => {
+                alert('Could not play audio. Make sure "little_prince_presentation.mp3" is in the same folder.');
+            });
+        } else {
+            audioEl.pause();
+        }
+        updateSlide(); // refresh button states
+    }
+
+    audioEl.addEventListener('play', updateSlide);
+    audioEl.addEventListener('pause', updateSlide);
+    audioEl.addEventListener('ended', updateSlide);
+
+    // ============= Script overlay data =============
+    const scripts = {
+        1: {
+            title: "Title",
+            lines: [
+                "Welcome to my presentation on The Little Prince. My name is Kenneth Kyle Castañeda Jiménez, and today I'll be discussing the themes and global issues found in this beloved story.",
+                "The central theme I will explore is Narrow-Mindedness versus Imagination."
+            ]
+        },
+        2: {
+            title: "Contents",
+            lines: [
+                "Here is the structure of my presentation. I will start with a definition of the theme, followed by quotes from the book, and textual evidence.",
+                "Then I will connect the theme to a global issue, providing a definition and impact, plus a real-life example. Finally, I'll share some reflections and my sources."
+            ]
+        },
+        3: {
+            title: "Theme Definition",
+            lines: [
+                "Let's begin with the theme definition.",
+                "Narrow-mindedness is the quality or state of being unwilling or unready to accept ideas, beliefs, or behaviors that are different from your own.",
+                "Imagination, on the other hand, is the faculty or action of forming new ideas, or mental images or concepts of external objects not present to the senses."
+            ]
+        },
+        4: {
+            title: "Quotes",
+            lines: [
+                "Now, let me share some key quotes from the story.",
+                "In one scene, the adults look at the narrator's drawing and ask, 'Why be scared of a hat?' But his drawing was not a picture of a hat — it was a picture of a boa constrictor digesting an elephant.",
+                "Later, when the Little Prince sees a drawing of a box, he says, 'That's the crate. The sheep you want is inside.' The narrator is very surprised to see his young critic's face light up: 'That's exactly how I wanted it!'"
+            ]
+        },
+        5: {
+            title: "Textual Evidence",
+            lines: [
+                "Let's look at the textual evidence.",
+                "First, the boa constrictor. This shows how adults are narrow-minded because they only see a hat, instead of imagining what the drawing truly represents.",
+                "Second, the sheep inside the box. This shows how the Little Prince uses imagination to see beyond what is physically visible.",
+                "And finally, seeing with the heart. As the fox famously says, 'It is only with the heart that one can see rightly; what is essential is invisible to the eye.'"
+            ]
+        },
+        6: {
+            title: "Global Issue",
+            lines: [
+                "Now, let's connect this to a global issue.",
+                "The global issue I've chosen is rigid educational systems, the suppression of creative thinking, and ideological extremism.",
+                "These refer to situations where people are forced to follow strict rules, accept certain beliefs, and avoid questioning traditional ideas. These situations discourage creativity, curiosity, and independent thinking."
+            ]
+        },
+        7: {
+            title: "Analysis",
+            lines: [
+                "The impact of these issues is significant.",
+                "When educational systems are rigid, students are discouraged from asking questions or thinking creatively.",
+                "When creative thinking is suppressed, entire generations can lose the ability to innovate and solve new problems.",
+                "And when ideological extremism takes hold, societies become less tolerant and more divided.",
+                "Just as the adults in The Little Prince cannot see the elephant inside the boa constrictor, societies that value conformity over curiosity lose the ability to see the deeper truths that imagination can reveal."
+            ]
+        },
+        8: {
+            title: "Result",
+            lines: [
+                "In real life, we see this in many places.",
+                "Some education systems focus so heavily on standardized testing that students never learn to think creatively.",
+                "Some governments censor art, literature, or ideas that challenge the status quo.",
+                "And in some communities, expressing a different opinion can lead to social rejection or worse.",
+                "These examples show that the conflict between narrow-mindedness and imagination is not just a theme in a children's book — it is a challenge we face in the real world every day."
+            ]
+        },
+        9: {
+            title: "Conclusion",
+            lines: [
+                "Reflecting on this, The Little Prince teaches us an important lesson.",
+                "It reminds us to stay curious, to question what we are told, and to see beyond the surface.",
+                "Like the Little Prince, we should trust our imagination and value the things that cannot be seen with the eyes alone.",
+                "Only then can we build a more open, creative, and compassionate world."
+            ]
+        },
+        10: {
+            title: "Sources",
+            lines: [
+                "As for my sources, I used the book The Little Prince by Antoine de Saint-Exupéry, as well as articles and educational resources on the themes of imagination and narrow-mindedness in literature and society."
+            ]
+        },
+        11: {
+            title: "Thank You",
+            lines: [
+                "Thank you for listening. I hope this presentation has given you something to reflect on.",
+                "If you have any questions, I would be happy to answer them."
+            ]
+        }
+    };
+
+    const overlay = document.getElementById('scriptOverlay');
+    const scriptContent = document.getElementById('scriptContent');
+    const closeScriptBtn = document.getElementById('closeScript');
+
+    function showScript(num) {
+        const data = scripts[num];
+        if (!data) return;
+        let html = `<div class="script-slide-title">${data.title} – Script</div>`;
+        data.lines.forEach(line => {
+            html += `<div class="script-line"><span class="script-label">Kenneth</span>${line}</div>`;
+        });
+        scriptContent.innerHTML = html;
+        overlay.classList.add('active');
+    }
+
+    closeScriptBtn.addEventListener('click', () => overlay.classList.remove('active'));
+    overlay.addEventListener('click', e => { if (e.target === overlay) overlay.classList.remove('active'); });
+
+    // Initialize
+    updateSlide();
+</script>
+</body>
+</html>
