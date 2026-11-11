@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Little Prince – Narrow‑Mindedness vs. Imagination</title>
     <style>
+        /* ... (same CSS as before, unchanged) ... */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
@@ -214,12 +215,16 @@
             </div>
         </div>
 
-        <!-- Slide 6: Global Issue – Definition & Impact -->
+        <!-- Slide 6: Global Issue – Definition & Impact (UPDATED: now includes impact) -->
         <div class="slide slide-dark" data-slide="6">
             <h2>Global Issue – Definition &amp; Impact</h2>
             <span class="keyword-large" style="font-size:1.8rem;">RIGID SYSTEMS &amp; SUPPRESSION</span>
-            <p class="info-text">Rigid educational systems, suppression of creative thinking, and ideological extremism refer to situations where people are forced to follow strict rules, accept certain beliefs, and avoid questioning traditional ideas.</p>
-            <p class="info-text">These situations discourage creativity, curiosity, and independent thinking.</p>
+            <p class="info-text">
+                <strong>Definition:</strong> Rigid educational systems, suppression of creative thinking, and ideological extremism refer to situations where people are forced to follow strict rules, accept certain beliefs, and avoid questioning traditional ideas.
+            </p>
+            <p class="info-text">
+                <strong>Impact:</strong> These situations discourage creativity, curiosity, and independent thinking. When educational systems are rigid, students are discouraged from asking questions or thinking creatively. When creative thinking is suppressed, entire generations can lose the ability to innovate and solve new problems. And when ideological extremism takes hold, societies become less tolerant and more divided. Just as the adults in The Little Prince cannot see the elephant inside the boa constrictor, societies that value conformity over curiosity lose the ability to see the deeper truths that imagination can reveal.
+            </p>
         </div>
 
         <!-- Slide 7: Global Issue – Real Life -->
@@ -357,7 +362,7 @@
     audioEl.addEventListener('pause', updateSlide);
     audioEl.addEventListener('ended', updateSlide);
 
-    // ============= Script overlay data =============
+    // ============= Script overlay data (UPDATED) =============
     const scripts = {
         1: {
             title: "Title",
@@ -399,11 +404,13 @@
             ]
         },
         6: {
-            title: "Global Issue",
+            title: "Global Issue – Definition & Impact",
             lines: [
                 "Now, let's connect this to a global issue.",
                 "The global issue I've chosen is rigid educational systems, the suppression of creative thinking, and ideological extremism.",
-                "These refer to situations where people are forced to follow strict rules, accept certain beliefs, and avoid questioning traditional ideas. These situations discourage creativity, curiosity, and independent thinking."
+                "These refer to situations where people are forced to follow strict rules, accept certain beliefs, and avoid questioning traditional ideas.",
+                "The impact of these issues is significant. When educational systems are rigid, students are discouraged from asking questions or thinking creatively. When creative thinking is suppressed, entire generations can lose the ability to innovate and solve new problems. And when ideological extremism takes hold, societies become less tolerant and more divided.",
+                "Just as the adults in The Little Prince cannot see the elephant inside the boa constrictor, societies that value conformity over curiosity lose the ability to see the deeper truths that imagination can reveal."
             ]
         },
         7: {
