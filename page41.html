@@ -172,9 +172,8 @@
                 <li>Theme – Quotes</li>
                 <li>Theme – Textual Evidence</li>
                 <li>Global Issue – Definition &amp; Impact</li>
-                <li>Analysis</li>
-                <li>Result</li>
-                <li>Conclusion</li>
+                <li>Global Issue – Real Life</li>
+                <li>Reflection</li>
                 <li>Sources</li>
             </ul>
         </div>
@@ -215,7 +214,7 @@
             </div>
         </div>
 
-        <!-- Slide 6: Global Issue Definition & Impact -->
+        <!-- Slide 6: Global Issue – Definition & Impact -->
         <div class="slide slide-dark" data-slide="6">
             <h2>Global Issue – Definition &amp; Impact</h2>
             <span class="keyword-large" style="font-size:1.8rem;">RIGID SYSTEMS &amp; SUPPRESSION</span>
@@ -223,44 +222,38 @@
             <p class="info-text">These situations discourage creativity, curiosity, and independent thinking.</p>
         </div>
 
-        <!-- Slide 7: Analysis -->
+        <!-- Slide 7: Global Issue – Real Life -->
         <div class="slide" data-slide="7">
-            <h2>Analysis</h2>
-            <p class="info-text">In <em>The Little Prince</em>, adults often see only the surface — a hat instead of a boa constrictor digesting an elephant. This is narrow‑mindedness: refusing to look beyond what is familiar or practical.</p>
-            <p class="info-text">The Little Prince and the narrator (as a child) use imagination to see deeper meaning — like the sheep inside the crate. This conflict mirrors real‑world problems.</p>
-            <p class="info-text">Rigid educational systems, suppression of creative thinking, and ideological extremism force people to accept one way of thinking and reject new ideas. When this happens, imagination is treated as a waste of time instead of a vital human ability.</p>
+            <h2>Global Issue – Real Life</h2>
+            <ul class="real-life-list">
+                <li>Some education systems focus so heavily on standardized testing that students never learn to think creatively.</li>
+                <li>Some governments censor art, literature, or ideas that challenge the status quo.</li>
+                <li>In some communities, expressing a different opinion can lead to social rejection or worse.</li>
+            </ul>
+            <p class="info-text">The conflict between narrow‑mindedness and imagination is not just a theme in a children's book — it is a real‑world challenge.</p>
         </div>
 
-        <!-- Slide 8: Result -->
+        <!-- Slide 8: Reflection -->
         <div class="slide slide-dark" data-slide="8">
-            <h2>Result</h2>
-            <p class="info-text">When imagination is suppressed, people become passive, conformist, and unable to question unfair rules. They stop seeing possibilities and accepting differences.</p>
-            <p class="info-text">In the story, the narrator gives up drawing after adults criticize his boa constrictor picture. This shows the cost of narrow‑mindedness: a creative soul is silenced.</p>
-            <p class="info-text">In real life, rigid education produces students who can memorize facts but cannot think critically. Ideological extremism leads to intolerance and conflict. The result is a society that values obedience over curiosity, conformity over creativity, and fear over understanding.</p>
+            <h2>Reflection</h2>
+            <div class="big-question">STAY CURIOUS. QUESTION. IMAGINE.</div>
+            <p class="info-text"><em>The Little Prince</em> reminds us to stay curious, question what we are told, and see beyond the surface. Like the Little Prince, we should trust our imagination and value what cannot be seen with the eyes alone.</p>
+            <p class="info-text">Only then can we build a more open, creative, and compassionate world.</p>
         </div>
 
-        <!-- Slide 9: Conclusion -->
+        <!-- Slide 9: Sources -->
         <div class="slide" data-slide="9">
-            <h2>Conclusion</h2>
-            <p class="info-text"><em>The Little Prince</em> reminds us that “what is essential is invisible to the eye.” Imagination and open‑mindedness are not childish extras — they are essential for understanding ourselves, connecting with others, and solving problems.</p>
-            <p class="info-text">To fight narrow‑mindedness, we must encourage curiosity, creative expression, and independent thinking at home, in school, and in society.</p>
-            <p class="info-text">By protecting the child within each person, we build a more compassionate, innovative, and just world.</p>
-        </div>
-
-        <!-- Slide 10: Sources -->
-        <div class="slide slide-dark" data-slide="10">
             <h2>Sources</h2>
             <ul class="sources-list">
                 <li>Saint‑Exupéry, Antoine de. <em>The Little Prince</em>.</li>
-                <li>Educational resources on imagination and narrow‑mindedness in literature.</li>
+                <li>Articles and educational resources on imagination and narrow‑mindedness in literature and society.</li>
             </ul>
         </div>
 
-        <!-- Slide 11: Thank You -->
-        <div class="slide slide-title" data-slide="11">
+        <!-- Slide 10: Thank You -->
+        <div class="slide slide-title" data-slide="10">
             <h1 style="font-size: clamp(3rem,6vw,6rem);">THANK YOU</h1>
-            <div class="subtitle">Stay curious. Question. Imagine.</div>
-            <div class="caption">Presented by Kenneth Kyle Castañeda Jiménez</div>
+            <div class="subtitle">Presented by Kenneth Kyle Castañeda Jiménez</div>
         </div>
     </div>
 
@@ -268,7 +261,7 @@
         <button class="nav-btn" id="prevBtn">←</button>
         <button class="nav-btn" id="nextBtn">→</button>
     </div>
-    <div class="slide-counter" id="slideCounter">1 / 11</div>
+    <div class="slide-counter" id="slideCounter">1 / 10</div>
 
     <!-- Script overlay -->
     <div class="script-overlay" id="scriptOverlay">
@@ -286,20 +279,19 @@
     const nextBtn = document.getElementById('nextBtn');
     const counter = document.getElementById('slideCounter');
     const audioEl = document.getElementById('audioPlayer');
-    const totalSlides = 11;
+    const totalSlides = 10;
     let currentIndex = 0;
 
     function updateSlide() {
         slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
         counter.textContent = `${currentIndex + 1} / ${totalSlides}`;
-        // Update audio button playing states
         document.querySelectorAll('.audio-btn').forEach(btn => {
             if (!audioEl.paused) {
                 btn.classList.add('playing');
-                btn.innerHTML = '⏸️'; // pause icon
+                btn.innerHTML = '⏸️';
             } else {
                 btn.classList.remove('playing');
-                btn.innerHTML = '🔊'; // speaker icon
+                btn.innerHTML = '🔊';
             }
         });
     }
@@ -334,7 +326,6 @@
             slide.appendChild(topBtns);
         }
 
-        // Script button
         const scriptBtn = document.createElement('button');
         scriptBtn.className = 'top-btn script-btn';
         scriptBtn.innerHTML = '📝';
@@ -342,7 +333,6 @@
         scriptBtn.addEventListener('click', e => { e.stopPropagation(); showScript(slideNum); });
         topBtns.appendChild(scriptBtn);
 
-        // Audio button (single audio control)
         const audioBtn = document.createElement('button');
         audioBtn.className = 'top-btn audio-btn';
         audioBtn.innerHTML = '🔊';
@@ -360,7 +350,7 @@
         } else {
             audioEl.pause();
         }
-        updateSlide(); // refresh button states
+        updateSlide();
     }
 
     audioEl.addEventListener('play', updateSlide);
@@ -417,17 +407,7 @@
             ]
         },
         7: {
-            title: "Analysis",
-            lines: [
-                "The impact of these issues is significant.",
-                "When educational systems are rigid, students are discouraged from asking questions or thinking creatively.",
-                "When creative thinking is suppressed, entire generations can lose the ability to innovate and solve new problems.",
-                "And when ideological extremism takes hold, societies become less tolerant and more divided.",
-                "Just as the adults in The Little Prince cannot see the elephant inside the boa constrictor, societies that value conformity over curiosity lose the ability to see the deeper truths that imagination can reveal."
-            ]
-        },
-        8: {
-            title: "Result",
+            title: "Real Life",
             lines: [
                 "In real life, we see this in many places.",
                 "Some education systems focus so heavily on standardized testing that students never learn to think creatively.",
@@ -436,8 +416,8 @@
                 "These examples show that the conflict between narrow-mindedness and imagination is not just a theme in a children's book — it is a challenge we face in the real world every day."
             ]
         },
-        9: {
-            title: "Conclusion",
+        8: {
+            title: "Reflection",
             lines: [
                 "Reflecting on this, The Little Prince teaches us an important lesson.",
                 "It reminds us to stay curious, to question what we are told, and to see beyond the surface.",
@@ -445,13 +425,13 @@
                 "Only then can we build a more open, creative, and compassionate world."
             ]
         },
-        10: {
+        9: {
             title: "Sources",
             lines: [
                 "As for my sources, I used the book The Little Prince by Antoine de Saint-Exupéry, as well as articles and educational resources on the themes of imagination and narrow-mindedness in literature and society."
             ]
         },
-        11: {
+        10: {
             title: "Thank You",
             lines: [
                 "Thank you for listening. I hope this presentation has given you something to reflect on.",
