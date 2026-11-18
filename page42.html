@@ -128,9 +128,23 @@
             border-radius: 12px; cursor: pointer; transition: 0.3s;
             display: flex; align-items: center; justify-content: center;
         }
-        .top-btn:hover      { background: rgba(255,209,102,0.45); }
-        .top-btn.playing    { background: #ffd166; color: #131a10; }
-        .top-btn.unavailable{ opacity: .35; cursor: not-allowed; }
+        .top-btn:hover   { background: rgba(255,209,102,0.45); }
+        .top-btn.playing { background: #ffd166; color: #131a10; }
+
+        /* Audio status bar (bottom-center) */
+        .audio-status {
+            position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+            background: rgba(0,0,0,0.55); border: 1px solid rgba(255,209,102,0.4);
+            padding: 6px 16px; border-radius: 20px;
+            font-size: 0.8rem; color: #ffd166; letter-spacing: .5px;
+            z-index: 11; display: none; align-items: center; gap: 8px;
+        }
+        .audio-status.show { display: flex; }
+        .audio-status .dot {
+            width: 8px; height: 8px; border-radius: 50%; background: #ffd166;
+            animation: pulse 1.2s infinite;
+        }
+        @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:.35;} }
 
         /* Script overlay */
         .script-overlay {
@@ -160,13 +174,6 @@
         }
         .script-label { font-weight: bold; font-size: .8rem; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 4px; color:#ffd166; }
         .script-slide-title { text-align: center; font-size: 1.4rem; color: #ffd166; margin-bottom: 1.2rem; }
-        .audio-warning {
-            color:#ff8a3d; background: rgba(255,138,61,0.12);
-            border: 1px solid #ff8a3d; padding: 8px 12px; border-radius: 8px;
-            font-size: .85rem; margin-top: .8rem; text-align: center;
-            display: none;
-        }
-        .audio-warning.show { display: block; }
     </style>
 </head>
 <body>
@@ -324,17 +331,21 @@
     </div>
     <div class="slide-counter" id="slideCounter">1 / 11</div>
 
+    <!-- Audio status -->
+    <div class="audio-status" id="audioStatus">
+        <span class="dot"></span>
+        <span>Playing presentation…</span>
+        <span id="audioTime">0:00</span>
+    </div>
+
     <!-- Script overlay -->
     <div class="script-overlay" id="scriptOverlay">
         <button class="script-close" id="closeScript">×</button>
         <div class="script-box" id="scriptContent"></div>
-        <div class="audio-warning" id="audioWarning">
-            Audio file not found. Run <code>python generate_audio.py</code> to create the <code>audio/</code> folder.
-        </div>
     </div>
 
-    <!-- Shared audio element -->
-    <audio id="sharedAudio" preload="none"></audio>
+    <!-- SINGLE MP3 IN ROOT FOLDER -->
+    <audio id="audioPlayer" preload="auto" src="charlottes_web_presentation.mp3"></audio>
 </div>
 
 <script>
@@ -342,12 +353,13 @@
     const prevBtn         = document.getElementById('prevBtn');
     const nextBtn         = document.getElementById('nextBtn');
     const counter         = document.getElementById('slideCounter');
-    const audioEl         = document.getElementById('sharedAudio');
+    const audioEl         = document.getElementById('audioPlayer');
+    const audioStatus     = document.getElementById('audioStatus');
+    const audioTime       = document.getElementById('audioTime');
 
     const slideEls   = document.querySelectorAll('.slide');
     const totalSlides = slideEls.length;
     let currentIndex = 0;
-    let currentAudio = null;
 
     function updateSlide() {
         slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
@@ -362,6 +374,7 @@
         if (e.key === 'ArrowRight') nextSlide();
         if (e.key === 'ArrowLeft')  prevSlide();
         if (e.key === 'Escape') document.getElementById('scriptOverlay').classList.remove('active');
+        if (e.key === ' ') { e.preventDefault(); toggleAudio(); }   // spacebar = play/pause
     });
 
     let touchStart = 0;
@@ -390,153 +403,117 @@
         const audioBtn = document.createElement('button');
         audioBtn.className = 'top-btn audio-btn';
         audioBtn.innerHTML = '🔊';
-        audioBtn.title = 'Play this slide';
-        audioBtn.dataset.audioNumber = num;
-        audioBtn.addEventListener('click', e => { e.stopPropagation(); playSlideAudio(num); });
+        audioBtn.title = 'Play/Pause presentation audio';
+        audioBtn.addEventListener('click', e => { e.stopPropagation(); toggleAudio(); });
         topBtns.appendChild(audioBtn);
     });
 
-    /* Audio playback */
-    function playSlideAudio(num) {
-        const src = `audio/slide${String(num).padStart(2, '0')}.mp3`;
-        const btn = document.querySelector(`.slide[data-slide="${num}"] .audio-btn`);
-
-        // Same slide playing → pause
-        if (currentAudio === num && !audioEl.paused) {
+    /* ============ SINGLE AUDIO PLAYBACK ============ */
+    function toggleAudio() {
+        if (audioEl.paused) {
+            audioEl.play().then(() => {
+                document.querySelectorAll('.audio-btn').forEach(b => {
+                    b.innerHTML = '⏸️';
+                    b.classList.add('playing');
+                });
+                audioStatus.classList.add('show');
+            }).catch(() => {
+                alert(
+                    'Could not play "charlottes_web_presentation.mp3".\n\n' +
+                    'Please make sure the file is in the same folder as this HTML file\n' +
+                    'and that you have run:  python generate_audio.py'
+                );
+            });
+        } else {
             audioEl.pause();
-            return;
         }
-
-        // Stop everything, reset all buttons
-        audioEl.pause();
-        document.querySelectorAll('.audio-btn').forEach(b => {
-            b.innerHTML = '🔊';
-            b.classList.remove('playing');
-        });
-        document.getElementById('audioWarning').classList.remove('show');
-
-        currentAudio = num;
-        audioEl.src = src;
-        audioEl.currentTime = 0;
-        audioEl.play().then(() => {
-            btn.innerHTML = '⏸️';
-            btn.classList.add('playing');
-        }).catch(() => {
-            btn.innerHTML = '🔊';
-            btn.classList.add('unavailable');
-            document.getElementById('audioWarning').classList.add('show');
-            document.getElementById('scriptOverlay').classList.add('active');
-            currentAudio = null;
-        });
     }
 
-    audioEl.addEventListener('ended', () => {
+    audioEl.addEventListener('play', () => {
         document.querySelectorAll('.audio-btn').forEach(b => {
-            b.innerHTML = '🔊';
-            b.classList.remove('playing');
+            b.innerHTML = '⏸️'; b.classList.add('playing');
         });
-        currentAudio = null;
+        audioStatus.classList.add('show');
     });
     audioEl.addEventListener('pause', () => {
         document.querySelectorAll('.audio-btn').forEach(b => {
-            b.innerHTML = '🔊';
-            b.classList.remove('playing');
+            b.innerHTML = '🔊'; b.classList.remove('playing');
         });
+        audioStatus.classList.remove('show');
+    });
+    audioEl.addEventListener('ended', () => {
+        document.querySelectorAll('.audio-btn').forEach(b => {
+            b.innerHTML = '🔊'; b.classList.remove('playing');
+        });
+        audioStatus.classList.remove('show');
+    });
+    audioEl.addEventListener('timeupdate', () => {
+        const s = Math.floor(audioEl.currentTime);
+        const m = Math.floor(s / 60);
+        const r = String(s % 60).padStart(2, '0');
+        audioTime.textContent = `${m}:${r}`;
     });
 
     /* ============ SCRIPT DATA ============ */
     const scripts = {
-        1: {
-            title: "Title",
-            lines: [
-                "Hello friends and teachers! Today I am going to present my oral presentation about Charlotte's Web, the famous novel by E. B. White."
-            ]
-        },
-        2: {
-            title: "Contents",
-            lines: [
-                "Before starting, let me tell you the contents of my presentation.",
-                "First, I will talk about the setting; then about my theme and the quote I chose. After that, I will share the textual evidence — three key moments from the story. Then, I will explain the global issue and how it appears in our lives, connecting it to a real news article. And finally, for ending, I will present the literary device and my sources.",
-                "Let's begin with the setting."
-            ]
-        },
-        3: {
-            title: "Setting",
-            lines: [
-                "As I told you, I am going to talk about the three different types of setting: geographical, temporal, and environmental.",
-                "First, the geographical setting. The story happens in the United States, and there are three main places. At the beginning, it takes place in the countryside, in the Arable's barn, where a girl called Fern saves Wilbur's life and gives him food. Then, still in the countryside, Wilbur goes to Mr. Zuckerman's barn, where he meets Charlotte, Templeton, and the other animals. They share beautiful moments together, and this is also where the first web miracle happens. Finally, near the end, the story takes place at the Fair Ground, where Wilbur wins his first prize, Charlotte lays her egg sac, and — sadly — where she dies.",
-                "Now, the temporal setting. I consider that the story takes place in the mid-twentieth century, because, although the author does not tell us the exact year, he gives us clues. For example, the farm traditions, the importance of barns, and the creation and best moment of Fair Grounds all help us understand the time period.",
-                "Finally, the environmental setting. I think this story has many different atmospheres. It has a loyal spider, a beautiful friendship between a pig and a spider, an ambitious rat, a not-so-nice lamb, a smelly barn, a loud and cheerful Fair Ground, and a little bit of sadness. All of these elements together create a rich and emotional environment that makes the story feel real."
-            ]
-        },
-        4: {
-            title: "Theme",
-            lines: [
-                "Now I shall talk about the theme I chose: Teamwork versus Betrayal.",
-                "Let me start with the teamwork side. Teamwork is when a group of people work together to reach a goal. In this case, in the book, the goal is saving Wilbur's life. When someone in the team does not understand something, the other members help that person and explain. So the whole group moves forward together.",
-                "But there is also a dark side: betrayal. Betrayal is when a person takes advantage of loyalty and friendship to take everything only for himself or herself. For example, imagine that the goal is four toys, and there are two members. A normal person would say, two toys for each one. But a betrayer would do anything to take all four toys only for himself or herself. That is exactly what betrayal looks like.",
-                "I chose this theme because I like to see how characters can work together for one goal — but also how one person can break that trust."
-            ]
-        },
-        5: {
-            title: "Quote",
-            lines: [
-                "Now let me share the quote I chose. It is: 'Now I called this meeting in order to get suggestions. I need new ideas for the web.'",
-                "It appears in Chapter 12, 'A Meeting', and it is said by Charlotte.",
-                "Here we can see the theme because Charlotte is asking for help, and in a strong team, everyone helps. We can predict that after this meeting, many animals will share different ideas — like 'Some Pig' and 'Terrific' — to strengthen the web. So this quote shows the positive side of teamwork: the leader trusts her team enough to ask for their ideas."
-            ]
-        },
-        6: {
-            title: "Textual Evidence",
-            lines: [
-                "Now let me talk about the textual evidence. I have three key moments: Templeton's help, Charlotte's democracy, and Templeton's betrayal.",
-                "Let's start with Templeton's help. When Charlotte needs help saving Wilbur's life, she asks for it, and Templeton becomes the main helper. As he is a rat, he can find interesting words in the trash — for example 'Radiant', a special word that helps Charlotte and saves Wilbur once again. Templeton is essential because the other animals cannot reach the dump.",
-                "Next, we have Charlotte's democracy. In any good team, the leaders should respect others' ideas, and that is exactly what Charlotte does. Instead of saying 'No, that is a really bad idea', she says something like 'That's a good one, but we can improve it', showing respect to every animal in the barn. She listens before she decides, and that is what makes the team trust her.",
-                "Finally, we have Templeton's betrayal. During the last day at the Fair Ground, Templeton does not want to help anymore — even at the most dangerous moment in the book, when Charlotte's egg sac needs to be saved. He only agrees to help with the promise that he will eat everything he wants from Wilbur's food. So even when he helps, his reason is selfish. That is what makes it a betrayal.",
-                "Together, these three moments show that in Charlotte's Web, teamwork is fragile: it only works when every member is willing to make sacrifices — and Templeton shows what happens when one member refuses."
-            ]
-        },
-        7: {
-            title: "Global Issue",
-            lines: [
-                "Now, did you ever stop to notice if this is related to a global issue? You are correct — it belongs to the global issue called 'Conflict Between Personal Ambition and Team Success'.",
-                "This global issue tells us that when a team has a really big success, sometimes one person wants to keep all the money or benefits that the whole group worked for. That is personal ambition, because it only benefits one person, not the whole group. This can destroy relationships and wipe out all the progress the team made.",
-                "This connects to the book because the real reason Templeton helps Charlotte is not friendship — it is ambition. Charlotte and Templeton made a promise: every web that had been used for a miracle, he could eat it. That only benefits him. So even when he helps the whole team, his motivation is personal."
-            ]
-        },
-        8: {
-            title: "Global Issue in Our Lives",
-            lines: [
-                "Now let's talk about the global issue in our lives. The news article I chose is called: 'Bankman-Fried sentenced to 25 years in prison for massive FTX fraud.'",
-                "It happened in the United States in 2024, and the impact was global. But why was the impact global? Because FTX was a cryptocurrency exchange — a kind of online bank where the public trusted it to borrow money and give it back. A man named Sam Bankman-Fried wanted to take the money and disappear, and for a while, it worked. The problem is that all that money belonged to society, from many different countries. Everyone's money was stolen.",
-                "At the end, the police found him, and he was sentenced to 25 years in prison for fraud.",
-                "This connects to my global issue because Bankman-Fried put his personal ambition ahead of his team — his company, his employees, and his customers. Just like Templeton, he only acted when it benefited him personally, and the whole team suffered."
-            ]
-        },
-        9: {
-            title: "Literary Device",
-            lines: [
-                "Now, for ending this presentation, I am going to talk about the literary device I chose: foreshadowing.",
-                "Foreshadowing is a literary device where the author gives us clues about what will happen in the future. For example, if a weapon appears early in a story, readers can predict that something dangerous will happen later.",
-                "We can see this in the book in the quote: 'Charlotte heard it and knew that she hadn't much time left.'",
-                "Here the author is telling us this to hint that Charlotte is getting old, and that soon she will die. This creates a sad and tense mood and prepares us emotionally for her death — and that makes her sacrifice for Wilbur even more powerful."
-            ]
-        },
-        10: {
-            title: "Sources",
-            lines: [
-                "For my sources, I used the novel Charlotte's Web by E. B. White as my primary source.",
-                "I used a PBS NewsHour article about the FTX fraud as a reliable, factual example of my global issue.",
-                "I used an Indeed article to help me understand the concept of teamwork, and Dictionary.com to check the meaning of the word betrayal."
-            ]
-        },
-        11: {
-            title: "Thank You",
-            lines: [
-                "To conclude, Charlotte's Web is much more than a story about animals. Through its setting, its theme of teamwork versus betrayal, its connection to a global issue, and its use of foreshadowing, E. B. White teaches us that teamwork requires trust and sacrifice — and that when one person puts himself first, everyone can lose.",
-                "Thank you very much for your attention. I am happy to answer any questions."
-            ]
-        }
+        1: { title: "Title", lines: [
+            "Hello friends and teachers! Today I am going to present my oral presentation about Charlotte's Web, the famous novel by E. B. White."
+        ]},
+        2: { title: "Contents", lines: [
+            "Before starting, let me tell you the contents of my presentation.",
+            "First, I will talk about the setting; then about my theme and the quote I chose. After that, I will share the textual evidence — three key moments from the story. Then, I will explain the global issue and how it appears in our lives, connecting it to a real news article. And finally, for ending, I will present the literary device and my sources.",
+            "Let's begin with the setting."
+        ]},
+        3: { title: "Setting", lines: [
+            "As I told you, I am going to talk about the three different types of setting: geographical, temporal, and environmental.",
+            "First, the geographical setting. The story happens in the United States, and there are three main places. At the beginning, it takes place in the countryside, in the Arable's barn, where a girl called Fern saves Wilbur's life and gives him food. Then, still in the countryside, Wilbur goes to Mr. Zuckerman's barn, where he meets Charlotte, Templeton, and the other animals. They share beautiful moments together, and this is also where the first web miracle happens. Finally, near the end, the story takes place at the Fair Ground, where Wilbur wins his first prize, Charlotte lays her egg sac, and — sadly — where she dies.",
+            "Now, the temporal setting. I consider that the story takes place in the mid-twentieth century, because, although the author does not tell us the exact year, he gives us clues. For example, the farm traditions, the importance of barns, and the creation and best moment of Fair Grounds all help us understand the time period.",
+            "Finally, the environmental setting. I think this story has many different atmospheres. It has a loyal spider, a beautiful friendship between a pig and a spider, an ambitious rat, a not-so-nice lamb, a smelly barn, a loud and cheerful Fair Ground, and a little bit of sadness. All of these elements together create a rich and emotional environment that makes the story feel real."
+        ]},
+        4: { title: "Theme", lines: [
+            "Now I shall talk about the theme I chose: Teamwork versus Betrayal.",
+            "Let me start with the teamwork side. Teamwork is when a group of people work together to reach a goal. In this case, in the book, the goal is saving Wilbur's life. When someone in the team does not understand something, the other members help that person and explain. So the whole group moves forward together.",
+            "But there is also a dark side: betrayal. Betrayal is when a person takes advantage of loyalty and friendship to take everything only for himself or herself. For example, imagine that the goal is four toys, and there are two members. A normal person would say, two toys for each one. But a betrayer would do anything to take all four toys only for himself or herself. That is exactly what betrayal looks like.",
+            "I chose this theme because I like to see how characters can work together for one goal — but also how one person can break that trust."
+        ]},
+        5: { title: "Quote", lines: [
+            "Now let me share the quote I chose. It is: 'Now I called this meeting in order to get suggestions. I need new ideas for the web.'",
+            "It appears in Chapter 12, 'A Meeting', and it is said by Charlotte.",
+            "Here we can see the theme because Charlotte is asking for help, and in a strong team, everyone helps. We can predict that after this meeting, many animals will share different ideas — like 'Some Pig' and 'Terrific' — to strengthen the web. So this quote shows the positive side of teamwork: the leader trusts her team enough to ask for their ideas."
+        ]},
+        6: { title: "Textual Evidence", lines: [
+            "Now let me talk about the textual evidence. I have three key moments: Templeton's help, Charlotte's democracy, and Templeton's betrayal.",
+            "Let's start with Templeton's help. When Charlotte needs help saving Wilbur's life, she asks for it, and Templeton becomes the main helper. As he is a rat, he can find interesting words in the trash — for example 'Radiant', a special word that helps Charlotte and saves Wilbur once again. Templeton is essential because the other animals cannot reach the dump.",
+            "Next, we have Charlotte's democracy. In any good team, the leaders should respect others' ideas, and that is exactly what Charlotte does. Instead of saying 'No, that is a really bad idea', she says something like 'That's a good one, but we can improve it', showing respect to every animal in the barn. She listens before she decides, and that is what makes the team trust her.",
+            "Finally, we have Templeton's betrayal. During the last day at the Fair Ground, Templeton does not want to help anymore — even at the most dangerous moment in the book, when Charlotte's egg sac needs to be saved. He only agrees to help with the promise that he will eat everything he wants from Wilbur's food. So even when he helps, his reason is selfish. That is what makes it a betrayal.",
+            "Together, these three moments show that in Charlotte's Web, teamwork is fragile: it only works when every member is willing to make sacrifices — and Templeton shows what happens when one member refuses."
+        ]},
+        7: { title: "Global Issue", lines: [
+            "Now, did you ever stop to notice if this is related to a global issue? You are correct — it belongs to the global issue called 'Conflict Between Personal Ambition and Team Success'.",
+            "This global issue tells us that when a team has a really big success, sometimes one person wants to keep all the money or benefits that the whole group worked for. That is personal ambition, because it only benefits one person, not the whole group. This can destroy relationships and wipe out all the progress the team made.",
+            "This connects to the book because the real reason Templeton helps Charlotte is not friendship — it is ambition. Charlotte and Templeton made a promise: every web that had been used for a miracle, he could eat it. That only benefits him. So even when he helps the whole team, his motivation is personal."
+        ]},
+        8: { title: "Global Issue in Our Lives", lines: [
+            "Now let's talk about the global issue in our lives. The news article I chose is called: 'Bankman-Fried sentenced to 25 years in prison for massive FTX fraud.'",
+            "It happened in the United States in 2024, and the impact was global. But why was the impact global? Because FTX was a cryptocurrency exchange — a kind of online bank where the public trusted it to borrow money and give it back. A man named Sam Bankman-Fried wanted to take the money and disappear, and for a while, it worked. The problem is that all that money belonged to society, from many different countries. Everyone's money was stolen.",
+            "At the end, the police found him, and he was sentenced to 25 years in prison for fraud.",
+            "This connects to my global issue because Bankman-Fried put his personal ambition ahead of his team — his company, his employees, and his customers. Just like Templeton, he only acted when it benefited him personally, and the whole team suffered."
+        ]},
+        9: { title: "Literary Device", lines: [
+            "Now, for ending this presentation, I am going to talk about the literary device I chose: foreshadowing.",
+            "Foreshadowing is a literary device where the author gives us clues about what will happen in the future. For example, if a weapon appears early in a story, readers can predict that something dangerous will happen later.",
+            "We can see this in the book in the quote: 'Charlotte heard it and knew that she hadn't much time left.'",
+            "Here the author is telling us this to hint that Charlotte is getting old, and that soon she will die. This creates a sad and tense mood and prepares us emotionally for her death — and that makes her sacrifice for Wilbur even more powerful."
+        ]},
+        10: { title: "Sources", lines: [
+            "For my sources, I used the novel Charlotte's Web by E. B. White as my primary source.",
+            "I used a PBS NewsHour article about the FTX fraud as a reliable, factual example of my global issue.",
+            "I used an Indeed article to help me understand the concept of teamwork, and Dictionary.com to check the meaning of the word betrayal."
+        ]},
+        11: { title: "Thank You", lines: [
+            "To conclude, Charlotte's Web is much more than a story about animals. Through its setting, its theme of teamwork versus betrayal, its connection to a global issue, and its use of foreshadowing, E. B. White teaches us that teamwork requires trust and sacrifice — and that when one person puts himself first, everyone can lose.",
+            "Thank you very much for your attention. I am happy to answer any questions."
+        ]}
     };
 
     const overlay       = document.getElementById('scriptOverlay');
