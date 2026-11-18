@@ -24,43 +24,43 @@
         }
         .slide {
             min-width: 100%; height: 100%;
-            padding: 4% 5%; display: flex; flex-direction: column;
+            padding: 3.5% 4.5%; display: flex; flex-direction: column;
             justify-content: center; align-items: center; text-align: center;
             position: relative;
-            background: radial-gradient(circle at 20% 30%, #2d2d44 0%, #1a1a2e 90%);
+            background: radial-gradient(circle at 20% 30%, #2d3d24 0%, #131a10 90%);
             overflow-y: auto;
         }
-        .slide-title { background: radial-gradient(circle at 5% 20%, #3a3a5a 0%, #141428 80%); }
-        .slide-dark { background: #0a0a14; }
+        .slide-title { background: radial-gradient(circle at 5% 20%, #3a5a2a 0%, #0f1a0a 80%); }
+        .slide-dark  { background: #0a1206; }
 
         h1 {
-            font-size: clamp(2rem, 4.5vw, 4rem); font-weight: 800;
-            letter-spacing: 2px; margin-bottom: 1rem; color: #ffb347;
+            font-size: clamp(2rem, 4.5vw, 3.8rem); font-weight: 800;
+            letter-spacing: 2px; margin-bottom: 1rem; color: #ffd166;
             text-shadow: 0 4px 10px rgba(0,0,0,0.6);
         }
-        h2 { font-size: clamp(1.6rem, 2.6vw, 2.4rem); color: #ffb347; margin-bottom: 1.2rem; }
-        .subtitle { font-size: clamp(1.1rem, 2.2vw, 1.8rem); color: #ccc; margin-bottom: 1.5rem; font-style: italic; }
+        h2 { font-size: clamp(1.5rem, 2.6vw, 2.3rem); color: #ffd166; margin-bottom: 1rem; }
+        .subtitle { font-size: clamp(1rem, 2vw, 1.6rem); color: #d8d8c8; margin-bottom: 1.4rem; font-style: italic; }
         .keyword-large {
-            font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 900;
-            text-transform: uppercase; letter-spacing: 3px; margin: 0.6rem 0;
-            background: linear-gradient(135deg, #ffb347, #ff6b6b);
+            font-size: clamp(1.5rem, 3vw, 2.6rem); font-weight: 900;
+            text-transform: uppercase; letter-spacing: 3px; margin: 0.5rem 0;
+            background: linear-gradient(135deg, #ffd166, #ff8a3d);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             background-clip: text;
         }
         .quote-text {
-            font-size: clamp(1.1rem, 2.1vw, 1.7rem); font-weight: 600;
+            font-size: clamp(1.05rem, 2vw, 1.6rem); font-weight: 600;
             line-height: 1.4; margin: 1rem 0; max-width: 88%;
             color: #f0e6d3; font-style: italic; position: relative;
         }
-        .quote-text::before { content: open-quote; font-size: 3rem; color: #ffb347; position: absolute; left: -28px; top: -12px; }
-        .quote-text::after  { content: close-quote; font-size: 3rem; color: #ffb347; position: absolute; right: -28px; bottom: -26px; }
-        .quote-source { display:block; font-size: 0.85rem; color: #ffb347; font-style: normal; font-weight: 700; letter-spacing: 1px; margin-top: 0.4rem; }
-        .caption { font-size: 1rem; color: #aaa; margin-top: 0.5rem; }
+        .quote-text::before { content: open-quote;  font-size: 3rem; color: #ffd166; position: absolute; left: -26px; top: -12px; }
+        .quote-text::after  { content: close-quote; font-size: 3rem; color: #ffd166; position: absolute; right: -26px; bottom: -26px; }
+        .quote-source { display:block; font-size:0.8rem; color:#ffd166; font-style:normal; font-weight:700; letter-spacing:1px; margin-top: .5rem; }
+        .caption { font-size: 1rem; color: #b0b0a0; margin-top: .5rem; }
         .info-text {
-            font-size: clamp(0.9rem, 1.35vw, 1.05rem); color: #ccc;
-            max-width: 90%; line-height: 1.6; margin: 0.6rem auto;
+            font-size: clamp(0.85rem, 1.3vw, 1.02rem); color: #d0d0c0;
+            max-width: 92%; line-height: 1.55; margin: .55rem auto;
         }
-        .info-text strong { color: #ffb347; }
+        .info-text strong { color:#ffd166; }
 
         .book-cover {
             width: 130px; height: 185px; border-radius: 10px;
@@ -76,34 +76,31 @@
 
         .evidence-grid {
             display: grid; grid-template-columns: repeat(3,1fr);
-            gap: 1rem; width: 100%; max-width: 950px; margin-top: 0.8rem;
+            gap: 1rem; width: 100%; max-width: 950px; margin-top: .8rem;
         }
         .evidence-card {
             background: rgba(255,255,255,0.06); border-radius: 12px;
-            padding: 0.9rem; text-align: center;
+            padding: .9rem; text-align: center;
             border: 1px solid rgba(255,255,255,0.1);
         }
-        .evidence-card i { font-size: 1.8rem; color: #ffb347; margin-bottom: 0.4rem; display: block; }
-        .evidence-card h3 { color: #ffb347; margin-bottom: 0.4rem; font-size: clamp(0.95rem,1.4vw,1.15rem); }
-        .evidence-card p { color: #ccc; font-size: clamp(0.78rem,1.05vw,0.92rem); line-height: 1.4; }
+        .evidence-card i { font-size: 1.8rem; color: #ffd166; margin-bottom: .4rem; display: block; }
+        .evidence-card h3 { color: #ffd166; margin-bottom: .35rem; font-size: clamp(.9rem,1.4vw,1.12rem); }
+        .evidence-card p { color: #c8c8b8; font-size: clamp(.75rem,1vw,.88rem); line-height: 1.4; }
 
-        .real-life-list { text-align: left; max-width: 700px; margin: 0.8rem auto; font-size: clamp(0.85rem,1.3vw,1rem); line-height: 1.7; color: #ccc; }
-        .real-life-list li { margin-bottom: 0.5rem; }
-        .real-life-list strong { color: #ffb347; }
+        .real-life-list { text-align: left; max-width: 700px; margin: .8rem auto; font-size: clamp(.82rem,1.3vw,.98rem); line-height: 1.65; color: #c8c8b8; }
+        .real-life-list li { margin-bottom: .45rem; }
+        .real-life-list strong { color:#ffd166; }
 
-        .sources-list { text-align: left; font-size: clamp(0.78rem,1.1vw,0.92rem); color: #aaa; line-height: 1.7; max-width: 700px; margin: 0 auto; }
-        .sources-list li { margin-bottom: 0.35rem; }
+        .sources-list { text-align: left; font-size: clamp(.72rem,1.05vw,.88rem); color: #b0b0a0; line-height: 1.65; max-width: 720px; margin: 0 auto; }
+        .sources-list li { margin-bottom: .4rem; word-break: break-word; }
+        .sources-list a { color: #ffd166; }
 
-        .contents-list {
-            list-style: none; text-align: left; max-width: 560px;
-            margin: 0.5rem auto; font-size: clamp(0.95rem,1.5vw,1.15rem);
-            line-height: 1.9; color: #ccc;
-        }
-        .contents-list li::before { content: "➤ "; color: #ffb347; }
+        .contents-list { list-style: none; text-align: left; max-width: 560px; margin: .4rem auto; font-size: clamp(.9rem,1.4vw,1.1rem); line-height: 1.85; color: #d0d0c0; }
+        .contents-list li::before { content: "➤ "; color: #ffd166; }
 
         .big-question {
-            font-size: clamp(1.3rem, 3vw, 2.4rem); color: #ff6b6b; font-weight: 700;
-            margin: 0.8rem 0; text-shadow: 0 0 20px rgba(255,107,107,0.3);
+            font-size: clamp(1.2rem, 2.6vw, 2.1rem); color: #ff8a3d; font-weight: 700;
+            margin: .8rem 0; text-shadow: 0 0 20px rgba(255,138,61,0.3);
         }
 
         /* Navigation */
@@ -117,8 +114,8 @@
             border-radius: 50%; cursor: pointer; transition: 0.3s;
             display: flex; align-items: center; justify-content: center;
         }
-        .nav-btn:hover { background: rgba(255,255,255,0.25); border-color: #ffb347; transform: scale(1.1); }
-        .slide-counter { position: absolute; bottom: 24px; left: 30px; color: #aaa; font-size: 0.85rem; z-index: 10; }
+        .nav-btn:hover { background: rgba(255,255,255,0.25); border-color: #ffd166; transform: scale(1.1); }
+        .slide-counter { position: absolute; bottom: 24px; left: 30px; color: #b0b0a0; font-size: .85rem; z-index: 10; }
 
         /* Top buttons */
         .top-buttons {
@@ -126,17 +123,19 @@
             display: flex; gap: 10px; z-index: 12;
         }
         .top-btn {
-            background: rgba(255,179,71,0.25); border: 1px solid #ffb347;
-            color: #ffb347; font-size: 1.3rem; width: 42px; height: 42px;
+            background: rgba(255,209,102,0.22); border: 1px solid #ffd166;
+            color: #ffd166; font-size: 1.3rem; width: 42px; height: 42px;
             border-radius: 12px; cursor: pointer; transition: 0.3s;
             display: flex; align-items: center; justify-content: center;
         }
-        .top-btn:hover { background: rgba(255,179,71,0.5); }
+        .top-btn:hover      { background: rgba(255,209,102,0.45); }
+        .top-btn.playing    { background: #ffd166; color: #131a10; }
+        .top-btn.unavailable{ opacity: .35; cursor: not-allowed; }
 
         /* Script overlay */
         .script-overlay {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(10,10,20,0.93); backdrop-filter: blur(6px);
+            background: rgba(10,18,6,0.94); backdrop-filter: blur(6px);
             z-index: 20; display: flex; flex-direction: column;
             align-items: center; justify-content: center; padding: 2rem;
             text-align: left; opacity: 0; pointer-events: none;
@@ -145,7 +144,7 @@
         .script-overlay.active { opacity: 1; pointer-events: auto; }
         .script-close {
             position: absolute; top: 16px; right: 22px;
-            font-size: 2rem; color: #ffb347; cursor: pointer;
+            font-size: 2rem; color: #ffd166; cursor: pointer;
             font-weight: bold; border: none; background: none;
         }
         .script-box {
@@ -155,12 +154,19 @@
         }
         .script-line {
             margin: 0.7rem 0; padding: 0.7rem 1rem;
-            border-left: 6px solid #ffb347; border-radius: 8px;
-            background: rgba(255,255,255,0.05); font-size: 0.95rem; line-height: 1.5;
-            color: #ffe0b2;
+            border-left: 6px solid #ffd166; border-radius: 8px;
+            background: rgba(255,255,255,0.05); font-size: .95rem; line-height: 1.5;
+            color: #fff2cc;
         }
-        .script-label { font-weight: bold; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 4px; color:#ffb347; }
-        .script-slide-title { text-align: center; font-size: 1.4rem; color: #ffb347; margin-bottom: 1.2rem; }
+        .script-label { font-weight: bold; font-size: .8rem; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 4px; color:#ffd166; }
+        .script-slide-title { text-align: center; font-size: 1.4rem; color: #ffd166; margin-bottom: 1.2rem; }
+        .audio-warning {
+            color:#ff8a3d; background: rgba(255,138,61,0.12);
+            border: 1px solid #ff8a3d; padding: 8px 12px; border-radius: 8px;
+            font-size: .85rem; margin-top: .8rem; text-align: center;
+            display: none;
+        }
+        .audio-warning.show { display: block; }
     </style>
 </head>
 <body>
@@ -171,7 +177,7 @@
         <div class="slide slide-title" data-slide="1">
             <div class="book-cover">CHARLOTTE'S<br>WEB</div>
             <h1>TEAMWORK VS. BETRAYAL</h1>
-            <div class="subtitle">Themes &amp; Global Issues in <em>Charlotte's Web</em> by E. B. White</div>
+            <div class="subtitle">An Oral Presentation on <em>Charlotte's Web</em> by E. B. White</div>
             <div class="caption">By Thiago Jesus Rojas Sanchez</div>
         </div>
 
@@ -179,14 +185,14 @@
         <div class="slide" data-slide="2">
             <h2>Contents</h2>
             <ul class="contents-list">
-                <li>Setting – Geographical, Environmental, Temporal</li>
-                <li>Theme – Definition</li>
-                <li>Theme – Quotes</li>
-                <li>Theme – Textual Evidence (3 Moments)</li>
-                <li>Global Issue – Definition &amp; Connection</li>
-                <li>News Article Connection</li>
+                <li>Setting – Geographical, Temporal, Environmental</li>
+                <li>Theme – Teamwork vs. Betrayal</li>
+                <li>Quote – Charlotte's Meeting</li>
+                <li>Textual Evidence – 3 moments</li>
+                <li>Global Issue – Personal Ambition vs. Team Success</li>
+                <li>Global Issue in Our Lives – FTX fraud</li>
                 <li>Literary Device – Foreshadowing</li>
-                <li>Reflection &amp; Sources</li>
+                <li>Sources &amp; Conclusion</li>
             </ul>
         </div>
 
@@ -196,138 +202,119 @@
             <div class="evidence-grid">
                 <div class="evidence-card">
                     <i>🌍</i><h3>Geographical</h3>
-                    <p>Mr. Zuckerman's farm (the barn &amp; pigpen), the Arable family's house, and the County Fair Ground.</p>
+                    <p>USA – Arable's barn → Mr. Zuckerman's barn → the County Fair Ground.</p>
+                </div>
+                <div class="evidence-card">
+                    <i>🕰️</i><h3>Temporal</h3>
+                    <p>Mid‑20th century. Clues: farm traditions, importance of barns, rise of Fair Grounds.</p>
                 </div>
                 <div class="evidence-card">
                     <i>🌾</i><h3>Environmental</h3>
-                    <p>The barn is warm, dusty and safe. The fair is loud and crowded. The mood is friendship, loyalty, hope and sadness.</p>
-                </div>
-                <div class="evidence-card">
-                    <i>🍂</i><h3>Temporal</h3>
-                    <p>Spring to autumn, mid‑20th century. Clues: farm life, the county fair, no modern machines.</p>
+                    <p>A loyal spider · beautiful friendship · ambitious rat · smelly barn · loud fair · a little sadness.</p>
                 </div>
             </div>
-            <p class="info-text"><strong>Why it matters:</strong> the barn is a safe little world where Wilbur is protected, but outside it his life is in danger. The fair is where Wilbur wins his prize — and where Charlotte becomes weak.</p>
+            <p class="info-text"><strong>Why it matters:</strong> the barn is a safe world where Wilbur is protected; outside it his life is in danger. The fair is where Wilbur wins — but where Charlotte sacrifices herself.</p>
         </div>
 
-        <!-- 4: Theme Definition -->
+        <!-- 4: Theme -->
         <div class="slide slide-dark" data-slide="4">
-            <h2>Theme – Definition</h2>
-            <div style="display:flex; gap:2rem; justify-content:center; flex-wrap:wrap; width:100%;">
+            <h2>Theme</h2>
+            <span class="keyword-large" style="font-size:1.5rem;">TEAMWORK VS. BETRAYAL</span>
+            <div style="display:flex; gap:1.6rem; justify-content:center; flex-wrap:wrap; width:100%; margin-top:.6rem;">
                 <div style="flex:1; min-width:250px;">
-                    <span class="keyword-large" style="font-size:1.6rem;">TEAMWORK</span>
-                    <p class="info-text">When a group works together, trusting each other, for one shared goal.</p>
+                    <span class="keyword-large" style="font-size:1.15rem;">TEAMWORK</span>
+                    <p class="info-text">A group works together to reach a shared goal. In the book, the goal is <strong>saving Wilbur's life</strong>.</p>
                 </div>
                 <div style="flex:1; min-width:250px;">
-                    <span class="keyword-large" style="font-size:1.6rem;">BETRAYAL</span>
-                    <p class="info-text">When one member turns against the group, or helps only for personal gain, putting the goal at risk.</p>
+                    <span class="keyword-large" style="font-size:1.15rem;">BETRAYAL</span>
+                    <p class="info-text">A person takes advantage of loyalty and friendship to take everything <strong>only for himself</strong>.</p>
                 </div>
             </div>
-            <p class="info-text"><strong>Together:</strong> teamwork only works when everyone is loyal. One selfish member can break the trust and endanger the whole team.</p>
         </div>
 
-        <!-- 5: Quotes -->
+        <!-- 5: Quote -->
         <div class="slide" data-slide="5">
-            <h2>Theme – Quotes</h2>
+            <h2>Quote</h2>
             <div class="quote-text">
-                “I have no interest in saving pigs. I am a rat.”
-                <span class="quote-source">— TEMPLETON, CHAPTER 12: “A MEETING”</span>
+                “Now I called this meeting in order to get suggestions. I need new ideas for the web.”
+                <span class="quote-source">— CHARLOTTE, CHAPTER 12: “A MEETING”</span>
             </div>
-            <div class="quote-text">
-                “Some Pig.”
-                <span class="quote-source">— WRITTEN IN CHARLOTTE'S WEB, CHAPTER 11: “THE MIRACLE”</span>
-            </div>
+            <p class="info-text"><strong>Why it shows the theme:</strong> Charlotte, the leader, trusts her team enough to ask for their ideas. That is the positive side of teamwork — respect and democracy.</p>
         </div>
 
         <!-- 6: Textual Evidence -->
         <div class="slide slide-dark" data-slide="6">
-            <h2>Theme – Textual Evidence</h2>
+            <h2>Textual Evidence</h2>
             <div class="evidence-grid">
                 <div class="evidence-card">
-                    <i>🐀</i><h3>1. Templeton's Refusal</h3>
-                    <p>He will only help if he gets food from Wilbur's trough. He puts himself before the team — that is betrayal.</p>
+                    <i>🐀</i><h3>1. Templeton's Help</h3>
+                    <p>As a rat, he can reach the dump. He finds words like “Radiant” — essential because the other animals can't reach the trash.</p>
                 </div>
                 <div class="evidence-card">
-                    <i>🕸️</i><h3>2. Charlotte's Meeting</h3>
-                    <p>She lets every animal share ideas to save Wilbur. This is the healthy side of teamwork: respect and democracy.</p>
+                    <i>🕸️</i><h3>2. Charlotte's Democracy</h3>
+                    <p>She respects every animal's idea: “That's a good one — we can improve it.” She listens before deciding.</p>
                 </div>
                 <div class="evidence-card">
-                    <i>📰</i><h3>3. Templeton Brings Words</h3>
-                    <p>He fetches words from the dump — but only because he benefits. Help that is selfish, not loyal.</p>
+                    <i>💔</i><h3>3. Templeton's Betrayal</h3>
+                    <p>At the fair, he refuses to help unless promised Wilbur's food. Help with a selfish motive — a betrayal.</p>
                 </div>
             </div>
-            <p class="info-text">Together, these three moments show that teamwork is <strong>fragile</strong>: it only works when everyone is willing to sacrifice.</p>
+            <p class="info-text">Together, these three moments show that teamwork is <strong>fragile</strong>: it only works when every member sacrifices.</p>
         </div>
 
         <!-- 7: Global Issue -->
         <div class="slide" data-slide="7">
             <h2>Global Issue</h2>
-            <span class="keyword-large" style="font-size:1.4rem;">PERSONAL AMBITION VS. TEAM SUCCESS</span>
-            <p class="info-text">
-                <strong>Definition:</strong> the struggle between pursuing your own goals or rewards and working with others for a shared purpose.
-            </p>
-            <p class="info-text">
-                <strong>Connection to the theme:</strong> Templeton's betrayal comes directly from his personal ambition — he thinks about his stomach first.
-            </p>
-            <p class="info-text">
-                <strong>Connection to the story:</strong> the animals work together to save Wilbur, but Templeton only helps when he is promised food.
-            </p>
-            <p class="info-text">
-                <strong>Why it is global:</strong> it happens in schools, workplaces, sports teams and communities. When one person cares only about personal gain, teamwork breaks down — and everyone loses.
-            </p>
+            <span class="keyword-large" style="font-size:1.3rem;">CONFLICT BETWEEN PERSONAL AMBITION &amp; TEAM SUCCESS</span>
+            <p class="info-text"><strong>Definition:</strong> the struggle between pursuing personal rewards and working together for a shared purpose.</p>
+            <p class="info-text"><strong>In the book:</strong> Templeton helps not out of friendship but because Charlotte promised him the used web to eat. His motive is <em>personal</em>.</p>
+            <p class="info-text"><strong>Why it matters:</strong> when one person keeps everything the team worked for, trust breaks and the whole group loses.</p>
         </div>
 
-        <!-- 8: News Article -->
+        <!-- 8: Global Issue in our lives -->
         <div class="slide slide-dark" data-slide="8">
-            <h2>News Article Connection</h2>
-            <p class="info-text" style="font-size:clamp(0.95rem,1.5vw,1.15rem); color:#ffb347; font-weight:700;">
-                “Sam Bankman‑Fried sentenced to 25 years for FTX fraud”
+            <h2>Global Issue in Our Lives</h2>
+            <p class="info-text" style="font-size:clamp(.95rem,1.5vw,1.15rem); color:#ffd166; font-weight:700;">
+                “Bankman‑Fried sentenced to 25 years in prison for massive FTX fraud”
             </p>
-            <p class="info-text"><strong>Source:</strong> BBC News &nbsp;•&nbsp; <strong>Date:</strong> 28 March 2024 &nbsp;•&nbsp; <strong>Place:</strong> United States</p>
+            <p class="info-text"><strong>Source:</strong> PBS NewsHour &nbsp;•&nbsp; <strong>Place:</strong> United States &nbsp;•&nbsp; <strong>Year:</strong> 2024 &nbsp;•&nbsp; <strong>Impact:</strong> global</p>
             <ul class="real-life-list">
-                <li><strong>What happened:</strong> the founder of the crypto company FTX stole billions from customers and investors to fund his own lifestyle. The company collapsed.</li>
-                <li><strong>Who was affected:</strong> customers who lost their savings, employees who lost their jobs, and investors who lost their money.</li>
-                <li><strong>Link to my global issue:</strong> like Templeton, he only acted when it benefited him personally — and the whole team suffered.</li>
-                <li><strong>Lesson:</strong> personal ambition must be balanced with responsibility to others.</li>
+                <li><strong>What happened:</strong> FTX was a crypto exchange — an online “bank” the public trusted. Sam Bankman‑Fried stole customers' money and tried to disappear.</li>
+                <li><strong>Who was affected:</strong> customers from many countries whose savings were stolen.</li>
+                <li><strong>Link to my global issue:</strong> like Templeton, he put personal ambition before his team — company, employees, and customers.</li>
+                <li><strong>Lesson:</strong> personal ambition must be balanced with responsibility.</li>
             </ul>
         </div>
 
         <!-- 9: Literary Device -->
         <div class="slide" data-slide="9">
             <h2>Literary Device – Foreshadowing</h2>
-            <span class="keyword-large" style="font-size:1.4rem;">FORESHADOWING</span>
+            <span class="keyword-large" style="font-size:1.3rem;">FORESHADOWING</span>
             <p class="info-text">Clues the author gives about what will happen later in the story.</p>
-            <div class="quote-text" style="font-size:clamp(1rem,1.9vw,1.5rem);">
+            <div class="quote-text" style="font-size:clamp(.95rem,1.75vw,1.4rem);">
                 “Charlotte heard it and knew that she hadn't much time left.”
                 <span class="quote-source">— CHAPTER 15: “THE CRICKETS”</span>
             </div>
-            <p class="info-text"><strong>Why it is foreshadowing:</strong> the line hints that Charlotte is running out of time, so readers predict she will soon die.</p>
-            <p class="info-text"><strong>Effect on the reader:</strong> it creates a sad, tense mood, builds suspense, and prepares us emotionally for her death — making Charlotte's sacrifice feel even more urgent.</p>
+            <p class="info-text"><strong>Effect on the reader:</strong> creates a sad, tense mood, builds suspense, and prepares us emotionally for Charlotte's death — making her sacrifice even more powerful.</p>
         </div>
 
-        <!-- 10: Reflection -->
+        <!-- 10: Sources -->
         <div class="slide slide-dark" data-slide="10">
-            <h2>Reflection</h2>
-            <div class="big-question">BE LOYAL. WORK TOGETHER. KEEP YOUR PROMISES.</div>
-            <p class="info-text"><em>Charlotte's Web</em> is much more than a story about animals. Through its setting, its theme of teamwork versus betrayal, its connection to a real global issue, and its use of foreshadowing, E. B. White teaches us that trust and sacrifice are what hold a team together — and that when one person puts himself first, everyone can lose.</p>
-        </div>
-
-        <!-- 11: Sources -->
-        <div class="slide" data-slide="11">
             <h2>Sources</h2>
             <ul class="sources-list">
-                <li>1. White, E. B. <em>Charlotte's Web</em>. Harper &amp; Brothers, 1952. (Primary source – the novel)</li>
-                <li>2. BBC News. “Sam Bankman‑Fried sentenced to 25 years for FTX fraud.” 28 March 2024. bbc.com/news/business-68672645</li>
-                <li>3. Encyclopaedia Britannica. “E. B. White.” (Author background and purpose)</li>
-                <li>4. SparkNotes. <em>Charlotte's Web</em> – Themes: Friendship and Sacrifice. (Literary analysis)</li>
+                <li>1. White, E. B. (2012). <em>Charlotte's Web</em>. HarperCollins Publishers.</li>
+                <li>2. “Bankman‑Fried sentenced 25 years in prison for massive FTX fraud.” <em>PBS NewsHour</em>. <a href="https://www.pbs.org/newshour/show/bankman-fried-sentenced-to-25-years-in-prison-for-massive-ftx-fraud" target="_blank">pbs.org</a></li>
+                <li>3. “Teamwork.” <em>Indeed</em>. <a href="https://uk.indeed.com/career-advice/career-development/what-is-teamwork" target="_blank">indeed.com</a></li>
+                <li>4. “Betrayal.” <em>Dictionary.com</em>. <a href="https://www.dictionary.com/browse/betrayal" target="_blank">dictionary.com</a></li>
             </ul>
         </div>
 
-        <!-- 12: Thank You -->
-        <div class="slide slide-title" data-slide="12">
-            <h1 style="font-size: clamp(2.5rem,6vw,5rem);">THANK YOU</h1>
-            <div class="subtitle">Presented by Thiago Jesus Rojas Sanchez</div>
-            <div class="caption">I am happy to answer any questions.</div>
+        <!-- 11: Thank You -->
+        <div class="slide slide-title" data-slide="11">
+            <h1 style="font-size: clamp(2.4rem,6vw,5rem);">THANK YOU</h1>
+            <div class="subtitle">for your attention!</div>
+            <div class="caption">— Thiago Jesus Rojas Sanchez —</div>
+            <div class="caption" style="margin-top:.8rem;">I am happy to answer any questions.</div>
         </div>
     </div>
 
@@ -335,47 +322,45 @@
         <button class="nav-btn" id="prevBtn">←</button>
         <button class="nav-btn" id="nextBtn">→</button>
     </div>
-    <div class="slide-counter" id="slideCounter">1 / 12</div>
+    <div class="slide-counter" id="slideCounter">1 / 11</div>
 
     <!-- Script overlay -->
     <div class="script-overlay" id="scriptOverlay">
         <button class="script-close" id="closeScript">×</button>
         <div class="script-box" id="scriptContent"></div>
+        <div class="audio-warning" id="audioWarning">
+            Audio file not found. Run <code>python generate_audio.py</code> to create the <code>audio/</code> folder.
+        </div>
     </div>
 
-    <!-- ============================================================
-         AUDIO PLACEHOLDER (disabled for now).
-         To enable later: uncomment the line below, place the mp3
-         file next to this HTML file, and re‑add the audio button
-         logic in the <script> section.
-    <audio id="audioPlayer" preload="none" src="charlottes_web_presentation.mp3"></audio>
-         ============================================================ -->
+    <!-- Shared audio element -->
+    <audio id="sharedAudio" preload="none"></audio>
 </div>
 
 <script>
     const slidesContainer = document.getElementById('slidesContainer');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const counter = document.getElementById('slideCounter');
+    const prevBtn         = document.getElementById('prevBtn');
+    const nextBtn         = document.getElementById('nextBtn');
+    const counter         = document.getElementById('slideCounter');
+    const audioEl         = document.getElementById('sharedAudio');
 
-    const slideEls = document.querySelectorAll('.slide');
+    const slideEls   = document.querySelectorAll('.slide');
     const totalSlides = slideEls.length;
     let currentIndex = 0;
+    let currentAudio = null;
 
     function updateSlide() {
         slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
         counter.textContent = `${currentIndex + 1} / ${totalSlides}`;
     }
-
     function nextSlide() { currentIndex = (currentIndex + 1) % totalSlides; updateSlide(); }
     function prevSlide() { currentIndex = (currentIndex - 1 + totalSlides) % totalSlides; updateSlide(); }
 
     nextBtn.addEventListener('click', nextSlide);
     prevBtn.addEventListener('click', prevSlide);
-
-    document.addEventListener('keydown', (e) => {
+    document.addEventListener('keydown', e => {
         if (e.key === 'ArrowRight') nextSlide();
-        if (e.key === 'ArrowLeft') prevSlide();
+        if (e.key === 'ArrowLeft')  prevSlide();
         if (e.key === 'Escape') document.getElementById('scriptOverlay').classList.remove('active');
     });
 
@@ -386,135 +371,175 @@
         if (Math.abs(diff) > 50) diff > 0 ? nextSlide() : prevSlide();
     });
 
-    /* Add the script button to every slide */
+    /* Add script + audio buttons to every slide */
     slideEls.forEach(slide => {
-        const slideNum = parseInt(slide.dataset.slide);
-        if (isNaN(slideNum)) return;
+        const num = parseInt(slide.dataset.slide);
+        if (isNaN(num)) return;
 
-        let topBtns = slide.querySelector('.top-buttons');
-        if (!topBtns) {
-            topBtns = document.createElement('div');
-            topBtns.className = 'top-buttons';
-            slide.appendChild(topBtns);
-        }
+        const topBtns = document.createElement('div');
+        topBtns.className = 'top-buttons';
+        slide.appendChild(topBtns);
 
         const scriptBtn = document.createElement('button');
         scriptBtn.className = 'top-btn script-btn';
         scriptBtn.innerHTML = '📝';
         scriptBtn.title = 'View script';
-        scriptBtn.addEventListener('click', e => { e.stopPropagation(); showScript(slideNum); });
+        scriptBtn.addEventListener('click', e => { e.stopPropagation(); showScript(num); });
         topBtns.appendChild(scriptBtn);
+
+        const audioBtn = document.createElement('button');
+        audioBtn.className = 'top-btn audio-btn';
+        audioBtn.innerHTML = '🔊';
+        audioBtn.title = 'Play this slide';
+        audioBtn.dataset.audioNumber = num;
+        audioBtn.addEventListener('click', e => { e.stopPropagation(); playSlideAudio(num); });
+        topBtns.appendChild(audioBtn);
     });
 
-    /* ============ SCRIPT DATA (Thiago's full speech) ============ */
+    /* Audio playback */
+    function playSlideAudio(num) {
+        const src = `audio/slide${String(num).padStart(2, '0')}.mp3`;
+        const btn = document.querySelector(`.slide[data-slide="${num}"] .audio-btn`);
+
+        // Same slide playing → pause
+        if (currentAudio === num && !audioEl.paused) {
+            audioEl.pause();
+            return;
+        }
+
+        // Stop everything, reset all buttons
+        audioEl.pause();
+        document.querySelectorAll('.audio-btn').forEach(b => {
+            b.innerHTML = '🔊';
+            b.classList.remove('playing');
+        });
+        document.getElementById('audioWarning').classList.remove('show');
+
+        currentAudio = num;
+        audioEl.src = src;
+        audioEl.currentTime = 0;
+        audioEl.play().then(() => {
+            btn.innerHTML = '⏸️';
+            btn.classList.add('playing');
+        }).catch(() => {
+            btn.innerHTML = '🔊';
+            btn.classList.add('unavailable');
+            document.getElementById('audioWarning').classList.add('show');
+            document.getElementById('scriptOverlay').classList.add('active');
+            currentAudio = null;
+        });
+    }
+
+    audioEl.addEventListener('ended', () => {
+        document.querySelectorAll('.audio-btn').forEach(b => {
+            b.innerHTML = '🔊';
+            b.classList.remove('playing');
+        });
+        currentAudio = null;
+    });
+    audioEl.addEventListener('pause', () => {
+        document.querySelectorAll('.audio-btn').forEach(b => {
+            b.innerHTML = '🔊';
+            b.classList.remove('playing');
+        });
+    });
+
+    /* ============ SCRIPT DATA ============ */
     const scripts = {
         1: {
             title: "Title",
             lines: [
-                `Good morning, everyone. My name is Thiago Jesus Rojas Sanchez, and today I am going to present my analysis of the novel Charlotte's Web by E. B. White.`,
-                `In my presentation, I will talk about five things: first, the setting of the story; second, the theme of teamwork versus betrayal; third, a global issue connected to that theme; fourth, a real news article that connects to my global issue; and finally, one literary device that the author uses. Let's begin with the setting.`
+                "Hello friends and teachers! Today I am going to present my oral presentation about Charlotte's Web, the famous novel by E. B. White."
             ]
         },
         2: {
             title: "Contents",
             lines: [
-                `Here is the structure of my presentation.`,
-                `I will start with the setting, then explain my theme: teamwork versus betrayal. After that I will look at three moments from the story that prove the theme, connect it to a global issue, and then link that issue to a real news article. Finally, I will talk about one literary device, share my reflection, and list my sources.`
+                "Before starting, let me tell you the contents of my presentation.",
+                "First, I will talk about the setting; then about my theme and the quote I chose. After that, I will share the textual evidence — three key moments from the story. Then, I will explain the global issue and how it appears in our lives, connecting it to a real news article. And finally, for ending, I will present the literary device and my sources.",
+                "Let's begin with the setting."
             ]
         },
         3: {
             title: "Setting",
             lines: [
-                `The story has three types of setting.`,
-                `The first is the geographical setting. Most of the story happens on Mr. Zuckerman's farm, especially inside the barn and the pigpen. We also see the Arable family's house, where Fern lives, and the County Fair Ground.`,
-                `The second is the environmental setting. The barn is warm, dusty, and smells of hay and animals. It is a quiet, safe place where the animals can talk freely. The fair ground is the opposite — it is loud, crowded, and exciting. The atmosphere of the story is full of friendship, loyalty, hope, and sometimes sadness.`,
-                `The third is the temporal setting. The story takes place from spring to autumn in the middle of the twentieth century. We know this because of the farm life, the county fair, and the fact that there are no modern machines.`,
-                `But why does the setting matter? The barn is important because it is a small, safe world where Charlotte and Wilbur become friends. Outside that barn, Wilbur is in danger, because Mr. Zuckerman wants to kill him. And the fair is important because that is where Wilbur finally wins his prize — but it is also where Charlotte becomes weak. So the setting is not just a place; it influences the whole story.`
+                "As I told you, I am going to talk about the three different types of setting: geographical, temporal, and environmental.",
+                "First, the geographical setting. The story happens in the United States, and there are three main places. At the beginning, it takes place in the countryside, in the Arable's barn, where a girl called Fern saves Wilbur's life and gives him food. Then, still in the countryside, Wilbur goes to Mr. Zuckerman's barn, where he meets Charlotte, Templeton, and the other animals. They share beautiful moments together, and this is also where the first web miracle happens. Finally, near the end, the story takes place at the Fair Ground, where Wilbur wins his first prize, Charlotte lays her egg sac, and — sadly — where she dies.",
+                "Now, the temporal setting. I consider that the story takes place in the mid-twentieth century, because, although the author does not tell us the exact year, he gives us clues. For example, the farm traditions, the importance of barns, and the creation and best moment of Fair Grounds all help us understand the time period.",
+                "Finally, the environmental setting. I think this story has many different atmospheres. It has a loyal spider, a beautiful friendship between a pig and a spider, an ambitious rat, a not-so-nice lamb, a smelly barn, a loud and cheerful Fair Ground, and a little bit of sadness. All of these elements together create a rich and emotional environment that makes the story feel real."
             ]
         },
         4: {
-            title: "Theme – Definition",
+            title: "Theme",
             lines: [
-                `Now let's talk about my theme: teamwork versus betrayal.`,
-                `In my own words, this theme means that when a group works together for a shared goal, trust is essential. Everyone has to cooperate. But if one member turns against the group, or helps only when there is something in it for himself, that is betrayal — and it puts the whole goal at risk.`,
-                `In Charlotte's Web, the goal is to save Wilbur's life. Some characters, like Charlotte, give everything to achieve it. Other characters, like Templeton the rat, only help when they get food.`
+                "Now I shall talk about the theme I chose: Teamwork versus Betrayal.",
+                "Let me start with the teamwork side. Teamwork is when a group of people work together to reach a goal. In this case, in the book, the goal is saving Wilbur's life. When someone in the team does not understand something, the other members help that person and explain. So the whole group moves forward together.",
+                "But there is also a dark side: betrayal. Betrayal is when a person takes advantage of loyalty and friendship to take everything only for himself or herself. For example, imagine that the goal is four toys, and there are two members. A normal person would say, two toys for each one. But a betrayer would do anything to take all four toys only for himself or herself. That is exactly what betrayal looks like.",
+                "I chose this theme because I like to see how characters can work together for one goal — but also how one person can break that trust."
             ]
         },
         5: {
-            title: "Theme – Quotes",
+            title: "Quote",
             lines: [
-                `Now, let me share the quotes I chose.`,
-                `The first one comes from Chapter 12, "A Meeting." Templeton says: "I have no interest in saving pigs. I am a rat." This quote shows betrayal because Templeton refuses to help, even though he lives in the same barn as Wilbur. He cares more about himself than about the group.`,
-                `The second one is the message Charlotte writes in her web in Chapter 11, "The Miracle": "Some Pig." This shows the opposite — teamwork succeeding. Charlotte's plan works, Lurvy notices the web, and people start to believe Wilbur is special.`,
-                `I chose this theme because I find it interesting to see how characters work together for one goal — but also how one character can break that trust and create conflict.`
+                "Now let me share the quote I chose. It is: 'Now I called this meeting in order to get suggestions. I need new ideas for the web.'",
+                "It appears in Chapter 12, 'A Meeting', and it is said by Charlotte.",
+                "Here we can see the theme because Charlotte is asking for help, and in a strong team, everyone helps. We can predict that after this meeting, many animals will share different ideas — like 'Some Pig' and 'Terrific' — to strengthen the web. So this quote shows the positive side of teamwork: the leader trusts her team enough to ask for their ideas."
             ]
         },
         6: {
-            title: "Theme – Textual Evidence",
+            title: "Textual Evidence",
             lines: [
-                `Here are three moments from the story that show this theme.`,
-                `Moment one: Templeton refuses to help unless he gets a reward. He says he will only go to the dump if he can eat from Wilbur's trough. This shows betrayal, because he puts his own needs before the team's goal.`,
-                `Moment two: Charlotte calls a meeting. She lets all the animals share their ideas and opinions about how to save Wilbur. This shows the positive side of teamwork, because Charlotte listens to everyone and treats them with respect.`,
-                `Moment three: Templeton brings words from the dump so Charlotte can write them in the web. But he only does it because he benefits. This shows both sides at once — he is helping the team, but his help is selfish, not loyal.`,
-                `Together, these three moments show that teamwork in this story is fragile. It only works when everybody is willing to make sacrifices, and Templeton shows what happens when one member refuses.`
+                "Now let me talk about the textual evidence. I have three key moments: Templeton's help, Charlotte's democracy, and Templeton's betrayal.",
+                "Let's start with Templeton's help. When Charlotte needs help saving Wilbur's life, she asks for it, and Templeton becomes the main helper. As he is a rat, he can find interesting words in the trash — for example 'Radiant', a special word that helps Charlotte and saves Wilbur once again. Templeton is essential because the other animals cannot reach the dump.",
+                "Next, we have Charlotte's democracy. In any good team, the leaders should respect others' ideas, and that is exactly what Charlotte does. Instead of saying 'No, that is a really bad idea', she says something like 'That's a good one, but we can improve it', showing respect to every animal in the barn. She listens before she decides, and that is what makes the team trust her.",
+                "Finally, we have Templeton's betrayal. During the last day at the Fair Ground, Templeton does not want to help anymore — even at the most dangerous moment in the book, when Charlotte's egg sac needs to be saved. He only agrees to help with the promise that he will eat everything he wants from Wilbur's food. So even when he helps, his reason is selfish. That is what makes it a betrayal.",
+                "Together, these three moments show that in Charlotte's Web, teamwork is fragile: it only works when every member is willing to make sacrifices — and Templeton shows what happens when one member refuses."
             ]
         },
         7: {
             title: "Global Issue",
             lines: [
-                `My theme connects to a larger global issue: the conflict between personal ambition and team success.`,
-                `This global issue is the struggle between wanting personal rewards and needing to work with others for a shared purpose. It appears when a person has to decide whether to put the group's needs before his or her own.`,
-                `It connects to my theme because Templeton's betrayal comes from his personal ambition. He thinks about his stomach first, and that creates conflict with the animals who are trying to save Wilbur.`,
-                `It appears in the story when the animals are all working to save Wilbur, but Templeton only helps when he is promised food.`,
-                `This is a global issue because it happens everywhere — in schools, in workplaces, in sports teams, and in communities. When one person cares only about personal gain, teamwork breaks down. When people balance their own goals with the group's goals, everybody can succeed. That is why this issue is important beyond one farm or one story.`
+                "Now, did you ever stop to notice if this is related to a global issue? You are correct — it belongs to the global issue called 'Conflict Between Personal Ambition and Team Success'.",
+                "This global issue tells us that when a team has a really big success, sometimes one person wants to keep all the money or benefits that the whole group worked for. That is personal ambition, because it only benefits one person, not the whole group. This can destroy relationships and wipe out all the progress the team made.",
+                "This connects to the book because the real reason Templeton helps Charlotte is not friendship — it is ambition. Charlotte and Templeton made a promise: every web that had been used for a miracle, he could eat it. That only benefits him. So even when he helps the whole team, his motivation is personal."
             ]
         },
         8: {
-            title: "News Article Connection",
+            title: "Global Issue in Our Lives",
             lines: [
-                `To connect my global issue to real life, I chose an article called "Sam Bankman-Fried sentenced to 25 years for FTX fraud," published by BBC News on March 28, 2024.`,
-                `In this article, we learn that Sam Bankman-Fried, the founder of the cryptocurrency company FTX, was sentenced to 25 years in prison for fraud. He stole billions of dollars from customers and investors to pay for his own lifestyle and investments. Because of this, his company collapsed.`,
-                `Many people were affected: customers who lost their savings, employees who lost their jobs, and investors who lost their money. It happened in the United States, but the impact was global.`,
-                `This connects to my global issue because Bankman-Fried put his personal ambition before the success of his company and the safety of his team. Just like Templeton, who only helps when he gets food, Bankman-Fried only helped his company when it benefited him personally. In both cases, the group's success was sacrificed for one person's gain.`,
-                `I chose this article because it is a real-world example of the same conflict we see in Charlotte's Web — and from it, we learn that personal ambition must be balanced with responsibility to others. When someone cares only about himself, it destroys trust and hurts many people.`
+                "Now let's talk about the global issue in our lives. The news article I chose is called: 'Bankman-Fried sentenced to 25 years in prison for massive FTX fraud.'",
+                "It happened in the United States in 2024, and the impact was global. But why was the impact global? Because FTX was a cryptocurrency exchange — a kind of online bank where the public trusted it to borrow money and give it back. A man named Sam Bankman-Fried wanted to take the money and disappear, and for a while, it worked. The problem is that all that money belonged to society, from many different countries. Everyone's money was stolen.",
+                "At the end, the police found him, and he was sentenced to 25 years in prison for fraud.",
+                "This connects to my global issue because Bankman-Fried put his personal ambition ahead of his team — his company, his employees, and his customers. Just like Templeton, he only acted when it benefited him personally, and the whole team suffered."
             ]
         },
         9: {
-            title: "Literary Device – Foreshadowing",
+            title: "Literary Device",
             lines: [
-                `The last part of my presentation is about a literary device. I chose foreshadowing.`,
-                `Foreshadowing is when the author gives clues about what will happen later in the story. For example, if a weapon appears early in a story, the reader can predict that something dangerous will happen.`,
-                `We can see this in Chapter 15, "The Crickets." The narrator says: "Charlotte heard it and knew that she hadn't much time left."`,
-                `This is an example of foreshadowing because the line hints that Charlotte is running out of time. It makes the reader predict that she will soon die, because she is getting older and weaker.`,
-                `I think E. B. White uses this device to create a sad and tense atmosphere. It builds suspense and makes the reader pay close attention. It prepares us emotionally for Charlotte's death, so when it happens, it feels both inevitable and deeply moving.`,
-                `It also supports my theme, because it reminds us that Charlotte's sacrifice is urgent. She is running out of time to save Wilbur, which makes Templeton's selfish refusals even more painful.`
+                "Now, for ending this presentation, I am going to talk about the literary device I chose: foreshadowing.",
+                "Foreshadowing is a literary device where the author gives us clues about what will happen in the future. For example, if a weapon appears early in a story, readers can predict that something dangerous will happen later.",
+                "We can see this in the book in the quote: 'Charlotte heard it and knew that she hadn't much time left.'",
+                "Here the author is telling us this to hint that Charlotte is getting old, and that soon she will die. This creates a sad and tense mood and prepares us emotionally for her death — and that makes her sacrifice for Wilbur even more powerful."
             ]
         },
         10: {
-            title: "Reflection",
+            title: "Sources",
             lines: [
-                `To conclude, Charlotte's Web is much more than a story about animals.`,
-                `Through its setting, its theme of teamwork versus betrayal, its connection to a real global issue, and its use of foreshadowing, E. B. White teaches us an important lesson: teamwork requires trust and sacrifice, and when one person puts himself before the group, everyone can lose.`
+                "For my sources, I used the novel Charlotte's Web by E. B. White as my primary source.",
+                "I used a PBS NewsHour article about the FTX fraud as a reliable, factual example of my global issue.",
+                "I used an Indeed article to help me understand the concept of teamwork, and Dictionary.com to check the meaning of the word betrayal."
             ]
         },
         11: {
-            title: "Sources",
-            lines: [
-                `For my sources, I used the novel Charlotte's Web by E. B. White as my primary source.`,
-                `I used the BBC News article on the FTX fraud as a reliable, factual example of my global issue.`,
-                `I used the Encyclopaedia Britannica to understand the author's background and purpose, and a literary analysis from SparkNotes to support my ideas about theme.`
-            ]
-        },
-        12: {
             title: "Thank You",
             lines: [
-                `Thank you for listening. I hope this presentation helped you see Charlotte's Web in a new way.`,
-                `I am happy to answer any questions.`
+                "To conclude, Charlotte's Web is much more than a story about animals. Through its setting, its theme of teamwork versus betrayal, its connection to a global issue, and its use of foreshadowing, E. B. White teaches us that teamwork requires trust and sacrifice — and that when one person puts himself first, everyone can lose.",
+                "Thank you very much for your attention. I am happy to answer any questions."
             ]
         }
     };
 
-    const overlay = document.getElementById('scriptOverlay');
+    const overlay       = document.getElementById('scriptOverlay');
     const scriptContent = document.getElementById('scriptContent');
     const closeScriptBtn = document.getElementById('closeScript');
 
@@ -528,11 +553,9 @@
         scriptContent.innerHTML = html;
         overlay.classList.add('active');
     }
-
     closeScriptBtn.addEventListener('click', () => overlay.classList.remove('active'));
     overlay.addEventListener('click', e => { if (e.target === overlay) overlay.classList.remove('active'); });
 
-    /* Initialize */
     updateSlide();
 </script>
 </body>
